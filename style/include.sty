@@ -8,16 +8,27 @@
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
-\usepackage{mathtools}
-\mathtoolsset{
-  showonlyrefs=true% No manual choice between equation and equation*
-}
+\RequirePackage{physics}
 
 % Figures
 \RequirePackage{graphicx}
 \RequirePackage{float}
 %\usepackage{subcaption}
 
+% Bibliography
+\usepackage{etoolbox}%              Fix compatibility with autonum
+\cslet{blx@noerroretextools}\empty% Fix compatibility with autonum
+% https://github.com/plk/biblatex/issues/669#issuecomment-436153041
+\RequirePackage[
+  sorting   = none,
+  sortcites = true,
+]{biblatex}
+
 % Referencing
-\RequirePackage[pdfusetitle]{hyperref}
+\RequirePackage[
+  pdfusetitle,
+  hidelinks,
+  hypertexnames = false,% Compatibility with autonum
+]{hyperref}
 \RequirePackage{cleveref}
+\RequirePackage{autonum}
