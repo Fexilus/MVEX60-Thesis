@@ -1,3 +1,7 @@
+thesis.pdf
+
+#--------------------------- Default LaTeX ignores ---------------------------
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
