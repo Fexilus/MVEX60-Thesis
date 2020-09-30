@@ -1,3 +1,33 @@
 \chapter{The Hill model}
-%
-In this chapter, Lie point symmetries for the Hill model will be calculated...
+
+In this chapter, Lie point symmetries for the Hill model will be calculated.
+Since this work has already been done in \cite{ohlsson2020symmetry}, this will serve as a reproduction of their results.
+
+%=============================================================================
+\section{The Hill equation}
+
+The Hill equation is an ODE that empirically describes cooperative binding to a multi-site protein.
+It takes the form
+\begin{equation} \label{eq:original-hill}
+  \dv{Y}{t} = - v_\text{max} \frac{Y^n}{K_m + Y^n} = \Omega_n(t, Y),
+  \quad n > 0.
+\end{equation}
+By nondimensionalizing both the substrate concentration with
+\begin{equation}
+  y = \frac{Y}{{K_m}^{1/n}}
+\end{equation}
+and the time with
+\begin{equation}
+  \tau = v_\text{max} \frac{t}{{K_m}^{1/n}},
+\end{equation}
+\cref{eq:original-hill} simplifies to
+\begin{equation} \label{eq:hill}
+  \dv{y}{\tau} = - \frac{y^n}{1 + y^n} = \omega_n(\tau, y),
+  \quad n > 0.
+\end{equation}
+
+%=============================================================================
+\section{Finding a non-trivial infinitesimal generator}
+
+For the remainder of this chapter, let \(y'\) denote the derivative \(\dv{y}{\tau}\).
+
