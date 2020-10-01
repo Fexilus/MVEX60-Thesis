@@ -1,6 +1,7 @@
 % Custom definitions
 
 % AMS-thm definitions
+% TODO: Decide on a style. Right now these are copied from amsthm's docs.
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lem}[thm]{Lemma}
@@ -9,6 +10,18 @@
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[chapter]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{xca}[exmp]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\newtheorem{case}{Case}
 
 % Total derivative
 \newcommand{\tD}[1]{D_{#1}\,}
+
+% Sets
+\newcommand{\reals}{\mathbb{R}}
+
+% TODO: Derivatives and elongations as style not content

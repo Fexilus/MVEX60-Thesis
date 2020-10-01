@@ -3,9 +3,9 @@
 In this chapter, the mathematical theory used in the thesis will be presented.
 
 %=============================================================================
-\section{Lie point symmetries}
+\section{Point symmetries}
 
-% TODO: Write lie symmetry introduction
+% TODO: Write symmetry introduction
 Given a \dots
 
 \dots
@@ -20,7 +20,7 @@ Given a \dots
 
 The symmetry condition can then be formulated as: % FIXME: not proper wording
 \begin{defn}[Point symmetry] \label{defn:first-order-symmetry}
-  A transformation \(\Gamma: (x,y) \mapsto (\hat{x}(x,y), \hat{y}(x,y))\) is a point symmetry of the ODE \ref{eq:first-order-ode} if
+  A transformation \(\Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}\) is a point symmetry of the ODE \ref{eq:first-order-ode} if
   \begin{equation}
     \dv{y}{x} = \omega(x,y)
     \implies
@@ -35,12 +35,67 @@ Using the total derivative and the definition of the ODE \ref{eq:first-order-ode
   \frac{\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}},
 \end{equation}
 which means that \cref{defn:first-order-symmetry} can be written as
-\begin{lem}
-  A transformation \(\Gamma: (x,y) \mapsto (\hat{x}(x,y), \hat{y}(x,y))\) is a point symmetry of the ODE \ref{eq:first-order-ode} if
-  \begin{equation}
+\begin{lem} \label{defn:simple-first-order-symmetry}
+  A transformation \(\Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}\) is a point symmetry of the ODE \ref{eq:first-order-ode} if
+  \begin{equation} \label{eq:simple-first-order-symmetry}
     \frac{\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}} = \omega(\hat{x},\hat{y})
   \end{equation}
-\end{lem}
+  holds.
+\end{lem} % FIXME: Requirement of diffeomorphism
+Given a transformation \(\Gamma\), it is therefore easy to check whether it is a point symmetry of the ODE \ref{eq:first-order-ode}.
+The reverse process (finding point symmetries of \cref{eq:first-order-ode}) is on the other hand not easy, as \(\omega(\hat{x},\hat{y})\) will in all but the most trivial cases result in a non-linear PDE in with two unknown functions.
+By restricting attention to a large subset of point symmetries these conditions can be simplified.
+
+%=============================================================================
+\section{Lie point symmetries}
+A Lie group is a continuous group, where the continuity between members of the group can be described by one or more real valued parameters.
+% TODO: Add more material on Lie groups, maybe as reference or in appendix.
+For point symmetries, this means that a group of Lie point symmetries will transform a given point to a differentiable manifold, e.g. a line, plane, circle etc., for every point in the plane.
+More simply, the transformations in a one-parameter Lie group can be written as
+\begin{equation}
+  \Gamma_\epsilon: \pqty{x,y} \mapsto \pqty{\hat{x}_\epsilon(x,y), \hat{y}_\epsilon(x,y)},
+\end{equation}
+where both \(\hat{x}_\epsilon(x,y)\) and \(\hat{y}_\epsilon(x,y)\) are differentiable in \(\epsilon\) when fixing \(x\) and \(y\).
+This is most easily showed by a simple example.
+\begin{exmp}
+  The ODE
+  \begin{equation} \label{eq:ex-a:ode}
+    \dv{y}{x} = y
+  \end{equation}
+  has several symmetries.
+  One group of symmetries is
+  \begin{equation} \label{eq:ex-a:transformation}
+    \pqty{\hat{x}_\epsilon(x,y), \hat{y}_\epsilon(x,y)} = \pqty{x + \epsilon, y}, \quad
+    \forall \epsilon \in \reals
+  \end{equation}
+  The group consists of point symmetries of \cref{eq:ex-a:ode}, since
+  \begin{equation}
+    \frac{\partial_x \hat{y}_\epsilon + \omega(x,y) \partial_y \hat{y}_\epsilon}{\partial_x \hat{x}_\epsilon + \omega(x,y) \partial_y \hat{x}_\epsilon} =
+    \frac{y}{1} =
+    \hat{y} =
+    \omega(\hat{x}_\epsilon,\hat{y}_\epsilon), \quad
+    \forall \epsilon.
+  \end{equation}
+  So by \cref{defn:simple-first-order-symmetry} the transformations are point symmetries.
+  The group is a Lie group, since by fixing \(\pqty{x,y}=\pqty{x^*\!,y^*}\),
+  \begin{equation}
+    \dv{\epsilon} \pqty{\hat{x}_\epsilon(x^*\!,y^*), \hat{y}_\epsilon(x^*\!,y^*)} =
+    \pqty{\dv{\hat{x}(\epsilon)}{\epsilon}, \dv{\hat{y}(\epsilon)}{\epsilon}} =
+    \pqty{1,0}
+  \end{equation}
+  exists for any \(\pqty{x^*\!,y^*}\).
+\end{exmp}
+Since Lie point symmetries act on a subset of the plane,
+\begin{equation}
+  \eval{\dv{\epsilon} \pqty{\hat{x}_\epsilon(x^*\!,y^*), \hat{y}_\epsilon(x^*\!,y^*)}}_{\epsilon=0} = \pqty{\xi(x^*\!,y^*), \eta(x^*\!,y^*)}
+\end{equation}
+is defined for that same subset. % FIXME: Figure out how to talk about inconsistencies
+On that subset,
+\begin{equation}
+  \pqty{\xi(x,y), \eta(x,y)}
+\end{equation}
+can be viewed as a vector field characterizing the Lie group.
+% TODO: Prove that the characterization is one-to-one
 
 %-----------------------------------------------------------------------------
 \subsection{Infinitesimal generators}
