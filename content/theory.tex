@@ -6,10 +6,48 @@ In this chapter, the mathematical theory used in the thesis will be presented.
 \section{Lie point symmetries}
 
 % TODO: Write lie symmetry introduction
-Given a...
+Given a \dots
+
+\dots
+
+\begin{equation} \label{eq:first-order-ode}
+  \dv{y}{x} = \omega(x,y)
+  \implies
+  \dv{\hat{y}}{\hat{x}} = \omega(\hat{x},\hat{y})
+\end{equation}
+
+\dots
+
+The symmetry condition can then be formulated as: % FIXME: not proper wording
+\begin{defn}[Point symmetry] \label{defn:first-order-symmetry}
+  A transformation \(\Gamma: (x,y) \mapsto (\hat{x}(x,y), \hat{y}(x,y))\) is a point symmetry of the ODE \ref{eq:first-order-ode} if
+  \begin{equation}
+    \dv{y}{x} = \omega(x,y)
+    \implies
+    \dv{\hat{y}}{\hat{x}} = \omega(\hat{x},\hat{y}).
+  \end{equation}
+\end{defn}
+Using the total derivative and the definition of the ODE \ref{eq:first-order-ode},
+\begin{equation}
+  \dv{\hat{y}}{\hat{x}} = 
+  \frac{\tD{x} \hat{y}(x,y)}{\tD{x} \hat{x}(x,y)} =
+  \frac{\partial_x \hat{y} + y' \partial_y \hat{y}}{\partial_x \hat{x} + y' \partial_y \hat{x}} =
+  \frac{\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}},
+\end{equation}
+which means that \cref{defn:first-order-symmetry} can be written as
+\begin{lem}
+  A transformation \(\Gamma: (x,y) \mapsto (\hat{x}(x,y), \hat{y}(x,y))\) is a point symmetry of the ODE \ref{eq:first-order-ode} if
+  \begin{equation}
+    \frac{\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}} = \omega(\hat{x},\hat{y})
+  \end{equation}
+\end{lem}
 
 %-----------------------------------------------------------------------------
 \subsection{Infinitesimal generators}
 
 % TODO: Write about infinitesimal generators
-To simplify
+To generalize the notation, a differential operator
+\begin{equation}
+  X = \xi(x,y) \partial_x + \eta(x,y) \partial_y,
+\end{equation}
+called an infinitesimal generator, can be introduced.
