@@ -35,7 +35,7 @@ Using the total derivative and the definition of the ODE \ref{eq:first-order-ode
   \frac{\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}},
 \end{equation}
 which means that \cref{defn:first-order-symmetry} can be written as
-\begin{lem} \label{defn:simple-first-order-symmetry}
+\begin{lem} \label{lem:simple-first-order-symmetry}
   A transformation \(\Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}\) is a point symmetry of the ODE \ref{eq:first-order-ode} if
   \begin{equation} \label{eq:simple-first-order-symmetry}
     \frac{\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}} = \omega(\hat{x},\hat{y})
@@ -48,6 +48,7 @@ By restricting attention to a large subset of point symmetries these conditions 
 
 %=============================================================================
 \section{Lie point symmetries}
+
 A Lie group is a continuous group, where the continuity between members of the group can be described by one or more real valued parameters.
 % TODO: Add more material on Lie groups, maybe as reference or in appendix.
 For point symmetries, this means that a group of Lie point symmetries will transform a given point to a differentiable manifold, e.g. a line, plane, circle etc., for every point in the plane.
@@ -87,22 +88,37 @@ This is most easily showed by a simple example.
 \end{exmp}
 Since Lie point symmetries act on a subset of the plane,
 \begin{equation}
-  \eval{\dv{\epsilon} \pqty{\hat{x}_\epsilon(x^*\!,y^*), \hat{y}_\epsilon(x^*\!,y^*)}}_{\epsilon=0} = \pqty{\xi(x^*\!,y^*), \eta(x^*\!,y^*)}
+  \eval{\dv{\epsilon} \pqty{\hat{x}_\epsilon(x^*\!,y^*), \hat{y}_\epsilon(x^*\!,y^*)}}_{\epsilon=0} = \pqty{\xi(x^*\!,y^*), \eta(x^*\!,y^*)},
 \end{equation}
-is defined for that same subset. % FIXME: Figure out how to talk about inconsistencies
+where is \(\pqty{x^*\!,y^*}\) any point in the subset, is defined for that same subset. % FIXME: Figure out how to talk about inconsistencies (right now subset talk)
 On that subset,
-\begin{equation}
+\begin{equation} \label{eq:tangent-field}
   \pqty{\xi(x,y), \eta(x,y)}
 \end{equation}
-can be viewed as a vector field characterizing the Lie group.
+can be viewed as a vector field characterizing the Lie group, commonly called the tangent field.
 % TODO: Prove that the characterization is one-to-one
+Note that the entire group consisting of mappings \(\Gamma_\epsilon\) is now represented without any reference to \(\epsilon\) in the tangent field \ref{eq:tangent-field}.
 
 %-----------------------------------------------------------------------------
-\subsection{Infinitesimal generators}
+\subsection{The linearized symmetry condition}
 
-% TODO: Write about infinitesimal generators
-To generalize the notation, a differential operator
+By focusing on the tangent field characterization of one-parameter Lie symmetry groups, the symmetry condition \ref{lem:simple-first-order-symmetry} can be further simplified.
+\begin{thm} \label{thm:linearized-first-order-symmetry}
+  A Lie group of point transformations is a symmetry of the ODE \ref{eq:first-order-ode} if
+  \begin{equation}
+    \partial_x \eta + (\partial_y \eta - \partial_x \xi) \omega - \partial_y (\xi) \omega^2 =
+    \xi \partial_x \omega + \eta \partial_y \omega,
+  \end{equation}
+  where \(\pqty{\xi(x,y), \eta(x,y)}\) is the tangent field of the Lie group.
+\end{thm} % FIXME: Is this a correct formulation of the theorem?
+To prove this, simply take the derivative of \cref{eq:simple-first-order-symmetry} in \(\epsilon\) and set \(\epsilon\) to 0.
+For a more formal proof, refer to [thing]. % FIXME: Should have a reference
+
+% TODO: Figure out better structure for this part
+To simplify the notation, a differential operator
 \begin{equation}
   X = \xi(x,y) \partial_x + \eta(x,y) \partial_y,
 \end{equation}
 called an infinitesimal generator, can be introduced.
+As the generator is defined only by \(\xi\) and \(\eta\), it too serve as a characterization of the Lie symmetry group.
+The infinitesimal generator can be prolonged... % How do I make this flow naturally?
