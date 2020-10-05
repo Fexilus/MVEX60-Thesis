@@ -3,6 +3,11 @@
 In this chapter, the mathematical theory used in the thesis will be presented.
 
 %=============================================================================
+\section{Differential geometry}
+% TODO: Write about lifts and jet spaces
+% Or maybe use examples (easy y'= y and Hydon's cover) throughout, and explain differential geometry concepts with them in the symmetry sections? 
+
+%=============================================================================
 \section{Point symmetries}
 
 % TODO: Write symmetry introduction
@@ -103,14 +108,14 @@ Note that the entire group consisting of mappings \(\Gamma_\epsilon\) is now rep
 \subsection{The linearized symmetry condition}
 
 By focusing on the tangent field characterization of one-parameter Lie symmetry groups, the symmetry condition \ref{lem:simple-first-order-symmetry} can be further simplified.
-\begin{thm} \label{thm:linearized-first-order-symmetry}
+\begin{lem} \label{lem:linearized-first-order-symmetry}
   A Lie group of point transformations is a symmetry of the ODE \ref{eq:first-order-ode} if
   \begin{equation}
     \partial_x \eta + (\partial_y \eta - \partial_x \xi) \omega - \partial_y (\xi) \omega^2 =
     \xi \partial_x \omega + \eta \partial_y \omega,
   \end{equation}
   where \(\pqty{\xi(x,y), \eta(x,y)}\) is the tangent field of the Lie group.
-\end{thm} % FIXME: Is this a correct formulation of the theorem?
+\end{lem} % FIXME: Is this a correct formulation of the theorem?
 To prove this, simply take the derivative of \cref{eq:simple-first-order-symmetry} in \(\epsilon\) and set \(\epsilon\) to 0.
 For a more formal proof, refer to [thing]. % FIXME: Should have a reference
 
@@ -120,5 +125,25 @@ To simplify the notation, a differential operator
   X = \xi(x,y) \partial_x + \eta(x,y) \partial_y,
 \end{equation}
 called an infinitesimal generator, can be introduced.
-As the generator is defined only by \(\xi\) and \(\eta\), it too serve as a characterization of the Lie symmetry group.
-The infinitesimal generator can be prolonged... % How do I make this flow naturally?
+As the generator is defined only by \(\xi\) and \(\eta\), it too serves as a characterization of the Lie symmetry group.
+The infinitesimal generator can then be prolonged, still entirely determined by \(\xi\) and \(\eta\), to act on the entire relevant jet space.
+In the current case that jet space is \(\pqty{x, y, y'}\), and the prolongation takes the form
+\begin{equation}
+  X^{(1)} = \xi(x,y) \partial_x + \eta(x,y) \partial_y + \eta^{(1)}(x,y) \partial_{y'},
+\end{equation}
+where
+\begin{equation}
+  \eta^{(1)}(x,y) =
+  \partial_x(\eta)(x,y) + (\partial_y(\eta)(x,y) - \partial_x(\xi)(x,y)) y' - \partial_y(\xi)(x,y) \left(y'\right)^2.
+\end{equation}
+This prolongation follows naturally from the prolongation of \(\hat{y}'\) (see [appendix]). % FIXME: Write and insert prolongation details
+With this notation we rewrite \cref{lem:linearized-first-order-symmetry} as
+\begin{thm} \label{thm:linearized-first-order-symmetry}
+  A Lie group of point transformations is a symmetry of the ODE \ref{eq:first-order-ode} if
+  \begin{equation} \label{eq:linearized-first-order-symmetry}
+    X^{(1)}\left(y' - \omega(x,y)\right) \equiv 0,
+    % Hydon has "where eq. (3.1) holds", but that feels a bit off...
+    % Stephani says \equiv 0 and (mod H = 0)
+  \end{equation}
+  where \(X^{(1)}\) is the first prolongation of the infinitesimal generator of the Lie group.
+\end{thm} % FIXME: Is this a correct formulation of the theorem?
