@@ -1,6 +1,6 @@
 % Custom definitions
 
-% AMS-thm definitions
+% amsthm definitions
 % TODO: Decide on a style. Right now these are copied from amsthm's docs.
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
@@ -25,3 +25,16 @@
 \newcommand{\reals}{\mathbb{R}}
 
 % TODO: Derivatives and elongations as style not content
+
+% Math tables
+\newcommand\AddEquationLabel[1]{%
+  \ifcsedef{autonum@#1Referenced}{% Test if referenced (autonum compatibility)
+    \refstepcounter{equation}% increment equation counter
+    (\@currentlabel)% print equation number
+  }{}%
+  \label{#1}% give the equation a \label
+}
+\newcolumntype{M}{>{\hfill\(\displaystyle}X<{\)\hfill}} % mathematics column
+\newcolumntype{L}{>{\hfill\(\displaystyle}X<{\)}@{\,}} % LH mathematics column
+\newcolumntype{R}{>{\(\displaystyle}X<{\)\hfill}} % RH mathematics column
+\newcolumntype{E}{>{\collectcell\AddEquationLabel}r<{\endcollectcell}}

@@ -10,6 +10,10 @@
 \RequirePackage{amsthm}
 \RequirePackage{physics}
 
+% Math table dependencies
+\RequirePackage{tabularx}
+\RequirePackage{collcell}
+
 % Figures
 \RequirePackage{graphicx}
 \RequirePackage{float}
@@ -32,3 +36,4 @@
 ]{hyperref}
 \RequirePackage{cleveref}
 \RequirePackage{autonum}
+\autonum@generatePatchedReferenceCSL{Cref}% Patch autonum
