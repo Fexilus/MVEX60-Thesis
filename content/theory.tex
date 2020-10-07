@@ -17,8 +17,6 @@ Given a \dots
 
 \begin{equation} \label{eq:first-order-ode}
   \dv{y}{x} = \omega(x,y)
-  \implies
-  \dv{\hat{y}}{\hat{x}} = \omega(\hat{x},\hat{y})
 \end{equation}
 
 \dots
@@ -66,7 +64,7 @@ This is most easily showed by a simple example.
 \begin{exmp}
   The ODE
   \begin{equation} \label{eq:ex-a:ode}
-    \dv{y}{x} = y
+    \dv{y}{x} = y = \omega(x, y)
   \end{equation}
   has several symmetries.
   One group of symmetries is
@@ -78,36 +76,37 @@ This is most easily showed by a simple example.
   \begin{equation}
     \frac{\partial_x \hat{y}_\epsilon + \omega(x,y) \partial_y \hat{y}_\epsilon}{\partial_x \hat{x}_\epsilon + \omega(x,y) \partial_y \hat{x}_\epsilon} =
     \frac{y}{1} =
-    \hat{y} =
+    \hat{y}_\epsilon =
     \omega(\hat{x}_\epsilon,\hat{y}_\epsilon), \quad
     \forall \epsilon.
   \end{equation}
-  So by \cref{defn:simple-first-order-symmetry} the transformations are point symmetries.
+  So by \cref{lem:simple-first-order-symmetry} the transformations are point symmetries.
   The group is a Lie group, since by fixing \(\pqty{x,y}=\pqty{x^*\!,y^*}\),
   \begin{equation}
     \dv{\epsilon} \pqty{\hat{x}_\epsilon(x^*\!,y^*), \hat{y}_\epsilon(x^*\!,y^*)} =
     \pqty{\dv{\hat{x}(\epsilon)}{\epsilon}, \dv{\hat{y}(\epsilon)}{\epsilon}} =
     \pqty{1,0}
   \end{equation}
-  exists for any \(\pqty{x^*\!,y^*}\).
+  for any \(\pqty{x^*\!,y^*}\).
 \end{exmp}
-Since Lie point symmetries act on a subset of the plane,
+Since Lie point symmetries act on a subset of the plane
 \begin{equation}
   \eval{\dv{\epsilon} \pqty{\hat{x}_\epsilon(x^*\!,y^*), \hat{y}_\epsilon(x^*\!,y^*)}}_{\epsilon=0} = \pqty{\xi(x^*\!,y^*), \eta(x^*\!,y^*)},
 \end{equation}
-where is \(\pqty{x^*\!,y^*}\) any point in the subset, is defined for that same subset. % FIXME: Figure out how to talk about inconsistencies (right now subset talk)
-On that subset,
+can be defined for that subset, where is \(\pqty{x^*\!,y^*}\) any point in the subset. % FIXME: Figure out how to talk about inconsistencies (right now subset talk)
+On that subset
 \begin{equation} \label{eq:tangent-field}
   \pqty{\xi(x,y), \eta(x,y)}
 \end{equation}
 can be viewed as a vector field characterizing the Lie group, commonly called the tangent field.
 % TODO: Prove that the characterization is one-to-one
-Note that the entire group consisting of mappings \(\Gamma_\epsilon\) is now represented without any reference to \(\epsilon\) in the tangent field \ref{eq:tangent-field}.
+Note that the entire group consisting of mappings \(\Gamma_\epsilon\) is now represented by a vector field, without any reference to \(\epsilon\).
+The vector field \ref{eq:tangent-field} is commonly known as the tangent field of the Lie symmetry group.% TODO: Should these things be definitions?
 
 %-----------------------------------------------------------------------------
 \subsection{The linearized symmetry condition}
 
-By focusing on the tangent field characterization of one-parameter Lie symmetry groups, the symmetry condition \ref{lem:simple-first-order-symmetry} can be further simplified.
+By using the tangent field of a one-parameter Lie symmetry group, the symmetry condition \ref{lem:simple-first-order-symmetry} can be further simplified.
 \begin{lem} \label{lem:linearized-first-order-symmetry}
   A Lie group of point transformations is a symmetry of the ODE \ref{eq:first-order-ode} if
   \begin{equation}
@@ -116,18 +115,18 @@ By focusing on the tangent field characterization of one-parameter Lie symmetry 
   \end{equation}
   where \(\pqty{\xi(x,y), \eta(x,y)}\) is the tangent field of the Lie group.
 \end{lem} % FIXME: Is this a correct formulation of the theorem?
-To prove this, simply take the derivative of \cref{eq:simple-first-order-symmetry} in \(\epsilon\) and set \(\epsilon\) to 0.
+To roughly prove this, simply take the derivative of \cref{eq:simple-first-order-symmetry} in \(\epsilon\) and then set \(\epsilon\) to 0.
 For a more formal proof, refer to [thing]. % FIXME: Should have a reference
 
 % TODO: Figure out better structure for this part
 To simplify the notation, a differential operator
 \begin{equation}
-  X = \xi(x,y) \partial_x + \eta(x,y) \partial_y,
+  X = \xi(x,y) \partial_x + \eta(x,y) \partial_y
 \end{equation}
 called an infinitesimal generator, can be introduced.
 As the generator is defined only by \(\xi\) and \(\eta\), it too serves as a characterization of the Lie symmetry group.
-The infinitesimal generator can then be prolonged, still entirely determined by \(\xi\) and \(\eta\), to act on the entire relevant jet space.
-In the current case that jet space is \(\pqty{x, y, y'}\), and the prolongation takes the form
+The infinitesimal generator can then be prolonged, still entirely determined by \(\xi\) and \(\eta\), to act on the entire jet space.
+For first order differential equations the jet space is \(\pqty{x, y, y'}\), and the prolongation takes the form
 \begin{equation}
   X^{(1)} = \xi(x,y) \partial_x + \eta(x,y) \partial_y + \eta^{(1)}(x,y) \partial_{y'},
 \end{equation}
@@ -147,3 +146,5 @@ With this notation we rewrite \cref{lem:linearized-first-order-symmetry} as
   \end{equation}
   where \(X^{(1)}\) is the first prolongation of the infinitesimal generator of the Lie group.
 \end{thm} % FIXME: Is this a correct formulation of the theorem?
+
+% TODO: Get canonical coordinates in to the text somehow
