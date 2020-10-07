@@ -23,11 +23,124 @@ and the time with
 \cref{eq:original-hill} simplifies to
 \begin{equation} \label{eq:hill}
   \dv{y}{\tau} = - \frac{y^n}{1 + y^n} = \omega_n(\tau, y), \quad
-  n > 0.
+  n > 0,
 \end{equation}
+where \(y'\) denotes the derivative \(\dv{y}{\tau}\), and will do so for the remainder of this chapter.
 
 %=============================================================================
 \section{Finding a non-trivial infinitesimal generator}
 
-For the remainder of this chapter, let \(y'\) denote the derivative \(\dv{y}{\tau}\).
+The Hill equation clearly has a trivial Lie symmetry generator \(X=\partial_\tau\).
+This can be seen by observing that \cref{eq:hill} has no \(\tau\) in either side's expression (remember that the equation is viewed in terms of its lift, residing in the jet space \(J^1\)).
+However, one purpose of finding symmetries of differential equations is to distinguish between models.
+Since the trivial symmetry \(X=\partial_\tau\) holds for all \(n\), it can not be used to compare different degrees of Hill models.
+Finding a non-trivial Lie symmetry group is therefore of interest.
 
+Any Lie point symmetry group must fulfill the linearized symmetry condition \ref{thm:linearized-first-order-symmetry}.
+To solve \cref{eq:linearized-first-order-symmetry}, an Ansatz must be made.
+The tangent fields of many Lie symmetries of ODE:s are linear in \(y\).
+The Ansatz
+\begin{equation}
+  \pqty{\xi(\tau,y),\eta(\tau,y)} = \pqty{A(\tau) + B(\tau)y,C(\tau) + D(\tau)y}
+\end{equation}
+is therefore used.
+Inserting the Ansatz into \cref{eq:linearized-first-order-symmetry}, and using the fact that \(y' = y^n / (1 + y^n)\), gives that
+\begin{equation}
+  (C' + D'y) + (A' + B'y - D) \frac{y^n}{1 + y^n} - B \frac{y^{2n}}{(1 + y^n)^2} =
+  -n(C + Dy) \frac{y^{n-1}}{(1 + y^n)^2}.
+\end{equation}
+Multiplication with \((1 + y^n)^2\) in turn gives that
+\begin{equation} \label{eq:hill-linear-symmetry}
+  (C' + D'y)(1 + y^n)^2 + (A' + B'y - D)y^n(1 + y^n) - By^{2n} =
+  -n(C + Dy) y^{n-1}.
+\end{equation}
+The equation can then be separated by powers of \(y\) into a system of equations.
+However, since \(n\) is specified to be positive, care must be taken to ensure that the separation holds for all \(n>0\).
+
+%-----------------------------------------------------------------------------
+\subsection{Case of \texorpdfstring{\(n\neq1,2\)}{n not 1 or 2}}
+
+When \(n>0\) and \(n\neq1,2\), all of the possible powers of \(y\) will be different.
+\Cref{eq:hill-linear-symmetry} can the be separated into the system
+\par\noindent % TODO: Put this into an environment
+\begin{minipage}{\linewidth}
+  \vspace{\abovedisplayskip}
+  \begin{subequations}
+    \begin{tabularx}{\textwidth}{l|LRN}
+      \(y^0\)       & C'(\tau) &= 0                               & eq:det-any-0\\
+      \(y^1\)       & D'(\tau) &= 0                               & eq:det-any-1\\
+      \(y^{n-1}\)   & 0 &= -nC(\tau)                              & eq:det-any-nm1\\
+      \(y^n\)       & 2C'(\tau) + A'(\tau) - D(\tau) &= -nD(\tau) & eq:det-any-n\\
+      \(y^{n+1}\)   & 2D'(\tau) + B'(\tau) &= 0                   & eq:det-any-np1\\
+      \(y^{2n}\)    & C'(\tau) A'(\tau) - D(\tau) - B(\tau) &= 0  & eq:det-any-2n\\
+      \(y^{2n+1}\)  & D'(\tau) + B'(\tau) &= 0.                     & eq:det-any-2np1
+    \end{tabularx}
+  \end{subequations}
+  \vspace{\belowdisplayskip}
+\end{minipage}
+From \cref{eq:det-any-nm1}
+\begin{equation}
+  C(\tau) = 0,
+\end{equation}
+which renders \cref{eq:det-any-0} irrelevant.
+\Cref{eq:det-any-1} gives
+\begin{equation}
+  D(\tau) = c_1
+\end{equation}
+for a constant \(c_1\) (constants will further be denoted \(c_i\)).
+\Cref{eq:det-any-n} can with the determined values for \(C\) and \(D\) be reduced to
+\begin{equation}
+  A'(\tau) = (1-n) c_1,
+\end{equation}
+which means that
+\begin{equation}
+  A(\tau) = c_2 + (1-n) c_1 x.
+\end{equation}
+Using \cref{eq:det-any-np1} and the determined value of \(D\),
+\begin{equation}
+  B(\tau) = c_3,
+\end{equation}
+which in turn renders \cref{eq:det-any-2np1} irrelevant.
+Lastly, \cref{eq:det-any-2n} can be reduced to
+\begin{equation}
+  (1-n) c_1 - c_1 - c_3 = 0,
+\end{equation}
+which means that
+\begin{equation}
+  c_3 = -n c_1.
+\end{equation}
+All tangent fields given the Ansatz must therefore be on the form
+\begin{equation}
+  \pqty{\xi(\tau,y),\eta(\tau,y)} = 
+  \pqty{\tilde{c}_1 + \tilde{c}_2 \left( (1-n) x - n y \right), \tilde{c}_2 y}.
+\end{equation}
+
+%-----------------------------------------------------------------------------
+\subsection{Case of \texorpdfstring{\(n=1\)}{n is 1}}
+
+When \(n=1\), \(y^0 = y^{n-1},\), \(y^1 = y^n,\) and \(y^{n+1} = y^{2n},\).
+\Cref{eq:hill-linear-symmetry} therefore be separated into the system
+\par\noindent % TODO: Put this into an environment
+\begin{minipage}{\linewidth}
+  \vspace{\abovedisplayskip}
+  \begin{subequations}
+    \begin{tabularx}{\textwidth}{l|LRN}
+      \(y^0\) & 
+      C'(\tau) &= -nC(\tau)                                             &
+      eq:det-1-0\\
+
+      \(y^1\) &
+      D'(\tau) + 2C'(\tau) + A'(\tau) - D(\tau) &= -nD(\tau)            &
+      eq:det-1-1\\
+
+      \(y^2\) &
+      2D'(\tau) + B'(\tau) + C'(\tau) + A'(\tau) - D(\tau) - B(\tau) &= 0 & 
+      eq:det-1-np1\\
+
+      \(y^3\) &
+      D'(\tau) + B'(\tau) &= 0.                                         &
+      eq:det-1-2np1
+    \end{tabularx}
+  \end{subequations}
+  \vspace{\belowdisplayskip}
+\end{minipage}
