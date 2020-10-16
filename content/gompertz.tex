@@ -1,0 +1,30 @@
+\chapter{Gompertz model}
+
+In this chapter the Gompertz model will be studied using Lie point symmetries.
+
+The Gompertz model is common across several life science fields.
+It is used to describe systems with initial exponential growth, that eventually asymptotically approaches some maximum size.
+It has successfully been used to model\dots
+
+%=============================================================================
+\section{ODE description}
+
+The Gompertz model has a clear analytical description, which is sufficient as description when modeling phenomena.
+The form of the function describing the growth takes many forms, often varying depending on field and individual taste.
+\cite{tjorve2017gompertz} shows that all useful formulations can be sorted into two groups, \(T_i\)- and \(W_0\)-formulations, with canonical forms
+\begin{equation}
+  \dv{W}{t} = A e^{-e^{k_G(t-T_i)}}
+\end{equation}
+and
+\begin{equation}
+  \dv{W}{t} = A \left(\frac{W_0}{A}\right)^{e^{-k_G t}}
+\end{equation}
+respectively.
+In these equations, and for the remainder of the chapter, \(W(t)\) represents a measure of size dependent on time.
+The sufficiency of these two formulations stems from the interpretation of the four parameters \(A\), \(k_G\), \(T_i\) and \(W_0\):
+\(A\) is the value of the upper asymptote, also known as the carrying capacity of the system.
+\(k_G\), although lacking in interpretation itself, is proportional to \(k_U = k_G / e\), where \(k_U\) is the relative (to \(A\)) maximum slope during the process.
+Together, \(A\) and \(k_G\) control the shape of the curve.
+\(T_i\) or \(W_0\) depending on the formulation control the localization of the curve.
+\(T_i\) is the point in time where the curve achieves its maximum slope, also known as the point of inflection.
+\(W_0\) on the other hand is the size at \(t=0\).
