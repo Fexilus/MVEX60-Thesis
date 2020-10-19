@@ -9,15 +9,15 @@ It has successfully been used to model\dots
 %=============================================================================
 \section{ODE description}
 
-The Gompertz model has a clear analytical description, which is sufficient as description when modeling phenomena.
+The Gompertz model is most often used in the form of a parametrized univariate function, which is sufficient as description when modeling phenomena.
 The form of the function describing the growth takes many forms, often varying depending on field and individual taste.
 \cite{tjorve2017gompertz} shows that all useful formulations can be sorted into two groups, \(T_i\)- and \(W_0\)-formulations, with canonical forms
-\begin{equation}
-  \dv{W}{t} = A e^{-e^{k_G(t-T_i)}}
+\begin{equation} \label{eq:gompertz-ti-function}
+  W(t) = A e^{-e^{k_G(t-T_i)}}
 \end{equation}
 and
-\begin{equation}
-  \dv{W}{t} = A \left(\frac{W_0}{A}\right)^{e^{-k_G t}}
+\begin{equation} \label{eq:gompertz-w0-function}
+  W(t) = A \left(\frac{W_0}{A}\right)^{e^{-k_G t}}
 \end{equation}
 respectively.
 In these equations, and for the remainder of the chapter, \(W(t)\) represents a measure of size dependent on time.
@@ -28,3 +28,48 @@ Together, \(A\) and \(k_G\) control the shape of the curve.
 \(T_i\) or \(W_0\) depending on the formulation control the localization of the curve.
 \(T_i\) is the point in time where the curve achieves its maximum slope, also known as the point of inflection.
 \(W_0\) on the other hand is the size at \(t=0\).
+
+For the purpose of finding symmetries, this description on function-form is insufficient.
+Instead, an ODE-formulation is desired.
+Several different ODEs have \cref{eq:gompertz-ti-function,eq:gompertz-w0-function} as a solution.
+The ODEs found in literature can be rewritten on either the form
+\begin{equation} \label{eq:gompertz-autonomous-ode}
+  \dv{W}{t} = -\alpha W \ln(\frac{W}{K})
+\end{equation}
+as seen in \cite{bajzer1997tumor,delauro2014stochastic}, or the form
+\begin{equation} \label{eq:gompertz-nonautonomous-ode}
+  \dv{W}{t} = r W e^{-b t}
+\end{equation}
+as seen in \cite{burger2019epidemic}.
+\Cref{eq:gompertz-autonomous-ode,eq:gompertz-nonautonomous-ode} have solutions on the forms
+\begin{equation} \label{eq:gompertz-autonomous}
+  W(t) = K e^{c e^{-\alpha t}}
+\end{equation}
+and
+\begin{equation} \label{eq:gompertz-nonautonomous}
+  W(t) = c e^{-r/b e^{-b t}}
+\end{equation}
+respectively, where \(c\) is an integration constant.
+Comparing the general solutions \ref{eq:gompertz-autonomous} and \ref{eq:gompertz-nonautonomous} to the \(T_i\)-formulation, we find that the ODEs \ref{eq:gompertz-autonomous-ode} and \ref{eq:gompertz-nonautonomous-ode} can be rewritten on the forms
+\begin{equation} \label{eq:gompertz-ode}
+  \dv{W}{t} = -k_G W \ln(\frac{W}{A})
+\end{equation}
+and
+\begin{equation} \label{eq:gompertz-wrong-ode}
+  \dv{W}{t} = k_G W e^{-k_G (t - T_i)}
+\end{equation}
+respectively.
+The asymptote \(A\) is usually dependent on external limitations, which makes it an inherent property of the system.
+\(T_i\) on the other hand is not a property of the system, but instead a property of some realization of the system.
+\Cref{eq:gompertz-ode} can therefore be considered a correct formulation of the Gompertz ODE, while \cref{eq:gompertz-wrong-ode} seems to lack biological significance.
+It is also worth noting that \cref{eq:gompertz-ode} is consistent with the notation of both \cref{eq:gompertz-ti-function,eq:gompertz-w0-function}, and can thus be considered the canonical formulation.
+
+%=============================================================================
+\section{Finding Lie point symmetries}
+\begin{align}
+  X_1 &= e^{k_G t} \ln(\frac{W}{A}) \partial_t \\
+  X_2 &= e^{-k_G t} W \partial_W \\
+  X_3 &= W \ln(\frac{W}{A}) \partial_W \\
+  X_F &= F(t) \partial_t - k_G F(t) W \ln(\frac{W}{A}) \partial_W
+\end{align}
+are Lie point symmetries of \cref{eq:gompertz-ode}.
