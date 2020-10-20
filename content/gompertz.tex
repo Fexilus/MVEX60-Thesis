@@ -13,11 +13,11 @@ The Gompertz model is most often used in the form of a parametrized univariate f
 The form of the function describing the growth takes many forms, often varying depending on field and individual taste.
 \cite{tjorve2017gompertz} shows that all useful formulations can be sorted into two groups, \(T_i\)- and \(W_0\)-formulations, with canonical forms
 \begin{equation} \label{eq:gompertz-ti-function}
-  W(t) = A e^{-e^{k_G(t-T_i)}}
+  W(t) = A e^{-e^{-k_G(t-T_i)}}
 \end{equation}
 and
 \begin{equation} \label{eq:gompertz-w0-function}
-  W(t) = A \left(\frac{W_0}{A}\right)^{e^{-k_G t}}
+  W(t) = A \left(\frac{W_0}{A}\right)^{-e^{-k_G t}}
 \end{equation}
 respectively.
 In these equations, and for the remainder of the chapter, \(W(t)\) represents a measure of size dependent on time.
@@ -38,7 +38,7 @@ The ODEs found in literature can be rewritten on either the form
 \end{equation}
 as seen in \cite{bajzer1997tumor,delauro2014stochastic}, or the form
 \begin{equation} \label{eq:gompertz-nonautonomous-ode}
-  \dv{W}{t} = r W e^{-b t}
+  \dv{W}{t} = r e^{-b t} W
 \end{equation}
 as seen in \cite{burger2019epidemic}.
 \Cref{eq:gompertz-autonomous-ode,eq:gompertz-nonautonomous-ode} have solutions on the forms
@@ -47,7 +47,7 @@ as seen in \cite{burger2019epidemic}.
 \end{equation}
 and
 \begin{equation} \label{eq:gompertz-nonautonomous}
-  W(t) = c e^{-r/b e^{-b t}}
+  W(t) = c e^{-r/b \cdot e^{-b t}}
 \end{equation}
 respectively, where \(c\) is an integration constant.
 Comparing the general solutions \ref{eq:gompertz-autonomous} and \ref{eq:gompertz-nonautonomous} to the \(T_i\)-formulation, we find that the ODEs \ref{eq:gompertz-autonomous-ode} and \ref{eq:gompertz-nonautonomous-ode} can be rewritten on the forms
@@ -56,7 +56,7 @@ Comparing the general solutions \ref{eq:gompertz-autonomous} and \ref{eq:gompert
 \end{equation}
 and
 \begin{equation} \label{eq:gompertz-wrong-ode}
-  \dv{W}{t} = k_G W e^{-k_G (t - T_i)}
+  \dv{W}{t} = k_G e^{-k_G (t - T_i)} W
 \end{equation}
 respectively.
 The asymptote \(A\) is usually dependent on external limitations, which makes it an inherent property of the system.
