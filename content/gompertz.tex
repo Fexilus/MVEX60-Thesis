@@ -33,15 +33,18 @@ For the purpose of finding symmetries, this description on function-form is insu
 Instead, an ODE-formulation is desired.
 Several different ODEs have \cref{eq:gompertz-ti-function,eq:gompertz-w0-function} as a solution.
 The ODEs found in literature can be rewritten on either the form
-\begin{equation} \label{eq:gompertz-autonomous-ode}
+\begin{equation} \label{eq:gompertz-og-autonomous-ode}
   \dv{W}{t} = -\alpha W \ln(\frac{W}{K})
 \end{equation}
 as seen in \cite{bajzer1997tumor,delauro2014stochastic}, or the form
-\begin{equation} \label{eq:gompertz-nonautonomous-ode}
+\begin{equation} \label{eq:gompertz-og-nonautonomous-ode}
   \dv{W}{t} = r e^{-b t} W
 \end{equation}
 as seen in \cite{burger2019epidemic}.
-\Cref{eq:gompertz-autonomous-ode,eq:gompertz-nonautonomous-ode} have solutions on the forms
+\Cref{eq:gompertz-og-autonomous-ode} is an autonomous ODE, while \cref{eq:gompertz-og-nonautonomous-ode} is non-autonomous.
+This fact alone shows that the formulations are fundamentally different.
+To further interpret this difference, the ODEs can be rewritten using the parameters in \cref{eq:gompertz-ti-function,eq:gompertz-w0-function}.
+\Cref{eq:gompertz-og-autonomous-ode,eq:gompertz-og-nonautonomous-ode} have solutions on the forms
 \begin{equation} \label{eq:gompertz-autonomous}
   W(t) = K e^{c e^{-\alpha t}}
 \end{equation}
@@ -50,19 +53,13 @@ and
   W(t) = c e^{-r/b \cdot e^{-b t}}
 \end{equation}
 respectively, where \(c\) is an integration constant.
-Comparing the general solutions \ref{eq:gompertz-autonomous} and \ref{eq:gompertz-nonautonomous} to the \(T_i\)-formulation, we find that the ODEs \ref{eq:gompertz-autonomous-ode} and \ref{eq:gompertz-nonautonomous-ode} can be rewritten on the forms
-\begin{equation} \label{eq:gompertz-ode}
-  \dv{W}{t} = -k_G W \ln(\frac{W}{A})
-\end{equation}
-and
-\begin{equation} \label{eq:gompertz-wrong-ode}
-  \dv{W}{t} = k_G e^{-k_G (t - T_i)} W
-\end{equation}
-respectively.
-The asymptote \(A\) is usually dependent on external limitations, which makes it an inherent property of the system.
-\(T_i\) on the other hand is not a property of the system, but instead a property of some realization of the system.
-\Cref{eq:gompertz-ode} can therefore be considered a correct formulation of the Gompertz ODE, while \cref{eq:gompertz-wrong-ode} seems to lack biological significance.
-It is also worth noting that \cref{eq:gompertz-ode} is consistent with the notation of both \cref{eq:gompertz-ti-function,eq:gompertz-w0-function}, and can thus be considered the canonical formulation.
+Comparing the general solutions in \cref{eq:gompertz-autonomous,eq:gompertz-nonautonomous} to the \(T_i\)- and \(W_0\)-formulations in \cref{eq:gompertz-ti-function,eq:gompertz-w0-function}, we find that the ODEs \ref{eq:gompertz-og-autonomous-ode} and \ref{eq:gompertz-og-nonautonomous-ode} can be rewritten on the forms:
+\begin{flalign}
+    \text{Autonomous, } & T_i \text{ and } W_0 :& W' &= -k_G W \ln(\frac{W}{A}) &&\FlLabel{eq:gompertz-autonomous-ode} \\
+    \text{Non-autonomous, } & T_i :& W' &= k_G e^{-k_G (t - T_i)} W &&\FlLabel{eq:gompertz-nonautonomous-ti-ode} \\
+    \text{Non-autonomous, } & W_0 :& W' &= k_G \ln(\frac{W_0}{A})e^{-k_G t} W &&\FlLabel{eq:gompertz-nonautonomous-w0-ode}
+\end{flalign}
+
 
 %=============================================================================
 \section{Finding Lie point symmetries}
@@ -72,4 +69,4 @@ It is also worth noting that \cref{eq:gompertz-ode} is consistent with the notat
   X_3 &= W \ln(\frac{W}{A}) \partial_W \\
   X_F &= F(t) \partial_t - k_G F(t) W \ln(\frac{W}{A}) \partial_W
 \end{align}
-are Lie point symmetries of \cref{eq:gompertz-ode}.
+are Lie point symmetries of \cref{eq:gompertz-autonomous-ode}.
