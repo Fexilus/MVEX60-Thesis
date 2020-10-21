@@ -62,22 +62,17 @@ However, since \(n\) is specified to be positive, care must be taken to ensure t
 
 When \(n>0\) and \(n\neq1,2\), all of the possible powers of \(y\) will be different.
 \Cref{eq:hill-linear-symmetry} can the be separated into the system
-\par\noindent % TODO: Put this into an environment
-\begin{minipage}{\linewidth}
-  \vspace{\abovedisplayskip}
-  \begin{subequations}
-    \begin{tabularx}{\textwidth}{l|LRN}
-      \(y^0\)       & C'(\tau) &= 0                               & eq:det-any-0\\
-      \(y^1\)       & D'(\tau) &= 0                               & eq:det-any-1\\
-      \(y^{n-1}\)   & 0 &= -nC(\tau)                              & eq:det-any-nm1\\
-      \(y^n\)       & 2C'(\tau) + A'(\tau) - D(\tau) &= -nD(\tau) & eq:det-any-n\\
-      \(y^{n+1}\)   & 2D'(\tau) + B'(\tau) &= 0                   & eq:det-any-np1\\
-      \(y^{2n}\)    & C'(\tau) A'(\tau) - D(\tau) - B(\tau) &= 0  & eq:det-any-2n\\
-      \(y^{2n+1}\)  & D'(\tau) + B'(\tau) &= 0.                     & eq:det-any-2np1
-    \end{tabularx}
-  \end{subequations}
-  \vspace{\belowdisplayskip}
-\end{minipage}
+\begin{subequations}
+  \begin{flalign}
+    y^0:      && C'(\tau) &= 0                               &&\FlLabel{eq:det-any-0}\\
+    y^1:      && D'(\tau) &= 0                               &&\FlLabel{eq:det-any-1} \\
+    y^{n-1}:  && 0 &= -nC(\tau)                              &&\FlLabel{eq:det-any-nm1} \\
+    y^n:      && 2C'(\tau) + A'(\tau) - D(\tau) &= -nD(\tau) &&\FlLabel{eq:det-any-n} \\
+    y^{n+1}:  && 2D'(\tau) + B'(\tau) &= 0                   &&\FlLabel{eq:det-any-np1} \\
+    y^{2n}:   && C'(\tau) A'(\tau) - D(\tau) - B(\tau) &= 0  &&\FlLabel{eq:det-any-2n} \\
+    y^{2n+1}: && D'(\tau) + B'(\tau) &= 0.                   &&\FlLabel{eq:det-any-2np1}
+  \end{flalign}
+\end{subequations}
 From \cref{eq:det-any-nm1}
 \begin{equation}
   C(\tau) = 0,
@@ -121,30 +116,14 @@ All tangent fields given the Ansatz must therefore be on the form
 When \(n=1\) several pairs of powers of \(y\) become equal.
 \(y^0 = y^{n-1}\), \(y^1 = y^n\) and \(y^{n+1} = y^{2n}\).
 \Cref{eq:hill-linear-symmetry} is therefore separated into the system
-\par\noindent % TODO: Put this into an environment
-\begin{minipage}{\linewidth}
-  \vspace{\abovedisplayskip}
-  \begin{subequations}
-    \begin{tabularx}{\textwidth}{l|LRN} % FIXME: Long math sides overflow ugly
-      \(y^0\) & 
-      C'(\tau) &= -C(\tau)                                               &
-      eq:det-1-0\\
-
-      \(y^1\) &
-      D'(\tau) + 2C'(\tau) + A'(\tau) - D(\tau) &= -D(\tau)              &
-      eq:det-1-1\\
-
-      \(y^2\) &
-      2D'(\tau) + B'(\tau) + C'(\tau) + A'(\tau) - D(\tau) - B(\tau) &= 0 & 
-      eq:det-1-2\\
-
-      \(y^3\) &
-      D'(\tau) + B'(\tau) &= 0.                                           &
-      eq:det-1-3
-    \end{tabularx}
-  \end{subequations}
-  \vspace{\belowdisplayskip}
-\end{minipage}
+\begin{subequations}
+  \begin{flalign}
+    y^0:  && C'(\tau) &= -C(\tau) &&\FlLabel{eq:det-1-0}\\
+    y^1:  && D'(\tau) + 2C'(\tau) + A'(\tau) - D(\tau) &= -D(\tau) &&\FlLabel{eq:det-1-1}\\
+    y^2:  && 2D'(\tau) + B'(\tau) + C'(\tau) + A'(\tau) - D(\tau) - B(\tau) &= 0 &&\FlLabel{eq:det-1-2}\\
+    y^3:  && D'(\tau) + B'(\tau) &= 0. &&\FlLabel{eq:det-1-3}
+  \end{flalign}
+\end{subequations}
 Using \cref{eq:det-1-3}, the relation
 \begin{equation} \label{eq:det-1-DB-rel}
   D(\tau) = - B(\tau) + c_1
@@ -186,21 +165,16 @@ Thus, all tangent fields given the Ansatz must be on the form
 
 When \(n=2\), \(y^1 = y^{n-1}\).
 \Cref{eq:hill-linear-symmetry} then separates into the system
-\par\noindent % TODO: Put this into an environment
-\begin{minipage}{\linewidth}
-  \vspace{\abovedisplayskip}
-  \begin{subequations}
-    \begin{tabularx}{\textwidth}{l|LRN}
-      \(y^0\) & C'(\tau) &= 0                               & eq:det-2-0\\
-      \(y^1\) & D'(\tau) &= -2C(\tau)                       & eq:det-2-1\\
-      \(y^2\) & 2C'(\tau) + A'(\tau) - D(\tau) &= -2D(\tau) & eq:det-2-2\\
-      \(y^3\) & 2D'(\tau) + B'(\tau) &= 0                   & eq:det-2-3\\
-      \(y^4\) & C'(\tau) A'(\tau) - D(\tau) - B(\tau) &= 0  & eq:det-2-4\\
-      \(y^5\) & D'(\tau) + B'(\tau) &= 0.                   & eq:det-2-5
-    \end{tabularx}
-  \end{subequations}
-  \vspace{\belowdisplayskip}
-\end{minipage}
+\begin{subequations}
+  \begin{flalign}
+      y^0:  && C'(\tau) &= 0                               &&\FlLabel{eq:det-2-0}\\
+      y^1:  && D'(\tau) &= -2C(\tau)                       &&\FlLabel{eq:det-2-1}\\
+      y^2:  && 2C'(\tau) + A'(\tau) - D(\tau) &= -2D(\tau) &&\FlLabel{eq:det-2-2}\\
+      y^3:  && 2D'(\tau) + B'(\tau) &= 0                   &&\FlLabel{eq:det-2-3}\\
+      y^4:  && C'(\tau) A'(\tau) - D(\tau) - B(\tau) &= 0  &&\FlLabel{eq:det-2-4}\\
+      y^5:  && D'(\tau) + B'(\tau) &= 0.                   &&\FlLabel{eq:det-2-5}
+  \end{flalign}
+\end{subequations}
 Subtracting \cref{eq:det-2-5} from \cref{eq:det-2-3} gives
 \begin{equation}
   D'(\tau) = 0,

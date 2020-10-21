@@ -27,6 +27,20 @@
 % TODO: Derivatives and elongations as style not content
 
 % Math tables
+\newcommand\FlLabel[1]{% Label patched for autonum + flalign. Has to be at end of line
+  \,\label{#1}% TODO: Sometimes overflows last label
+}
+
+% Old math table tabular column styles
+\newcommand\TableMathmodeCenter[1]{%
+  \hfill\(\displaystyle#1\)\hfill
+}
+\newcommand\TableMathmodeLeft[1]{%
+  \hfill\(\displaystyle#1\)
+}
+\newcommand\TableMathmodeRight[1]{%
+  \(\displaystyle#1\)\hfill
+}
 \newcommand\AddEquationLabel[1]{%
   \ifcsedef{autonum@#1Referenced}{% Test if referenced (autonum compatibility)
     \refstepcounter{equation}% increment equation counter
@@ -34,9 +48,14 @@
   }{}%
   \label{#1}% give the equation a \label
 }
-\newcolumntype{M}{>{\hfill\(\displaystyle}X<{\)\hfill}} % mathematics column
-\newcolumntype{L}{>{\hfill\(\displaystyle}X<{\)}@{\,}} % LH mathematics column
-\newcolumntype{R}{>{\(\displaystyle}X<{\)\hfill}} % RH mathematics column
-\newcolumntype{N}{>{\collectcell\AddEquationLabel}r<{\endcollectcell}}
+\newcolumntype{M}{>{\collectcell\TableMathmodeCenter}c<{\endcollectcell}} % mathematics column
+\newcolumntype{L}{>{\collectcell\TableMathmodeLeft}r<{\endcollectcell}@{\,}} % LH mathematics column
+\newcolumntype{R}{>{\collectcell\TableMathmodeRight}l<{\endcollectcell}} % RH mathematics column
+\newcolumntype{N}{>{\hfill\collectcell\AddEquationLabel}X<{\endcollectcell}}
+\newcommand\HiddenRef[1]{% Ref that only appears when label is references elsewhere
+  \ifcsedef{autonum@#1Referenced}{%
+    (\@currentlabel)%
+  }{}%
+}
 
 % TODO: Create system to reference ODEs
