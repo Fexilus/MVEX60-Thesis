@@ -1,10 +1,20 @@
-\chapter{Gompertz model}
+\chapter{The Gompertz model}
 
-In this chapter the Gompertz model will be studied using Lie point symmetries.
+In several fields in and outside of the life sciences growth plays an important role in general.
+In particular, when measuring different phenomena ranging from cell growth to the growth of cities, the concept of exponential growth often appears.
+Exponential growth stems from a species growing in proportion to the size of the species.
+Written in mathematical terms
+\begin{equation}
+  \dv{W}{t} = \alpha W(t),
+\end{equation}
+where \(W(t)\) is the size of our species (amount of cells, volume of a tumor, individuals in population etc.) at time \(t\).
+While exponential growth accurately models growth initially for many systems, eventually some external factor will limit the growth.
+This external factor might be something straight forward like limited availability of food in the case of an animal population, or something complex like limitations of infrastructure in the case of cities. % FIXME: Check validity of statement
+Correctly modeling these external limitations is crucial when studying the long term behavior of the system.
 
-The Gompertz model is common across several life science fields.
-It is used to describe systems with initial exponential growth, that eventually asymptotically approaches some maximum size.
-It has successfully been used to model\dots
+The Gompertz model is one such model that has seen success in many areas. % TODO: Add references.
+It was first proposed in 1825 as a means of predicting the mortality rate of populations in order to accurately prize life insurances and anuities \cite{gompertz1825nature}.
+
 
 %=============================================================================
 \section{ODE description}
