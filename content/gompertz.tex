@@ -7,14 +7,21 @@ Written in mathematical terms
 \begin{equation}
   \dv{W}{t} = \alpha W(t),
 \end{equation}
-where \(W(t)\) is the size of our species (amount of cells, volume of a tumor, individuals in population etc.) at time \(t\).
-While exponential growth accurately models growth initially for many systems, eventually some external factor will limit the growth.
-This external factor might be something straight forward like limited availability of food in the case of an animal population, or something complex like limitations of infrastructure in the case of cities. % FIXME: Check validity of statement
-Correctly modeling these external limitations is crucial when studying the long term behavior of the system.
+where \(W(t)\) is the size of our species (volume of a tumor, weight of an animal, individuals in a population etc.) at time \(t\).
+While exponential growth accurately models initially growth for many systems, eventually some external factor will limit the growth.
+The external factor might be simple like limited availability of food in the case of an animal population, or complex like limitations of infrastructure in the case of cities. % FIXME: Check validity of statement
+Correctly modeling the external limitations is crucial when studying the long term behavior of the system.
 
 The Gompertz model is one such model that has seen success in many areas. % TODO: Add references.
-It was first proposed in 1825 as a means of predicting the mortality rate of populations in order to accurately prize life insurances and anuities \cite{gompertz1825nature}.
-
+It was first proposed in 1825 as a means of predicting the mortality rate of populations in order to accurately prize life insurances and annuities \cite{gompertz1825nature}. % TODO: Add mathematical detail
+A hundred years after its conception the model was suggested as a growth model \cite{wright1926reviews}, and a few years later saw its first use as a growth model modeling the weight of cattle \cite{davidson1928growth}.
+In the century since, the Gompertz model has been used to model the size of a wide range of animals (for a good summary, see \cite{tjorve2017gompertz}).
+The breadth of animals (and parts of animals) where the Gompertz model can be fitted well to growth data has made this one of the main areas of the life sciences where the model is used.
+The other branch of the life sciences where the Gompertz model has seen success is in modeling tumor growth.
+The model was first used (apart as a tool for making graphs \cite{casey1934alteration}) for this purpose in 1964 \cite{laird1964dynamics}.
+It has since become one of the most widely used models for tumor growth \cite{gerlee2013muddle} (for a summary of applications, see the introduction of \cite{benzekry2014classical}).
+When studying both organism and tumor growth, the same question have been asked about the Gompertz model, namely what the biological interpretation of the model is.
+In this chapter, this question will be tackled using the theory of Lie point symmetries.
 
 %=============================================================================
 \section{ODE description}
