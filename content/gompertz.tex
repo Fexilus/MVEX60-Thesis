@@ -24,11 +24,13 @@ When studying both organism and tumor growth, the same question have been asked 
 In this chapter, this question will be tackled using the theory of Lie point symmetries.
 
 %=============================================================================
-\section{ODE description}
+\section{Finding a standardized ODE description}
 
-The Gompertz model is most often used in the form of a parametrized univariate function, which is sufficient as description when modeling phenomena.
-The form of the function describing the growth takes many forms, often varying depending on field and individual taste.
-\cite{tjorve2017gompertz} shows that all useful formulations can be sorted into two groups, \(T_i\)- and \(W_0\)-formulations, with canonical forms
+The Gompertz model is most often used in the form of a parametrized univariate function when modeling both organisms and tumors.
+The explicit form of the model is sufficient as description when the goal is to fit the model to some data.
+This function is however not parametrized consistently, but takes many forms, often varying depending on field and taste.
+In an attempt to standardize the formulations, \cite{tjorve2017gompertz} (concerned mainly with the growth of organisms) shows that all \enquote{useful} formulations can be sorted into two groups: \(T_i\)- and \(W_0\)-formulations.
+These have canonical forms
 \begin{equation} \label{eq:gompertz-ti-function}
   W(t) = A e^{-e^{-k_G(t-T_i)}}
 \end{equation}
@@ -37,7 +39,7 @@ and
   W(t) = A \left(\frac{W_0}{A}\right)^{-e^{-k_G t}}
 \end{equation}
 respectively.
-In these equations, and for the remainder of the chapter, \(W(t)\) represents a measure of size dependent on time.
+% TODO: Make it clear that these are just separate parametrizations
 The sufficiency of these two formulations stems from the interpretation of the four parameters \(A\), \(k_G\), \(T_i\) and \(W_0\):
 \(A\) is the value of the upper asymptote, also known as the carrying capacity of the system.
 \(k_G\), although lacking in interpretation itself, is proportional to \(k_U = k_G / e\), where \(k_U\) is the relative (to \(A\)) maximum slope during the process.
