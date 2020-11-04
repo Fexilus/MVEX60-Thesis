@@ -59,20 +59,48 @@ Secondly, a standardized and meaningful parametrization of the model in ODE form
 Since the function form of the model is sufficient and necessary to match data, the ODE form is only found in literature as a means of providing a background to the model.
 The ODE formulation thus often lacks proper references, rendering the origin of the formulation hard to trace.
 All formulations of the ODE found in literature can however be sorted into one of three families.
-The first family can be written on the form
+
+The ODE:s in the first family can all be written on the form
 \begin{equation} \label{eq:rough-gompertz-classical-ode}
-  \dv{W}{t} = \alpha e^{-b t} W(t).
+  \dv{W}{t} = r e^{-b t} W(t).
 \end{equation}
 These ODE:s are reparameterizations of Gompertz' original ODE \ref{eq:original-gompertz-modern}, often emphasizing the expected behaviors of the model in the growth context by choosing parameters that should be positive.
-In the parametrization seen in \cref{eq:rough-gompertz-classical-ode}, \(\alpha\) should be positive for the species size \(W(t)\) to grow (as opposed to shrinking or decaying) and \(b\) should be positive for the growth to reduce over time (and thus limiting the growth).
-This family of ODE:s is tightly related to the second family, which can be written on the form
-\begin{align}
-  \dv{W}{t} &= \gamma(t) W(t)
-  \dv{\gamma}{t} &= -b \gamma(t).
-\end{align}
+In the parametrization seen in \cref{eq:rough-gompertz-classical-ode}, \(r\) should be positive for the species size \(W(t)\) to grow (as opposed to shrinking or decaying) and \(b\) should be positive for the growth to reduce over time (and thus limiting the growth).
 
-In an attempt to standardize the formulations, \cite{tjorve2017gompertz} (concerned mainly with the growth of organisms) shows that all \enquote{useful} formulations can be sorted into two groups: \(T_i\)- and \(W_0\)-formulations.
-These have canonical forms
+The first family of ODE:s is tightly related to the second family, which can be written on the form
+\begin{equation}
+  \label{eq:rough-gompertz-system-ode}
+  \begin{aligned} 
+    \dv{W}{t} &= \gamma(t) W(t)\\
+    \dv{\gamma}{t} &= -b \gamma(t).
+  \end{aligned}
+\end{equation}
+This system of ODE:s could also be argued to be the original Gompertz ODE, since the original differential equation \ref{eq:original-gompertz} was motivated by Gompertz in the following way:
+\blockquote[{\cite[518]{gompertz1825nature}}]{
+  If the average exhaustions of a man's power to avoid death were such that at the end of equal infinitely small intervals of time, he lost equal portions of his remaining power to oppose destruction which he had at the commencement of thoseintervals, then at the age his power to avoid death, or the intensity of his mortality might be denoted by \(aq^x\), \(a\) and \(q\) being constant quantities;
+}
+The intensity of mortality can be seen as \(\gamma(t)\) in \cref{eq:rough-gompertz-system-ode}, with \(\gamma(t) = aq^x\) serving as a solution to the lower equation in \ref{eq:rough-gompertz-system-ode} when \(\ln(q) = -b\).
+Since \cref{eq:rough-gompertz-classical-ode} is a partial solution to \cref{eq:rough-gompertz-system-ode}, these two families of differential equations will henceforth be referred to collectively as \enquote{classical Gompertz ODE:s}, the latter formulation being specified as \enquote{classical Gompertz ODE:s on system form}.
+The classical Gompertz ODE is the form used in the first paper on biological growth \cite{davidson1928growth}.
+
+The third family of ODE:s appear slightly later in the literature.
+They can all be written on the form
+\begin{equation} \label{eq:rough-gompertz-autonomous-ode}
+  \dv{W}{t} = -\alpha \ln(\frac{W(t)}{K}) W(t).
+\end{equation}
+While solutions to this ODE are all Gompertz curves, it is important to note that this formulation is fundamentally different than the classical ODE in \cref{eq:rough-gompertz-classical-ode}.
+This is clear from the fact that while \cref{eq:rough-gompertz-classical-ode} is directly dependent on time, \cref{eq:rough-gompertz-autonomous-ode} is not.
+We will therefore henceforth refer to the family of ODE:s that can be rewritten as \cref{eq:rough-gompertz-autonomous-ode} as \enquote{autonomous Gompertz ODE:s}.
+The first time an autonomous Gompertz ODE appears in the literature on biological growth is in a review of the new use of the Gompertz curve in 1932 \cite{winsor1932gompertz}.
+In the review (which also features a classical Gompertz ODE) the autonomous form is used to liken the Gompertz curve to another popular growth curve, the logistic growth curve, in order to generalize the Gompertz model.
+
+In order to better understand what separates the classical and autonomous ODE:s, a consistent parametrization is required.
+Due to the sporadic use of the ODE form, no such standardization has been made.
+The function form, on the other hand, has been seen efforts of standardized parametrization.
+\cite{tjorve2017gompertz} (concerned mainly with the growth of organisms) shows that most parametrizations found in literature belong to two parametrization groups.
+Both parametrizations groups have in common that they have two shape parameters and one location parameter, in other words that the third parameter only controls how far the curve is shifted in the time direction.
+In both groups the shape parameters serve the same purpose, but the location parameter can serve two distinct useful purposes, resulting in the two forms of parametrization: the \(T_i\)- and \(W_0\)-forms \cite{tjorve2017gompertz}.
+These two forms can be canonically parametrized by
 \begin{equation} \label{eq:gompertz-ti-function}
   W(t) = A e^{-e^{-k_G(t-T_i)}}
 \end{equation}
@@ -81,38 +109,29 @@ and
   W(t) = A \left(\frac{W_0}{A}\right)^{-e^{-k_G t}}
 \end{equation}
 respectively.
-% TODO: Make it clear that these are just separate parametrizations
-The sufficiency of these two formulations stems from the interpretation of the four parameters \(A\), \(k_G\), \(T_i\) and \(W_0\):
+These two parametrizations are useful, since the parameters \(A\), \(k_G\), \(T_i\) and \(W_0\) have clear interpretations.
 \(A\) is the value of the upper asymptote, also known as the carrying capacity of the system.
 \(k_G\), although lacking in interpretation itself, is proportional to \(k_U = k_G / e\), where \(k_U\) is the relative (to \(A\)) maximum slope during the process.
 Together, \(A\) and \(k_G\) control the shape of the curve.
 \(T_i\) or \(W_0\) depending on the formulation control the localization of the curve.
 \(T_i\) is the point in time where the curve achieves its maximum slope, also known as the point of inflection.
+% TODO: Write about when this formulation is useful
 \(W_0\) on the other hand is the size at \(t=0\).
+Depending on application either of these two parametrizations might be useful.
 
-For the purpose of finding symmetries, this description on function-form is insufficient.
-Instead, an ODE-formulation is desired.
-Several different ODEs have \cref{eq:gompertz-ti-function,eq:gompertz-w0-function} as a solution.
-The ODEs found in literature can be rewritten on either the form
-\begin{equation} \label{eq:gompertz-og-autonomous-ode}
-  \dv{W}{t} = -\alpha W \ln(\frac{W}{K})
+Attention can thus once again be turned to a standardized parametrization of the classical and autonomous ODE:s in \cref{eq:rough-gompertz-classical-ode,eq:rough-gompertz-autonomous-ode}.
+The classical Gompertz ODE has solutions on the form
+\begin{equation} \label{eq:gompertz-classical-solution}
+  W(t) = c e^{-r/b \cdot e^{-b t}},
 \end{equation}
-as seen in \cite{bajzer1997tumor,delauro2014stochastic}, or the form
-\begin{equation} \label{eq:gompertz-og-nonautonomous-ode}
-  \dv{W}{t} = r e^{-b t} W
-\end{equation}
-as seen in \cite{burger2019epidemic}.
-\Cref{eq:gompertz-og-autonomous-ode} is an autonomous ODE, while \cref{eq:gompertz-og-nonautonomous-ode} is non-autonomous.
-This fact alone shows that the formulations are fundamentally different.
+where \(c\) is an arbitrary constant.
 To further interpret this difference, the ODEs can be rewritten using the parameters in \cref{eq:gompertz-ti-function,eq:gompertz-w0-function}.
 \Cref{eq:gompertz-og-autonomous-ode,eq:gompertz-og-nonautonomous-ode} have solutions on the forms
-\begin{equation} \label{eq:gompertz-autonomous}
+\begin{equation} \label{eq:gompertz-autonomous-solution}
   W(t) = K e^{c e^{-\alpha t}}
 \end{equation}
 and
-\begin{equation} \label{eq:gompertz-nonautonomous}
-  W(t) = c e^{-r/b \cdot e^{-b t}}
-\end{equation}
+
 respectively, where \(c\) is an integration constant.
 Comparing the general solutions in \cref{eq:gompertz-autonomous,eq:gompertz-nonautonomous} to the \(T_i\)- and \(W_0\)-formulations in \cref{eq:gompertz-ti-function,eq:gompertz-w0-function}, we find that the ODEs \ref{eq:gompertz-og-autonomous-ode} and \ref{eq:gompertz-og-nonautonomous-ode} can be rewritten on the forms:
 \begin{flalign}
