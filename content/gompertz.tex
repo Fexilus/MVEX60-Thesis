@@ -118,35 +118,86 @@ Together, \(A\) and \(k_G\) control the shape of the curve.
 % TODO: Write about when this formulation is useful
 \(W_0\) on the other hand is the size at \(t=0\).
 Depending on application either of these two parametrizations might be useful.
+It is therefore necessary to reparametrize both ODE:s \ref{eq:rough-gompertz-classical-ode} and \ref{eq:rough-gompertz-autonomous-ode} using both forms.
 
-Attention can thus once again be turned to a standardized parametrization of the classical and autonomous ODE:s in \cref{eq:rough-gompertz-classical-ode,eq:rough-gompertz-autonomous-ode}.
-The classical Gompertz ODE has solutions on the form
+To reparametrize the ODE:s using Gompertz curve parametrizations, the solutions of the ODE:s must be found.
+The classical Gompertz ODE \ref{eq:rough-gompertz-classical-ode} is most easily solved using the fact is separable to integrate over \(W\) and \(t\) separately.
+The solutions are thus
 \begin{equation} \label{eq:gompertz-classical-solution}
-  W(t) = c e^{-r/b \cdot e^{-b t}},
+  W(t) = c e^{-r/b \cdot e^{-b t}}
 \end{equation}
 where \(c\) is an arbitrary constant.
-To further interpret this difference, the ODEs can be rewritten using the parameters in \cref{eq:gompertz-ti-function,eq:gompertz-w0-function}.
-\Cref{eq:gompertz-og-autonomous-ode,eq:gompertz-og-nonautonomous-ode} have solutions on the forms
+The autonomous Gompertz ODE \ref{eq:rough-gompertz-autonomous-ode} is most easily solved using the variable substitution \(y(t) = \ln(W(t)/K)\) and then solving the resulting ODE.
+The solutions are thus on the form
 \begin{equation} \label{eq:gompertz-autonomous-solution}
   W(t) = K e^{c e^{-\alpha t}}
 \end{equation}
-and
-
-respectively, where \(c\) is an integration constant.
-Comparing the general solutions in \cref{eq:gompertz-autonomous,eq:gompertz-nonautonomous} to the \(T_i\)- and \(W_0\)-formulations in \cref{eq:gompertz-ti-function,eq:gompertz-w0-function}, we find that the ODEs \ref{eq:gompertz-og-autonomous-ode} and \ref{eq:gompertz-og-nonautonomous-ode} can be rewritten on the forms:
+where \(c\) is an integration constant.
+Comparing the solutions in \cref{eq:gompertz-classical-solution,eq:gompertz-autonomous-solution} to the \(T_i\)- and \(W_0\)-formulations in \cref{eq:gompertz-ti-function,eq:gompertz-w0-function}, the relationships
+\begin{align}
+  b &= k_G\\
+  r &= k_G e^{k_G T_i}\\
+  r &= k_G \ln(\frac{W_0}{A})\\
+  \alpha &= k_G\\
+  K &= A
+\end{align}
+between the parameters can be found.
+The classical Gompertz ODE \ref{eq:rough-gompertz-classical-ode} and the autonomous Gompertz ODE \ref{eq:rough-gompertz-autonomous-ode} can thus be reparametrized as
 \begin{flalign}
-    \text{Autonomous, } & T_i \text{ and } W_0 :& W' &= -k_G W \ln(\frac{W}{A}) &&\FlLabel{eq:gompertz-autonomous-ode} \\
-    \text{Non-autonomous, } & T_i :& W' &= k_G e^{-k_G (t - T_i)} W &&\FlLabel{eq:gompertz-nonautonomous-ti-ode} \\
-    \text{Non-autonomous, } & W_0 :& W' &= k_G \ln(\frac{W_0}{A})e^{-k_G t} W &&\FlLabel{eq:gompertz-nonautonomous-w0-ode}
+    \text{Classical, } & T_i :& \dv{W}{t} &= k_G e^{-k_G (t - T_i)} W(t) &&\FlLabel{eq:gompertz-classical-ti} \\
+    \text{Classical, } & W_0 :& \dv{W}{t} &= k_G \ln(\frac{W_0}{A})e^{-k_G t} W(t) &&\FlLabel{eq:gompertz-classical-w0} \\
+    \text{Autonomous, } & T_i \text{ and } W_0 :& \dv{W}{t} &= -k_G \ln(\frac{W(t)}{A}) W(t). &&\FlLabel{eq:gompertz-autonomous}
 \end{flalign}
+Two important notes:
+Firstly, all three formulations have two degrees of freedom, even \cref{{eq:gompertz-classical-w0}} since \(W_0\) and \(A\) only appear in the composite form \(W_0 / A\).
+This must be the case since only a two parameter ODE can produce three parameter solutions (which the Gompertz curves are).
+Secondly, it should be stressed that \cref{eq:gompertz-classical-ti,eq:gompertz-classical-w0} are just two different parametrizations of the same differential equation.
+They will thus share symmetries, and calculations need only be performed on one form.
 
+Before applying symmetry methods to the respective ODE:s, some insights are gained merely from the reparameterization.
+For both the classical and autonomous Gompertz ODE:s, the growth rate \(k_G\) is a property of the system characterized by the respective ODE:s.
+This means that\dots% TODO: Write about insights
+
+% TODO: Somewhere around here the jet space notation and \omega_c, \omega_a forms should be introduced.
 
 %=============================================================================
 \section{Finding Lie point symmetries}
+
 \begin{align}
   X_1 &= e^{k_G t} \ln(\frac{W}{A}) \partial_t \\
   X_2 &= e^{-k_G t} W \partial_W \\
-  X_3 &= W \ln(\frac{W}{A}) \partial_W \\
-  X_F &= F(t) \partial_t - k_G F(t) W \ln(\frac{W}{A}) \partial_W
+  X_3 &= \ln(\frac{W}{A}) W \partial_W \\
+  X_F &= F(t) \partial_t - k_G F(t) \ln(\frac{W}{A}) W \partial_W
 \end{align}
-are Lie point symmetries of \cref{eq:gompertz-autonomous-ode}.
+are Lie point symmetries of the autonomous Gompertz ODE \ref{eq:gompertz-autonomous}.
+
+The symmetry generator \(X_F\) is a trivial symmetry of the autonomous ODE, since the reduced characteristic of it is
+\begin{align}
+  \bar{Q}_{F,a}(t, W) &= \eta_F(t, W) - \omega_a(t, W) \xi_F(t, W)\\
+  &= - k_G F(t) \ln(\frac{W}{A}) W - \left(-k_G \ln(\frac{W}{A}) W \right) F(t) \equiv 0.
+\end{align}
+The reduced characteristic of \(X_F\) for the classical ODE is
+\begin{align}
+  \bar{Q}_{F,c}(t, W) &= \eta_F(t, W) - \omega_c(t, W) \xi_F(t, W)\\
+  &= - k_G F(t) \ln(\frac{W}{A}) W - k_G e^{-k_G (t - T_i)} W F(t)\\
+  &= - k_G F(t) W \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right).
+\end{align}
+It is worth noting that since \(A\) is not a parameter of the classical ODE \ref{eq:gompertz-classical-ti}.
+The linearized symmetry condition for the classical ODE can be formulated as
+\begin{equation}
+  \partial_t(\bar{Q}_{F,c}) + \omega_c \partial_W(\bar{Q}_{F,c}) = \partial_W(\omega_c) \bar{Q}_{F,c}
+\end{equation}
+Letting \(F(t) \equiv 1\), the left hand side becomes
+\begin{gather}
+  k_G^2 W e^{-k_G (t - T_i)} + \left(k_G e^{-k_G (t - T_i)} W\right) \left(-k_G \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)} + 1\right)\right)\\
+  -k_G^2 e^{-k_G (t - T_i)} W\left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right)
+\end{gather}
+while the right hand side becomes
+\begin{gather}
+  \left(k_G e^{-k_G (t - T_i)}\right) \left(- k_G W \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right)\right)\\
+  -k_G^2 e^{-k_G (t - T_i)} W \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right).
+\end{gather}
+Thus the two sides are equivalent, and \(X_{F\equiv1}\) is a symmetry of the classical Gompertz ODE.
+Since \(X_{F\equiv1}\) is trivial on the autonomous ODE, the lines along the tangent field are solutions to the autonomous ODE.
+This means that the solutions to the autonomous ODE are orbits of the classical ODE.
+It is worth noting that for all of the above calculations to hold, the growth parameter \(k_G\) must be the same for both ODE:s.
