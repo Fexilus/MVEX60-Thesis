@@ -1,35 +1,59 @@
 \chapter{Theory}
 
 In this chapter, the mathematical theory used in the thesis will be presented.
-
-%=============================================================================
-\section{Differential geometry}
-% TODO: Write about lifts and jet spaces
-% Or maybe use examples (easy y'= y and Hydon's cover) throughout, and explain differential geometry concepts with them in the symmetry sections? 
+The theory mostly concerns Lie group analysis, and has a strong focus on symmetry methods. % TODO: What is the difference?
+It is mainly based on material from two sources.
+The first source is \cite{hydon2000symmetry}, which serves as a great introductory text on the subject of symmetry methods.
+The second one is \cite{ovsiannikov1982group}, which treats the subject stringently and serves as a good reference point for proper treatment of the subject.
+The notation used in the thesis will be based on the notation in \cite{hydon2000symmetry}, employing partial notational concepts from \cite{ovsiannikov1982group} when further clarity is desired.
 
 %=============================================================================
 \section{Point symmetries}
 
-% TODO: Write symmetry introduction
-Given a \dots
+In mathematics, a symmetry is a transformation that preserves some structure.
+The word symmetry is used as the mathematical concept encompasses what is normally meant by symmetry.
+A symmetric face is a face such that when mirrored it look the same.
+Here, mirroring is the transformation and \enquote{looking the same} is the structure.
+In mathematics, however, the structure must be well defined, or in more common language must be a statement that is easily confirmed as true or false.
+The transformation can also be chosen more freely, beyond the transformations usually implied when commonly talking about symmetries.
 
-\dots
+The most common example of a mathematical symmetry is rotating and flipping a triangle.
+The structure of the triangle can be stated as the location of all the vertices and the length of the edges between specific vertices.
+Rotating an equilateral triangle 120 or 240 degrees around its center will change the location of each individual vertex, but the positions of the set of all vertices will remain the same.
+Since the edges are unchanged relative to the points, these rotations thus constitute a symmetry of the triangle.
+It is worth noting that the rotational transformations map points from the 2-dimensional plane to the two dimensional plane or, stated in mathematical terms, the rotations are mappings \(\Gamma: \reals^2 \to \reals^2\).
 
+In group analysis transformations of this type are considered, but the structure of a triangle is instead replaced with the structure of a differential equation.
+Initially, assume the differential equation is an ordinary differential equation (ODE) of the first order and can thus be written on the form
 \begin{equation} \label{eq:first-order-ode}
-  \dv{y}{x} = \omega(x,y)
+  \dv{y}{x} = \omega(x,y).
 \end{equation}
+The structure of a first order ODE is thus defined by the function \(\omega\).
+The function can be thought of to define a relationship between certain points in the \(xy\)-plane, subdividing them into sets.
+These sets are what is commonly referred to as the solution curves of the ODE \ref{eq:first-order-ode}.
+So the structure of an ODE can be thought of points in the plane subdivided into distinct solution curves.
 
-\dots
-
-The symmetry condition can then be formulated as: % FIXME: not proper wording
+A symmetry of a first order ODE \ref{eq:first-order-ode} is then a transformation that preserves this subdivision of the plane into solution curves.
+This property can be defined as:
 \begin{defn}[Point symmetry] \label{defn:first-order-symmetry}
-  A transformation \(\Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}\) is a point symmetry of the ODE \ref{eq:first-order-ode} if
+  A transformation \(\Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}\) is a point symmetry of the ODE \ref{eq:first-order-ode} if and only if
   \begin{equation}
     \dv{y}{x} = \omega(x,y)
     \implies
     \dv{\hat{y}}{\hat{x}} = \omega(\hat{x},\hat{y}).
   \end{equation}
 \end{defn}
+The \enquote{point} in point symmetry refers to the fact that the transformation \(\Gamma\) only acts on the points belonging to the solution curves and nothing else.
+This must not always be the case for symmetries, but that discussion is deferred to a later section of this chapter. % TODO: Make sure that this is true when more is written
+
+%-----------------------------------------------------------------------------
+\subsection{A note on differentiation and vector spaces}
+
+The observant reader might have already noted that there is some need of clarification of \cref{defn:first-order-symmetry}.
+While the transformation treats \(y\) as a point in \(\reals\), the ODE treats \(y\) as a differentiable function of \(x\), or in other words an element of once continuously differentiable functions \(\mathcal{C}^1(\reals)\).
+While this detail might seem small at this point, the subtlety of this treatment will be essential when developing further theory.
+\dots
+
 Using the total derivative and the definition of the ODE \ref{eq:first-order-ode},
 \begin{equation}
   \dv{\hat{y}}{\hat{x}} = 
