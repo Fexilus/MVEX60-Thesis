@@ -50,9 +50,39 @@ This must not always be the case for symmetries, but that discussion is deferred
 \subsection{A note on differentiation and vector spaces}
 
 The observant reader might have already noted that there is some need of clarification of \cref{defn:first-order-symmetry}.
-While the transformation treats \(y\) as a point in \(\reals\), the ODE treats \(y\) as a differentiable function of \(x\), or in other words an element of once continuously differentiable functions \(\mathcal{C}^1(\reals)\).
-While this detail might seem small at this point, the subtlety of this treatment will be essential when developing further theory.
-\dots
+While the transformation \(\Gamma\) treats \(y\) as a point in \(\reals\), the ODE \ref{eq:first-order-ode} treats \(y\) as a differentiable function of \(x\), or in other words an element of once continuously differentiable functions \(\mathcal{C}^1(\reals)\).
+In many contexts this abuse of notation could be accepted without further remarks, but in group analysis the subtleties of these representations are key to some important results.
+Since symmetry methods deal with transformations, \(y\) will be formally be treated as a point in \(\reals\).
+To make the point treatment of the dependent variable \(y\) consistent with the function treatment often used when dealing with differential equations, some concepts must be introduced.
+
+The \(xy\)-plane previously mentioned can be seen as consisting of two components: the independent space \(X = \reals\) and the dependent space \(Y = \reals\).
+The plane then is the product space \(Z = X \cross Y = \reals^2\).
+To be able to formulate differential statements the space \(Y_1 = \reals\), called the first prolongation (or continuation) of \(Y\) with respect to \(X\), is introduced.
+The elements of \(Y_1\) will be denoted \(y'\) or \(y^{(1)}\), the notation implying that they correspond to first derivatives of the function \(y(x)\).
+A first order ODE can then be written as an equation in the space \(Z_1 = Z \cross Y_1 = \reals^3\), also known as the prolongation of \(Z\) to the first order.
+The ODE \ref{eq:first-order-ode} is equivalent to
+\begin{equation}
+  \varepsilon(\underset{1}{z}) = y' - \omega(x,y) = 0,
+\end{equation}
+where \(\underset{1}{z} = (x,y,y') \in Z_1\).
+When dealing with an ODE of higher order the space \(Z\) can be prolonged to an appropriate order, following the formula
+\begin{equation}
+  Z_k = X \cross Y \cross Y_1 \cross \dots \cross Y_k,
+\end{equation}
+with elements
+\begin{equation}
+  \underset{k}{z} = (x, y, y', \dots, y^{(k)}).
+\end{equation}
+An ODE of degree \(k\) can thus be written on the equivalent form
+\begin{equation}
+  \varepsilon(\underset{k}{z}) = 0.
+\end{equation}
+
+To mirror the behavior of differentiation of the function \(y(x)\), a differential operator on \(Z_k\) is introduced, called the total derivative (or the operator of exact differentiation)
+\begin{equation}
+  D_x = \partial_x + y' \cdot \partial_y + y'' \cdot \partial_{y'} + \dots + y^{(l)} \cdot \partial_{y^{(l-1)}} + \dots .
+\end{equation}
+\(D_x\) will act on expressions in \(Z_k\) in the same way that \(\dv{x}\) would act on equivalent expressions consisting of \(x\), \(y(x)\) and derivatives of \(y(x)\) in \(x\).
 
 Using the total derivative and the definition of the ODE \ref{eq:first-order-ode},
 \begin{equation}
