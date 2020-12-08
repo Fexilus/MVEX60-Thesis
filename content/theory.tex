@@ -2,10 +2,13 @@
 
 In this chapter, the mathematical theory used in the thesis will be presented.
 The theory mostly concerns Lie group analysis, and has a strong focus on symmetry methods. % TODO: What is the difference?
-It is mainly based on material from two sources.
-The first source is \cite{hydon2000symmetry}, which serves as a great introductory text on the subject of symmetry methods.
-The second one is \cite{ovsiannikov1982group}, which treats the subject stringently and serves as a good reference point for proper treatment of the subject.
-The notation used in the thesis will be based on the notation in \cite{hydon2000symmetry}, employing partial notational concepts from \cite{ovsiannikov1982group} when further clarity is desired.
+It is mainly based on material from three sources.
+The first source, \cite{hydon2000symmetry}, serves as a great introductory text on the subject of symmetry methods.
+The second source, \cite{olver1995equivalence}, treats the subject stringently and serves as a good reference point for the reader who wishes to understand the theory in more depth.
+The third source, \cite{ovsiannikov1982group}, deals with group classification.
+Due to its earlier publication date, it treats some subjects in a less modern way than the first two sources, but makes up for it in concreteness.
+
+The notation used in the thesis will be based on the notation in \cite{hydon2000symmetry}, employing partial notational concepts from \cite{olver1995equivalence} and \cite{ovsiannikov1982group} when further clarity is desired.
 
 %=============================================================================
 \section{Point symmetries}
@@ -46,28 +49,28 @@ This property can be defined as:
 The \enquote{point} in point symmetry refers to the fact that the transformation \(\Gamma\) only acts on the points belonging to the solution curves and nothing else.
 This must not always be the case for symmetries, but that discussion is deferred to a later section of this chapter. % TODO: Make sure that this is true when more is written
 
-%-----------------------------------------------------------------------------
-\subsection{A note on differentiation and vector spaces}
+%=============================================================================
+\section{A first introduction to jet spaces}
 
 The observant reader might have already noted that there is some need of clarification of \cref{defn:first-order-symmetry}.
 While the transformation \(\Gamma\) treats \(y\) as a point in \(\reals\), the ODE \ref{eq:first-order-ode} treats \(y\) as a differentiable function of \(x\), or in other words an element of once continuously differentiable functions \(\mathcal{C}^1(\reals)\).
 In many contexts this abuse of notation could be accepted without further remarks, but in group analysis the subtleties of these representations are key to some important results.
-Since symmetry methods deal with transformations, \(y\) will be formally be treated as a point in \(\reals\).
-To make the point treatment of the dependent variable \(y\) consistent with the function treatment often used when dealing with differential equations, some concepts must be introduced.
+The 
 
-The \(xy\)-plane previously mentioned can be seen as consisting of two components: the independent space \(X = \reals\) and the dependent space \(Y = \reals\).
-The plane then is the product space \(Z = X \cross Y = \reals^2\).
-To be able to formulate differential statements the space \(Y_1 = \reals\), called the first prolongation (or continuation) of \(Y\) with respect to \(X\), is introduced.
+The \(xy\)-plane previously mentioned can be seen as consisting of two components: the independent space \(X \simeq \reals\) and the dependent space \(Y \simeq \reals\).
+The plane then is the product space \(E = X \cross Y \simeq \reals^2\).
+To be able to formulate differential statements the space \(Y_1 = \reals\), sometimes called the first continuation of \(Y\) with respect to \(X\), is introduced.
 The elements of \(Y_1\) will be denoted \(y'\) or \(y^{(1)}\), the notation implying that they correspond to first derivatives of the function \(y(x)\).
-A first order ODE can then be written as an equation in the space \(Z_1 = Z \cross Y_1 = \reals^3\), also known as the prolongation of \(Z\) to the first order.
+A first order ODE can then be written as an equation in the space \(J_1 = J_1 E = E \cross Y_1 \simeq \reals^3\), also known as the first order jet space of \(E\).
 The ODE \ref{eq:first-order-ode} is equivalent to
-\begin{equation}
+\begin{equation} \label{eq:first-order-jet-ode}
   \varepsilon(\underset{1}{z}) = y' - \omega(x,y) = 0,
 \end{equation}
-where \(\underset{1}{z} = (x,y,y') \in Z_1\).
-When dealing with an ODE of higher order the space \(Z\) can be prolonged to an appropriate order, following the formula
+where \(\underset{1}{z} = (x,y,y') \in J_1\).
+When dealing with an ODE of higher order, higher order jet spaces \(J_k = J_k E\) are introduced.
+These follow the formula
 \begin{equation}
-  Z_k = X \cross Y \cross Y_1 \cross \dots \cross Y_k,
+  J_k = X \cross Y \cross Y_1 \cross \dots \cross Y_k,
 \end{equation}
 with elements
 \begin{equation}
@@ -78,20 +81,24 @@ An ODE of degree \(k\) can thus be written on the equivalent form
   \varepsilon(\underset{k}{z}) = 0.
 \end{equation}
 
-To mirror the behavior of differentiation of the function \(y(x)\), a differential operator on \(Z_k\) is introduced, called the total derivative (or the operator of exact differentiation)
+%-----------------------------------------------------------------------------
+\subsection{The total derivative}
+Since the jet space \(J_k\) treats the variables \((y, y', \dots, y^{(k)})\) as independent coordinates, differentiation in \(x\) will not affect those terms.
+While this is then desired behavior of a jet space, there is also a need to be able to mirror the behavior of differentiation of the functions \((y(x), y'(x), \dots, y^{(k)}(x))\) in \(x\).
+Thus a differential operator on \(J_k\) is introduced, called the total derivative
 \begin{equation}
   D_x = \partial_x + y' \cdot \partial_y + y'' \cdot \partial_{y'} + \dots + y^{(l)} \cdot \partial_{y^{(l-1)}} + \dots .
 \end{equation}
-\(D_x\) will act on expressions in \(Z_k\) in the same way that \(\dv{x}\) would act on equivalent expressions consisting of \(x\), \(y(x)\) and derivatives of \(y(x)\) in \(x\).
+\(D_x\) will act on expressions in \(J_k\) in the same way that \(\dv{x}\) would act on equivalent expressions consisting of \(x\), \(y(x)\) and derivatives of \(y(x)\) in \(x\).
 
-Using the total derivative and the definition of the ODE \ref{eq:first-order-ode},
+A coordinate change \(\hat{x} = \hat{x}(x, y(x)),\, \hat{y} = \hat{y}(x, y(x)) = \hat{y}(\hat{x})\) in the function space can be represented in the jet space using the total derivative.
+Due to the chain rule,
 \begin{equation}
   \dv{\hat{y}}{\hat{x}} = 
-  \frac{\tD{x} \hat{y}(x,y)}{\tD{x} \hat{x}(x,y)} =
-  \frac{\partial_x \hat{y} + y' \partial_y \hat{y}}{\partial_x \hat{x} + y' \partial_y \hat{x}} =
-  \frac{\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}},
+  \frac{\pdv{\hat{y}}{x} + \pdv{\hat{y}}{y} \dv{y}{x}}{\pdv{\hat{x}}{x} + \pdv{\hat{x}}{y} \dv{y}{x}} =
+  \frac{\tD{x} \hat{y}(x,y)}{\tD{x} \hat{x}(x,y)}.
 \end{equation}
-which means that \cref{defn:first-order-symmetry} can be written as
+Using this and the equivalent formulation of the ODE \ref{eq:first-order-ode} in \cref{eq:first-order-jet-ode}, \cref{defn:first-order-symmetry} of a first order symmetry can be restated in the first order jet space \(J_1\).
 \begin{lem} \label{lem:simple-first-order-symmetry}
   A transformation \(\Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}\) is a point symmetry of the ODE \ref{eq:first-order-ode} if
   \begin{equation} \label{eq:simple-first-order-symmetry}
@@ -100,8 +107,8 @@ which means that \cref{defn:first-order-symmetry} can be written as
   holds.
 \end{lem} % FIXME: Requirement of diffeomorphism
 Given a transformation \(\Gamma\), it is therefore easy to check whether it is a point symmetry of the ODE \ref{eq:first-order-ode}.
-The reverse process (finding point symmetries of \cref{eq:first-order-ode}) is on the other hand not easy, as \(\omega(\hat{x},\hat{y})\) will in all but the most trivial cases result in a non-linear PDE in with two unknown functions.
-By restricting attention to a large subset of point symmetries these conditions can be simplified.
+The reverse process (finding point symmetries of \cref{eq:first-order-ode}) is on the other hand not easy, as \cref{eq:simple-first-order-symmetry} will in all but the most trivial cases result in a non-linear PDE in with two unknown functions.
+By restricting attention to a specific type of point symmetries, these conditions can be simplified.
 
 %=============================================================================
 \section{Lie point symmetries}
