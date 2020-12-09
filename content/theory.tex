@@ -32,14 +32,19 @@ Initially, assume the differential equation is an ordinary differential equation
   \dv{y}{x} = \omega(x,y).
 \end{equation}
 The structure of a first order ODE is thus defined by the function \(\omega\).
-The function can be thought of to define a relationship between certain points in the \(xy\)-plane, subdividing them into sets.
-These sets are what is commonly referred to as the solution curves of the ODE \ref{eq:first-order-ode}.
-So the structure of an ODE can be thought of points in the plane subdivided into distinct solution curves.
+\(\omega\) defines an infinite set of solution curves \(u(x)\) that all fulfill \cref{eq:first-order-ode}.
+Geometrically, a solution curve can be thought of as a set \(\gamma_u\) of points in the \(xy\)-plane for which \(y = u(x)\) holds for all \(x\).
+Every point in the \(xy\)-plane corresponds to exactly one such curve \(\gamma_u\).
 
-A symmetry of a first order ODE \ref{eq:first-order-ode} is then a transformation that preserves this subdivision of the plane into solution curves.
+A symmetry of a first order ODE \ref{eq:first-order-ode} is then a transformation that preserves the solution curves.
+This means that if and only if two points \(\pqty{x_1,y_1}\) and \(\pqty{x_2,y_2}\) belong to the same solution curve \(\gamma\), the transformed points \(\Gamma(x_1,y_1)\) and \(\Gamma(x_2,y_2)\) belong to the same solution curve, denoted by \(\Gamma\gamma\).
 This property can be defined as:
 \begin{defn}[Point symmetry] \label{defn:first-order-symmetry}
-  A transformation \(\Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}\) is a point symmetry of the ODE \ref{eq:first-order-ode} if and only if
+  A transformation 
+  \begin{equation}
+    \Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}
+  \end{equation}
+  is a point symmetry of the ODE \ref{eq:first-order-ode} if
   \begin{equation}
     \dv{y}{x} = \omega(x,y)
     \implies
@@ -91,6 +96,7 @@ Thus a differential operator on \(J_k\) is introduced, called the total derivati
   D_x = \partial_x + y' \cdot \partial_y + y'' \cdot \partial_{y'} + \dots + y^{(l)} \cdot \partial_{y^{(l-1)}} + \dots .
 \end{equation}
 \(D_x\) will act on expressions in \(J_k\) in the same way that \(\dv{x}\) would act on equivalent expressions consisting of \(x\), \(y(x)\) and derivatives of \(y(x)\) in \(x\).
+% TODO: Something about local theory
 
 A coordinate change \(\hat{x} = \hat{x}(x, y(x)),\, \hat{y} = \hat{y}(x, y(x)) = \hat{y}(\hat{x})\) in the function space can be represented in the jet space using the total derivative.
 Due to the chain rule,
@@ -205,6 +211,24 @@ Using the tangent field of a one-parameter Lie symmetry group, the symmetry cond
 \end{proof}
 
 %-----------------------------------------------------------------------------
+\subsection{Invariant solutions and trivial symmetries}
+
+An important property of a Lie group of symmetries is which, if any, solution curves \(\gamma\) are invariant under all transformations \(\Gamma_\epsilon\).
+The curve being invariant means that the transformed solution curve \(\Gamma_\epsilon\gamma = \gamma\).
+It should be noted that this does not mean that every point in \(\gamma\) need be transformed to itself; the equivalency must merely hold for the entire set \(\gamma\).
+% TODO: Characteristics
+
+A Lie group of symmetries for which all solution curves \(\gamma\) are invariant is called a trivial symmetry group.
+
+%=============================================================================
+\section{Generalizations to higher orders}
+
+The theory so far discussed has dealt with single ODE:s of the first order.
+Most systems of interest are however not modeled in this way.
+Therefore, the theory need be extended in three ways: from ordinary differential equations to partial differential equations, from first order differential equations to \(k:th\) order differential equations and from single differential equations to systems of differential equations.
+While this might seem like a large amount of generalization to do in one step, the notation needed to deal with the added complexity is common enough for all three generalizations that they are best dealt with together.
+
+%-----------------------------------------------------------------------------
 \subsection{The infinitesimal generator and prolongations}
 
 To simplify the notation, a differential operator
@@ -235,10 +259,6 @@ With this notation we rewrite \cref{lem:linearized-first-order-symmetry} as
   where \(X^{(1)}\) is the first prolongation of the infinitesimal generator of the Lie group.
 \end{thm} % FIXME: Is this a correct formulation of the theorem?
 
-
-%-----------------------------------------------------------------------------
-\subsection{Invariant solutions and trivial symmetries}
-% TODO: Write about invariant solutions and trivial symmetries
-
 % TODO: Write about basis for generators
 % TODO: Get canonical coordinates in to the text somehow
+% TODO: Write about canonical forms of generators
