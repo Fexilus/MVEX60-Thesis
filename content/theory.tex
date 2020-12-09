@@ -49,8 +49,8 @@ This property can be defined as:
 The \enquote{point} in point symmetry refers to the fact that the transformation \(\Gamma\) only acts on the points belonging to the solution curves and nothing else.
 This must not always be the case for symmetries, but that discussion is deferred to a later section of this chapter. % TODO: Make sure that this is true when more is written
 
-%=============================================================================
-\section{A first introduction to jet spaces}
+%-----------------------------------------------------------------------------
+\subsection{Jet spaces}
 
 The observant reader might have already noted that there is some need of clarification of \cref{defn:first-order-symmetry}.
 While the transformation \(\Gamma\) treats \(y\) as a point in \(\reals\), the ODE \ref{eq:first-order-ode} treats \(y\) as a differentiable function of \(x\), or in other words an element of once continuously differentiable functions \(\mathcal{C}^1(\reals)\).
@@ -83,6 +83,7 @@ An ODE of degree \(k\) can thus be written on the equivalent form
 
 %-----------------------------------------------------------------------------
 \subsection{The total derivative}
+
 Since the jet space \(J_k\) treats the variables \((y, y', \dots, y^{(k)})\) as independent coordinates, differentiation in \(x\) will not affect those terms.
 While this is then desired behavior of a jet space, there is also a need to be able to mirror the behavior of differentiation of the functions \((y(x), y'(x), \dots, y^{(k)}(x))\) in \(x\).
 Thus a differential operator on \(J_k\) is introduced, called the total derivative
@@ -115,12 +116,14 @@ By restricting attention to a specific type of point symmetries, these condition
 
 A Lie group is a continuous group, where the continuity between members of the group can be described by one or more real valued parameters.
 % TODO: Add more material on Lie groups, maybe as reference or in appendix.
-For point symmetries, this means that a group of Lie point symmetries will transform a given point to a differentiable manifold, e.g. a line, plane, circle etc., for every point in the plane.
-More simply, the transformations in a one-parameter Lie group can be written as
-\begin{equation}
+For point symmetries, this means that a group of Lie point symmetries is a collection of transformations that move points in \(E\) smoothly.
+The Lie groups are characterized by the dimensionality of these smooth transformations.
+When the transformations move a given point \(\fixed{z} \in E\) to new points that together constitute a line, the Lie group is said to be a one parameter Lie group as the transformations can be indexed by a single continuous parameter \(\epsilon \in \reals\).
+The transformations in a group of one-parameter Lie point symmetries can thus be parametrized as
+\begin{equation} \label{eq:1p-lie-point-symmetry}
   \Gamma_\epsilon: \pqty{x,y} \mapsto \pqty{\hat{x}_\epsilon(x,y), \hat{y}_\epsilon(x,y)},
 \end{equation}
-where both \(\hat{x}_\epsilon(x,y)\) and \(\hat{y}_\epsilon(x,y)\) are differentiable in \(\epsilon\) when fixing \(x\) and \(y\).
+where both \(\hat{x}_\epsilon(x,y)\) and \(\hat{y}_\epsilon(x,y)\) are smooth (and therefore differentiable) in \(\epsilon\) when fixing \(x\) and \(y\).
 This is most easily showed by a simple example.
 \begin{exmp}
   The ODE
@@ -130,11 +133,14 @@ This is most easily showed by a simple example.
   has several symmetries.
   One group of symmetries is
   \begin{equation} \label{eq:ex-a:transformation}
-    \pqty{\hat{x}_\epsilon(x,y), \hat{y}_\epsilon(x,y)} = \pqty{x + \epsilon, y}, \quad
+    \Gamma_\epsilon(x,y) =
+    \pqty{\hat{x}_\epsilon(x,y), \hat{y}_\epsilon(x,y)} =
+    \pqty{x + \epsilon, y}, \quad
     \forall \epsilon \in \reals
   \end{equation}
-  The group consists of point symmetries of \cref{eq:ex-a:ode}, since
+  This can be shown by viewing \cref{eq:ex-a:ode} in the jet space \(J_1\), resulting in
   \begin{equation}
+    \frac{\tD{x} \hat{y}_\epsilon(x,y)}{\tD{x} \hat{x}_\epsilon(x,y)} =
     \frac{\partial_x \hat{y}_\epsilon + \omega(x,y) \partial_y \hat{y}_\epsilon}{\partial_x \hat{x}_\epsilon + \omega(x,y) \partial_y \hat{x}_\epsilon} =
     \frac{y}{1} =
     \hat{y}_\epsilon =
@@ -142,27 +148,26 @@ This is most easily showed by a simple example.
     \forall \epsilon.
   \end{equation}
   So by \cref{lem:simple-first-order-symmetry} the transformations are point symmetries.
-  The group is a Lie group, since by fixing \(\pqty{x,y}=\pqty{x^*\!,y^*}\),
+  By fixing \(\pqty{x,y}=\pqty{\fixed{x},\fixed{y}}\),
   \begin{equation}
-    \dv{\epsilon} \pqty{\hat{x}_\epsilon(x^*\!,y^*), \hat{y}_\epsilon(x^*\!,y^*)} =
-    \pqty{\dv{\hat{x}(\epsilon)}{\epsilon}, \dv{\hat{y}(\epsilon)}{\epsilon}} =
+    \dv{\epsilon} \pqty{\hat{x}_\epsilon(\fixed{x},\fixed{y}), \hat{y}_\epsilon(\fixed{x},\fixed{y})} =
+    \pqty{\dv{\fixed{\hat{x}}}{\epsilon}, \dv{\fixed{\hat{y}}}{\epsilon}} =
     \pqty{1,0}
   \end{equation}
-  for any \(\pqty{x^*\!,y^*}\).
+  for any \(\pqty{\fixed{x},\fixed{y}}\).
+  This means that the transformations are smooth in \(\epsilon\), and thus constitute a one parameter Lie group.
 \end{exmp}
-Since Lie point symmetries act on a subset of the plane
-\begin{equation}
-  \eval{\dv{\epsilon} \pqty{\hat{x}_\epsilon(x^*\!,y^*), \hat{y}_\epsilon(x^*\!,y^*)}}_{\epsilon=0} = \pqty{\xi(x^*\!,y^*), \eta(x^*\!,y^*)},
-\end{equation}
-can be defined for that subset, where is \(\pqty{x^*\!,y^*}\) any point in the subset. % FIXME: Figure out how to talk about inconsistencies (right now subset talk)
-On that subset
+While the Lie groups of point symmetries can be parametrized in the explicit way used in \cref{eq:1p-lie-point-symmetry}, it is more useful to characterize the Lie group by its associated vector field
 \begin{equation} \label{eq:tangent-field}
-  \pqty{\xi(x,y), \eta(x,y)}
+  \pqty{\xi(x,y), \eta(x,y)},
 \end{equation}
-can be viewed as a vector field characterizing the Lie group, commonly called the tangent field.
-% TODO: Prove that the characterization is one-to-one
-Note that the entire group consisting of mappings \(\Gamma_\epsilon\) is now represented by a vector field, without any reference to \(\epsilon\).
-The vector field \ref{eq:tangent-field} is commonly known as the tangent field of the Lie symmetry group.% TODO: Should these things be definitions?
+also known as the tangent field of the transformation group.
+The tangent field can be calculated pointwise by 
+\begin{equation}
+  \eval{\dv{\epsilon} \pqty{\hat{x}_\epsilon(\fixed{x},\fixed{y}), \hat{y}_\epsilon(\fixed{x},\fixed{y})}}_{\epsilon=0} = \pqty{\xi(\fixed{x},\fixed{y}), \eta(\fixed{x},\fixed{y})}
+\end{equation}
+for every fixed point \(\pqty{\fixed{x},\fixed{y}} \in E\).
+The tangent field can be thought of as the field that points in \(E\) will flow along when increasing the parameter \(\epsilon\) by which the transformation \(\Gamma_\epsilon\) is selected.
 
 %-----------------------------------------------------------------------------
 \subsection{The linearized symmetry condition}
