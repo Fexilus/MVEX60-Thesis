@@ -101,7 +101,7 @@ Due to the chain rule,
 \end{equation}
 Using this and the equivalent formulation of the ODE \ref{eq:first-order-ode} in \cref{eq:first-order-jet-ode}, \cref{defn:first-order-symmetry} of a first order symmetry can be restated in the first order jet space \(J_1\).
 \begin{lem} \label{lem:simple-first-order-symmetry}
-  A transformation \(\Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}\) is a point symmetry of the ODE \ref{eq:first-order-ode} if
+  A transformation \(\Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}\) is a point symmetry of the ODE \ref{eq:first-order-ode} if and only if
   \begin{equation} \label{eq:simple-first-order-symmetry}
     \frac{\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}} = \omega(\hat{x},\hat{y})
   \end{equation}
@@ -124,7 +124,8 @@ The transformations in a group of one-parameter Lie point symmetries can thus be
   \Gamma_\epsilon: \pqty{x,y} \mapsto \pqty{\hat{x}_\epsilon(x,y), \hat{y}_\epsilon(x,y)},
 \end{equation}
 where both \(\hat{x}_\epsilon(x,y)\) and \(\hat{y}_\epsilon(x,y)\) are smooth (and therefore differentiable) in \(\epsilon\) when fixing \(x\) and \(y\).
-This is most easily showed by a simple example.
+Additionally, the transformation parametrized by \(\epsilon = 0\) will be the identity transformation \(\Gamma_0: \pqty{x,y} \mapsto \pqty{x,y}\).
+The following is a simple example of a one parameter Lie group of transformations.
 \begin{exmp}
   The ODE
   \begin{equation} \label{eq:ex-a:ode}
@@ -172,19 +173,40 @@ The tangent field can be thought of as the field that points in \(E\) will flow 
 %-----------------------------------------------------------------------------
 \subsection{The linearized symmetry condition}
 
-By using the tangent field of a one-parameter Lie symmetry group, the symmetry condition \ref{lem:simple-first-order-symmetry} can be further simplified.
+Using the tangent field of a one-parameter Lie symmetry group, the symmetry condition as formulated in \cref{lem:simple-first-order-symmetry} can be further simplified.
 \begin{lem} \label{lem:linearized-first-order-symmetry}
-  A Lie group of point transformations is a symmetry of the ODE \ref{eq:first-order-ode} if
+  The transformations in a Lie group of point transformations are symmetries of the ODE \ref{eq:first-order-ode} if and only if
   \begin{equation}
     \partial_x \eta + (\partial_y \eta - \partial_x \xi) \omega - \partial_y (\xi) \omega^2 =
     \xi \partial_x \omega + \eta \partial_y \omega,
   \end{equation}
   where \(\pqty{\xi(x,y), \eta(x,y)}\) is the tangent field of the Lie group.
-\end{lem} % FIXME: Is this a correct formulation of the theorem?
-To roughly prove this, simply take the derivative of \cref{eq:simple-first-order-symmetry} in \(\epsilon\) and then set \(\epsilon\) to 0.
-For a more formal proof, refer to [thing]. % FIXME: Should have a reference
+\end{lem}
+\begin{proof}
+  The transformations \(\Gamma_\epsilon\) are point symmetries of the ODE \ref{eq:first-order-ode} if and only if
+  \begin{equation} \label{eq:parametrized-symmetry-cond}
+    \frac{\partial_x \hat{y}(x,y;\epsilon) + \omega(x,y) \partial_y \hat{y}(x,y;\epsilon)}{\partial_x \hat{x}(x,y;\epsilon) + \omega(x,y) \partial_y \hat{x}(x,y;\epsilon)} = \omega(\hat{x}(x,y;\epsilon),\hat{y}(x,y;\epsilon)).
+  \end{equation}
+  Deriving by \(\epsilon\),
+  \begin{equation}
+    \begin{split} \label{eq:derive-symmetry-cond}
+      \partial_x \dv{\hat{y}}{\epsilon}{(x,y;\epsilon)} &+ (\partial_y \dv{\hat{y}}{\epsilon}{(x,y;\epsilon)} - \partial_x \dv{\hat{x}}{\epsilon}{(x,y;\epsilon)}) \omega - \partial_y (\dv{\hat{x}}{\epsilon}{(x,y;\epsilon)}) \omega^2 =\\
+      &= \hat{x}(x,y;\epsilon) \partial_x \omega + \hat{y}(x,y;\epsilon) \partial_y \omega.
+    \end{split}
+  \end{equation}
+  By evaluating the expression at \(\epsilon = 0\), \(\dv*{\hat{x}}{\epsilon} = \xi\) and \(\dv*{\hat{y}}{\epsilon} = \eta\) where \(\pqty{\xi(x,y), \eta(x,y)}\) is the tangent field.
+  Additionally, \(\eval{\hat{x}(x,y;\epsilon)}_{\epsilon = 0} = x\) and \(\eval{\hat{y}(x,y;\epsilon)}_{\epsilon = 0} = y\) since the transformation parametrized by \(\epsilon = 0\) is always the identity transformation in one parameter Lie groups of transformation.
+  Thus \cref{eq:derive-symmetry-cond} is equivalent to
+  \begin{equation} \label{eq:linearized-first-order-symmetry-result}
+    \partial_x \eta + (\partial_y \eta - \partial_x \xi) \omega - \partial_y (\xi) \omega^2 =
+    \xi \partial_x \omega + \eta \partial_y \omega.
+  \end{equation}
+  Since the transformation parametrized by \(\epsilon = 0\) is always the identity transformation, \cref{eq:linearized-first-order-symmetry-result} must also imply \cref{eq:parametrized-symmetry-cond}, and hence the proof is complete.
+\end{proof}
 
-% TODO: Figure out better structure for this part
+%-----------------------------------------------------------------------------
+\subsection{The infinitesimal generator and prolongations}
+
 To simplify the notation, a differential operator
 \begin{equation}
   X = \xi(x,y) \partial_x + \eta(x,y) \partial_y
