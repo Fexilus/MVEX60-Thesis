@@ -60,43 +60,62 @@ This must not always be the case for symmetries, but that discussion is deferred
 The observant reader might have already noted that there is some need of clarification of \cref{defn:first-order-symmetry}.
 While the transformation \(\Gamma\) treats \(y\) as a point in \(\reals\), the ODE \ref{eq:first-order-ode} treats \(y\) as a differentiable function of \(x\), or in other words an element of once continuously differentiable functions \(\mathcal{C}^1(\reals)\).
 In many contexts this abuse of notation could be accepted without further remarks, but in group analysis the subtleties of these representations are key to some important results.
-The 
+% TODO: Something about local theory
 
 The \(xy\)-plane previously mentioned can be seen as consisting of two components: the independent space \(X \simeq \reals\) and the dependent space \(Y \simeq \reals\).
 The plane then is the product space \(E = X \cross Y \simeq \reals^2\).
-To be able to formulate differential statements the space \(Y_1 = \reals\), sometimes called the first continuation of \(Y\) with respect to \(X\), is introduced.
-The elements of \(Y_1\) will be denoted \(y'\) or \(y^{(1)}\), the notation implying that they correspond to first derivatives of the function \(y(x)\).
-A first order ODE can then be written as an equation in the space \(J_1 = J_1 E = E \cross Y_1 \simeq \reals^3\), also known as the first order jet space of \(E\).
-The ODE \ref{eq:first-order-ode} is equivalent to
+It is in this plane \(E\) that the curves \(\gamma\) live.
+To be able to formulate differential statements, the space \(Y_1 = \reals\), sometimes called the first continuation of \(Y\) with respect to \(X\), is used.
+The elements of \(Y_1\) will be denoted \(y'\) or \(y^{(1)}\).
+The notation implies that the elements correspond to first derivatives of the function \(y(x)\), but it is important to note that in actuality the elements are scalar values.
+\(Y_1\) can be combined with \(E\) to create \(J_1 = J_1 E = E \cross Y_1 \simeq \reals^3\), the first order jet space of \(E\).
+Elements in \(J_1\) will be denoted \(\underset{1}{z} = \qty(x, y, y')\).
+
+All differentiable functions \(u(x) \in \cont{1}{X}\) have a single equivalent curve \(\underset{1}{\gamma_u}\) in the jet space \(J_1\) called the first lift of \(u(x)\).
+The lift is defined pointwise as
+\begin{equation}
+  \underset{1}{\gamma_u} = \qty{\underset{1}{z} = \qty(\fixed{x}, y, y')\qq*{:} y = u(\fixed{x})\qc y' = \dv{u}{x}{(\fixed{x})}\qc \fixed{x} \in X}.
+\end{equation}
+While all functions have equivalent curves in \(J_1\), the opposite does not hold.
+It is thus a proper subset of all curves in \(J_1\) that are lifts of functions in \(\cont{1}{X}\).
+
+An ODE can be reformulated using jet spaces.
+The solutions of a first order ODE are functions satisfying an equation that can be written on the for of \cref{eq:first-order-ode}.
+An equivalent problem can be formulated as finding curves in \(J_1\) satisfying
 \begin{equation} \label{eq:first-order-jet-ode}
   \varepsilon(\underset{1}{z}) = y' - \omega(x,y) = 0,
 \end{equation}
-where \(\underset{1}{z} = (x,y,y') \in J_1\).
-When dealing with an ODE of higher order, higher order jet spaces \(J_k = J_k E\) are introduced.
-These follow the formula
+as well as the condition that the curve is a lift of some continuously differentiable function.
+
+For higher order ODE:s, the theory can be extended to include higher order jet spaces \(J_k = J_k E\) that take the form
 \begin{equation}
   J_k = X \cross Y \cross Y_1 \cross \dots \cross Y_k,
 \end{equation}
 with elements
 \begin{equation}
-  \underset{k}{z} = (x, y, y', \dots, y^{(k)}).
+  \underset{k}{z} = \qty(x, y, y', \dots, y^{(k)}).
 \end{equation}
-An ODE of degree \(k\) can thus be written on the equivalent form
+An ODE of degree \(k\) can thus be formulated as finding curves in \(J_k\) that satisfy both
 \begin{equation}
-  \varepsilon(\underset{k}{z}) = 0.
+  \varepsilon(\underset{k}{z}) = 0
 \end{equation}
+and that the curves should be \(k\):th order lifts
+\begin{equation}
+  \underset{k}{\gamma_u} = \qty{\underset{k}{z} = \qty(\fixed{x}, y, y', \dots, y^{(k)})\qq*{:} y^{(l)} = \dv[l]{u}{x}{(\fixed{x})}\qc \fixed{x} \in X\qc l = 0, \dots, k}
+\end{equation}
+of some function \(u(x) \in \cont{k}{X}\).
+Here \(y^{(0)} = y\) and \(\dv[0]{u}{x} = u(x)\).
 
 %-----------------------------------------------------------------------------
 \subsection{The total derivative}
 
-Since the jet space \(J_k\) treats the variables \((y, y', \dots, y^{(k)})\) as independent coordinates, differentiation in \(x\) will not affect those terms.
-While this is then desired behavior of a jet space, there is also a need to be able to mirror the behavior of differentiation of the functions \((y(x), y'(x), \dots, y^{(k)}(x))\) in \(x\).
+Since the jet space \(J_k\) treats the variables \((y, y', \dots, y^{(k)})\) as independent coordinates differentiation in \(x\), denoted as \(\partial_x\), will not affect those terms.
+While this is the desired behavior of a jet space, there is also a need to be able to mirror the behavior of differentiation of the functions \((y(x), y'(x), \dots, y^{(k)}(x))\) in \(x\).
 Thus a differential operator on \(J_k\) is introduced, called the total derivative
 \begin{equation}
-  D_x = \partial_x + y' \cdot \partial_y + y'' \cdot \partial_{y'} + \dots + y^{(l)} \cdot \partial_{y^{(l-1)}} + \dots .
+  \tD{x} = \partial_x + y' \cdot \partial_y + y'' \cdot \partial_{y'} + \dots + y^{(l)} \cdot \partial_{y^{(l-1)}} + \dots .
 \end{equation}
-\(D_x\) will act on expressions in \(J_k\) in the same way that \(\dv{x}\) would act on equivalent expressions consisting of \(x\), \(y(x)\) and derivatives of \(y(x)\) in \(x\).
-% TODO: Something about local theory
+\(\tD{x}\) will act on expressions in \(J_k\) in the same way that \(\dv{x}\) would act on equivalent expressions consisting of \(x\), \(y(x)\) and derivatives of \(y(x)\) in \(x\).
 
 A coordinate change \(\hat{x} = \hat{x}(x, y(x)),\, \hat{y} = \hat{y}(x, y(x)) = \hat{y}(\hat{x})\) in the function space can be represented in the jet space using the total derivative.
 Due to the chain rule,
@@ -224,7 +243,7 @@ The invariance of a solution can be studied using the characteristic
 of a Lie group of symmetries with tangent field \(\pqty{\xi(x,y), \eta(x,y)}\).
 The characteristic can be seen the magnitude of the cross product between the tangent field and the direction of solution curves
 \begin{equation}
-  D_x \pqty{x, y} = \pqty{1, y'}.
+  \tD{x} \pqty{x, y} = \pqty{1, y'}.
 \end{equation}
 As is known from linear algebra, the cross product of two vectors has magnitude 0 if and only if they are parallel.
 So if the characteristic is equal to zero in a point \(\fixed{x}, \fixed{y}\), the tangent field is parallel with the tangent of the solution curve in that point.
@@ -260,13 +279,15 @@ While this might seem like a large amount of generalization to do in one step, t
 %-----------------------------------------------------------------------------
 \subsection{The infinitesimal generator and prolongations}
 
-To simplify the notation, a differential operator
+To simplify the notation a differential operator
 \begin{equation}
   X = \xi(x,y) \partial_x + \eta(x,y) \partial_y
 \end{equation}
 called an infinitesimal generator, can be introduced.
-As the generator is defined only by \(\xi\) and \(\eta\), it too serves as a characterization of the Lie symmetry group.
-The infinitesimal generator can then be prolonged, still entirely determined by \(\xi\) and \(\eta\), to act on the entire jet space.
+The infinitesimal generator acts on \(E\), and since it is defined only by \(\xi\) and \(\eta\), it serves as a characterization of a Lie symmetry group.
+
+
+The infinitesimal generator can be prolonged, still entirely defined by \(\xi\) and \(\eta\), to act on any given jet space \(J_k E\).
 For first order differential equations the jet space is \(\pqty{x, y, y'}\), and the prolongation takes the form
 \begin{equation}
   X^{(1)} = \xi(x,y) \partial_x + \eta(x,y) \partial_y + \eta^{(1)}(x,y) \partial_{y'},

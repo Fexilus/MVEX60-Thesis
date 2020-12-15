@@ -18,11 +18,16 @@
 \newtheorem*{note}{Note}
 \newtheorem{case}{Case}
 
-% Total derivative
-\newcommand{\tD}[1]{D_{#1}\,}
-
 % Sets
 \newcommand{\reals}{\mathbb{R}}
+\newcommand{\cont}[2]
+{
+  \ensuremath{
+    \mathcal{C}
+    \if\relax\detokenize{#1}\relax\else^{#1}\fi
+    \if\relax\detokenize{#2}\relax\else\left(#2\right)\fi
+  }
+}
 
 % TODO: Derivatives and elongations as style not content
 
@@ -34,5 +39,8 @@
 % TODO: Create system to reference ODEs
 
 % Notation
-\RequirePackage{xspace}
+%\RequirePackage{xspace}
+% Fixed values
 \newcommand{\fixed}[1]{#1^*}
+% Total derivative
+\newcommand{\tD}[1]{D_{#1}\,}
