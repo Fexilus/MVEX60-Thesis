@@ -216,9 +216,38 @@ Using the tangent field of a one-parameter Lie symmetry group, the symmetry cond
 An important property of a Lie group of symmetries is which, if any, solution curves \(\gamma\) are invariant under all transformations \(\Gamma_\epsilon\).
 The curve being invariant means that the transformed solution curve \(\Gamma_\epsilon\gamma = \gamma\).
 It should be noted that this does not mean that every point in \(\gamma\) need be transformed to itself; the equivalency must merely hold for the entire set \(\gamma\).
-% TODO: Characteristics
+
+The invariance of a solution can be studied using the characteristic
+\begin{equation}
+  Q(x, y, y') = \eta(x, y) - y' \xi(x, y)
+\end{equation}
+of a Lie group of symmetries with tangent field \(\pqty{\xi(x,y), \eta(x,y)}\).
+The characteristic can be seen the magnitude of the cross product between the tangent field and the direction of solution curves
+\begin{equation}
+  D_x \pqty{x, y} = \pqty{1, y'}.
+\end{equation}
+As is known from linear algebra, the cross product of two vectors has magnitude 0 if and only if they are parallel.
+So if the characteristic is equal to zero in a point \(\fixed{x}, \fixed{y}\), the tangent field is parallel with the tangent of the solution curve in that point.
+For first order ODE:s, \cref{eq:first-order-jet-ode} always holds on solution curves.
+Hence, the reduced characteristic
+\begin{equation}
+  \bar{Q}(x, y) = \eta(x, y) - \omega(x, y) \xi(x, y)
+\end{equation}
+can be used to find invariant solutions of a first order ODE under a specific Lie point symmetry.
+For any solution curve \(\gamma_u \subset E\) corresponding to a solution \(u(x)\), the curve is invariant under a Lie point symmetry if and only if
+\begin{equation}
+  \bar{Q}(x, u(x)) = 0.
+\end{equation}
 
 A Lie group of symmetries for which all solution curves \(\gamma\) are invariant is called a trivial symmetry group.
+For such a symmetry group, the reduced characteristic will be zero everywhere, or in other words
+\begin{equation} \label{eq:trivial-symmetry-first-order}
+  \bar{Q}(x, y) \equiv 0.
+\end{equation}
+Trivial symmetries are called trivial, since finding one is easy.
+Simply let the tangent field \(\pqty{\xi(x,y), \eta(x,y)} = \pqty{1, \omega(x,y)}\).
+The Lie transformation group is a point symmetry group, since \cref{lem:linearized-first-order-symmetry} is fulfilled.
+And it is a trivial symmetry group since \cref{eq:trivial-symmetry-first-order} is always fulfilled.
 
 %=============================================================================
 \section{Generalizations to higher orders}
@@ -258,6 +287,8 @@ With this notation we rewrite \cref{lem:linearized-first-order-symmetry} as
   \end{equation}
   where \(X^{(1)}\) is the first prolongation of the infinitesimal generator of the Lie group.
 \end{thm} % FIXME: Is this a correct formulation of the theorem?
+
+\section{Finding Lie point symmetries}
 
 % TODO: Write about basis for generators
 % TODO: Get canonical coordinates in to the text somehow
