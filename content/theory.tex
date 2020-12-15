@@ -55,7 +55,7 @@ The \enquote{point} in point symmetry refers to the fact that the transformation
 This must not always be the case for symmetries, but that discussion is deferred to a later section of this chapter. % TODO: Make sure that this is true when more is written
 
 %-----------------------------------------------------------------------------
-\subsection{Jet spaces}
+\subsection{Jet spaces} \label{sec:jet-spaces}
 
 The observant reader might have already noted that there is some need of clarification of \cref{defn:first-order-symmetry}.
 While the transformation \(\Gamma\) treats \(y\) as a point in \(\reals\), the ODE \ref{eq:first-order-ode} treats \(y\) as a differentiable function of \(x\), or in other words an element of once continuously differentiable functions \(\mathcal{C}^1(\reals)\).
@@ -71,13 +71,13 @@ The notation implies that the elements correspond to first derivatives of the fu
 \(Y_1\) can be combined with \(E\) to create \(J_1 = J_1 E = E \cross Y_1 \simeq \reals^3\), the first order jet space of \(E\).
 Elements in \(J_1\) will be denoted \(\underset{1}{z} = \qty(x, y, y')\).
 
-All differentiable functions \(u(x) \in \cont{1}{X}\) have a single equivalent curve \(\underset{1}{\gamma_u}\) in the jet space \(J_1\) called the first lift of \(u(x)\).
-The lift is defined pointwise as
+All differentiable functions \(u(x) \in \cont{1}{X}\) have a single equivalent curve \(\underset{1}{\gamma_u}\) in the jet space \(J_1\) called the first prolongation of \(u(x)\).
+The prolongation can be defined pointwise as
 \begin{equation}
   \underset{1}{\gamma_u} = \qty{\underset{1}{z} = \qty(\fixed{x}, y, y')\qq*{:} y = u(\fixed{x})\qc y' = \dv{u}{x}{(\fixed{x})}\qc \fixed{x} \in X}.
 \end{equation}
 While all functions have equivalent curves in \(J_1\), the opposite does not hold.
-It is thus a proper subset of all curves in \(J_1\) that are lifts of functions in \(\cont{1}{X}\).
+It is thus a proper subset of all curves in \(J_1\) that are prolongations of functions in \(\cont{1}{X}\).
 
 An ODE can be reformulated using jet spaces.
 The solutions of a first order ODE are functions satisfying an equation that can be written on the for of \cref{eq:first-order-ode}.
@@ -85,7 +85,7 @@ An equivalent problem can be formulated as finding curves in \(J_1\) satisfying
 \begin{equation} \label{eq:first-order-jet-ode}
   \varepsilon(\underset{1}{z}) = y' - \omega(x,y) = 0,
 \end{equation}
-as well as the condition that the curve is a lift of some continuously differentiable function.
+as well as the condition that the curve is a prolongation of some continuously differentiable function.
 
 For higher order ODE:s, the theory can be extended to include higher order jet spaces \(J_k = J_k E\) that take the form
 \begin{equation}
@@ -99,7 +99,7 @@ An ODE of degree \(k\) can thus be formulated as finding curves in \(J_k\) that 
 \begin{equation}
   \varepsilon(\underset{k}{z}) = 0
 \end{equation}
-and that the curves should be \(k\):th order lifts
+and that the curves should be \(k\):th order prolongations
 \begin{equation}
   \underset{k}{\gamma_u} = \qty{\underset{k}{z} = \qty(\fixed{x}, y, y', \dots, y^{(k)})\qq*{:} y^{(l)} = \dv[l]{u}{x}{(\fixed{x})}\qc \fixed{x} \in X\qc l = 0, \dots, k}
 \end{equation}
@@ -284,30 +284,69 @@ To simplify the notation a differential operator
   X = \xi(x,y) \partial_x + \eta(x,y) \partial_y
 \end{equation}
 called an infinitesimal generator, can be introduced.
-The infinitesimal generator acts on \(E\), and since it is defined only by \(\xi\) and \(\eta\), it serves as a characterization of a Lie symmetry group.
-
-
-The infinitesimal generator can be prolonged, still entirely defined by \(\xi\) and \(\eta\), to act on any given jet space \(J_k E\).
-For first order differential equations the jet space is \(\pqty{x, y, y'}\), and the prolongation takes the form
+The infinitesimal generator acts on mappings from \(E\) and, since it is defined only by \(\xi\) and \(\eta\), serves as a characterization of a Lie group of transformations.
+Applying the operator to a mapping \(f: E \to E\), one gets a measure of the change in \(f\) when continuously transforming the plane which it acts on, since
 \begin{equation}
-  X^{(1)} = \xi(x,y) \partial_x + \eta(x,y) \partial_y + \eta^{(1)}(x,y) \partial_{y'},
+  \eval{\dv{\epsilon} f \circ \Gamma_\epsilon}_{\epsilon = 0} = X f,
+\end{equation}
+where \(\Gamma_\epsilon\) is a Lie group of symmetries with corresponding tangent field \(\pqty{\xi(x,y), \eta(x,y)}\).
+
+Without much work, the currently established mechanics of Lie point symmetries can be restated compactly using the infinitesimal generator.
+The only additional theory needed is a generalization of prolongations.
+In \cref{sec:jet-spaces} the concept of a prolonged function was introduced.
+This allowed a function to be represented by a corresponding curve in a jet space \(J_k\).
+Both mappings \(f: E \to E\) and operators on such mappings can also be prolonged, resulting in mappings \(\underset{k}{f}: J_k \to J_k\) and operators on such mappings.
+
+The prolongations of mappings \(f: E \to E\) should fulfill the criteria
+\begin{equation}
+  \underset{k}{f}(\underset{k}{\gamma_u}) = \underset{k}{f(\gamma_u)},
+\end{equation}
+and thus 
+\begin{equation}
+  f^i(x, u) = \dv[i]{f(x, u(x))}{x}\qc i = 0, \dots, k,
+\end{equation}
+where \(f^i\) is the \(i\):th component of the prolonged mapping \(\underset{k}{f}\), the 0:th component referring to the \(y\)-component of the original mapping \(f\).
+Using the total derivative, this can be rewritten as
+\begin{equation}
+  f^i = \tD{x} f^{i-1} \qc i = 0, \dots, k.
+\end{equation}
+In an analogous way, the prolongations of operators on mappings \(f: E \to E\) should be consistent independent of the order the prolongations are realized. % TODO: Write this more concretely
+
+The infinitesimal generator can be prolonged, still entirely defined by \(\xi\) and \(\eta\), to act on any given jet space \(J_k\).
+For first order ODE:s the jet space is \(J_1\), and thus the first prolongation is needed, which takes the form
+\begin{equation}
+  \underset{1}{X} = \xi(x,y) \partial_x + \eta(x,y) \partial_y + \underset{1}{\eta}(x,y) \partial_{y'},
 \end{equation}
 where
 \begin{equation}
-  \eta^{(1)}(x,y) =
-  \partial_x(\eta)(x,y) + (\partial_y(\eta)(x,y) - \partial_x(\xi)(x,y)) y' - \partial_y(\xi)(x,y) \left(y'\right)^2.
+  \underset{1}{\eta}(x,y) =
+  \eta_x(x,y) + (\eta_y(x,y) - \xi_x(x,y)) y' - \xi_y(x,y) \left(y'\right)^2,
 \end{equation}
-This prolongation follows naturally from the prolongation of \(\hat{y}'\) (see [appendix]). % FIXME: Write and insert prolongation details
-With this notation we rewrite \cref{lem:linearized-first-order-symmetry} as
-\begin{thm} \label{thm:linearized-first-order-symmetry}
+where the subscripts \(x\) and \(y\) denote the partial derivatives \(\partial_x\) and \(\partial_y\).
+The linearized symmetry condition in \cref{lem:linearized-first-order-symmetry} can be rewritten using the infinitesimal operator.
+\begin{lem} \label{lem:linearized-first-order-symmetry-infinitesimal}
   A Lie group of point transformations is a symmetry of the ODE \ref{eq:first-order-ode} if
   \begin{equation} \label{eq:linearized-first-order-symmetry}
-    X^{(1)}\left(y' - \omega(x,y)\right) \equiv 0,
-    % Hydon has "where eq. (3.1) holds", but that feels a bit off...
-    % Stephani says \equiv 0 and (mod H = 0)
+    \eval{\underset{1}{X}\left(y' - \omega(x,y)\right)}_{y' = \omega(x,y)} = 0,
   \end{equation}
-  where \(X^{(1)}\) is the first prolongation of the infinitesimal generator of the Lie group.
-\end{thm} % FIXME: Is this a correct formulation of the theorem?
+  where \(\underset{1}{X}\) is the first prolongation of the infinitesimal generator of the Lie group of point transformations.
+\end{lem}
+On this form, the linearized symmetry condition is easier to interpret:
+\(\varepsilon(\underset{1}{z}) = y' - \omega(x,y) = 0\) holds for a solution of the ODE \ref{eq:first-order-ode}.
+Since the transformations of solution curves must be solution curves in order for the transformations to be a symmetry group, the value of \(\varepsilon(\underset{1}{z})\) must not change.
+By evaluating the expression at \(y' = \omega(x,y)\), it is ensured that this holds for any solution to \cref{eq:first-order-ode}.
+
+By finding further prolongations of \(X\), the linearized symmetry condition can be extended to ODE:s of higher degrees.
+The \(k\):th order prolongation of the infinitesimal generator is
+\begin{equation}
+  \underset{k}{X} = \xi(x,y) \partial_x + \eta(x,y) \partial_y + \underset{1}{\eta}(x,y) \partial_{y'} + \dots + \underset{k}{\eta}(x,y) \partial_{y^{(k)}}
+\end{equation}
+where \(\underset{k}{\eta}\) is defined recursively by
+\begin{align}
+  \underset{0}{\eta} &= \eta\\
+  \underset{k}{\eta}(x,y) &= \tD{x}(\underset{k-1}{\eta}) - y^{(k)} \tD{x} \xi.
+\end{align}
+\Cref{lem:linearized-first-order-symmetry-infinitesimal} will hold for higher order ODE:s, given that \(y'\) is replaced by \(y^{(k)}\) and \(\omega(x,y)\) with \(\omega(\underset{k-1}{z})\), and that the infinitesimal generator is prolonged to the \(k\):th degree.
 
 \section{Finding Lie point symmetries}
 
