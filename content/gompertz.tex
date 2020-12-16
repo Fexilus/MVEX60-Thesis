@@ -148,7 +148,7 @@ The classical Gompertz ODE \ref{eq:rough-gompertz-classical-ode} and the autonom
     \text{Classical, } & W_0 :& \dv{W}{t} &= k_G \ln(\frac{W_0}{A})e^{-k_G t} W(t) &&\FlLabel{eq:gompertz-classical-w0} \\
     \text{Autonomous, } & T_i \text{ and } W_0 :& \dv{W}{t} &= -k_G \ln(\frac{W(t)}{A}) W(t). &&\FlLabel{eq:gompertz-autonomous}
 \end{flalign}
-Two important notes:
+There are two important notes worth highlighting:
 Firstly, all three formulations have two degrees of freedom, even \cref{{eq:gompertz-classical-w0}} since \(W_0\) and \(A\) only appear in the composite form \(W_0 / A\).
 This must be the case since only a two parameter ODE can produce three parameter solutions (which the Gompertz curves are).
 Secondly, it should be stressed that \cref{eq:gompertz-classical-ti,eq:gompertz-classical-w0} are just two different parametrizations of the same differential equation.
@@ -163,31 +163,64 @@ This means that\dots% TODO: Write about insights
 %=============================================================================
 \section{Finding Lie point symmetries}
 
+Since the ODE:s are of the first order, an ansatz must be made in order to solve the determining equations.
+Beginning with the autonomous ODE, the ansatz
+\begin{align}
+  \xi(t, W) &= f_1(t) + f_2(t) \ln(\frac{W}{A}),\\
+  \eta(t, W) &= f_3(t) W + f_4(t) \ln(\frac{W}{A}) W
+\end{align}
+can be taken, where \(f_i\) for \(i =1,2,3,4\) are arbitrary functions in \(t\).
+This results in the determining equation
+\begin{align}
+  f_3'(t) W &+ f_4'(t) \ln(\frac{W}{A}) W \\
+  &+ \left( f_3(t) + f_4(t) \left( 1 + \ln(\frac{W}{A}) \right) - \left( f_1'(t) + f_2'(t) \ln(\frac{W}{A}) \right) \right) \cdot -k_G \ln(\frac{W}{A}) W \\
+  &- \frac{f_2(t)}{W} \left( k_G \ln(\frac{W}{A}) W \right)^2 =\\
+  &= \left( f_3(t) W + f_4(t) \ln(\frac{W}{A}) W \right) \cdot -k_G \left( 1 + \ln(\frac{W}{A}) \right)
+\end{align}
+which can be reduced to
+\begin{align}
+  f_3'(t) W &+ \left( f_4'(t) + k_G f_1'(t) \right) \ln(\frac{W}{A}) W + \left( f_2'(t) - k_G f_2(t) \right) k_G \ln(\frac{W}{A})^2 W =\\
+  &= - k_G f_3(t) W
+\end{align}
+By separating the equation based on powers of \(\ln(\frac{W}{A})\), the system
+\begin{flalign}
+  W & : & f_3'(t) &= -k_G f_3(t) && \FlLabel{eq:W}\\
+  \ln(\frac{W}{A}) W & : & f_4'(t) + k_G f_1'(t) &= 0 && \FlLabel{eq:WA}\\
+  k_G \ln(\frac{W}{A})^2 W & : & f_2'(t) - k_G f_2(t) &= 0 && \FlLabel{eq:kW2A2W}
+\end{flalign}
+can be acquired.
+This system of equations has the solution
+\begin{align}
+  \xi(t, W) &= f_1(t) + c_1 e^{k_G t} \ln(\frac{W}{A}),\\
+  \eta(t, W) &= c_2 e^{-k_G t} W + \left( c_3 - k_G f_1(t) \right) \ln(\frac{W}{A}) W,
+\end{align}
+where \(c_1\), \(c_2\) and \(c_3\) are arbitrary constants.
+Thus, by separating the tangent field into terms with independent arbitrary elements, the infinitesimal generators
 \begin{align}
   X_1 &= e^{k_G t} \ln(\frac{W}{A}) \partial_t \\
   X_2 &= e^{-k_G t} W \partial_W \\
   X_3 &= \ln(\frac{W}{A}) W \partial_W \\
-  X_F &= F(t) \partial_t - k_G F(t) \ln(\frac{W}{A}) W \partial_W
+  X_f &= f(t) \partial_t - k_G f(t) \ln(\frac{W}{A}) W \partial_W
 \end{align}
-are Lie point symmetries of the autonomous Gompertz ODE \ref{eq:gompertz-autonomous}.
+of Lie point symmetries of the autonomous Gompertz ODE \ref{eq:gompertz-autonomous} can be found.
 
-The symmetry generator \(X_F\) is a trivial symmetry of the autonomous ODE, since the reduced characteristic of it is
+The symmetry generator \(X_f\) is a trivial symmetry of the autonomous ODE, since the reduced characteristic of it is
 \begin{align}
-  \bar{Q}_{F,a}(t, W) &= \eta_F(t, W) - \omega_a(t, W) \xi_F(t, W)\\
-  &= - k_G F(t) \ln(\frac{W}{A}) W - \left(-k_G \ln(\frac{W}{A}) W \right) F(t) \equiv 0.
+  \bar{Q}_{f,a}(t, W) &= \eta_f(t, W) - \omega_a(t, W) \xi_f(t, W)\\
+  &= - k_G f(t) \ln(\frac{W}{A}) W - \left(-k_G \ln(\frac{W}{A}) W \right) f(t) \equiv 0.
 \end{align}
 The reduced characteristic of \(X_F\) for the classical ODE is
 \begin{align}
-  \bar{Q}_{F,c}(t, W) &= \eta_F(t, W) - \omega_c(t, W) \xi_F(t, W)\\
-  &= - k_G F(t) \ln(\frac{W}{A}) W - k_G e^{-k_G (t - T_i)} W F(t)\\
-  &= - k_G F(t) W \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right).
+  \bar{Q}_{f,c}(t, W) &= \eta_f(t, W) - \omega_c(t, W) \xi_f(t, W)\\
+  &= - k_G f(t) \ln(\frac{W}{A}) W - k_G e^{-k_G (t - T_i)} W f(t)\\
+  &= - k_G f(t) W \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right).
 \end{align}
-It is worth noting that since \(A\) is not a parameter of the classical ODE \ref{eq:gompertz-classical-ti}.
+It is worth noting that since \(A\) is not a parameter of the classical ODE \ref{eq:gompertz-classical-ti}, only symmetries that hold for any \(A\) will be actual symmetries.
 The linearized symmetry condition for the classical ODE can be formulated as
 \begin{equation}
-  \partial_t(\bar{Q}_{F,c}) + \omega_c \partial_W(\bar{Q}_{F,c}) = \partial_W(\omega_c) \bar{Q}_{F,c}
+  \partial_t(\bar{Q}_{f,c}) + \omega_c \partial_W(\bar{Q}_{f,c}) = \partial_W(\omega_c) \bar{Q}_{f,c}
 \end{equation}
-Letting \(F(t) \equiv 1\), the left hand side becomes
+Letting \(f(t) \equiv 1\), the left hand side becomes
 \begin{gather}
   k_G^2 W e^{-k_G (t - T_i)} + \left(k_G e^{-k_G (t - T_i)} W\right) \left(-k_G \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)} + 1\right)\right)\\
   -k_G^2 e^{-k_G (t - T_i)} W\left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right)
@@ -197,14 +230,14 @@ while the right hand side becomes
   \left(k_G e^{-k_G (t - T_i)}\right) \left(- k_G W \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right)\right)\\
   -k_G^2 e^{-k_G (t - T_i)} W \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right).
 \end{gather}
-Thus the two sides are equivalent, and \(X_{F\equiv1}\) is a symmetry of the classical Gompertz ODE.
-Since \(X_{F\equiv1}\) is trivial on the autonomous ODE, the lines along the tangent field are solutions to the autonomous ODE.
+The two sides are equivalent, and thus \(X_{f\equiv1}\) is a symmetry of the classical Gompertz ODE.
+Since \(X_{f\equiv1}\) is trivial on the autonomous ODE, the lines along the tangent field are solutions to the autonomous ODE.
 This means that the solutions to the autonomous ODE are orbits of the classical ODE.
 It is worth noting that for all of the above calculations to hold, the growth parameter \(k_G\) must be the same for both ODE:s.
 
 %=============================================================================
 \section{Future leads}
-Some future leads:
+Some future leads when studying the Gompertz model using symmetry methods are:
 \begin{itemize}
   \item Try proving allometry properties when considering embryogenesis of the Gompertz model \cite{deakin1970allometry}.
   \item Reevaluate motivations of the Gompertz model \cite{bajzer1997tumor}.
