@@ -1,0 +1,91 @@
+% Title page designed by Felix Augustsson 2020
+% Made to resemble common first page in Cvijoviclabs
+%\ProvidesPackage{title}[2020/09/03 v0.2]
+
+\RequirePackage{tabularx, booktabs} % For main title framing
+\RequirePackage[export]{adjustbox} % For logo of institution
+\RequirePackage{geometry} % Adjust margins
+\RequirePackage{listings} % Give hint of useable commands
+
+% Define new title fields
+\makeatletter
+\newcommand*{\examiner}[1]{\gdef\@examiner{#1}%
+}
+\newcommand*{\@examiner}{Use \string\examiner}
+\newcommand*{\supervisor}[1]{\gdef\@supervisor{#1}%
+}
+\newcommand*{\@supervisor}{Use \string\supervisor}
+\newcommand*{\department}[1]{\gdef\@department{#1}}
+\newcommand*{\@department}{Use \string\department}
+\newcommand*{\degreetype}[1]{\gdef\@degreetype{#1}}
+\newcommand*{\@degreetype}{Use \string\degreetype}
+\newcommand*{\logo}[1]{\gdef\@logo{#1}}
+\newcommand*{\@logo}{}
+\makeatother
+% Redefine \and to work with title style
+\renewcommand\and{%
+  \\%
+  &%
+}
+
+% Definition of new title page
+\makeatletter
+\renewcommand*{\maketitle}{%
+  % Use custom marginsP
+  \newgeometry{
+    a4paper,
+    top=20mm,
+    bottom=20mm,
+    left=30mm,
+    right=30mm,
+  }
+  \begin{titlepage}
+    % Use different footnotes
+    \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
+    % Add logo if it exists
+    \begin{minipage}[c]{0.7\textwidth} 
+      \ifx\@logo\empty
+      \vspace{3cm}
+      \else
+      \includegraphics[max height=3cm,max width=\textwidth]{\@logo}
+      \fi 
+    \end{minipage}%
+    \hfill
+    % Add degree description
+    \begin{minipage}[c]{0.2\textwidth}\small\texttt{\@degreetype}\end{minipage}
+    \vspace{3cm}
+    \begin{center}
+      % Description
+      {\scshape\large Master's Thesis}\par
+      \vspace{0.5cm}
+      % Project title centered between lines
+      \begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X}
+      \toprule
+      {\Huge \@title} \\
+      \bottomrule
+      \end{tabularx}
+      \par
+      \vspace{0.5cm}
+      % Department
+      {\scshape\large \@department}\par
+      \vspace{1cm}
+      % Involved people
+      \begin{tabular}[t]{rl}
+      Author: & \@author \\
+      & \\
+      Examiner: & \@examiner \\
+      & \\
+      Supervisors: & \@supervisor
+      \end{tabular}
+      \par
+      \vfill
+      % Date
+      {\large \@date}\par
+      % Footnotes
+      \@thanks
+      \setcounter{footnote}{0}%
+    \end{center}
+  \end{titlepage}
+  \restoregeometry
+}
+\makeatother
