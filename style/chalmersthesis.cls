@@ -1,22 +1,40 @@
-% Chalmers University of Technology thesis class designed by Felix Augustsson 2021
-
-% Frontmatter and backmatter are derivatives based on "Chalmers University of Technology Master's Thesis" by Magnus Gustaver, found at https://sv.overleaf.com/latex/templates/chalmers-university-of-technology-masters-thesis/vnjxsndxqxfy, licensed under CC BY by Felix Augustsson.
-
+% Chalmers University of Technology thesis class by Felix Augustsson, 2021.
+%
+% This work is licensed under the Creative Commons Attribution 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+%
+% Frontmatter and backmatter are derivatives based on "Chalmers University of
+% Technology Master's Thesis" by Magnus Gustaver, 2020, found at
+% https://sv.overleaf.com/latex/templates/chalmers-university-of-technology-masters-thesis/vnjxsndxqxfy,
+% licensed under CC BY by Felix Augustsson.
+% The pages have been modified to use commands implemented in this class.
+% The work of Magnus Gustaver is in turn based on the works by David Frisk,
+% 2018, with updates to the title page and last page.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{chalmersthesis}[2021/02/02 Chalmers University of Technology thesis]
 
+% Keyword options and corresponding logic switches
 \RequirePackage{kvoptions}
-\RequirePackage{xcolor}
 \RequirePackage{etoolbox}
+% Design tools for front and back cover
+\RequirePackage{xcolor}
+\RequirePackage{geometry}
+\RequirePackage{graphicx}
+\RequirePackage{epstopdf}
+% Fonts for cover
+\RequirePackage{lmodern}
+\RequirePackage{helvet} % Enables font switching
+% Space command content correctly
+\RequirePackage{xspace}
+% Conditionals for field descriptions of multiple supervisors/examiners
+\RequirePackage{xstring}
 
-% Define new title fields
+
+% New fields for title pages, similar to \author etc.
 \providecommand*{\subtitle}[1]{\gdef\@subtitle{#1}}
 \providecommand*{\@subtitle}{}
-\newcommand*{\examiner}[1]{\gdef\@examiner{#1}%
-}
+\newcommand*{\examiner}[1]{\gdef\@examiner{#1}}
 \newcommand*{\@examiner}{Use \string\examiner}
-\newcommand*{\supervisor}[1]{\gdef\@supervisor{#1}%
-}
+\newcommand*{\supervisor}[1]{\gdef\@supervisor{#1}}
 \newcommand*{\@supervisor}{Use \string\supervisor}
 \newcommand*{\thesistype}[1]{\gdef\@thesistype{#1}}
 \newcommand*{\@thesistype}{Use \string\thesistype}
@@ -26,7 +44,10 @@
 \newcommand*{\@degree}{Use \string\degree}
 \newcommand*{\illustration}[1]{\gdef\@illustration{#1}}
 \newcommand*{\@illustration}{}
+\newcommand*{\illustrationdescription}[1]{\gdef\@illustrationdescription{#1}}
+\newcommand*{\@illustrationdescription}{Use \string\illustrationdescription}
 
+% Create class options
 \SetupKeyvalOptions{
   family=cththesis,
   prefix=cththesis@
@@ -34,61 +55,60 @@
 
 \DeclareStringOption{thesistype}
 
+% Feed options forward to report class
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOptionKey}{report}}
 
 \ProcessKeyvalOptions*
 
+% Process thesistype option
 \ifdefstring{\cththesis@thesistype}{master}{
   \definecolor{thesisHeaderColor}{cmyk}{0.14,0,0,0.65} % Gray
   \thesistype{Master's thesis}
   % Path to front page header background art
   \newcommand*{\@frontpageheaderpath}{GrayHeaderPattern}
+  % Path to front page logo
+  \newcommand*{\@frontpagelogopath}{style/AvancezChalmersU_white_right}
+  % FIXME: Quick "path/eps conversion" fix
+  \newcommand*{\@titlepagelogopath}{style/AvancezChalmersU_black_centered.eps}
 }{
 \ifdefstring{\cththesis@thesistype}{bachelor}{
   \definecolor{thesisHeaderColor}{RGB}{126,180,56} % Green
   \thesistype{Bachelor's thesis}
   % Path to front page header background art
   \newcommand*{\@frontpageheaderpath}{GreenHeaderPattern}
+  % Path to front page logo
+  \newcommand*{\@frontpagelogopath}{style/AvancezChalmers_white_right}
+  % FIXME: Quick "path/eps conversion" fix
+  \newcommand*{\@titlepagelogopath}{style/AvancezChalmers_black_centered.eps} 
 }{
   \definecolor{thesisHeaderColor}{cmyk}{0.14,0,0,0.65} % Gray
   \thesistype{Use \string\thesistype}
   % Path to front page header background art
   \newcommand*{\@frontpageheaderpath}{GrayHeaderPattern}
+  % Path to front page logo
+  \newcommand*{\@frontpagelogopath}{style/AvancezChalmersU_white_right}
+  % FIXME: Quick "path/eps conversion" fix
+  \newcommand*{\@titlepagelogopath}{style/AvancezChalmersU_black_centered.eps}
 }}
 
 \definecolor{headerBrown}{RGB}{144,102,78}
 
-
 \LoadClass[a4paper]{report}
 
-\RequirePackage{tabularx, booktabs} % For main title framing
-\RequirePackage[export]{adjustbox} % For logo of institution
-\RequirePackage{geometry} % Adjust margins
-\RequirePackage{listings} % Give hint of useable commands
-\RequirePackage{lmodern} % Latin modern font
-\RequirePackage{helvet} % Enables font switching
-\RequirePackage{epstopdf}
-\RequirePackage{xspace}
+% Use different footnotes
+\renewcommand\thefootnote{\@fnsymbol\c@footnote}
 
-% Redefine \and to work with title style
-\renewcommand\and{%
-  \\%
-  &%
-}
+\newcommand{\tagtemp}{\textcolor{white}{, template by Magnus Gustaver}}
 
-% Definition of new title page
-\makeatletter
-\renewcommand*{\maketitle}{%
-  % Use custom marginsP
-  \newgeometry{
-    top=30mm,
-    bottom=30mm,
-    left=22.5mm,
-    right=22.5mm,
-  }
+% Definition of new title pages
+\renewcommand*{\maketitle}{
   \begin{titlepage}
-    % Use different footnotes
-    \renewcommand\thefootnote{\@fnsymbol\c@footnote}
+    \newgeometry{
+      top=30mm,
+      bottom=10mm, % FIXME: Value lowered to fix weird vertical alignment
+      left=22.5mm,
+      right=22.5mm,
+    }
 
     \setlength{\parindent}{0cm}
 
@@ -96,11 +116,9 @@
       \null\vspace{-25mm}
       \centerline{\includegraphics[width=1.18\textwidth]{\@frontpageheaderpath}}
       \vspace{-2.3cm}
-      \hbox{\hspace{0mm}\includegraphics[height=18mm]{style/AvancezChalmersU_white_right}} % FIXME: Quick "path/eps conversion" fix
+      % FIXME: Quick "path/eps conversion" fix
+      \hbox{\hspace{0mm}\includegraphics[height=18mm]{\@frontpagelogopath}}
       \centerline{\textcolor{headerBrown}{\rule{1.18\textwidth}{4pt}}}
-      \vspace{\paperheight}\vspace{-85mm}
-      \centerline{\textcolor{thesisHeaderColor}{\rule{1.1\textwidth}{0.8pt}}} % Rule after Department
-      \vspace{-\paperheight}\vspace{85mm}
     }
 
     \ifx\@illustration\@empty
@@ -122,69 +140,136 @@
     \fi
     \@thesistype\xspace in \@degree \setlength{\parskip}{1cm}
 
-    \noindent
-    {\Large \@author} \setlength{\parskip}{1.5cm}
+    {\Large \MakeUppercase{\@author}} \setlength{\parskip}{1.5cm}
 
-    \noindent
-    \textcolor{thesisHeaderColor}{\small\textbf{\@department}}
-    \setlength{\parskip}{1mm}
+    \textcolor{thesisHeaderColor}{\small\textbf{\MakeUppercase{\@department}}}
 
-    \textsc{Chalmers University of Technology} \\
+    \vspace*{\dimexpr-\parskip-\baselineskip+2mm}
+    \makebox[\textwidth][c]{\textcolor{thesisHeaderColor}{\rule{1.1\textwidth}{0.8pt}}}
+    \vspace*{\dimexpr-\parskip-\baselineskip+1mm}
+
+    {\small \MakeUppercase{Chalmers University of Technology}} \\
     {\small Gothenburg, Sweden \@date \\
     \href{www.chalmers.se}{www.chalmers.se}}\vspace{1.7cm}
-
-    \renewcommand{\familydefault}{\rmdefault} \normalfont % Reset standard font
-    
-    %% Add logo if it exists
-    %\begin{minipage}[c]{0.7\textwidth} 
-    %  \ifx\@logo\empty
-    %  \vspace{3cm}
-    %  \else
-    %  \includegraphics[max height=3cm,max width=\textwidth]{\@logo}
-    %  \fi 
-    %\end{minipage}%
-    %\hfill
-    %% Add degree description
-    %\begin{minipage}[c]{0.2\textwidth}\small\texttt{\@degreetype}\end{minipage}
-    %\vspace{3cm}
-    %\begin{center}
-    %  % Description
-    %  {\scshape\large \@thesistype}\par
-    %  \vspace{0.5cm}
-    %  % Project title centered between lines
-    %  \begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X}
-    %  \toprule
-    %  {\Huge \@title} \\
-    %  \bottomrule
-    %  \end{tabularx}
-    %  \par
-    %  \vspace{0.5cm}
-    %  % Department
-    %  {\scshape\large \@department}\par
-    %  \vspace{1cm}
-    %  % Involved people
-    %  \begin{tabular}[t]{rl}
-    %  Author: & \@author \\
-    %  & \\
-    %  Examiner: & \@examiner \\
-    %  & \\
-    %  Supervisors: & \@supervisor
-    %  \end{tabular}
-    %  \par
-    %  \vfill
-    %  % Date
-    %  {\large \@date}\par
-    %  % Footnotes
-    %  \@thanks
-    %  \setcounter{footnote}{0}%
-    %\end{center}
-    \clearpage
-    \restoregeometry
+    % Reset standard font
+    \renewcommand{\familydefault}{\rmdefault} \normalfont
+  \end{titlepage}
+  \begin{titlepage}
     \thispagestyle{empty}
     \mbox{}
   \end{titlepage}
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \setlength{\parindent}{0cm}
+
+    \begin{center}
+      \textsc{\large \@thesistype \xspace \@date}\\[4cm]
+      \textbf{\Large \@title} \\[1cm]
+      \ifx\@subtitle\@empty
+      \else
+        {\large \@subtitle}\\[1cm]
+      \fi
+      {\large \MakeUppercase{\@author}}
+      
+      \vfill	
+      % Logotype on title page	
+      \begin{figure}[H]
+        \centering
+        % Remove this figure to remove the title page logotype
+        \includegraphics[width=0.2\pdfpagewidth]{\@titlepagelogopath} \\
+      \end{figure}
+      \vspace{5mm}	
+      
+      \@department \\
+      \textsc{Chalmers University of Technology} \\
+      Gothenburg, Sweden \@date \\
+    \end{center}
+  \end{titlepage}
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \setlength{\parindent}{0cm}
+    \renewcommand{\and}{\unskip,\xspace}
+
+    \vspace*{4.5cm}
+    \@title\\
+    \ifx\@subtitle\@empty
+    \else
+      \@subtitle\\
+    \fi
+    \MakeUppercase{\@author} \setlength{\parskip}{1cm}
+
+    \copyright~\MakeUppercase{\@author}, \@date. \setlength{\parskip}{1cm}
+
+    % Print supervisor(s) depending on amount
+    \IfSubStr{\detokenize\expandafter{\@supervisor}}{\detokenize{\and}}{
+      Supervisors: \@supervisor\\
+    }{
+      Supervisor: \@supervisor\\
+    }
+    \IfSubStr{\detokenize\expandafter{\@examiner}}{\detokenize{\and}}{
+      Examiners: \@examiner\setlength{\parskip}{1cm}
+    }{
+      Examiner: \@examiner\setlength{\parskip}{1cm}
+    }
+
+    \@thesistype \xspace \@date\\	
+    \@department\\
+    Chalmers University of Technology\\
+    SE-412 96 Gothenburg\\
+    Sweden\\
+    Telephone +46 (0)31 772 1000 \setlength{\parskip}{0.5cm}
+
+    \vfill
+    % Description of cover illustration if illustration is used
+    \ifx\@illustration\@empty
+    \else
+      Cover: \@illustrationdescription \setlength{\parskip}{0.5cm}
+    \fi
+    
+    Typeset in \LaTeX\\
+    Printed by Chalmers Reproservice\\
+    Gothenburg, Sweden \@date
+  \end{titlepage}
   \restoregeometry
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax
+  \global\let\maketitle\relax
+  \global\let\@thanks\@empty
+  \global\let\@author\@empty
+  \global\let\@date\@empty
+  \global\let\@title\@empty
+  \global\let\title\relax
+  \global\let\author\relax
+  \global\let\date\relax
+  \global\let\and\relax
 }
-\makeatother
+
+\AtEndDocument{
+  \newgeometry{
+    top=30mm,
+    bottom=30mm,
+    left=30mm,
+    right=30mm
+  }
+  \vtop{
+    \null\vspace{-47.5mm}
+    \centerline{\textcolor{thesisHeaderColor}{\rule{1.28\textwidth}{28mm}}}
+    \null\vspace{-9mm}
+    \centerline{\textcolor{headerBrown}{\rule{1.28\textwidth}{4pt}}}
+    \vspace{187mm}
+    \centerline{\includegraphics[width=0.2\pdfpagewidth]{\@titlepagelogopath}}
+    \vspace{-220mm}
+  }
+
+  \addtolength{\voffset}{2cm}
+  \renewcommand{\familydefault}{\sfdefault} \normalfont % Set cover page font
+  \pagestyle{empty}
+  \vspace*{-4.3cm}
+  \noindent
+  \textcolor{white}{\footnotesize \textbf{\@department}\\
+  \textbf{CHALMERS UNIVERSITY OF TECHNOLOGY} \\
+  Gothenburg, Sweden \\
+  \href{www.chalmers.se}{\textcolor{white}{www.chalmers.se}}}
+}
 
 \endinput
