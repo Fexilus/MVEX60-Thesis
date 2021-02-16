@@ -37,6 +37,11 @@
 }
 
 % TODO: Create system to reference ODEs
+% Subequation references
+\crefname{subequation}{eqs.}{eqs.}
+% FIXME: Temp fix for reference in mathmode
+\newcommand{\ghostref}[1]{}
+\autonum@generatePatchedReference{ghostref}
 
 % Notation
 %\RequirePackage{xspace}
@@ -44,3 +49,8 @@
 \newcommand{\fixed}[1]{#1^*}
 % Total derivative
 \newcommand{\tD}[1]{D_{#1}\,}
+
+% Jet space commands
+\newcommand*{\prolong}[2]{\ensuremath{\underset{#2}{#1}}}
+\newcommand*{\prolongpart}[2]{\ensuremath{{#1_{(#2)}}}}
+\newcommand*{\variety}{\ensuremath{\mathcal{S}}}
