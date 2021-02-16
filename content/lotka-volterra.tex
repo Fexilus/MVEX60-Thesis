@@ -1,0 +1,188 @@
+\chapter{The Lotka-Volterra model}
+
+A classic model for predator-prey dynamics is the Lotka Volterra model, where a prey population \(N\) and a predator population \(P\) evolve over time according to
+\begin{subequations}
+  \label{eq:lotka-volterra-original}  
+  \begin{align}
+    \dv{N}{\tilde{t}} &= a N - b N P\\
+    \dv{P}{\tilde{t}} &= c N P - d P
+  \end{align}
+\end{subequations}
+\cite{murray2002biology}.
+The system in \cref{eq:lotka-volterra-original} can be nondimensionalized by
+\begin{align}
+  t &= \frac{1}{d} \tilde{t}\\
+  u^1 &= \frac{d}{c} N\\
+  u^2 &= \frac{d}{b} N\\
+  h &= \frac{a}{d},
+\end{align}
+resulting in the system
+\begin{subequations}
+  \label{eq:lotka-volterra}  
+  \begin{align}
+    \dv{u^1}{t} &= h u^1 - u^1 u^2\\
+    \dv{u^2}{t} &= u^1 u^2 - u^2.
+  \end{align}
+\end{subequations}
+\Cref{eq:lotka-volterra} can be represented by the function \(\Delta\) on the jet space \(\prolong{J}{1} \simeq \reals^5(t, u^1, u^2, u^1_t, u^2_t)\), with components
+\begin{align}
+  \Delta^1 &= u^1_t - h u^1 + u^1 u^2 \label{eq:lotka-volterra-delta1}\\
+  \Delta^2 &= u^2_t - u^1 u^2 + u^2. \label{eq:lotka-volterra-delta2}
+\end{align}
+Thus solutions to \cref{eq:lotka-volterra} are sections of the variety \(\variety_\Delta\).
+
+It is of interest to find symmetries of \cref{eq:lotka-volterra}, or more specifically infinitesimal generators
+\begin{equation}
+  \zeta \cdot \partial = \xi \partial_t + \eta \cdot \partial_u = \xi \partial_t + \eta^1 \partial_{u^1} + \eta^2 \partial_{u^2}
+\end{equation}
+where \(\xi, \eta^1, \eta^2: E \to \reals\).
+Using the prolonged infinitesimal generator
+\begin{equation}
+  \prolong{\zeta}{1} \cdot \partial = \zeta \cdot \partial_E + \prolongpart{\eta}{1} \cdot \partial_\prolongpart{u}{1} = \zeta \cdot \partial_E + \eta^1_{(t)} \partial_{u^1_t} + \eta^2_{(t)} \partial_{u^2_t}
+\end{equation}
+the linearized symmetry condition can be formulated as
+\begin{equation} \label{eq:lotka-volterra-lin-symmetry}
+  \eval{\prolong{\zeta}{1} \cdot \partial \left(\Delta(h)\right)}_{\variety_{\Delta(h)}} = 0,
+\end{equation}
+which expands to the determining equations
+\begin{subequations}\label{eq:lotka-volterra-det-equations}
+  \begin{align}
+    \begin{split}
+      \eta^1_t &+ \qty(h u^1 - u^1 u^2) \qty(\eta^1_{u^1} - \xi_t) + \qty(u^1 u^2 - u^2) \eta^1_{u^2} - \qty(h u^1 - u^1 u^2)^2 \xi_{u^1} -\\
+      &- \qty(h u^1 - u^1 u^2) \qty(u^1 u^2 - u^2) \xi_{u^2} - \qty(h - u^2) \eta^1 + u^1 \eta^2 = 0
+    \end{split}\\
+    \begin{split}
+      \eta^2_t &+ \qty(h u^1 - u^1 u^2) \eta^2_{u^1} + \qty(u^1 u^2 - u^2) \qty(\eta^2_{u^2} - \xi_t) -\\
+      &- \qty(h u^1 - u^1 u^2) \qty(u^1 u^2 - u^2) \xi_{u^1} - \qty(u^1 u^2 - u^2)^2 \xi_{u^2} - u^2 \eta^1 -\\
+      &- \qty(u^1 - 1) \eta^2 = 0.
+    \end{split}
+  \end{align}
+\end{subequations}
+
+%=============================================================================
+\section{The kernel of the full symmetry groups}
+
+Technically, the function \(\Delta\) in \cref{eq:lotka-volterra-delta1,eq:lotka-volterra-delta2} is defined on the space \(\reals^+ \times \prolong{J}{1}\), where the space \(\reals^+\) is the space of the parameter \(h\).
+Thus solutions of \cref{eq:lotka-volterra} are sections of the variety \(\variety_{\Delta(h)}\) for a given \(h\).
+
+When applying this to the symmetry condition, for a given \(h\) \cref{eq:lotka-volterra-lin-symmetry} has generators \(\zeta \cdot \partial\) as solutions, which together generate the Lie symmetry group \(G\).
+Making the relation between parameter \(h\) and symmetry group \(G\) explicit, the symmetries given a parameter can be written as \(G\Delta(h)\).
+The kernel of the full symmetry groups \(G\Delta_0 = \qty{g: g \in G\Delta(h),\, \forall h \in \reals^+}\) is thus the group of all symmetries that are independent of \(h\) \cite{ovsiannikov1982group}.
+That is, the parameter \(h\) does not appear in the generator \(\zeta \cdot \partial\).
+
+Since the parameter \(h\) should not appear in the generator, \cref{eq:lotka-volterra-det-equations} can be decomposed in to powers of \(h\) in each equation.
+Thus the determining equations of the kernel of the full symmetry groups are
+\begin{subequations}\label{eq:lotka-volterra-kernel-det-equations}
+  \begin{align}
+    \begin{split}\label{eq:lotka-volterra-kernel-det-equations-1}
+      \eta^1_t - u^1 u^2 \qty(\eta^1_{u^1} - \xi_t) + \qty(u^1 u^2 - u^2) \eta^1_{u^2} - \qty(u^1 u^2)^2 \xi_{u^1} +&\\
+      + u^1 u^2 \qty(u^1 u^2 - u^2) \xi_{u^2} + u^2 \eta^1 + u^1 \eta^2 &= 0
+    \end{split}\\
+    \label{eq:lotka-volterra-kernel-det-equations-2}
+    u^1 \qty(\eta^1_{u^1} - \xi_t) + 2 \qty(u^1)^2 u^2 \xi_{u^1} - u^1 \qty(u^1 u^2 - u^2) \xi_{u^2} - \eta^1 &= 0 \\
+    \label{eq:lotka-volterra-kernel-det-equations-3}
+    - \qty(u^1)^2 \xi_{u^1} &= 0 \\
+    \begin{split}\label{eq:lotka-volterra-kernel-det-equations-4}
+      \eta^2_t - u^1 u^2 \eta^2_{u^1} + \qty(u^1 u^2 - u^2) \qty(\eta^2_{u^2} - \xi_t) + u^1 u^2 \qty(u^1 u^2 - u^2) \xi_{u^1} -&\\
+      - \qty(u^1 u^2 - u^2)^2 \xi_{u^2} - u^2 \eta^1 - \qty(u^1 - 1) \eta^2 &= 0
+    \end{split}\\
+    \label{eq:lotka-volterra-kernel-det-equations-5}
+    u^1 \eta^2_{u^1} - u^1 \qty(u^1 u^2 - u^2) \xi_{u^1} &= 0. 
+  \end{align}
+\end{subequations}
+\Cref{eq:lotka-volterra-kernel-det-equations-3} gives that
+\begin{equation}
+  \xi = \xi(t, u^2),
+\end{equation}
+and thus \cref{eq:lotka-volterra-kernel-det-equations-5} gives that
+\begin{equation}
+  \eta^2 = \eta^2(t, u^2).
+\end{equation}
+Thus \cref{eq:lotka-volterra-kernel-det-equations-1,eq:lotka-volterra-kernel-det-equations-2,eq:lotka-volterra-kernel-det-equations-4} can be rewritten as
+\begin{subequations}\label{eq:lotka-volterra-kernel-det-equations-simplify-1}
+  \begin{align}
+    \begin{split}\label{eq:lotka-volterra-kernel-det-equations-simplify-1-1}
+      \eta^1_t - u^1 u^2 \qty(\eta^1_{u^1} - \xi_t) + \qty(u^1 u^2 - u^2) \eta^1_{u^2} + u^1 u^2 \qty(u^1 u^2 - u^2) \xi_{u^2} + u^2 \eta^1 +&\\
+      + u^1 \eta^2 &= 0
+    \end{split}\\
+    \label{eq:lotka-volterra-kernel-det-equations-simplify-1-2}
+    u^1 \qty(\eta^1_{u^1} - \xi_t) - u^1 \qty(u^1 u^2 - u^2) \xi_{u^2} - \eta^1 &= 0 \\
+    \label{eq:lotka-volterra-kernel-det-equations-simplify-1-4}
+    \eta^2_t + \qty(u^1 u^2 - u^2) \qty(\eta^2_{u^2} - \xi_t) - \qty(u^1 u^2 - u^2)^2 \xi_{u^2} - u^2 \eta^1 - \qty(u^1 - 1) \eta^2 &= 0.
+  \end{align}
+\end{subequations}
+Since the derivative of any differential equation must hold when the original differential equation holds, the derivative of \cref{eq:lotka-volterra-kernel-det-equations-simplify-1-4} in \(u^1\)
+\begin{equation}\label{eq:lotka-volterra-kernel-det-equations-simplify-1-4-derivative}
+  u^2 \qty(\eta^2_{u^2} - \xi_t) - 2 u^2 \qty(u^1 u^2 - u^2) \xi_{u^2} - u^2 \eta^1_{u^1} - \eta^2 = 0
+\end{equation}
+must hold.
+The superposition \(\text{\labelcref{eq:lotka-volterra-kernel-det-equations-simplify-1-4}} - u^1 \text{\labelcref{eq:lotka-volterra-kernel-det-equations-simplify-1-4-derivative}} - u^2 \text{\labelcref{eq:lotka-volterra-kernel-det-equations-simplify-1-2}}\)\ghostref{eq:lotka-volterra-kernel-det-equations-simplify-1-4-derivative}\ghostref{eq:lotka-volterra-kernel-det-equations-simplify-1-2}, which simplifies to
+\begin{equation}\label{eq:lotka-volterra-kernel-det-equations-simplify-composition}
+  \qty(u^2 + u^1 u^2) \xi_t + \qty(u^2)^2 \qty(- 1 - u^1 + 2 \qty(u^1)^2) \xi_{u^2} + \eta^2 + \eta^2_t - u^2 \eta^2_{u^2} = 0,
+\end{equation}
+must therefore also hold.
+Since both \(xi\) and \(\eta^2\) are independent of \(u^1\), \cref{eq:lotka-volterra-kernel-det-equations-simplify-composition} can be decomposed in to powers of \(u^1\).
+Thus the equations
+\begin{align}
+  \label{eq:lotka-volterra-kernel-det-equations-simplify-composition-0}
+  u^2 \xi_t - \qty(u^2)^2 \xi_{u^2} + \eta^2 + \eta^2_t - u^2 \eta^2_{u^2} &= 0\\
+  \label{eq:lotka-volterra-kernel-det-equations-simplify-composition-1}
+  u^2 \xi_t - \qty(u^2)^2 \xi_{u^2} &= 0\\
+  \label{eq:lotka-volterra-kernel-det-equations-simplify-composition-2}
+  2 \qty(u^2)^2 \xi_{u^2} &= 0
+\end{align}
+must hold.
+\Cref{eq:lotka-volterra-kernel-det-equations-simplify-composition-2} gives that
+\begin{equation}
+  \xi = \xi(t),
+\end{equation}
+and thus \cref{eq:lotka-volterra-kernel-det-equations-simplify-composition-1} gives that
+\begin{equation}
+  \xi = c_1
+\end{equation}
+for an arbitrary constant \(c_1\).
+If \(\xi\) is a constant function, \cref{eq:lotka-volterra-kernel-det-equations-simplify-composition-0} simplifies to a linear first order PDE
+\begin{equation}
+  \eta^2 + \eta^2_t - u^2 \eta^2_{u^2} = 0.
+\end{equation}
+Using the method of characteristics,
+\begin{equation}\label{eq:lotka-volterra-kernel-det-equations-simplify-composition-0-pde}
+  \frac{\dd{t}}{1} = \frac{\dd{u^2}}{-u^2} = \frac{\dd{\eta^2}}{-\eta^2},
+\end{equation}
+and thus \(t + \ln(u^2)\) and \(\ln(\frac{\eta^2}{u^2})\) are invariants of \cref{eq:lotka-volterra-kernel-det-equations-simplify-composition-0-pde}.
+A general solution
+\begin{equation}
+  \eta^2 = u^2 f(u^2 e^t)
+\end{equation}
+can thus be constructed, where \(f\) is an arbitrary differentiable function.
+Insertion of the results in to \cref{eq:lotka-volterra-kernel-det-equations-simplify-1} results in the further simplified determining equations
+\begin{subequations}\label{eq:lotka-volterra-kernel-det-equations-simplify-2}
+  \begin{align}
+    \label{eq:lotka-volterra-kernel-det-equations-simplify-2-1}
+      \eta^1_t - u^1 u^2 \eta^1_{u^1} + \qty(u^1 u^2 - u^2) \eta^1_{u^2} + u^2 \eta^1 + u^1 u^2 f(u^2 e^t) &= 0 \\
+    \label{eq:lotka-volterra-kernel-det-equations-simplify-2-2}
+    u^1 \eta^1_{u^1} - \eta^1 &= 0 \\
+    \label{eq:lotka-volterra-kernel-det-equations-simplify-2-4}
+    u^1 \qty(u^2)^2 e^t f'(u^2 e^t) - u^2 \eta^1 &= 0.
+  \end{align}
+\end{subequations}
+\Cref{eq:lotka-volterra-kernel-det-equations-simplify-2-4} gives that
+\begin{equation}
+  \eta^1 = u^1 u^2 e^t f'(u^2 e^t),
+\end{equation}
+which eliminates \cref{eq:lotka-volterra-kernel-det-equations-simplify-2-2} and simplifies \cref{eq:lotka-volterra-kernel-det-equations-simplify-2-1} to
+\begin{equation}\label{eq:lotka-volterra-kernel-det-equations-simplify-3-1}
+  \qty(u^1 u^2 e^t)^2 f''(u^2 e^t) + \qty(u^1)^2 u^2 e^t f'(u^2 e^t) + u^1 u^2 f(u^2 e^t) = 0.
+\end{equation}
+Since \(f(u^2 e^t)\) is independent of \(u^1\), \cref{eq:lotka-volterra-kernel-det-equations-simplify-3-1} can be decomposed by powers of \(u^1\) and thus
+\begin{equation}
+  f \equiv 0.
+\end{equation}
+Thus
+\begin{align}
+  \xi &\equiv c_1\\
+  \eta^1 &\equiv 0\\
+  \eta^2 &\equiv 0,
+\end{align}
+and the single generator of the kernel of the full symmetry groups is the manifest time invariance \(\partial_t\).
+In other words, the only symmetry of \cref{eq:lotka-volterra} not depending on the parameter \(h\) is the one parameter symmetry group generated by \(\partial_t\).
