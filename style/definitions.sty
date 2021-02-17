@@ -29,16 +29,19 @@
   }
 }
 
-% TODO: Derivatives and elongations as style not content
-
 % Math table-likes
 \newcommand\FlLabel[1]{% Label that is affects the maximal spreading of flalign.
   \,\label{#1}% TODO: Sometimes overflows last label
 }
 
-% TODO: Create system to reference ODEs
+% Reference ODE
+\crefname{ode}{the ODE}{the ODE:s}
+\Crefname{ode}{The ODE}{The ODE:s}
+\creflabelformat{ode}{#2(#1)#3}
 % Subequation references
 \crefname{subequation}{eqs.}{eqs.}
+\Crefname{subequation}{Eqs.}{Eqs.}
+\creflabelformat{subequation}{#2(#1)#3}
 % FIXME: Temp fix for reference in mathmode
 \newcommand{\ghostref}[1]{}
 \autonum@generatePatchedReference{ghostref}

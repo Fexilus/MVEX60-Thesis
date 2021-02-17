@@ -21,7 +21,7 @@ and the time with
   \tau = v_\text{max} \frac{t}{{K_m}^{1/n}},
 \end{equation}
 \cref{eq:original-hill} simplifies to
-\begin{equation} \label{eq:hill}
+\begin{equation} \label[ode]{eq:hill}
   \dv{y}{\tau} = - \frac{y^n}{1 + y^n} = \omega_n(\tau, y), \quad
   n > 0,
 \end{equation}
@@ -36,7 +36,7 @@ However, one purpose of finding symmetries of differential equations is to disti
 Since the symmetry \(X=\partial_\tau\) holds for all \(n\), it can not be used to compare different degrees of Hill models.
 Thus, finding an additional Lie symmetry group of the Hill equation is therefore of interest.
 
-Any Lie point symmetry group must fulfill the linearized symmetry condition \ref{thm:linearized-first-order-symmetry}.
+Any Lie point symmetry group must fulfill the linearized symmetry condition \labelcref{thm:linearized-first-order-symmetry}.
 To solve \cref{eq:linearized-first-order-symmetry}, an Ansatz must be made.
 The tangent fields of many Lie symmetries of ODE:s are linear in \(y\).
 The Ansatz
@@ -269,7 +269,7 @@ For all \(n>0\) except \(n=1\) such solutions exist, and take the form
 \end{equation}
 Determining the functions \(y(\tau)\) that are invariant for a given \(n\) can be bothersome, but some general insights can be made.
 Since \cref{eq:hill-invariants} is a polynomial in \(y\) of degree \(n\), there will exist a finite amount of solutions (this holds for non-integer \(n\) too, as it can be bounded by Descartes' rule of signs). % FIXME: Strengthen this claim with a source https://math.stackexchange.com/a/1291211
-Thus, the symmetries are not trivial since there exist an infinite amount of solutions to the ODE \ref{eq:hill}.
+Thus, the symmetries are not trivial since there exist an infinite amount of solutions to \cref{eq:hill}.
 Additionally, since \(\tau\) is (dimensionless) time, any application of the model will have an initial condition on the form \(y(0) = y_0\).
 By fixing \(\tau=0\) in \cref{eq:hill-invariants}, the initial condition of an invariant curve given any \(n>0, n\neq1\) is shown to be
 \begin{equation}

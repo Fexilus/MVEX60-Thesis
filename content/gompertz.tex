@@ -15,11 +15,11 @@ Correctly modeling the external limitations is crucial when studying the long te
 The Gompertz model is one such model that has seen success in many areas.
 It was first proposed in 1825 as a means of predicting the mortality rate of populations in order to accurately prize life insurances and annuities \cite{gompertz1825nature}.
 Gompertz formulated his model as the differential equation
-\begin{equation} \label{eq:original-gompertz}
+\begin{equation} \label[ode]{eq:original-gompertz}
   a L_x \times q^x \cdot \dot{x} = - (L_x)\dot{}
 \end{equation}
 where \(L_x\) is the number living at age \(x\), or formulated in modern notation
-\begin{equation} \label{eq:original-gompertz-modern}
+\begin{equation} \label[ode]{eq:original-gompertz-modern}
   \dv{L}{x} = -a q^x L(x)
 \end{equation}
 where \(L(x)\) is the number of people living at age \(x\).
@@ -40,7 +40,7 @@ In this chapter, this question will be tackled using the theory of Lie point sym
 %=============================================================================
 \section{Finding a standardized ODE description}
 
-Even though Gompertz first stated his model as the ODE \ref{eq:original-gompertz}, the differential form is not the most commonly used.
+Even though Gompertz first stated his model as \cref{eq:original-gompertz}, the differential form is not the most commonly used.
 Instead the Gompertz model is usually formulated as the solution to \cref{eq:original-gompertz-modern}.
 In Gompertz original paper, this function takes the form
 \begin{equation} \label{eq:original-gompertz-solution}
@@ -64,22 +64,22 @@ The ODE:s in the first family can all be written on the form
 \begin{equation} \label{eq:rough-gompertz-classical-ode}
   \dv{W}{t} = r e^{-b t} W(t).
 \end{equation}
-These ODE:s are reparameterizations of Gompertz' original ODE \ref{eq:original-gompertz-modern}, often emphasizing the expected behaviors of the model in the growth context by choosing parameters that should be positive.
+These ODE:s are reparameterizations of Gompertz' original ODE \labelcref{eq:original-gompertz-modern}, often emphasizing the expected behaviors of the model in the growth context by choosing parameters that should be positive.
 In the parametrization seen in \cref{eq:rough-gompertz-classical-ode}, \(r\) should be positive for the species size \(W(t)\) to grow (as opposed to shrinking or decaying) and \(b\) should be positive for the growth to reduce over time (and thus limiting the growth).
 
 The first family of ODE:s is tightly related to the second family, which can be written on the form
 \begin{equation}
-  \label{eq:rough-gompertz-system-ode}
+  \label[ode]{eq:rough-gompertz-system-ode}
   \begin{aligned} 
     \dv{W}{t} &= \gamma(t) W(t)\\
     \dv{\gamma}{t} &= -b \gamma(t).
   \end{aligned}
 \end{equation}
-This system of ODE:s could also be argued to be the original Gompertz ODE, since the original differential equation \ref{eq:original-gompertz} was motivated by Gompertz in the following way:
+This system of ODE:s could also be argued to be the original Gompertz ODE, since the original differential equation \labelcref{eq:original-gompertz} was motivated by Gompertz in the following way:
 \blockquote[{\cite[518]{gompertz1825nature}}]{
   If the average exhaustions of a man's power to avoid death were such that at the end of equal infinitely small intervals of time, he lost equal portions of his remaining power to oppose destruction which he had at the commencement of thoseintervals, then at the age his power to avoid death, or the intensity of his mortality might be denoted by \(aq^x\), \(a\) and \(q\) being constant quantities;
 }
-The intensity of mortality can be seen as \(\gamma(t)\) in \cref{eq:rough-gompertz-system-ode}, with \(\gamma(t) = aq^x\) serving as a solution to the lower equation in \ref{eq:rough-gompertz-system-ode} when \(\ln(q) = -b\).
+The intensity of mortality can be seen as \(\gamma(t)\) in \cref{eq:rough-gompertz-system-ode}, with \(\gamma(t) = aq^x\) serving as a solution to the lower equation in \cref{eq:rough-gompertz-system-ode} when \(\ln(q) = -b\).
 Since \cref{eq:rough-gompertz-classical-ode} is a partial solution to \cref{eq:rough-gompertz-system-ode}, these two families of differential equations will henceforth be referred to collectively as \enquote{classical Gompertz ODE:s}, the latter formulation being specified as \enquote{classical Gompertz ODE:s on system form}.
 The classical Gompertz ODE is the form used in the first paper on biological growth \cite{davidson1928growth}.
 
@@ -118,16 +118,16 @@ Together, \(A\) and \(k_G\) control the shape of the curve.
 % TODO: Write about when this formulation is useful
 \(W_0\) on the other hand is the size at \(t=0\).
 Depending on application either of these two parametrizations might be useful.
-It is therefore necessary to reparametrize both ODE:s \ref{eq:rough-gompertz-classical-ode} and \ref{eq:rough-gompertz-autonomous-ode} using both forms.
+It is therefore necessary to reparametrize both \cref{eq:rough-gompertz-classical-ode} and \cref{eq:rough-gompertz-autonomous-ode} using both forms.
 
 To reparametrize the ODE:s using Gompertz curve parametrizations, the solutions of the ODE:s must be found.
-The classical Gompertz ODE \ref{eq:rough-gompertz-classical-ode} is most easily solved using the fact is separable to integrate over \(W\) and \(t\) separately.
+The classical Gompertz ODE \labelcref{eq:rough-gompertz-classical-ode} is most easily solved using the fact is separable to integrate over \(W\) and \(t\) separately.
 The solutions are thus
 \begin{equation} \label{eq:gompertz-classical-solution}
   W(t) = c e^{-r/b \cdot e^{-b t}}
 \end{equation}
 where \(c\) is an arbitrary constant.
-The autonomous Gompertz ODE \ref{eq:rough-gompertz-autonomous-ode} is most easily solved using the variable substitution \(y(t) = \ln(W(t)/K)\) and then solving the resulting ODE.
+The autonomous Gompertz ODE \labelcref{eq:rough-gompertz-autonomous-ode} is most easily solved using the variable substitution \(y(t) = \ln(W(t)/K)\) and then solving the resulting ODE.
 The solutions are thus on the form
 \begin{equation} \label{eq:gompertz-autonomous-solution}
   W(t) = K e^{c e^{-\alpha t}}
@@ -142,7 +142,7 @@ Comparing the solutions in \cref{eq:gompertz-classical-solution,eq:gompertz-auto
   K &= A
 \end{align}
 between the parameters can be found.
-The classical Gompertz ODE \ref{eq:rough-gompertz-classical-ode} and the autonomous Gompertz ODE \ref{eq:rough-gompertz-autonomous-ode} can thus be reparametrized as
+The classical Gompertz ODE \labelcref{eq:rough-gompertz-classical-ode} and the autonomous Gompertz ODE \labelcref{eq:rough-gompertz-autonomous-ode} can thus be reparametrized as
 \begin{flalign}
     \text{Classical, } & T_i :& \dv{W}{t} &= k_G e^{-k_G (t - T_i)} W(t) &&\FlLabel{eq:gompertz-classical-ti} \\
     \text{Classical, } & W_0 :& \dv{W}{t} &= k_G \ln(\frac{W_0}{A})e^{-k_G t} W(t) &&\FlLabel{eq:gompertz-classical-w0} \\
@@ -202,7 +202,7 @@ Thus, by separating the tangent field into terms with independent arbitrary elem
   X_3 &= \ln(\frac{W}{A}) W \partial_W \\
   X_f &= f(t) \partial_t - k_G f(t) \ln(\frac{W}{A}) W \partial_W
 \end{align}
-of Lie point symmetries of the autonomous Gompertz ODE \ref{eq:gompertz-autonomous} can be found.
+of Lie point symmetries of the autonomous Gompertz ODE \labelcref{eq:gompertz-autonomous} can be found.
 
 The symmetry generator \(X_f\) is a trivial symmetry of the autonomous ODE, since the reduced characteristic of it is
 \begin{align}
@@ -215,7 +215,7 @@ The reduced characteristic of \(X_F\) for the classical ODE is
   &= - k_G f(t) \ln(\frac{W}{A}) W - k_G e^{-k_G (t - T_i)} W f(t)\\
   &= - k_G f(t) W \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right).
 \end{align}
-It is worth noting that since \(A\) is not a parameter of the classical ODE \ref{eq:gompertz-classical-ti}, only symmetries that hold for any \(A\) will be actual symmetries.
+It is worth noting that since \(A\) is not a parameter of the classical ODE \labelcref{eq:gompertz-classical-ti}, only symmetries that hold for any \(A\) will be actual symmetries.
 The linearized symmetry condition for the classical ODE can be formulated as
 \begin{equation}
   \partial_t(\bar{Q}_{f,c}) + \omega_c \partial_W(\bar{Q}_{f,c}) = \partial_W(\omega_c) \bar{Q}_{f,c}

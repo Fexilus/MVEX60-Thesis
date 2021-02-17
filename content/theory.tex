@@ -26,9 +26,9 @@ Rotating an equilateral triangle 120 or 240 degrees around its center will chang
 Since the edges are unchanged relative to the points, these rotations thus constitute a symmetry of the triangle.
 It is worth noting that the rotational transformations map points from the 2-dimensional plane to the two dimensional plane or, stated in mathematical terms, the rotations are mappings \(\Gamma: \reals^2 \to \reals^2\).
 
-In group analysis transformations of this type are considered, but the structure of a triangle is instead replaced with the structure of a differential equation.
+In Lie group analysis transformations of this type are considered, but the structure of a triangle is instead replaced with the structure of a differential equation.
 Initially, assume the differential equation is an ordinary differential equation (ODE) of the first order and can thus be written on the form
-\begin{equation} \label{eq:first-order-ode}
+\begin{equation} \label[ode]{eq:first-order-ode}
   \dv{y}{x} = \omega(x,y).
 \end{equation}
 The structure of a first order ODE is thus defined by the function \(\omega\).
@@ -36,7 +36,7 @@ The structure of a first order ODE is thus defined by the function \(\omega\).
 Geometrically, a solution curve can be thought of as a set \(\gamma_u\) of points in the \(xy\)-plane for which \(y = u(x)\) holds for all \(x\).
 Every point in the \(xy\)-plane corresponds to exactly one such curve \(\gamma_u\).
 
-A symmetry of a first order ODE \ref{eq:first-order-ode} is then a transformation that preserves the solution curves.
+A symmetry of a first order ODE \labelcref{eq:first-order-ode} is then a transformation that preserves the solution curves.
 This means that if and only if two points \(\pqty{x_1,y_1}\) and \(\pqty{x_2,y_2}\) belong to the same solution curve \(\gamma\), the transformed points \(\Gamma(x_1,y_1)\) and \(\Gamma(x_2,y_2)\) belong to the same solution curve, denoted by \(\Gamma\gamma\).
 This property can be defined as:
 \begin{defn}[Point symmetry] \label{defn:first-order-symmetry}
@@ -44,7 +44,7 @@ This property can be defined as:
   \begin{equation}
     \Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}
   \end{equation}
-  is a point symmetry of the ODE \ref{eq:first-order-ode} if
+  is a point symmetry of \cref{eq:first-order-ode} if
   \begin{equation}
     \dv{y}{x} = \omega(x,y)
     \implies
@@ -58,7 +58,7 @@ This must not always be the case for symmetries, but that discussion is deferred
 \subsection{Jet spaces} \label{sec:jet-spaces}
 
 The observant reader might have already noted that there is some need of clarification of \cref{defn:first-order-symmetry}.
-While the transformation \(\Gamma\) treats \(y\) as a point in \(\reals\), the ODE \ref{eq:first-order-ode} treats \(y\) as a differentiable function of \(x\), or in other words an element of once continuously differentiable functions \(\mathcal{C}^1(\reals)\).
+While the transformation \(\Gamma\) treats \(y\) as a point in \(\reals\), \cref{eq:first-order-ode} treats \(y\) as a differentiable function of \(x\), or in other words an element of once continuously differentiable functions \(\mathcal{C}^1(\reals)\).
 In many contexts this abuse of notation could be accepted without further remarks, but in group analysis the subtleties of these representations are key to some important results.
 % TODO: Something about local theory
 
@@ -124,15 +124,15 @@ Due to the chain rule,
   \frac{\pdv{\hat{y}}{x} + \pdv{\hat{y}}{y} \dv{y}{x}}{\pdv{\hat{x}}{x} + \pdv{\hat{x}}{y} \dv{y}{x}} =
   \frac{\tD{x} \hat{y}(x,y)}{\tD{x} \hat{x}(x,y)}.
 \end{equation}
-Using this and the equivalent formulation of the ODE \ref{eq:first-order-ode} in \cref{eq:first-order-jet-ode}, \cref{defn:first-order-symmetry} of a first order symmetry can be restated in the first order jet space \(J_1\).
+Using this and the equivalent formulation of \cref{eq:first-order-ode} in \cref{eq:first-order-jet-ode}, \cref{defn:first-order-symmetry} of a first order symmetry can be restated in the first order jet space \(J_1\).
 \begin{lem} \label{lem:simple-first-order-symmetry}
-  A transformation \(\Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}\) is a point symmetry of the ODE \ref{eq:first-order-ode} if and only if
+  A transformation \(\Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}\) is a point symmetry of \cref{eq:first-order-ode} if and only if
   \begin{equation} \label{eq:simple-first-order-symmetry}
     \frac{\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}} = \omega(\hat{x},\hat{y})
   \end{equation}
   holds.
 \end{lem} % FIXME: Requirement of diffeomorphism
-Given a transformation \(\Gamma\), it is therefore easy to check whether it is a point symmetry of the ODE \ref{eq:first-order-ode}.
+Given a transformation \(\Gamma\), it is therefore easy to check whether it is a point symmetry of \cref{eq:first-order-ode}.
 The reverse process (finding point symmetries of \cref{eq:first-order-ode}) is on the other hand not easy, as \cref{eq:simple-first-order-symmetry} will in all but the most trivial cases result in a non-linear PDE in with two unknown functions.
 By restricting attention to a specific type of point symmetries, these conditions can be simplified.
 
@@ -200,7 +200,7 @@ The tangent field can be thought of as the field that points in \(E\) will flow 
 
 Using the tangent field of a one-parameter Lie symmetry group, the symmetry condition as formulated in \cref{lem:simple-first-order-symmetry} can be further simplified.
 \begin{lem} \label{lem:linearized-first-order-symmetry}
-  The transformations in a Lie group of point transformations are symmetries of the ODE \ref{eq:first-order-ode} if and only if
+  The transformations in a Lie group of point transformations are symmetries of \cref{eq:first-order-ode} if and only if
   \begin{equation}
     \partial_x \eta + (\partial_y \eta - \partial_x \xi) \omega - \partial_y (\xi) \omega^2 =
     \xi \partial_x \omega + \eta \partial_y \omega,
@@ -208,7 +208,7 @@ Using the tangent field of a one-parameter Lie symmetry group, the symmetry cond
   where \(\pqty{\xi(x,y), \eta(x,y)}\) is the tangent field of the Lie group.
 \end{lem}
 \begin{proof}
-  The transformations \(\Gamma_\epsilon\) are point symmetries of the ODE \ref{eq:first-order-ode} if and only if
+  The transformations \(\Gamma_\epsilon\) are point symmetries of \cref{eq:first-order-ode} if and only if
   \begin{equation} \label{eq:parametrized-symmetry-cond}
     \frac{\partial_x \hat{y}(x,y;\epsilon) + \omega(x,y) \partial_y \hat{y}(x,y;\epsilon)}{\partial_x \hat{x}(x,y;\epsilon) + \omega(x,y) \partial_y \hat{x}(x,y;\epsilon)} = \omega(\hat{x}(x,y;\epsilon),\hat{y}(x,y;\epsilon)).
   \end{equation}
@@ -325,14 +325,14 @@ where
 where the subscripts \(x\) and \(y\) denote the partial derivatives \(\partial_x\) and \(\partial_y\).
 The linearized symmetry condition in \cref{lem:linearized-first-order-symmetry} can be rewritten using the infinitesimal operator.
 \begin{lem} \label{lem:linearized-first-order-symmetry-infinitesimal}
-  A Lie group of point transformations is a symmetry of the ODE \ref{eq:first-order-ode} if
+  A Lie group of point transformations is a symmetry of \cref{eq:first-order-ode} if
   \begin{equation} \label{eq:linearized-first-order-symmetry}
     \eval{\underset{1}{X}\left(y' - \omega(x,y)\right)}_{y' = \omega(x,y)} = 0,
   \end{equation}
   where \(\underset{1}{X}\) is the first prolongation of the infinitesimal generator of the Lie group of point transformations.
 \end{lem}
 On this form, the linearized symmetry condition is easier to interpret:
-\(\varepsilon(\underset{1}{z}) = y' - \omega(x,y) = 0\) holds for a solution of the ODE \ref{eq:first-order-ode}.
+\(\varepsilon(\underset{1}{z}) = y' - \omega(x,y) = 0\) holds for a solution of \cref{eq:first-order-ode}.
 Since the transformations of solution curves must be solution curves in order for the transformations to be a symmetry group, the value of \(\varepsilon(\underset{1}{z})\) must not change.
 By evaluating the expression at \(y' = \omega(x,y)\), it is ensured that this holds for any solution to \cref{eq:first-order-ode}.
 
