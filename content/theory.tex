@@ -32,9 +32,11 @@ Initially, assume the differential equation is an ordinary differential equation
   \dv{y}{x} = \omega(x,y).
 \end{equation}
 The structure of a first order ODE is thus defined by the function \(\omega\).
-\(\omega\) defines an infinite set of solution curves \(u(x)\) that all fulfill \cref{eq:first-order-ode}.
-Geometrically, a solution curve can be thought of as a set \(\gamma_u\) of points in the \(xy\)-plane for which \(y = u(x)\) holds for all \(x\).
-Every point in the \(xy\)-plane corresponds to exactly one such curve \(\gamma_u\).
+\(\omega\) defines an infinite set of solutions \(u(x)\) that all fulfill \cref{eq:first-order-ode}.
+Geometrically, a solution can be thought of as a set \(\gamma_u\) of points in the \(xy\)-plane, which constitutes a curve, for which \(y = u(x)\) holds for all \(x\).
+Not every curve in the \(xy\)-plane corresponds to a differentiable function however.
+A curve corresponds to a function if and only if it is transverse, that is: the tangent of the curve never points in only the \(y\)-direction.
+Additionally for a differential equation, every point in the \(xy\)-plane belongs to exactly one such curve \(\gamma_u\): the curve of the solution that runs through that point.
 
 A symmetry of a first order ODE \labelcref{eq:first-order-ode} is then a transformation that preserves the solution curves.
 This means that if and only if two points \(\pqty{x_1,y_1}\) and \(\pqty{x_2,y_2}\) belong to the same solution curve \(\gamma\), the transformed points \(\Gamma(x_1,y_1)\) and \(\Gamma(x_2,y_2)\) belong to the same solution curve, denoted by \(\Gamma\gamma\).
