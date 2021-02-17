@@ -65,21 +65,23 @@ In many contexts this abuse of notation could be accepted without further remark
 % TODO: Something about local theory
 
 The \(xy\)-plane previously mentioned can be seen as consisting of two components: the independent space \(X \simeq \reals\) and the dependent space \(Y \simeq \reals\).
-The plane then is the product space \(E = X \cross Y \simeq \reals^2\).
+The plane then is the product space \(E = X \times Y \simeq \reals^2\).
 It is in this plane \(E\) that the curves \(\gamma\) live.
 To be able to formulate differential statements, the space \(Y_1 = \reals\), sometimes called the first continuation of \(Y\) with respect to \(X\), is used.
 The elements of \(Y_1\) will be denoted \(y'\) or \(y^{(1)}\).
 The notation implies that the elements correspond to first derivatives of the function \(y(x)\), but it is important to note that in actuality the elements are scalar values.
-\(Y_1\) can be combined with \(E\) to create \(J_1 = J_1 E = E \cross Y_1 \simeq \reals^3\), the first order jet space of \(E\).
-Elements in \(J_1\) will be denoted \(\underset{1}{z} = \qty(x, y, y')\).
-
-All differentiable functions \(u(x) \in \cont{1}{X}\) have a single equivalent curve \(\underset{1}{\gamma_u}\) in the jet space \(J_1\) called the first prolongation of \(u(x)\).
-The prolongation can be defined pointwise as
+\(Y_1\) can be combined with \(E\) to create \(J_1 = J_1 E = E \times Y_1 = X \times \prolong{Y}{1} \simeq \reals^3\), the first order jet space of \(E\).
+All differentiable functions \(u: X \to Y\) have a single equivalent function \(\prolong{u}{1}: X \to \prolong{Y}{1}\) called the first prolongation of \(u(x)\).
+The prolongation is defined as
+% FIXME: Avoid relax
 \begin{equation}
-  \underset{1}{\gamma_u} = \qty{\underset{1}{z} = \qty(\fixed{x}, y, y')\qq*{:} y = u(\fixed{x})\qc y' = \dv{u}{x}{(\fixed{x})}\qc \fixed{x} \in X}.
+  \prolong{u}{1}(x) = \qty(u(x), \dv{u}{x}\relax(x)).
 \end{equation}
-While all functions have equivalent curves in \(J_1\), the opposite does not hold.
-It is thus a proper subset of all curves in \(J_1\) that are prolongations of functions in \(\cont{1}{X}\).
+In extension to this concept, a smooth transverse curve \(\gamma \subset E\) has a prolongation which is a curve \(\prolong{\gamma}{1} \subset J_1\) defined by
+\begin{equation}
+  \prolong{\gamma}{1} = \qty{\qty(x, \prolong{u}{1}(x)): x \in X},
+\end{equation}
+where \(u\) is the function corresponding\dots
 
 An ODE can be reformulated using jet spaces.
 The solutions of a first order ODE are functions satisfying an equation that can be written on the for of \cref{eq:first-order-ode}.
@@ -91,7 +93,7 @@ as well as the condition that the curve is a prolongation of some continuously d
 
 For higher order ODE:s, the theory can be extended to include higher order jet spaces \(J_k = J_k E\) that take the form
 \begin{equation}
-  J_k = X \cross Y \cross Y_1 \cross \dots \cross Y_k,
+  J_k = X \times Y \times Y_1 \times \dots \times Y_k,
 \end{equation}
 with elements
 \begin{equation}
