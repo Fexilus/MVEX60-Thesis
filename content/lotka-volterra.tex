@@ -83,8 +83,8 @@ Thus the determining equations of the kernel of the full symmetry groups are
     \label{eq:lotka-volterra-kernel-det-equations-3}
     - \qty(u^1)^2 \xi_{u^1} &= 0 \\
     \begin{split}\label{eq:lotka-volterra-kernel-det-equations-4}
-      \eta^2_t - u^1 u^2 \eta^2_{u^1} + \qty(u^1 u^2 - u^2) \qty(\eta^2_{u^2} - \xi_t) + u^1 u^2 \qty(u^1 u^2 - u^2) \xi_{u^1} -&\\
-      - \qty(u^1 u^2 - u^2)^2 \xi_{u^2} - u^2 \eta^1 - \qty(u^1 - 1) \eta^2 &= 0
+      \eta^2_t - u^1 u^2 \eta^2_{u^1} + \qty(u^1 u^2 - u^2) \qty(\eta^2_{u^2} - \xi_t) +&\\
+      + u^1 u^2 \qty(u^1 u^2 - u^2) \xi_{u^1} - \qty(u^1 u^2 - u^2)^2 \xi_{u^2} - u^2 \eta^1 - \qty(u^1 - 1) \eta^2 &= 0
     \end{split}\\
     \label{eq:lotka-volterra-kernel-det-equations-5}
     u^1 \eta^2_{u^1} - u^1 \qty(u^1 u^2 - u^2) \xi_{u^1} &= 0. 
@@ -102,13 +102,15 @@ Thus \cref{eq:lotka-volterra-kernel-det-equations-1,eq:lotka-volterra-kernel-det
 \begin{subequations}\label{eq:lotka-volterra-kernel-det-equations-simplify-1}
   \begin{align}
     \begin{split}\label{eq:lotka-volterra-kernel-det-equations-simplify-1-1}
-      \eta^1_t - u^1 u^2 \qty(\eta^1_{u^1} - \xi_t) + \qty(u^1 u^2 - u^2) \eta^1_{u^2} + u^1 u^2 \qty(u^1 u^2 - u^2) \xi_{u^2} + u^2 \eta^1 +&\\
-      + u^1 \eta^2 &= 0
+      \eta^1_t - u^1 u^2 \qty(\eta^1_{u^1} - \xi_t) + \qty(u^1 u^2 - u^2) \eta^1_{u^2} +&\\
+      + u^1 u^2 \qty(u^1 u^2 - u^2) \xi_{u^2} + u^2 \eta^1 + u^1 \eta^2 &= 0
     \end{split}\\
     \label{eq:lotka-volterra-kernel-det-equations-simplify-1-2}
     u^1 \qty(\eta^1_{u^1} - \xi_t) - u^1 \qty(u^1 u^2 - u^2) \xi_{u^2} - \eta^1 &= 0 \\
-    \label{eq:lotka-volterra-kernel-det-equations-simplify-1-4}
-    \eta^2_t + \qty(u^1 u^2 - u^2) \qty(\eta^2_{u^2} - \xi_t) - \qty(u^1 u^2 - u^2)^2 \xi_{u^2} - u^2 \eta^1 - \qty(u^1 - 1) \eta^2 &= 0.
+    \begin{split}\label{eq:lotka-volterra-kernel-det-equations-simplify-1-4}
+      \eta^2_t + \qty(u^1 u^2 - u^2) \qty(\eta^2_{u^2} - \xi_t) - \qty(u^1 u^2 - u^2)^2 \xi_{u^2} - u^2 \eta^1 -&\\
+      - \qty(u^1 - 1) \eta^2 &= 0.
+    \end{split}
   \end{align}
 \end{subequations}
 Since the derivative of any differential equation must hold when the original differential equation holds, the derivative of \cref{eq:lotka-volterra-kernel-det-equations-simplify-1-4} in \(u^1\)
