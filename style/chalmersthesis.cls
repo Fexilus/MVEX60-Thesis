@@ -228,7 +228,8 @@
     
     Typeset in \LaTeX\\
     Printed by Chalmers Reproservice\\
-    Gothenburg, Sweden \@date
+    Gothenburg, Sweden \@date\\
+    \@thanks
   \end{titlepage}
   \restoregeometry
   \setcounter{footnote}{0}%
