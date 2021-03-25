@@ -1,0 +1,329 @@
+\chapter{Finding symmetries using parameter independence}
+
+Here there will be an introduction on the parameter independence method, mentioning that it is inspired by \cite{ovsiannikov1982group} etc.
+
+\section{The Gompertz model}
+To reiterate, the Gompertz models are\par\noindent
+\begin{tabularx}{\linewidth}{rrM}
+  Classical, & \(T_i\) :&
+  \begin{minipage}{\linewidth}
+    \begin{equation}
+      \dv{W}{t} = k_G e^{-k_G (t - T_i)} W(t) \label{eq:gompertz-classical-ti}
+    \end{equation}
+  \end{minipage}\tabularnewline
+  Classical, & \(W_0\) :&
+  \begin{minipage}{\linewidth}
+    \begin{equation}
+      \dv{W}{t} = k_G \ln(\frac{W_0}{A})e^{-k_G t} W(t) \label{eq:gompertz-classical-w0}
+    \end{equation}
+  \end{minipage}\tabularnewline
+  Autonomous, & \(T_i\) and \(W_0\) :&
+  \begin{minipage}{\linewidth}
+    \begin{equation}
+      \dv{W}{t} = -k_G \ln(\frac{W(t)}{A}) W(t) \label{eq:gompertz-autonomous}
+    \end{equation}
+  \end{minipage}\tabularnewline
+  System, & \(T_i\) and \(W_0\) :&
+  \begin{minipage}{\linewidth}%
+    {\begin{subequations}\label{eq:gompertz-system}
+      \begin{align}
+        \dv{W}{t} &= G(t) W(t) \label{eq:gompertz-system-a}\\
+        \dv{G}{t} &= -k_G G(t). \label{eq:gompertz-system-b}
+      \end{align}
+    \end{subequations}}%
+  \end{minipage}
+\end{tabularx}
+
+\subsection{The classical Gompertz model}
+
+For the classical Gompertz model, two different parametrizations exist.
+For the purposes of the parameter independence method, either of these parametrizations may be used since the parameters \(T_i\) and \(W_0\) only depend on each other and the parameter \(k_G\), but neither the time \(t\) nor the state \(W\).
+The \(T_i\) will be used in these calculations.
+
+The linearized symmetry condition \labelcref{eq:linearized-first-order-symmetry} is for the classical \(T_i\)-parameterized Gompertz model
+\begin{equation}\label{eq:gompertz-classical-lin-symmetry-cond}
+  \begin{split}
+    \eta_t &+ k_G e^{-k_G (t - T_i)} W\left(\eta_W - \xi_t\right) - (k_G)^2 e^{-2k_G (t - T_i)} W^2 \xi_W +\\ &+ (k_G)^2 e^{-k_G (t - T_i)} W \xi - k_G e^{-k_G (t - T_i)} \eta = 0.
+  \end{split}
+\end{equation}
+For a generator \(\qty(\xi, \eta)\) to be independent of a parameter, \cref{eq:gompertz-classical-lin-symmetry-cond} is decomposed by functionally independent coefficients of that parameter.
+
+\subsubsection{\texorpdfstring{\(k_G\)-independent symmetries}{Growth rate-independent symmetries}}
+
+Decomposition of \cref{eq:gompertz-classical-lin-symmetry-cond} in \(k_G\) gives the parameter independence determining equations
+\begin{subequations}
+  \begin{flalign}
+    1 & : & \eta_t &= 0 && \FlLabel{eq:gompertz-classical-det-kg-a}\\
+    k_G e^{-k_G (t - T_i)} & : & W \left(\eta_W - \xi_t\right) - \eta &= 0 && \FlLabel{eq:gompertz-classical-det-kg-b}\\
+    (k_G)^2 e^{-k_G (t - T_i)} & : & W \xi &= 0 && \FlLabel{eq:gompertz-classical-det-kg-c}\\
+    (k_G)^2 e^{-2k_G (t - T_i)} & : & W^2 \xi_W &= 0. && \FlLabel{eq:gompertz-classical-det-kg-d}
+  \end{flalign}
+\end{subequations}
+From \cref{eq:gompertz-classical-det-kg-c} it is clear that
+\begin{equation}
+  \xi \equiv 0,
+\end{equation}
+and hence \cref{eq:gompertz-classical-det-kg-d} must also hold.
+From \cref{eq:gompertz-classical-det-kg-a} it is clear that
+\begin{equation}
+  \eta = \eta(W)
+\end{equation}
+is a function only in \(W\).
+This leaves \cref{eq:gompertz-classical-det-kg-b} that simplifies into the ODE
+\begin{equation}
+  W \eta_W - \eta = 0
+\end{equation}
+with the general solution
+\begin{equation}
+  \eta = c_1 W,
+\end{equation}
+where \(c_1\) is an arbitrary constant.
+Thus any \(k_G\)-independent symmetry generator of the classical Gompertz model \labelcref{eq:gompertz-classical-ti} must have the form
+\begin{align}
+  \xi &= 0 \\
+  \eta &= c_1 W,
+\end{align}
+which is spanned by the generator basis
+\begin{equation}
+  X_{\text{c},1} = W \partial_W.
+\end{equation}
+
+\subsubsection{\texorpdfstring{\(T_i\)-independent symmetries}{Inflection time-independent symmetries}}
+
+Decomposition of \cref{eq:gompertz-classical-lin-symmetry-cond} in \(T_i\) gives the parameter independence determining equations
+\begin{subequations}
+  \begin{flalign}
+    1 & : & \eta_t &= 0 && \FlLabel{eq:gompertz-classical-det-ti-a}\\
+    e^{k_G T_i} & : & k_G e^{-k_G t} W \left(\eta_W - \xi_t\right) + (k_G)^2 e^{-k_G t} W \xi - k_G e^{-k_G t} \eta &= 0 && \FlLabel{eq:gompertz-classical-det-ti-b}\\
+    e^{2 k_G T_i} & : & -(k_G)^2 e^{-2 k_G t} W^2 \xi_W &= 0 && \FlLabel{eq:gompertz-classical-det-ti-c}
+  \end{flalign}
+\end{subequations}
+From \cref{eq:gompertz-classical-det-ti-a,eq:gompertz-classical-det-ti-c} it is clear that
+\begin{align}
+  \eta &= \eta(W) \\
+  \xi = \xi(t)
+\end{align}
+respectively.
+Dividing \cref{eq:gompertz-classical-det-ti-b} by \(k_G e^{-k_G t}\) shows that
+\begin{equation}\label{eq:gompertz-classical-det-ti-b-simple}
+  W \left(\eta_W - \xi_t\right) + k_G W \xi - \eta = 0.
+\end{equation}
+Since \(\xi\) (and thus its derivative) is the only source of time dependence in \cref{eq:gompertz-classical-det-ti-b-simple},
+\begin{equation}
+  k_G W \xi - W \xi_t = f(W).
+\end{equation}
+for some function \(f\) in \(W\).
+And since \(\xi\) (and thus its derivative) are functions only in \(t\)
+\begin{equation}
+  k_G \xi - \xi_t = c_1,
+\end{equation}
+where \(c_1\) is an arbitrary constant, which in turn has the general solution
+\begin{equation}
+  \xi = c_2 e^{k_G t} + \frac{c_1}{k_G}
+\end{equation}
+with an additional arbitrary constant \(c_2\).
+Insertion of this result in \cref{eq:gompertz-classical-det-ti-b-simple} yields
+\begin{equation}
+  W \eta_W - \eta + c_1 W = 0,
+\end{equation}
+which, since \(\eta\) is only a function in \(W\), is a straight forward ODE with the general solution
+\begin{equation}
+  \eta = -c_1 W \ln(W) + c_3 W.
+\end{equation}
+Thus any \(T_i\)-independent symmetry generator of the classical Gompertz model \labelcref{eq:gompertz-classical-ti} must have the form
+\begin{align}
+  \xi &= \frac{c_1}{k_G} + c_2 e^{k_G t} \\
+  \eta &= -c_1 W \ln(W) + c_3 W,
+\end{align}
+which is spanned by the generator basis
+\begin{align}
+  X_{\text{c},2} &= \partial_t - k_G W \ln(W) \partial_W \\
+  X_{\text{c},3} &= e^{k_G t} \partial_t \\
+  X_{\text{c},4} &= W \partial_W = X_{\text{c},1}.
+\end{align}
+
+
+\subsection{The autonomous Gompertz model}
+
+For the autonomous Gompertz model there is only one parametrization of interest.
+The linearized symmetry condition \labelcref{eq:linearized-first-order-symmetry} is for the autonomous Gompertz model
+\begin{equation}\label{eq:gompertz-autonomous-lin-symmetry-cond}
+  \begin{split}
+    \eta_t &- k_G \ln(\frac{W}{A}) W\left(\eta_W - \xi_t\right) - (k_G)^2 \left(\ln(\frac{W(t)}{A})\right)^2 W^2 \xi_W +\\ &+ k_G \left(\ln(\frac{W}{A}) + 1\right) \eta = 0.
+  \end{split}
+\end{equation}
+
+\subsubsection{\texorpdfstring{\(k_G\)-independent symmetries}{Growth rate-independent symmetries}}
+
+Decomposition of \cref{eq:gompertz-autonomous-lin-symmetry-cond} in \(k_G\) gives the parameter independence determining equations
+\begin{subequations}
+  \begin{flalign}
+    1 & : & \eta_t &= 0 && \FlLabel{eq:gompertz-autonomous-det-kg-a}\\
+    k_G & : & -\ln(\frac{W}{A}) W\left(\eta_W - \xi_t\right) + \left(\ln(\frac{W}{A}) + 1\right) \eta &= 0 && \FlLabel{eq:gompertz-autonomous-det-kg-b}\\
+    (k_G)^2 & : & -\left(\ln(\frac{W(t)}{A})\right)^2 W^2 \xi_W &= 0. && \FlLabel{eq:gompertz-autonomous-det-kg-c}
+  \end{flalign}
+\end{subequations}
+From \cref{eq:gompertz-autonomous-det-kg-a,eq:gompertz-autonomous-det-kg-c}
+\begin{align}
+  \eta &= \eta(W) \\
+  \xi = \xi(t).
+\end{align}
+Hence, since the only source of time dependence in \cref{eq:gompertz-autonomous-det-kg-b} is \(\xi_t\),
+\begin{equation}
+  \xi_t = c_1
+\end{equation}
+where \(c_1\) is an arbitrary constant, and thus
+\begin{equation}
+  \xi = c_2 t + c_1
+\end{equation}
+for an additional arbitrary constant \(c_2\).
+\Cref{eq:gompertz-autonomous-det-kg-b} can thus be rewritten as
+\begin{equation}
+  \eta_W - \frac{\ln(\frac{W}{A}) + 1}{\ln(\frac{W}{A}) W} \eta - c_1 = 0,
+\end{equation}
+which is a scalar first order ODE with the solution
+\begin{equation}
+  \eta = c_1 \ln(\ln(\frac{W}{A})) \ln(\frac{W}{A}) W + c_3 \ln(\frac{W}{A}) W.
+\end{equation}
+Thus any \(k_G\)-independent symmetry generator of the autonomous Gompertz model \labelcref{eq:gompertz-autonomous} must have the form
+\begin{align}
+  \xi &= c_2 + c_1 t \\
+  \eta &= c_1 \ln(\ln(\frac{W}{A})) \ln(\frac{W}{A}) W + c_3 \ln(\frac{W}{A}) W,
+\end{align}
+which is spanned by the generator basis
+\begin{align}
+  X_{\text{a},1} &= \partial_t \\
+  X_{\text{a},2} &= t \partial_t + \ln(\ln(\frac{W}{A})) \ln(\frac{W}{A}) W \partial_W\\
+  X_{\text{a},3} &= \ln(\frac{W}{A}) W \partial_W.
+\end{align}
+
+\subsubsection{\texorpdfstring{\(A\)-independent symmetries}{Carrying capacity-independent symmetries}}
+
+Decomposition of \cref{eq:gompertz-autonomous-lin-symmetry-cond} in \(A\) gives the parameter independence determining equations
+\begin{subequations}
+  \begin{flalign}
+    1 & : & \eta_t + k_G \eta &= 0 && \FlLabel{eq:gompertz-autonomous-det-a-a}\\
+    \ln(\frac{W}{A}) & : & - k_G W\left(\eta_W - \xi_t\right)  + k_G \eta &= 0 && \FlLabel{eq:gompertz-autonomous-det-a-b}\\
+    \left(\ln(\frac{W}{A})\right)^2 & : & - (k_G)^2 W^2 \xi_W &= 0. && \FlLabel{eq:gompertz-autonomous-det-a-c}
+  \end{flalign}
+\end{subequations}
+From \cref{eq:gompertz-autonomous-det-a-c}
+\begin{equation}
+  \xi = \xi(t).
+\end{equation}
+Since \(\eta\) (and thus its derivative) are the only unknown sources of \(W\)-dependence in \cref{eq:gompertz-autonomous-det-a-b},
+\begin{equation}
+  \eta_W - \frac{1}{W}\eta = \xi_t(t)
+\end{equation}
+must hold.
+Integration in \(W\) gives
+\begin{equation}
+  \eta = \ln(W) W \xi_t(t) + W f(t)
+\end{equation}
+for some arbitrary function \(f\) in time.
+Inserting this result in \cref{eq:gompertz-autonomous-det-a-a} gives
+\begin{equation}
+  \ln(W) W \xi_{tt} + W f_t + k_G \ln(W) W \xi_t + k_G W f
+\end{equation}
+which can be decomposed by \(W\) into
+\begin{align}
+  \xi_{tt} + k_G \xi_t &= 0 \\
+  f_t + k_G f &= 0
+\end{align}
+with solutions
+\begin{align}
+  \xi &= - c_1 \frac{1}{k_G} e^{-k_G t} + c_2 \\
+  f &= c_3 e^{-k_G t}.
+\end{align}
+Thus any \(A\)-independent symmetry generator of the autonomous Gompertz model \labelcref{eq:gompertz-autonomous} must have the form
+\begin{align}
+  \xi &= - c_1 \frac{1}{k_G} e^{-k_G t} + c_2 \\
+  \eta &= c_1 e^{-k_G t} \ln(W) W  + c_3 e^{-k_G t} W,
+\end{align}
+which is spanned by the generator basis
+\begin{align}
+  X_{\text{a},4} &= - \frac{1}{k_G} e^{-k_G t} \partial_t + e^{-k_G t} \ln(W) W \partial_W\\
+  X_{\text{a},5} &= \partial_t = X_{\text{a},1}\\
+  X_{\text{a},6} &= e^{-k_G t} W \partial_W.
+\end{align}
+
+
+\subsection{The system Gompertz model}
+
+For the system Gompertz model there is also only one parametrization of interest.
+The linearized symmetry condition \labelcref{eq:linearized-first-order-symmetry} is for the system Gompertz model
+\begin{subequations}\label{eq:gompertz-system-lin-symmetry-cond}
+  \begin{align}
+    \begin{split}\label{eq:gompertz-system-lin-symmetry-cond-a}
+      \eta^1_t + W G \left(\eta^1_W - \xi_t\right) -k_G G \eta^1_G - W^2 G^2 \xi_W +&\\+ k_G W G^2 \xi_G - G \eta^1 - W \eta^2 &= 0 
+    \end{split}\\
+    \begin{split}\label{eq:gompertz-system-lin-symmetry-cond-b}
+      \eta^2_t - k_G G \left(\eta^2_G - \xi_t\right) + W G \eta^2_G + k_G W G^2 \xi_W -&\\- (k_G)^2 G^2 \xi_G + k_G \eta^2 &= 0. 
+    \end{split}
+  \end{align}
+\end{subequations}
+
+\subsubsection{\texorpdfstring{\(k_G\)-independent symmetries}{Growth rate-independent symmetries}}
+
+Decomposition of \cref{eq:gompertz-system-lin-symmetry-cond} in \(k_G\) gives the parameter independence determining equations
+\begin{subequations}
+  \begin{flalign}
+    \labelcref{eq:gompertz-system-lin-symmetry-cond-a},\ & 1 : & \eta^1_t + W G \left(\eta^1_W - \xi_t\right) - W^2 G^2 \xi_W - G \eta^1 - W \eta^2 &= 0 && \FlLabel{eq:gompertz-system-det-kg-a}\\
+    \labelcref{eq:gompertz-system-lin-symmetry-cond-a},\ & k_G : & - G \eta^1_G + W G^2 \xi_G &= 0 && \FlLabel{eq:gompertz-system-det-kg-b}\\
+    \labelcref{eq:gompertz-system-lin-symmetry-cond-b},\ & 1 : & \eta^2_t + W G \eta^2_G &= 0. && \FlLabel{eq:gompertz-system-det-kg-c} \\
+    \labelcref{eq:gompertz-system-lin-symmetry-cond-b},\ & k_G : & - G \left(\eta^2_G - \xi_t\right) + W G^2 \xi_W + \eta^2 &= 0. && \FlLabel{eq:gompertz-system-det-kg-d} \\
+    \labelcref{eq:gompertz-system-lin-symmetry-cond-b},\ & (k_G)^2 : & - G^2 \xi_G &= 0. && \FlLabel{eq:gompertz-system-det-kg-e}
+  \end{flalign}
+\end{subequations}
+From \cref{eq:gompertz-system-det-kg-e} it is clear that
+\begin{equation}
+  \xi = \xi(t, W),
+\end{equation}
+and thus from \cref{eq:gompertz-system-det-kg-b}
+\begin{equation}
+  \eta^1 = \eta^1(t, W).
+\end{equation}
+From \cref{eq:gompertz-system-det-kg-a}
+\begin{equation}
+  \eta^2 = \frac{1}{W}\eta^1_t + G \left(\eta^1_W - \xi_t - \frac{1}{W} \eta^1 \right) - W G^2 \xi_W,
+\end{equation}
+and thus \cref{eq:gompertz-system-det-kg-d} can be written as
+\begin{equation}\label{eq:gompertz-system-det-kg-d-simple}
+  \frac{1}{W}\eta^1_t + G \xi_t + 2 G^2 W \xi_W = 0.
+\end{equation}
+Since both \(\xi\) and \(\eta^1\) are not functions in \(G\), \cref{eq:gompertz-system-det-kg-d-simple} can be decomposed in \(G\) giving
+\begin{align}
+  \xi_t &= 0\\
+  \xi_W &= 0\\
+  \eta^1_t &= 0.
+\end{align}
+Thus
+\begin{align}
+  \xi &= c_1\\
+  \eta^1 &= \eta^1(W)
+  \eta^2 &= G \left(\eta^1_W(W) - \frac{1}{W} \eta^1(W) \right),
+\end{align}
+where \(c_1\) is an arbitrary constant, and \cref{eq:gompertz-system-det-kg-c} reduces to
+\begin{equation}
+  W G^2 \left(\eta^1_W - \frac{1}{W} \eta^1 \right)_W = 0.
+\end{equation}
+Thus the ODE
+\begin{equation}
+  \eta^1_W - \frac{1}{W} \eta^1 = c_2
+\end{equation}
+must hold for an arbitrary constant \(c_2\), which has the general solution
+\begin{equation}
+  \eta^1 = c_2 \ln(W) W + c_3 W.
+\end{equation}
+Thus any \(k_G\)-independent symmetry generator of the system Gompertz model \labelcref{eq:gompertz-system}\ghostref{eq:gompertz-system-a}\ghostref{eq:gompertz-system-b} must have the form
+\begin{align}
+  \xi &= c_1 \\
+  \eta^1 &= c_2 \ln(W) W + c_3 W\\
+  \eta^2 &= c_2 G
+\end{align}
+which is spanned by the generator basis
+\begin{align}
+  X_{\text{s},1} &= \partial_t \\
+  X_{\text{s},2} &= \ln(W) W \partial_W + G \partial_G \\
+  X_{\text{s},3} &= W \partial_W.
+\end{align}

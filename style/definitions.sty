@@ -33,6 +33,18 @@
 \newcommand\FlLabel[1]{% Label that is affects the maximal spreading of flalign.
   \,\label{#1}% TODO: Sometimes overflows last label
 }
+\newcolumntype{M}{% Column fixes padding of equations and aligns in minipagees
+  >{%
+    \abovedisplayskip=4.15pt% Set skip before align
+    \abovedisplayshortskip=4.15pt% Set skip before equation
+    \belowdisplayskip=0pt% Remove skip after aligns and equations
+    \noindent% Remove indent to ensure that align and equation behave similarly
+  }%
+  X%
+  <{%
+    \vspace{4.15pt}% Space instead of skip under, since there is no paragraph after
+  }%
+}
 
 % Reference ODE
 \crefname{ode}{the ODE}{the ODE:s}
