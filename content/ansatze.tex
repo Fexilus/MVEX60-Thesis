@@ -1,36 +1,21 @@
-\chapter{The Hill model}
+\chapter{Finding symmetries using ansätze}
 
-In this chapter, Lie point symmetries for the Hill model will be calculated.
+In this chapter symmetries of the models are found using ansätze.
+At some point there will be a nice introduction here.
+
+\section{The Hill model}
+
+In this section, Lie point symmetries for the Hill model will be calculated.
 Since this work has already been done in \cite{ohlsson2020symmetry}, this will serve as a reproduction of their results.
 
-%=============================================================================
-\section{The Hill equation}
+\subsection{A useful infinitesimal generator}
 
-The Hill equation is an ODE that empirically describes cooperative binding to a multi-site protein.
-It takes the form
-\begin{equation} \label{eq:original-hill}
-  \dv{Y}{t} = - v_\text{max} \frac{Y^n}{K_m + Y^n} = \Omega_n(t, Y), \quad
+The Hill equation
+\begin{equation} \tag{eq:hill}
+  \dv{y}{\tau} = - \frac{y^n}{1 + y^n} = \omega_n(\tau, y), \quad
   n > 0.
 \end{equation}
-By nondimensionalizing both the substrate concentration with
-\begin{equation}
-  y = \frac{Y}{{K_m}^{1/n}}
-\end{equation}
-and the time with
-\begin{equation}
-  \tau = v_\text{max} \frac{t}{{K_m}^{1/n}},
-\end{equation}
-\cref{eq:original-hill} simplifies to
-\begin{equation} \label[ode]{eq:hill}
-  \dv{y}{\tau} = - \frac{y^n}{1 + y^n} = \omega_n(\tau, y), \quad
-  n > 0,
-\end{equation}
-where \(y'\) denotes the derivative \(\dv{y}{\tau}\), and will do so for the remainder of this chapter.
-
-%=============================================================================
-\section{A useful infinitesimal generator}
-
-The Hill equation clearly has at least the Lie symmetry generator \(X=\partial_\tau\).
+clearly has at least the Lie symmetry generator \(X=\partial_\tau\).
 This can be seen by observing that \cref{eq:hill} has no \(\tau\) in either side's expression (remember that the equation is viewed in terms of its lift, residing in the jet space \(J^1\)).
 However, one purpose of finding symmetries of differential equations is to distinguish between models.
 Since the symmetry \(X=\partial_\tau\) holds for all \(n\), it can not be used to compare different degrees of Hill models.
@@ -57,8 +42,7 @@ Multiplication with \((1 + y^n)^2\) in turn gives that
 The equation can then be separated by powers of \(y\) into a system of equations.
 However, since \(n\) is specified to be positive, care must be taken to ensure that the separation holds for all \(n>0\).
 
-%-----------------------------------------------------------------------------
-\subsection{Case of \texorpdfstring{\(n\neq1,2\)}{n not 1 or 2}}
+\subsubsection{Case of \texorpdfstring{\(n\neq1,2\)}{n not 1 or 2}}
 
 When \(n>0\) and \(n\neq1,2\), all of the possible powers of \(y\) will be different.
 \Cref{eq:hill-linear-symmetry} can the be separated into the system
@@ -110,8 +94,7 @@ All tangent fields given the Ansatz must therefore be on the form
   \pqty{\tilde{c}_1 + \tilde{c}_2 \left( (1-n) \tau - n y \right), \tilde{c}_2 y}.
 \end{equation}
 
-%-----------------------------------------------------------------------------
-\subsection{Case of \texorpdfstring{\(n=1\)}{n is 1}}
+\subsubsection{Case of \texorpdfstring{\(n=1\)}{n is 1}}
 
 When \(n=1\) several pairs of powers of \(y\) become equal.
 \(y^0 = y^{n-1}\), \(y^1 = y^n\) and \(y^{n+1} = y^{2n}\).
@@ -160,8 +143,7 @@ Thus, all tangent fields given the Ansatz must be on the form
   \pqty{A(\tau) + \left( A(\tau) + \tilde{c}_1 \right) y, - \left( A(\tau) + \tilde{c}_1 \right) y}.
 \end{equation}
 
-%-----------------------------------------------------------------------------
-\subsection{Case of \texorpdfstring{\(n=2\)}{n is 2}}
+\subsubsection{Case of \texorpdfstring{\(n=2\)}{n is 2}}
 
 When \(n=2\), \(y^1 = y^{n-1}\).
 \Cref{eq:hill-linear-symmetry} then separates into the system
@@ -211,7 +193,6 @@ Thus, all tangent fields must given the Ansatz be on the form
   \pqty{\tilde{c}_1 + \tilde{c}_2 \left( - \tau -2 y \right), \tilde{c}_2 y}.
 \end{equation}
 
-%-----------------------------------------------------------------------------
 \subsection{General form}
 
 To unify notation for any \(n>0\), \cref{eq:hill-tangent-field-any,eq:hill-tangent-field-1,eq:hill-tangent-field-2} can be summarized as
@@ -236,42 +217,76 @@ One natural basis is
 where \(X_1\) generates the non-varying symmetry group observed.
 \(X_2\) on the other hand generates symmetry groups varying with \(n\), and can thus be used to distinguish between different Hill models.
 
+\section{The Gompertz model}
 
-%=============================================================================
-\section{Invariant solutions under symmetry}
+\subsection{The autonomous Gompertz ODE}
 
-To better understand the underlying source of the Lie symmetry groups of the Hill equation, it is of interest to find curves invariant under the solution.
-That is, solutions to the ODE that are mapped by the Lie symmetry group to the same curve.
-
-% TODO: Add some references to theory and glue the paragraphs together
-The reduced characteristic of the generator \(X_2 = - \left( (n-1) x + n y \right) \partial_\tau + y \partial_y\) is
 \begin{align}
-  \bar{Q} &= 
-  \eta - \omega \xi = 
-  y - \left( -\frac{y^n}{1+y^2} \right) \left( - \left( (n-1) \tau + n y \right) \right) =\\
-  &= y \left(1 -\frac{y^{n-1} \left( (n-1) \tau + n y \right)}{1+y^2} \right).
+  \xi(t, W) &= f_1(t) + f_2(t) \ln(\frac{W}{A}),\\
+  \eta(t, W) &= f_3(t) W + f_4(t) \ln(\frac{W}{A}) W
 \end{align}
-Since solutions are invariant under a symmetry if the characteristic is 0 on the entire solution curve, invariant solutions must satisfy
+can be taken, where \(f_i\) for \(i =1,2,3,4\) are arbitrary functions in \(t\).
+This results in the determining equation
+\begin{align}
+  f_3'(t) W &+ f_4'(t) \ln(\frac{W}{A}) W \\
+  &+ \left( f_3(t) + f_4(t) \left( 1 + \ln(\frac{W}{A}) \right) - \left( f_1'(t) + f_2'(t) \ln(\frac{W}{A}) \right) \right) \cdot -k_G \ln(\frac{W}{A}) W \\
+  &- \frac{f_2(t)}{W} \left( k_G \ln(\frac{W}{A}) W \right)^2 =\\
+  &= \left( f_3(t) W + f_4(t) \ln(\frac{W}{A}) W \right) \cdot -k_G \left( 1 + \ln(\frac{W}{A}) \right)
+\end{align}
+which can be reduced to
+\begin{align}
+  f_3'(t) W &+ \left( f_4'(t) + k_G f_1'(t) \right) \ln(\frac{W}{A}) W + \left( f_2'(t) - k_G f_2(t) \right) k_G \ln(\frac{W}{A})^2 W =\\
+  &= - k_G f_3(t) W
+\end{align}
+By separating the equation based on powers of \(\ln(\frac{W}{A})\), the system
+\begin{flalign}
+  W & : & f_3'(t) &= -k_G f_3(t) && \FlLabel{eq:W}\\
+  \ln(\frac{W}{A}) W & : & f_4'(t) + k_G f_1'(t) &= 0 && \FlLabel{eq:WA}\\
+  k_G \ln(\frac{W}{A})^2 W & : & f_2'(t) - k_G f_2(t) &= 0 && \FlLabel{eq:kW2A2W}
+\end{flalign}
+can be acquired.
+This system of equations has the solution
+\begin{align}
+  \xi(t, W) &= f_1(t) + c_1 e^{k_G t} \ln(\frac{W}{A}),\\
+  \eta(t, W) &= c_2 e^{-k_G t} W + \left( c_3 - k_G f_1(t) \right) \ln(\frac{W}{A}) W,
+\end{align}
+where \(c_1\), \(c_2\) and \(c_3\) are arbitrary constants.
+Thus, by separating the tangent field into terms with independent arbitrary elements, the infinitesimal generators
+\begin{align}
+  X_1 &= e^{k_G t} \ln(\frac{W}{A}) \partial_t \\
+  X_2 &= e^{-k_G t} W \partial_W \\
+  X_3 &= \ln(\frac{W}{A}) W \partial_W \\
+  X_f &= f(t) \partial_t - k_G f(t) \ln(\frac{W}{A}) W \partial_W
+\end{align}
+of Lie point symmetries of the autonomous Gompertz ODE \labelcref{eq:gompertz-autonomous} can be found.
+
+The symmetry generator \(X_f\) is a trivial symmetry of the autonomous ODE, since the reduced characteristic of it is
+\begin{align}
+  \bar{Q}_{f,a}(t, W) &= \eta_f(t, W) - \omega_a(t, W) \xi_f(t, W)\\
+  &= - k_G f(t) \ln(\frac{W}{A}) W - \left(-k_G \ln(\frac{W}{A}) W \right) f(t) \equiv 0.
+\end{align}
+The reduced characteristic of \(X_F\) for the classical ODE is
+\begin{align}
+  \bar{Q}_{f,c}(t, W) &= \eta_f(t, W) - \omega_c(t, W) \xi_f(t, W)\\
+  &= - k_G f(t) \ln(\frac{W}{A}) W - k_G e^{-k_G (t - T_i)} W f(t)\\
+  &= - k_G f(t) W \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right).
+\end{align}
+It is worth noting that since \(A\) is not a parameter of the classical ODE \labelcref{eq:gompertz-classical-ti}, only symmetries that hold for any \(A\) will be actual symmetries.
+The linearized symmetry condition for the classical ODE can be formulated as
 \begin{equation}
-  y \left(1 -\frac{y^{n-1} \left( (n-1) \tau + n y \right)}{1+y^n} \right) = 0.
+  \partial_t(\bar{Q}_{f,c}) + \omega_c \partial_W(\bar{Q}_{f,c}) = \partial_W(\omega_c) \bar{Q}_{f,c}
 \end{equation}
-The solutions that meet this condition (aside from the trivial case \(y \equiv 0\)) must thus be on the form
-\begin{equation}
-  y^{n-1} \left( (n-1) \tau + n y \right) = 1+y^n,
-\end{equation}
-which is more clearly stated as
-\begin{equation}
-  (n-1) \left( \tau y^{n-1} + y^n \right) = 1.
-\end{equation}
-For all \(n>0\) except \(n=1\) such solutions exist, and take the form
-\begin{equation} \label{eq:hill-invariants}
-  \tau y^{n-1} + y^n = \frac{1}{n-1}.
-\end{equation}
-Determining the functions \(y(\tau)\) that are invariant for a given \(n\) can be bothersome, but some general insights can be made.
-Since \cref{eq:hill-invariants} is a polynomial in \(y\) of degree \(n\), there will exist a finite amount of solutions (this holds for non-integer \(n\) too, as it can be bounded by Descartes' rule of signs). % FIXME: Strengthen this claim with a source https://math.stackexchange.com/a/1291211
-Thus, the symmetries are not trivial since there exist an infinite amount of solutions to \cref{eq:hill}.
-Additionally, since \(\tau\) is (dimensionless) time, any application of the model will have an initial condition on the form \(y(0) = y_0\).
-By fixing \(\tau=0\) in \cref{eq:hill-invariants}, the initial condition of an invariant curve given any \(n>0, n\neq1\) is shown to be
-\begin{equation}
-  y(0) =\frac{1}{(n-1)^{1/n}}.
-\end{equation}
+Letting \(f(t) \equiv 1\), the left hand side becomes
+\begin{gather}
+  k_G^2 W e^{-k_G (t - T_i)} + \left(k_G e^{-k_G (t - T_i)} W\right) \left(-k_G \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)} + 1\right)\right)\\
+  -k_G^2 e^{-k_G (t - T_i)} W\left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right)
+\end{gather}
+while the right hand side becomes
+\begin{gather}
+  \left(k_G e^{-k_G (t - T_i)}\right) \left(- k_G W \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right)\right)\\
+  -k_G^2 e^{-k_G (t - T_i)} W \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right).
+\end{gather}
+The two sides are equivalent, and thus \(X_{f\equiv1}\) is a symmetry of the classical Gompertz ODE.
+Since \(X_{f\equiv1}\) is trivial on the autonomous ODE, the lines along the tangent field are solutions to the autonomous ODE.
+This means that the solutions to the autonomous ODE are orbits of the classical ODE.
+It is worth noting that for all of the above calculations to hold, the growth parameter \(k_G\) must be the same for both ODE:s.

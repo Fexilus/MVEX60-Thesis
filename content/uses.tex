@@ -1,0 +1,41 @@
+\chapter{Uses of symmetries in biology}
+
+In this chapter biological interpretations and uses of the found symmetries will be discussed\dots
+
+\section{Invariant solutions under symmetry of the Hill model}
+
+To better understand the underlying source of the Lie symmetry groups of the Hill equation, it is of interest to find curves invariant under the solution.
+That is, solutions to the ODE that are mapped by the Lie symmetry group to the same curve.
+
+% TODO: Add some references to theory and glue the paragraphs together
+The reduced characteristic of the generator \(X_2 = - \left( (n-1) x + n y \right) \partial_\tau + y \partial_y\) is
+\begin{align}
+  \bar{Q} &= 
+  \eta - \omega \xi = 
+  y - \left( -\frac{y^n}{1+y^2} \right) \left( - \left( (n-1) \tau + n y \right) \right) =\\
+  &= y \left(1 -\frac{y^{n-1} \left( (n-1) \tau + n y \right)}{1+y^2} \right).
+\end{align}
+Since solutions are invariant under a symmetry if the characteristic is 0 on the entire solution curve, invariant solutions must satisfy
+\begin{equation}
+  y \left(1 -\frac{y^{n-1} \left( (n-1) \tau + n y \right)}{1+y^n} \right) = 0.
+\end{equation}
+The solutions that meet this condition (aside from the trivial case \(y \equiv 0\)) must thus be on the form
+\begin{equation}
+  y^{n-1} \left( (n-1) \tau + n y \right) = 1+y^n,
+\end{equation}
+which is more clearly stated as
+\begin{equation}
+  (n-1) \left( \tau y^{n-1} + y^n \right) = 1.
+\end{equation}
+For all \(n>0\) except \(n=1\) such solutions exist, and take the form
+\begin{equation} \label{eq:hill-invariants}
+  \tau y^{n-1} + y^n = \frac{1}{n-1}.
+\end{equation}
+Determining the functions \(y(\tau)\) that are invariant for a given \(n\) can be bothersome, but some general insights can be made.
+Since \cref{eq:hill-invariants} is a polynomial in \(y\) of degree \(n\), there will exist a finite amount of solutions (this holds for non-integer \(n\) too, as it can be bounded by Descartes' rule of signs). % FIXME: Strengthen this claim with a source https://math.stackexchange.com/a/1291211
+Thus, the symmetries are not trivial since there exist an infinite amount of solutions to \cref{eq:hill}.
+Additionally, since \(\tau\) is (dimensionless) time, any application of the model will have an initial condition on the form \(y(0) = y_0\).
+By fixing \(\tau=0\) in \cref{eq:hill-invariants}, the initial condition of an invariant curve given any \(n>0, n\neq1\) is shown to be
+\begin{equation}
+  y(0) =\frac{1}{(n-1)^{1/n}}.
+\end{equation}
