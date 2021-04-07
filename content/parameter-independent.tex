@@ -8,27 +8,27 @@ To reiterate, the Gompertz models are\par\noindent
   Classical, & \(T_i\) :&
   \begin{minipage}{\linewidth}
     \begin{equation}
-      \dv{W}{t} = k_G e^{-k_G (t - T_i)} W(t) \label{eq:gompertz-classical-ti}
+      \dv{W}{t} = k_G e^{-k_G (t - T_i)} W(t) \label{eq:gompertz-classical-ti^param}
     \end{equation}
   \end{minipage}\tabularnewline
   Classical, & \(W_0\) :&
   \begin{minipage}{\linewidth}
     \begin{equation}
-      \dv{W}{t} = k_G \ln(\frac{W_0}{A})e^{-k_G t} W(t) \label{eq:gompertz-classical-w0}
+      \dv{W}{t} = k_G \ln(\frac{W_0}{A})e^{-k_G t} W(t) \label{eq:gompertz-classical-w0^param}
     \end{equation}
   \end{minipage}\tabularnewline
   Autonomous, & \(T_i\) and \(W_0\) :&
   \begin{minipage}{\linewidth}
     \begin{equation}
-      \dv{W}{t} = -k_G \ln(\frac{W(t)}{A}) W(t) \label{eq:gompertz-autonomous}
+      \dv{W}{t} = -k_G \ln(\frac{W(t)}{A}) W(t) \label{eq:gompertz-autonomous^param}
     \end{equation}
   \end{minipage}\tabularnewline
   System, & \(T_i\) and \(W_0\) :&
   \begin{minipage}{\linewidth}%
-    {\begin{subequations}\label{eq:gompertz-system}
+    {\begin{subequations}\label{eq:gompertz-system^param}
       \begin{align}
-        \dv{W}{t} &= G(t) W(t) \label{eq:gompertz-system-a}\\
-        \dv{G}{t} &= -k_G G(t). \label{eq:gompertz-system-b}
+        \dv{W}{t} &= G(t) W(t) \label{eq:gompertz-system-a^param}\\
+        \dv{G}{t} &= -k_G G(t). \label{eq:gompertz-system-b^param}
       \end{align}
     \end{subequations}}%
   \end{minipage}
@@ -78,7 +78,7 @@ with the general solution
   \eta = c_1 W,
 \end{equation}
 where \(c_1\) is an arbitrary constant.
-Thus any \(k_G\)-independent symmetry generator of the classical Gompertz model \labelcref{eq:gompertz-classical-ti} must have the form
+Thus any \(k_G\)-independent symmetry generator of the classical Gompertz model \labelcref{eq:gompertz-classical-ti^param} must have the form
 \begin{align}
   \xi &= 0 \\
   \eta &= c_1 W,
@@ -130,7 +130,7 @@ which, since \(\eta\) is only a function in \(W\), is a straight forward ODE wit
 \begin{equation}
   \eta = -c_1 W \ln(W) + c_3 W.
 \end{equation}
-Thus any \(T_i\)-independent symmetry generator of the classical Gompertz model \labelcref{eq:gompertz-classical-ti} must have the form
+Thus any \(T_i\)-independent symmetry generator of the classical Gompertz model \labelcref{eq:gompertz-classical-ti^param} must have the form
 \begin{align}
   \xi &= \frac{c_1}{k_G} + c_2 e^{k_G t} \\
   \eta &= -c_1 W \ln(W) + c_3 W,
@@ -200,7 +200,7 @@ which is a scalar first order ODE with the solution
 \begin{equation}
   \eta = c_1 \ln(\ln(\frac{W}{A})) \ln(\frac{W}{A}) W + c_3 \ln(\frac{W}{A}) W.
 \end{equation}
-Thus any \(k_G\)-independent symmetry generator of the autonomous Gompertz model \labelcref{eq:gompertz-autonomous} must have the form
+Thus any \(k_G\)-independent symmetry generator of the autonomous Gompertz model \labelcref{eq:gompertz-autonomous^param} must have the form
 \begin{align}
   \xi &= c_2 + c_1 t \\
   \eta &= c_1 \ln(\ln(\frac{W}{A})) \ln(\frac{W}{A}) W + c_3 \ln(\frac{W}{A}) W,
@@ -250,7 +250,7 @@ with solutions
   \xi &= - c_1 \frac{1}{k_G} e^{-k_G t} + c_2 \\
   f &= c_3 e^{-k_G t}.
 \end{align}
-Thus any \(A\)-independent symmetry generator of the autonomous Gompertz model \labelcref{eq:gompertz-autonomous} must have the form
+Thus any \(A\)-independent symmetry generator of the autonomous Gompertz model \labelcref{eq:gompertz-autonomous^param} must have the form
 \begin{align}
   \xi &= - c_1 \frac{1}{k_G} e^{-k_G t} + c_2 \\
   \eta &= c_1 e^{-k_G t} \ln(W) W  + c_3 e^{-k_G t} W,
@@ -382,7 +382,7 @@ must hold for an arbitrary constant \(c_2\), which has the general solution
 \begin{equation}
   \eta^1 = c_2 \ln(W) W + c_3 W.
 \end{equation}
-Thus any \(k_G\)-independent symmetry generator of the system Gompertz model \labelcref{eq:gompertz-system}\ghostref{eq:gompertz-system-a}\ghostref{eq:gompertz-system-b} must have the form
+Thus any \(k_G\)-independent symmetry generator of the system Gompertz model \labelcref{eq:gompertz-system^param}\ghostref{eq:gompertz-system-a^param}\ghostref{eq:gompertz-system-b^param} must have the form
 \begin{align}
   \xi &= c_1 \\
   \eta^1 &= c_2 \ln(W) W + c_3 W\\
