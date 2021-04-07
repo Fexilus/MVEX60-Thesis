@@ -275,22 +275,33 @@ Looking at the Lie brackets
 \begin{align}
   \comm{X_{\text{a},1}}{X_{\text{a},2}} &= X_{\text{a},1} \\
   \comm{X_{\text{a},1}}{X_{\text{a},3}} &= 0 \\
-  \comm{X_{\text{a},1}}{X_{\text{a},4}} &= - k_G X_{\text{a},4} - \ln(A) (k_G)^2 X_{\text{a},6}\\
+  \comm{X_{\text{a},1}}{X_{\text{a},4}} &= - k_G X_{\text{a},4} \\
   \comm{X_{\text{a},1}}{X_{\text{a},6}} &= - k_G X_{\text{a},6} \\
   \comm{X_{\text{a},2}}{X_{\text{a},3}} &= - X_{\text{a},3} \\
-  \comm{X_{\text{a},2}}{X_{\text{a},4}} &= -(1 + k_G t) X_{\text{a},4} \label{eq:gompertz-autonomous-trivial-generator} \\
-  \comm{X_{\text{a},2}}{X_{\text{a},6}} &= -(1 + k_G t) X_{\text{a},6} - e^{-k_G t} \ln(\ln(\frac{W}{A})) W \partial_W \\
-  \comm{X_{\text{a},3}}{X_{\text{a},4}} &= 0 \\
+  \begin{split} \label{eq:gompertz-autonomous-new-generator-1}
+    \comm{X_{\text{a},2}}{X_{\text{a},4}} &= -\frac{1}{k_G} X_{\text{a},4} - t e^{-k_G t} \partial_t + \\
+    &\quad + e^{-k_G t} W \left(k_G t \ln(W) + \ln(A) \ln(\ln(\frac{W}{A}))\right) \partial_W
+  \end{split}\\
+  \comm{X_{\text{a},2}}{X_{\text{a},6}} &= -(1 + k_G t) X_{\text{a},6} - e^{-k_G t} \ln(\ln(\frac{W}{A})) W \partial_W \label{eq:gompertz-autonomous-new-generator-2} \\
+  \comm{X_{\text{a},3}}{X_{\text{a},4}} &= k_G \ln(A) X_{\text{a},6} \\
   \comm{X_{\text{a},3}}{X_{\text{a},6}} &= - X_{\text{a},6}\\
   \comm{X_{\text{a},4}}{X_{\text{a},6}} &= 0
 \end{align}
 the basis does not seem to be a full Lie algebra.
-Even though the generator in \cref{eq:gompertz-autonomous-trivial-generator} seem to be a new generator, it can safely be ignored as \(X_{\text{a},4}\) generates a trivial symmetry.
 Assigning the additional generator
 \begin{equation}
-  X_{\text{a},7} = - \left(\comm{X_{\text{a},2}}{X_{\text{a},6}} + X_{\text{a},6}\right) = \left(k_G t e^{-k_G t} W + e^{-k_G t} \ln(\ln(\frac{W}{A})) W\right) \partial_W
+  X_{\text{a},7} = - \left(\comm{X_{\text{a},2}}{X_{\text{a},6}} + X_{\text{a},6}\right) = e^{-k_G t} W \left(k_G t + \ln(\ln(\frac{W}{A}))\right) \partial_W,
 \end{equation}
-and looking at the additional Lie brackets
+\cref{eq:gompertz-autonomous-new-generator-1,eq:gompertz-autonomous-new-generator-2} can be written as
+\begin{align}
+  \comm{X_{\text{a},2}}{X_{\text{a},4}} &= -X_{\text{a},6} - X_{\text{a},7} \\
+  \comm{X_{\text{a},2}}{X_{\text{a},6}} &= -k_G t e^{-k_G t} X_{\text{a},0} - X_{\text{a},4} + k_G \ln(A) X_{\text{a},7}
+\end{align}
+where \(X_{\text{a},0}\) is the trivial generator
+\begin{equation}
+  X_{\text{a},0} = \partial_t + \omega_a \partial_W = \partial_t - k_G \ln(\frac{W}{A}) W \partial_W.
+\end{equation}
+Looking at the additional Lie brackets
 \begin{align}
   \comm{X_{\text{a},1}}{X_{\text{a},7}} &= k_G X_{\text{a},6} - k_G X_{\text{a},7} \\
   \comm{X_{\text{a},2}}{X_{\text{a},7}} &= - e^{-k_G t} W \left((k_G)^2 t^2 + 2 k_G t \ln(\ln(\frac{W}{A})) + \left(\ln(\ln(\frac{W}{A}))\right)^2 \right) \partial_W \\
@@ -300,6 +311,8 @@ and looking at the additional Lie brackets
 \end{align}
 Thus it seems like two new generators are found.
 This has to be explored further, but at this point some general calculations and computer implementations are probably the first step.
+Further assignment of the additional generators
+
 
 
 \subsection{The system Gompertz model}
