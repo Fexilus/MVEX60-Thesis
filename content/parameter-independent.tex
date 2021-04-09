@@ -101,7 +101,7 @@ Decomposition of \cref{eq:gompertz-classical-lin-symmetry-cond} in \(T_i\) gives
 From \cref{eq:gompertz-classical-det-ti-a,eq:gompertz-classical-det-ti-c} it is clear that
 \begin{align}
   \eta &= \eta(W) \\
-  \xi = \xi(t)
+  \xi &= \xi(t)
 \end{align}
 respectively.
 Dividing \cref{eq:gompertz-classical-det-ti-b} by \(k_G e^{-k_G t}\) shows that
@@ -400,3 +400,119 @@ The Lie brackets are
   \comm{X_{\text{s},1}}{X_{\text{s},3}} &= 0 \\
   \comm{X_{\text{s},2}}{X_{\text{s},3}} &= -X_{\text{s},3}.
 \end{align}
+
+\section{The Lotka-Volterra model}
+
+A classic model for predator-prey dynamics is the Lotka-Volterra model, where a prey population \(N\) and a predator population \(P\) evolve over time according to
+\begin{subequations}
+  \label{eq:lotka-volterra-original}  
+  \begin{align}
+    \dv{N}{t} &= a N - b N P\\
+    \dv{P}{t} &= c N P - d P
+  \end{align}
+\end{subequations}
+\cite{murray2002biology}.
+The linearized symmetry condition \labelcref{eq:linearized-first-order-symmetry-system} is for the Lotka-Volterra model
+\begin{subequations}\label{eq:lotka-volterra-lin-symmetry-cond}
+  \begin{align}
+    \begin{split}
+      \eta^1_t &+ \qty(a N - b N) \qty(\eta^1_{N} - \xi_t) + \qty(c N P - d P) \eta^1_{P} - \qty(a N - b N P)^2 \xi_{N} -\\
+      &- \qty(a N - b N P) \qty(c N P - d P) \xi_{P} - \qty(a - b P) \eta^1 + b N \eta^2 = 0
+    \end{split}\\
+    \begin{split}
+      \eta^2_t &+ \qty(a N - b N P) \eta^2_{N} + \qty(c N P - d P) \qty(\eta^2_{P} - \xi_t) -\\
+      &- \qty(a N - b N P) \qty(c N P - d P) \xi_{N} - \qty(c N P - d P)^2 \xi_{P} - c P \eta^1 -\\
+      &- \qty(c N - d) \eta^2 = 0.
+    \end{split}
+  \end{align}
+\end{subequations}
+
+\subsubsection{\texorpdfstring{\(a\)-independent symmetries}{a-independent symmetries}}
+
+Decomposition of \cref{eq:lotka-volterra-lin-symmetry-cond} in \(a\) gives the parameter independence determining equations
+\begin{subequations}\label{eq:lotka-volterra-det-a}
+  \begin{flalign}
+    \dv{N}{t}, 1 & : & - N^{2} P^{2} b^{2} \xi_{N} - N P b \eta^1_{N} + N P b \xi_{t} + N b \eta^{2} + P b \eta^{1} +&&&\\
+    &&\quad+ \left(N P c - P d\right) \eta^1_{P} + \left(N^{2} P^{2} b c - N P^{2} b d\right) \xi_{P} + \eta^1_{t} &= 0 && \FlLabel{eq:lotka-volterra-det-a-a}\\
+    \dv{N}{t}, a & : & 2 N^{2} P b \xi_{N} + N \eta^1_{N} - N \xi_{t} + \left(- N^{2} P c + N P d\right) \xi_{P} -&&&\\
+    &&\quad- \eta^{1} &= 0 && \FlLabel{eq:lotka-volterra-det-a-b}\\
+    \dv{N}{t}, a^2 & : & - N^{2} \xi_{N} &= 0 && \FlLabel{eq:lotka-volterra-det-a-c}\\
+    \dv{P}{t}, 1 & : & - N P b \eta^2_{N} - P c \eta^{1} + \left(- N c + d\right) \eta^{2} +&&&\\
+    &&\quad+  \left(- N P c + P d\right) \xi_{t} + \left(N P c - P d\right) \eta^2_{P} +&&&\\
+    &&\quad+ \left(N^{2} P^{2} b c - N P^{2} b d\right) \xi_{N} +&&&\\
+    &&\quad+ \left(- N^{2} P^{2} c^{2} + 2 N P^{2} c d - P^{2} d^{2}\right) \xi_{P} + \eta^2_{t} &= 0 && \FlLabel{eq:lotka-volterra-det-a-d}\\
+    \dv{P}{t}, a & : & N \eta^2_{N} + \left(- N^{2} P c + N P d\right) \xi_{N} &= 0. && \FlLabel{eq:lotka-volterra-det-a-e}
+  \end{flalign}
+\end{subequations}
+From \cref{eq:lotka-volterra-det-a-c,eq:lotka-volterra-det-a-e} it is clear that
+\begin{align}
+  \eta^2 &= \eta^2(t, P)\\
+  \xi &= \xi(t, P),
+\end{align}
+and thus \cref{eq:lotka-volterra-det-a-d} can be written as
+\begin{align}
+  \begin{split}
+    \eta^{1} =& \left(- N + \frac{d}{c}\right) \xi_{t} + \left(N - \frac{d}{c}\right) \eta^2_{P} + \left(- \frac{N}{P} + \frac{d}{P c}\right) \eta^{2} +\\
+    &+ \left(- N^{2} P c + 2 N P d - \frac{P d^{2}}{c}\right) \xi_{P} + \frac{\eta^2_{t}}{P c}.
+  \end{split}
+\end{align}
+Since neither \(\xi\) nor \(\eta^2\) depends on \(N\), and \(\eta^1\) thus only depends explicitly on \(N\), the remaining parameter independence determining equations \labelcref{eq:lotka-volterra-det-a-a,eq:lotka-volterra-det-a-b} can be decomposed further in \(N\) resulting in the equations
+\begin{subequations}
+  \begin{align}
+    - 2 P c \xi_{P} &= 0 \label{eq:lotka-volterra-det-aN-a}\\
+    P d \xi_{P} - \xi_{t} &= 0 \label{eq:lotka-volterra-det-aN-b}\\
+    \frac{P d^{2} \xi_{P}}{c} + \frac{d \eta^2_{P}}{c} - \frac{d \xi_{t}}{c} - \frac{d \eta^{2}}{P c} - \frac{\eta^2_{t}}{P c} &= 0 \label{eq:lotka-volterra-det-aN-c}\\
+    - P^{2} c^{2} \xi_{PP} - P c^{2} \xi_{P} &= 0 \label{eq:lotka-volterra-det-aN-d}\\
+    3 P^{2} c d \xi_{PP} + P c \eta^2_{PP} - 2 P c \xi_{Pt} - c \eta^2_{P} + \left(2 P^{2} b c + 3 P c d\right) \xi_{P} + \frac{c \eta^{2}}{P} &= 0 \label{eq:lotka-volterra-det-aN-e}\\
+    \begin{split}\label{eq:lotka-volterra-det-aN-f}
+      - 3 P^{2} d^{2} \xi_{PP} + P b \xi_{t} - 2 P d \eta^2_{PP} + 4 P d \xi_{Pt} + 2 d \eta^2_{P} + \left(b - \frac{2 d}{P}\right) \eta^{2} +&\\
+      + \left(- P^{2} b d - 3 P d^{2}\right) \xi_{P} - \xi_{tt} + 2 \eta^2_{Pt} - \frac{2 \eta^2_{t}}{P} &= 0
+    \end{split}\\
+    \begin{split}\label{eq:lotka-volterra-det-aN-g}
+      \frac{P^{2} d^{3} \xi_{PP}}{c} + \frac{P b d \xi_{t}}{c} + \frac{P d^{2} \eta^2_{PP}}{c} - \frac{2 P d^{2} \xi_{Pt}}{c} + \left(\frac{b}{c} + \frac{2 d}{P c}\right) \eta^2_{t} +&\\
+      + \left(\frac{b d}{c} + \frac{d^{2}}{P c}\right) \eta^{2} + \left(- \frac{P b d}{c} - \frac{d^{2}}{c}\right) \eta^2_{P} + \left(- \frac{P^{2} b d^{2}}{c} + \frac{P d^{3}}{c}\right) \xi_{P} +&\\
+      + \frac{d \xi_{tt}}{c} - \frac{2 d \eta^2_{Pt}}{c} + \frac{\eta^2_{tt}}{P c} &= 0.
+    \end{split}
+  \end{align}
+\end{subequations}
+\Cref{eq:lotka-volterra-det-aN-a,eq:lotka-volterra-det-aN-b} gives that
+\begin{equation}
+  \xi = c_1,
+\end{equation}
+where \(c_1\) is an arbitrary constant.
+Thus the remaining \cref{eq:lotka-volterra-det-aN-c,eq:lotka-volterra-det-aN-e,eq:lotka-volterra-det-aN-f,eq:lotka-volterra-det-aN-g} simplify to
+\begin{subequations}
+  \begin{align}
+    \frac{d \eta^2_{P}}{c} - \frac{d \eta^{2}}{P c} - \frac{\eta^2_{t}}{P c} &= 0 \label{eq:lotka-volterra-det-aN-c-simp}\\
+    P c \eta^2_{PP} - c \eta^2_{P} + \frac{c \eta^{2}}{P} &= 0 \label{eq:lotka-volterra-det-aN-e-simp}\\
+    - 2 P d \eta^2_{PP} + 2 d \eta^2_{P} + \left(b - \frac{2 d}{P}\right) \eta^{2} + 2 \eta^2_{Pt} - \frac{2 \eta^2_{t}}{P} &= 0 \label{eq:lotka-volterra-det-aN-f-simp}\\
+    \begin{split}
+      \frac{P d^{2} \eta^2_{PP}}{c} + \left(\frac{b}{c} + \frac{2 d}{P c}\right) \eta^2_{t} + \left(\frac{b d}{c} + \frac{d^{2}}{P c}\right) \eta^{2} +&\\
+      + \left(- \frac{P b d}{c} - \frac{d^{2}}{c}\right) \eta^2_{P} - \frac{2 d \eta^2_{Pt}}{c} + \frac{\eta^2_{tt}}{P c} &= 0.
+    \end{split}
+  \end{align}
+\end{subequations}
+\Cref{eq:lotka-volterra-det-aN-c-simp} has the general solution
+\begin{equation}
+  \eta^{2} = F{\left(P e^{d t} \right)} e^{- d t}
+\end{equation}
+for an arbitrary univariate function \(F\).
+Thus \cref{eq:lotka-volterra-det-aN-e-simp,eq:lotka-volterra-det-aN-f-simp} can be further simplified to
+\begin{align}
+  P c e^{d t} F''{\left(P e^{d t} \right)} - c F'{\left(P e^{d t} \right)} + \frac{c F{\left(P e^{d t} \right)} e^{- d t}}{P} &= 0 \label{eq:lotka-volterra-det-aN-e-simp2}\\
+  b F{\left(P e^{d t} \right)} e^{- d t} &= 0. \label{eq:lotka-volterra-det-aN-f-simp2}
+\end{align}
+Thus it clear from \cref{eq:lotka-volterra-det-aN-f-simp2} that
+\begin{equation}
+  F \equiv 0
+\end{equation}
+and hence the general solution to the parameter independence determining equations \labelcref{eq:lotka-volterra-det-a} is
+\begin{align}
+  \xi &= c_1 \\
+  \eta^1 &= 0\\
+  \eta^2 &= 0
+\end{align}
+which is spanned by the manifest generator
+\begin{equation}
+  X_1 = \partial_t.
+\end{equation}
