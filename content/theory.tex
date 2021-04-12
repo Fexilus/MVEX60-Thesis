@@ -1,24 +1,32 @@
 \chapter{Mathematical theory of symmetries}
 
 In this chapter, the mathematical theory used in the thesis will be presented.
-The theory mostly concerns Lie group analysis, and has a strong focus on symmetry methods. % TODO: What is the difference?
-It is mainly based on material from three sources.
-The first source, \cite{hydon2000symmetry}, serves as a great introductory text on the subject of symmetry methods.
-The second source, \cite{olver1995equivalence}, treats the subject stringently and serves as a good reference point for the reader who wishes to understand the theory in more depth.
-The third source, \cite{ovsiannikov1982group}, deals with group classification.
-Due to its earlier publication date, it treats some subjects in a less modern way than the first two sources, but makes up for it in concreteness.
+The theory mostly concerns symmetry groups in the setting of ordinary differential equations (ODE:s), and systems thereof.
+To aid readers new to this subject and with varying familiarity of related mathematical subjects, the theory is presented in a straight forward fashion, avoiding unnecessary generalizations and proofs of most results.
+The mathematical theory and notation used in this and subsequent chapters is based on the works of three authors.
+For readers wishing to explore the subject further, the sources are presented here in short.
 
-The notation used in the thesis will be based on the notation in \cite{hydon2000symmetry}, employing partial notational concepts from \cite{olver1995equivalence} and \cite{ovsiannikov1982group} when further clarity is desired.
+The first source \cite{hydon2000symmetry} by \citeauthor{hydon2000symmetry}, serves as a great introductory text on the subject of symmetry methods.
+For readers unfamiliar with the fields of differential geometry and Lie algebras wishing to use methods similar to the ones in this thesis, the book can be helpful for getting of the ground.
+This is mainly due to fact that theory is only introduced on a need to know basis throughout the book, and as such readers seeking the mathematical rigor lacking in this text will not find it there.
+
+The second sources \cite{olver1993applications,olver1995equivalence} by \citeauthor{olver1993applications}, on the other hand treats the subject stringently and serves as good reference points for readers wishing to understand the theory in more depth.
+\cite{olver1993applications} focuses more on the specific application to differential equations while \cite{olver1995equivalence} puts more focus on the geometric concepts involved.
+
+The third source \cite{ovsiannikov1982group} by \citeauthor{ovsiannikov1982group}, deals with group classification, a slightly more advanced subject on which the technique developed in \cref{ch:param-ind} is based.
+Due to its earlier publication date, the book treats some subjects in a less modern way than the works by \citeauthor{hydon2000symmetry} and \citeauthor{olver1993applications}, and is therefore not recommended for readers unfamiliar with the concerned theory.
+
+The notation in this thesis will be based on the notation in \cite{hydon2000symmetry}, employing partial notational concepts from \cite{olver1995equivalence} and \cite{ovsiannikov1982group} when further clarity is desired.
 
 %=============================================================================
 \section{Point symmetries}
 
 In mathematics, a symmetry is a transformation that preserves some structure.
-The word symmetry is used as the mathematical concept encompasses what is normally meant by symmetry.
+The word symmetry is used since the mathematical concept of symmetry encompasses what is meant by symmetry in everyday speech.
 A symmetric face is a face such that when mirrored it look the same.
 Here, mirroring is the transformation and \enquote{looking the same} is the structure.
-In mathematics, however, the structure must be well defined, or in more common language must be a statement that is easily confirmed as true or false.
-The transformation can also be chosen more freely, beyond the transformations usually implied when commonly talking about symmetries.
+In mathematics, however, the structure must be well defined, or in more common language must be a statement that has a clear distinction between being true or false.
+The transformation can also be chosen more freely, beyond the transformations usually implied when talking about symmetries in everyday speech.
 
 The most common example of a mathematical symmetry is rotating and flipping a triangle.
 The structure of the triangle can be stated as the location of all the vertices and the length of the edges between specific vertices.
@@ -26,20 +34,20 @@ Rotating an equilateral triangle 120 or 240 degrees around its center will chang
 Since the edges are unchanged relative to the points, these rotations thus constitute a symmetry of the triangle.
 It is worth noting that the rotational transformations map points from the 2-dimensional plane to the two dimensional plane or, stated in mathematical terms, the rotations are mappings \(\Gamma: \reals^2 \to \reals^2\).
 
-In Lie group analysis transformations of this type are considered, but the structure of a triangle is instead replaced with the structure of a differential equation.
-Initially, assume the differential equation is an ordinary differential equation (ODE) of the first order and can thus be written on the form
+In the methods used in this thesis, transformations similar to such a \(\Gamma\) are considered, but the structure of a triangle is instead replaced with the structure of a differential equation.
+Initially, assume the differential equation is an ODE of the first order and can thus be written on the form
 \begin{equation} \label[ode]{eq:first-order-ode}
   \dv{y}{x} = \omega(x,y).
 \end{equation}
 The structure of a first order ODE is thus defined by the function \(\omega\).
-\(\omega\) defines an infinite set of solutions \(u(x)\) that all fulfill \cref{eq:first-order-ode}.
-Geometrically, a solution can be thought of as a set \(\gamma_u\) of points in the \(xy\)-plane, which constitutes a curve, for which \(y = u(x)\) holds for all \(x\).
-Not every curve in the \(xy\)-plane corresponds to a differentiable function however.
+\(\omega\) is hence related to an infinite set of solutions \(u(x)\) that all fulfill \cref{eq:first-order-ode}.
+Geometrically, a solution (or any scalar function of \(x\) for that matter) can be thought of as a set \(\gamma_u\) of points in the \(xy\)-plane, which constitutes a curve, for which \(y = u(x)\) holds for all \(x\).
+Not every curve in the \(xy\)-plane corresponds to a function however.
 A curve corresponds to a function if and only if it is transverse, that is: the tangent of the curve never points in only the \(y\)-direction.
-Additionally for a differential equation, every point in the \(xy\)-plane belongs to exactly one such curve \(\gamma_u\): the curve of the solution that runs through that point.
+Additionally for a given ODE, every point in the \(xy\)-plane belongs to exactly one such curve \(\gamma_u\): the curve of the solution that runs through that point.
 
-A symmetry of a first order ODE \labelcref{eq:first-order-ode} is then a transformation that preserves the solution curves.
-This means that if and only if two points \(\pqty{x_1,y_1}\) and \(\pqty{x_2,y_2}\) belong to the same solution curve \(\gamma\), the transformed points \(\Gamma(x_1,y_1)\) and \(\Gamma(x_2,y_2)\) belong to the same solution curve, denoted by \(\Gamma\gamma\).
+A symmetry of a first order ODE \labelcref{eq:first-order-ode} is a transformation that preserves the solution curves.
+This means that if two points \(\pqty{x_1,y_1}\) and \(\pqty{x_2,y_2}\) belong to the same solution curve \(\gamma\), the transformed points \(\Gamma(x_1,y_1)\) and \(\Gamma(x_2,y_2)\) must belong to the same solution curve, denoted by \(\Gamma\gamma\), for the transformation \(\Gamma\) to be a symmetry.
 This property can be defined as:
 \begin{defn}[Point symmetry] \label{defn:first-order-symmetry}
   A transformation 
@@ -54,81 +62,104 @@ This property can be defined as:
   \end{equation}
 \end{defn}
 The \enquote{point} in point symmetry refers to the fact that the transformation \(\Gamma\) only acts on the points belonging to the solution curves and nothing else.
-This must not always be the case for symmetries, but that discussion is deferred to a later section of this chapter. % TODO: Make sure that this is true when more is written
+This must not always be the case when generalizing the theory, but those generalizations will not be touched upon in this thesis.
 
 %-----------------------------------------------------------------------------
-\subsection{Jet spaces} \label{sec:jet-spaces}
+\subsection{Jet spaces} \label{subsec:jet-spaces}
 
-The observant reader might have already noted that there is some need of clarification of \cref{defn:first-order-symmetry}.
-While the transformation \(\Gamma\) treats \(y\) as a point in \(\reals\), \cref{eq:first-order-ode} treats \(y\) as a differentiable function of \(x\), or in other words an element of once continuously differentiable functions \(\mathcal{C}^1(\reals)\).
-In many contexts this abuse of notation could be accepted without further remarks, but in group analysis the subtleties of these representations are key to some important results.
-% TODO: Something about local theory
+The observant reader might have already noted that there is some need of clarification for \cref{defn:first-order-symmetry}.
+While the transformation \(\Gamma\) treats \(y\) as a point in \(\reals\), \cref{eq:first-order-ode} treats \(y\) as a differentiable function of \(x\), or in other words an element \(y(x)\) of the set of once continuously differentiable functions \(\mathcal{C}^1(\reals)\).
+In many contexts this abuse of notation could be accepted without further remarks, but when using symmetry methods the subtleties of this operation is key to the calculations performed.
+To avoid confusion while introducing the subject in this subsection, the point representation will be denoted by \(y\) while the function representation will be denoted by \(f(x)\).
 
 The \(xy\)-plane previously mentioned can be seen as consisting of two components: the independent space \(X \simeq \reals\) and the dependent space \(Y \simeq \reals\).
 The plane then is the product space \(E = X \times Y \simeq \reals^2\).
-It is in this plane \(E\) that the curves \(\gamma\) live.
-To be able to formulate differential statements, the space \(Y_1 = \reals\), sometimes called the first continuation of \(Y\) with respect to \(X\), is used.
-The elements of \(Y_1\) will be denoted \(y'\) or \(y^{(1)}\).
-The notation implies that the elements correspond to first derivatives of the function \(y(x)\), but it is important to note that in actuality the elements are scalar values.
+It is in this plane \(E\), commonly called the total space, that the curves \(\gamma\) live.
+To be able to formulate differential statements, the space \(Y_1 \simeq \reals\) is used.
+The elements of \(Y_1\) will be denoted \(y'\) or \(y^{(1)}\), implying that the elements correspond to the first derivative \(f'(x)\) of the function \(f(x)\).
+It is however important to note that this space is no more the space of derivative functions \(f'(x)\) than \(Y\) is the space of once continuously differentiable functions \(f(x)\); the implied relation between the two is merely aesthetic so far.
 \(Y_1\) can be combined with \(E\) to create \(J_1 = J_1 E = E \times Y_1 = X \times \prolong{Y}{1} \simeq \reals^3\), the first order jet space of \(E\).
-All differentiable functions \(u: X \to Y\) have a single equivalent function \(\prolong{u}{1}: X \to \prolong{Y}{1}\) called the first prolongation of \(u(x)\).
+
+All differentiable functions \(f: X \to Y\) have a single equivalent function \(\prolong{f}{1}: X \to \prolong{Y}{1}\) called the first prolongation of \(f(x)\).
 The prolongation is defined as
 % FIXME: Avoid relax
 \begin{equation}
-  \prolong{u}{1}(x) = \qty(u(x), \dv{u}{x}\relax(x)).
+  \prolong{f}{1}(x) = \qty(f(x), \dv{f}{x}\relax(x)).
 \end{equation}
 In extension to this concept, a smooth transverse curve \(\gamma \subset E\) has a prolongation which is a curve \(\prolong{\gamma}{1} \subset J_1\) defined by
 \begin{equation}
-  \prolong{\gamma}{1} = \qty{\qty(x, \prolong{u}{1}(x)): x \in X},
+  \prolong{\gamma}{1} = \qty{\qty(x, \prolong{f}{1}(x)): x \in X},
 \end{equation}
-where \(u\) is the function corresponding\dots
+where \(f\) is the function corresponding to the curve \(\gamma\).
 
-An ODE can be reformulated using jet spaces.
-The solutions of a first order ODE are functions satisfying an equation that can be written on the for of \cref{eq:first-order-ode}.
-An equivalent problem can be formulated as finding curves in \(J_1\) satisfying
+Using these tools, \cref{eq:first-order-ode} can be reformulated using jet spaces.
+The purpose of the ODE is to define some set of solutions, and as such the reformulation should define that same set of solutions.
+Using jet-notation, the problem can be formulated as finding curves \(\prolong{\gamma}{1}\) in \(J_1\) satisfying
 \begin{equation} \label{eq:first-order-jet-ode}
-  \varepsilon(\prolong{z}{1}) = y' - \omega(x,y) = 0,
+  \Delta(\prolong{z}{1}) = y' - \omega(x,y) = 0,
 \end{equation}
-as well as the condition that the curve is a prolongation of some continuously differentiable function.
+as well as the condition that the curve is a prolongation of some curve \(\gamma\) corresponding to a continuously differentiable function.
+The curves \(\gamma\) will then correspond to the solutions \(u(x)\) of \cref{eq:first-order-ode}.
 
-For higher order ODE:s, the theory can be extended to include higher order jet spaces \(J_k = J_k E\) that take the form
+While only first order ODE:s are handled in this thesis, some basic knowledge of symmetry methods for higher order ODE:s is required to be able to understand how the process of finding symmetries differ between first and higher order ODE:s.
+An ODE of degree \(k\) can be written on the form
 \begin{equation}
-  J_k = X \times Y \times Y_1 \times \dots \times Y_k,
+  \dv[k]{y}{x} = \omega\qty(x, y, \dv{y}{x}, \dots, \dv[k-1]{y}{x}),
+\end{equation}
+while higher order jet spaces \(J_k = J_k E\) take the form
+\begin{equation}
+  J_k = X \times Y \times Y_1 \times \dots \times Y_k
 \end{equation}
 with elements
 \begin{equation}
   \prolong{z}{k} = \qty(x, y, y', \dots, y^{(k)}).
 \end{equation}
-An ODE of degree \(k\) can thus be formulated as finding curves in \(J_k\) that satisfy both
+An ODE of degree \(k\) can thus be formulated as finding curves in \(J_k\) that satisfy
 \begin{equation}
-  \varepsilon(\prolong{z}{k}) = 0
+  \Delta(\prolong{z}{k}) = y^{(k)} - \omega(x, y, y', \dots, y^{(k-1)}) = 0
 \end{equation}
-and that the curves should be \(k\):th order prolongations
+as well as the condition that the curves should be \(k\):th order prolongations
 \begin{equation}
   \prolong{\gamma_u}{k} = \qty{\prolong{z}{k} = \qty(\fixed{x}, y, y', \dots, y^{(k)})\qq*{:} y^{(l)} = \dv[l]{u}{x}{(\fixed{x})}\qc \fixed{x} \in X\qc l = 0, \dots, k}
 \end{equation}
-of some function \(u(x) \in \cont{k}{X}\).
+of curves \(\gamma\) corresponding to functions \(u(x) \in \cont{k}{X}\).
 Here \(y^{(0)} = y\) and \(\dv[0]{u}{x} = u(x)\).
 
 %-----------------------------------------------------------------------------
 \subsection{The total derivative}
 
-Since the jet space \(J_k\) treats the variables \((y, y', \dots, y^{(k)})\) as independent coordinates differentiation in \(x\), denoted as \(\partial_x\), will not affect those terms.
-While this is the desired behavior of a jet space, there is also a need to be able to mirror the behavior of differentiation of the functions \((y(x), y'(x), \dots, y^{(k)}(x))\) in \(x\).
-Thus a differential operator on \(J_k\) is introduced, called the total derivative
+Since the jet space \(J_k\) treats the variables \(y\), \(y'\), \dots, \(y^{(k)}\) as independent coordinates, differentiation in \(x\), denoted as \(\partial_x\), will not affect those terms.
+While this is the desired behavior of a jet space, there is also a need to be able to mirror the behavior of differentiation of the functions \(y(x)\), \(y'(x)\), \dots, \(y^{(k)}(x)\) in \(x\).
+Thus a differential operator
 \begin{equation}
-  \tD{x} = \partial_x + y' \cdot \partial_y + y'' \cdot \partial_{y'} + \dots + y^{(l)} \cdot \partial_{y^{(l-1)}} + \dots .
+  \tD{x} = \partial_x + y' \cdot \partial_y + y'' \cdot \partial_{y'} + \dots + y^{(l)} \cdot \partial_{y^{(l-1)}} + \dots
 \end{equation}
-\(\tD{x}\) will act on expressions in \(J_k\) in the same way that \(\dv{x}\) would act on equivalent expressions consisting of \(x\), \(y(x)\) and derivatives of \(y(x)\) in \(x\).
+on \(J_k\) is introduced, called the total derivative.
+\(\tD{x}\) will act on expressions in \(J_k\) in the same way that \(\dv{x}\) would act on corresponding expressions consisting of \(x\), \(y(x)\) and derivatives of \(y(x)\) in \(x\).
 
-A coordinate change \(\hat{x} = \hat{x}(x, y(x)),\, \hat{y} = \hat{y}(x, y(x)) = \hat{y}(\hat{x})\) in the function space can be represented in the jet space using the total derivative.
+A change of variables
+\begin{align}
+  \hat{x} &= \hat{x}(x, y(x))\\
+  \hat{y} &= \hat{y}(x, y(x)) = \hat{y}(\hat{x})
+\end{align}
+in the function space can be represented in the jet space using the total derivative.
 Due to the chain rule,
 \begin{equation}
   \dv{\hat{y}}{\hat{x}} = 
-  \frac{\pdv{\hat{y}}{x} + \pdv{\hat{y}}{y} \dv{y}{x}}{\pdv{\hat{x}}{x} + \pdv{\hat{x}}{y} \dv{y}{x}} =
-  \frac{\tD{x} \hat{y}(x,y)}{\tD{x} \hat{x}(x,y)}.
+  \frac{\pdv{\hat{y}}{x} + \pdv{\hat{y}}{y} \dv{y}{x}}{\pdv{\hat{x}}{x} + \pdv{\hat{x}}{y} \dv{y}{x}}
 \end{equation}
-Using this and the equivalent formulation of \cref{eq:first-order-ode} in \cref{eq:first-order-jet-ode}, \cref{defn:first-order-symmetry} of a first order symmetry can be restated in the first order jet space \(J_1\).
+in the function space.
+In order to keep the correspondence between the function view and the jet view, viewing the change of variables as a transformation
+\begin{equation}
+  \Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)},
+\end{equation}
+the first prolongation of that transformation defined by
+\begin{equation}
+  \prolong{\Gamma}{1}: \pqty{x,y,y'} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y), \frac{\tD{x} \hat{y}(x,y)}{\tD{x} \hat{x}(x,y)}}
+\end{equation}
+will retain the correspondence to the ODE in the changed variables.
+
+Using the prolongation of the transformation, \cref{defn:first-order-symmetry} of a first order symmetry for \cref{eq:first-order-ode} can be restated in the first order jet space \(J_1\) for the corresponding \cref{eq:first-order-jet-ode}.
 \begin{lem} \label{lem:simple-first-order-symmetry}
   A transformation \(\Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}\) is a point symmetry of \cref{eq:first-order-ode} if and only if
   \begin{equation} \label{eq:simple-first-order-symmetry}
@@ -138,23 +169,24 @@ Using this and the equivalent formulation of \cref{eq:first-order-ode} in \cref{
 \end{lem} % FIXME: Requirement of diffeomorphism
 Given a transformation \(\Gamma\), it is therefore easy to check whether it is a point symmetry of \cref{eq:first-order-ode}.
 The reverse process (finding point symmetries of \cref{eq:first-order-ode}) is on the other hand not easy, as \cref{eq:simple-first-order-symmetry} will in all but the most trivial cases result in a non-linear PDE in with two unknown functions.
-By restricting attention to a specific type of point symmetries, these conditions can be simplified.
+However, by restricting attention to a specific type of point symmetries, these conditions can be simplified.
 
 %=============================================================================
 \section{Lie point symmetries}
 
-A Lie group is a continuous group, where the continuity between members of the group can be described by one or more real valued parameters.
-% TODO: Add more material on Lie groups, maybe as reference or in appendix.
-For point symmetries, this means that a group of Lie point symmetries is a collection of transformations that move points in \(E\) smoothly.
-The Lie groups are characterized by the dimensionality of these smooth transformations.
-When the transformations move a given point \(\fixed{z} \in E\) to new points that together constitute a line, the Lie group is said to be a one parameter Lie group as the transformations can be indexed by a single continuous parameter \(\epsilon \in \reals\).
-The transformations in a group of one-parameter Lie point symmetries can thus be parametrized as
+A common restriction when studying symmetries is to limit the scope of sought symmetries to Lie groups of symmetries.
+A Lie group is a mathematical group\footnote{}, where the members of the group can be parametrized by one or several continuous parameters.% TODO: Write footnote on groups
+A Lie group of transformations on \(E\) is thus a group with composition as the operator, where the transformations are parameterized by one or several continuous parameters.
+If the transformations can be indexed by a single real parameter \(\epsilon \in \reals\), the Lie group is said to be a one-parameter (real) Lie group of transformations.
+The transformations in such a Lie group can be parametrized as
 \begin{equation} \label{eq:1p-lie-point-symmetry}
   \Gamma_\epsilon: \pqty{x,y} \mapsto \pqty{\hat{x}_\epsilon(x,y), \hat{y}_\epsilon(x,y)},
 \end{equation}
 where both \(\hat{x}_\epsilon(x,y)\) and \(\hat{y}_\epsilon(x,y)\) are smooth (and therefore differentiable) in \(\epsilon\) when fixing \(x\) and \(y\).
 Additionally, the transformation parametrized by \(\epsilon = 0\) will be the identity transformation \(\Gamma_0: \pqty{x,y} \mapsto \pqty{x,y}\).
-The following is a simple example of a one parameter Lie group of transformations.
+
+If all transformations in such a group are symmetries of a differential equation, the group is said to be a Lie point symmetry of the differential equation.
+The following is a simple example of a one parameter Lie point symmetry.
 \begin{exmp}
   The ODE
   \begin{equation} \label{eq:ex-a:ode}
@@ -170,7 +202,6 @@ The following is a simple example of a one parameter Lie group of transformation
   \end{equation}
   This can be shown by viewing \cref{eq:ex-a:ode} in the jet space \(J_1\), resulting in
   \begin{equation}
-    \frac{\tD{x} \hat{y}_\epsilon(x,y)}{\tD{x} \hat{x}_\epsilon(x,y)} =
     \frac{\partial_x \hat{y}_\epsilon + \omega(x,y) \partial_y \hat{y}_\epsilon}{\partial_x \hat{x}_\epsilon + \omega(x,y) \partial_y \hat{x}_\epsilon} =
     \frac{y}{1} =
     \hat{y}_\epsilon =
@@ -185,9 +216,9 @@ The following is a simple example of a one parameter Lie group of transformation
     \pqty{1,0}
   \end{equation}
   for any \(\pqty{\fixed{x},\fixed{y}}\).
-  This means that the transformations are smooth in \(\epsilon\), and thus constitute a one parameter Lie group.
+  This means that the transformations are smooth in \(\epsilon\), and thus constitute a one parameter Lie point symmetry.
 \end{exmp}
-While the Lie groups of point symmetries can be parametrized in the explicit way used in \cref{eq:1p-lie-point-symmetry}, it is more useful to characterize the Lie group by its associated vector field
+While the Lie groups of point symmetries can be parametrized explicitly such as in \cref{eq:ex-a:transformation}, it is more useful to characterize the Lie group by its associated vector field
 \begin{equation} \label{eq:tangent-field}
   \pqty{\xi(x,y), \eta(x,y)},
 \end{equation}
@@ -197,17 +228,18 @@ The tangent field can be calculated pointwise by
   \eval{\dv{\epsilon} \pqty{\hat{x}_\epsilon(\fixed{x},\fixed{y}), \hat{y}_\epsilon(\fixed{x},\fixed{y})}}_{\epsilon=0} = \pqty{\xi(\fixed{x},\fixed{y}), \eta(\fixed{x},\fixed{y})}
 \end{equation}
 for every fixed point \(\pqty{\fixed{x},\fixed{y}} \in E\).
-The tangent field can be thought of as the field that points in \(E\) will flow along when increasing the parameter \(\epsilon\) by which the transformation \(\Gamma_\epsilon\) is selected.
+The tangent field can be thought of as the vector field that points in \(E\) flow along when the parameter \(\epsilon\) of transformation \(\Gamma_\epsilon\) is increased.
+% TODO: Write about relation to parameterized transformation
 
 %-----------------------------------------------------------------------------
 \subsection{The linearized symmetry condition}
 
 Using the tangent field of a one-parameter Lie symmetry group, the symmetry condition as formulated in \cref{lem:simple-first-order-symmetry} can be further simplified.
 \begin{lem} \label{lem:linearized-first-order-symmetry}
-  The transformations in a Lie group of point transformations are symmetries of \cref{eq:first-order-ode} if and only if
+  A one-parameter Lie group of point transformations constitute a Lie point symmetry of \cref{eq:first-order-ode} if and only if
   \begin{equation}
-    \partial_x \eta + (\partial_y \eta - \partial_x \xi) \omega - \partial_y (\xi) \omega^2 =
-    \xi \partial_x \omega + \eta \partial_y \omega,
+    \partial_x \eta + (\partial_y \eta - \partial_x \xi) \omega - \partial_y (\xi) \omega^2 -
+    \xi \partial_x \omega - \eta \partial_y \omega = 0,
   \end{equation}
   where \(\pqty{\xi(x,y), \eta(x,y)}\) is the tangent field of the Lie group.
 \end{lem}
@@ -219,18 +251,19 @@ Using the tangent field of a one-parameter Lie symmetry group, the symmetry cond
   Deriving by \(\epsilon\),
   \begin{equation}
     \begin{split} \label{eq:derive-symmetry-cond}
-      \partial_x \dv{\hat{y}}{\epsilon}{(x,y;\epsilon)} &+ (\partial_y \dv{\hat{y}}{\epsilon}{(x,y;\epsilon)} - \partial_x \dv{\hat{x}}{\epsilon}{(x,y;\epsilon)}) \omega - \partial_y (\dv{\hat{x}}{\epsilon}{(x,y;\epsilon)}) \omega^2 =\\
-      &= \hat{x}(x,y;\epsilon) \partial_x \omega + \hat{y}(x,y;\epsilon) \partial_y \omega.
+      &\frac{\partial_x \dv{\hat{y}}{\epsilon} + \omega \partial_y \dv{\hat{y}}{\epsilon}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}} - \frac{\left(\partial_x \dv{\hat{x}}{\epsilon}  + \omega \partial_y \dv{\hat{x}}{\epsilon}\right)\left(\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}\right)}{\left(\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}\right)^2} -\\
+      &\quad- \dv{\hat{y}}{\epsilon} \partial_x \omega - \dv{\hat{y}}{\epsilon} \partial_y \omega = 0.
     \end{split}
   \end{equation}
-  By evaluating the expression at \(\epsilon = 0\), \(\dv*{\hat{x}}{\epsilon} = \xi\) and \(\dv*{\hat{y}}{\epsilon} = \eta\) where \(\pqty{\xi(x,y), \eta(x,y)}\) is the tangent field.
-  Additionally, \(\eval{\hat{x}(x,y;\epsilon)}_{\epsilon = 0} = x\) and \(\eval{\hat{y}(x,y;\epsilon)}_{\epsilon = 0} = y\) since the transformation parametrized by \(\epsilon = 0\) is always the identity transformation in one parameter Lie groups of transformation.
-  Thus \cref{eq:derive-symmetry-cond} is equivalent to
+  It is sufficient to show that this expression holds at \(\epsilon = 0\) for all \(x\) and \(y\), since evaluation in any \(\tilde{\epsilon} \neq 0\) will be equivalent to the expression for \(\epsilon = 0\) in the point \(\Gamma_{\tilde{\epsilon}}(x, y)\).
+  Evaluation at \(\epsilon = 0\) yields \(\dv*{\hat{x}}{\epsilon} = \xi\) and \(\dv*{\hat{y}}{\epsilon} = \eta\).
+  Additionally, \(\eval{\hat{x}(x,y;\epsilon)}_{\epsilon = 0} = x\) and \(\eval{\hat{y}(x,y;\epsilon)}_{\epsilon = 0} = y\) since the transformation parametrized by \(\epsilon = 0\) is always the identity transformation in a one-parameter Lie groups of transformations.
+  \Cref{eq:derive-symmetry-cond} evaluates to
   \begin{equation} \label{eq:linearized-first-order-symmetry-result}
-    \partial_x \eta + (\partial_y \eta - \partial_x \xi) \omega - \partial_y (\xi) \omega^2 =
-    \xi \partial_x \omega + \eta \partial_y \omega.
+    \partial_x \eta + (\partial_y \eta - \partial_x \xi) \omega - \partial_y (\xi) \omega^2 
+    -\xi \partial_x \omega - \eta \partial_y \omega = 0,
   \end{equation}
-  Since the transformation parametrized by \(\epsilon = 0\) is always the identity transformation, \cref{eq:linearized-first-order-symmetry-result} must also imply \cref{eq:parametrized-symmetry-cond}, and hence the proof is complete.
+  and hence the proof is complete.
 \end{proof}
 
 %-----------------------------------------------------------------------------
@@ -297,7 +330,7 @@ where \(\Gamma_\epsilon\) is a Lie group of symmetries with corresponding tangen
 
 Without much work, the currently established mechanics of Lie point symmetries can be restated compactly using the infinitesimal generator.
 The only additional theory needed is a generalization of prolongations.
-In \cref{sec:jet-spaces} the concept of a prolonged function was introduced.
+In \cref{subsec:jet-spaces} the concept of a prolonged function was introduced.
 This allowed a function to be represented by a corresponding curve in a jet space \(J_k\).
 Both mappings \(f: E \to E\) and operators on such mappings can also be prolonged, resulting in mappings \(\prolong{f}{k}: J_k \to J_k\) and operators on such mappings.
 
