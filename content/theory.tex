@@ -2,7 +2,7 @@
 
 In this chapter, the mathematical theory used in the thesis will be presented.
 The theory mostly concerns symmetry groups in the setting of ordinary differential equations (ODE:s), and systems thereof.
-To aid readers new to this subject and with varying familiarity of related mathematical subjects, the theory is presented in a straight forward fashion, avoiding unnecessary generalizations and proofs of most results.
+To aid readers new to this subject and with varying familiarity with related mathematical subjects, the theory is presented in a straight forward fashion, avoiding unnecessary generalizations and proofs of most results.
 The mathematical theory and notation used in this and subsequent chapters is based on the works of three authors.
 For readers wishing to explore the subject further, the sources are presented here in short.
 
@@ -72,15 +72,15 @@ While the transformation \(\Gamma\) treats \(y\) as a point in \(\reals\), \cref
 In many contexts this abuse of notation could be accepted without further remarks, but when using symmetry methods the subtleties of this operation is key to the calculations performed.
 To avoid confusion while introducing the subject in this subsection, the point representation will be denoted by \(y\) while the function representation will be denoted by \(f(x)\).
 
-The \(xy\)-plane previously mentioned can be seen as consisting of two components: the independent space \(X \simeq \reals\) and the dependent space \(Y \simeq \reals\).
-The plane then is the product space \(E = X \times Y \simeq \reals^2\).
+The \(xy\)-plane previously mentioned can be seen as consisting of two components: the space of independent variables \(B \simeq \reals\), also known as the base space, and the space of dependent variables \(F \simeq \reals\), also known as the fiber.
+The plane then is the product space \(E = B \times F \simeq \reals^2\).
 It is in this plane \(E\), commonly called the total space, that the curves \(\gamma\) live.
-To be able to formulate differential statements, the space \(Y_1 \simeq \reals\) is used.
-The elements of \(Y_1\) will be denoted \(y'\) or \(y^{(1)}\), implying that the elements correspond to the first derivative \(f'(x)\) of the function \(f(x)\).
-It is however important to note that this space is no more the space of derivative functions \(f'(x)\) than \(Y\) is the space of once continuously differentiable functions \(f(x)\); the implied relation between the two is merely aesthetic so far.
-\(Y_1\) can be combined with \(E\) to create \(J_1 = J_1 E = E \times Y_1 = X \times \prolong{Y}{1} \simeq \reals^3\), the first order jet space of \(E\).
+To be able to formulate differential statements, the space \(F_1 \simeq \reals\) is used.
+The elements of \(F_1\) will be denoted \(y'\) or \(y^{(1)}\), implying that the elements correspond to the first derivative \(f'(x)\) of the function \(f(x)\).
+It is however important to note that \(F_1\) is no more the space of derivative functions \(f'(x)\) than \(F\) is the space of once continuously differentiable functions \(f(x)\); the implied relation between the two is merely aesthetic so far.
+\(F_1\) can be combined with \(E\) to create \(J_1 = J_1 E = E \times F_1 = X \times \prolong{F}{1} \simeq \reals^3\), the first order jet space of \(E\).
 
-All differentiable functions \(f: X \to Y\) have a single equivalent function \(\prolong{f}{1}: X \to \prolong{Y}{1}\) called the first prolongation of \(f(x)\).
+All differentiable functions \(f: B \to F\) have a single equivalent function \(\prolong{f}{1}: B \to \prolong{F}{1}\) called the first prolongation of \(f(x)\).
 The prolongation is defined as
 % FIXME: Avoid relax
 \begin{equation}
@@ -88,7 +88,7 @@ The prolongation is defined as
 \end{equation}
 In extension to this concept, a smooth transverse curve \(\gamma \subset E\) has a prolongation which is a curve \(\prolong{\gamma}{1} \subset J_1\) defined by
 \begin{equation}
-  \prolong{\gamma}{1} = \qty{\qty(x, \prolong{f}{1}(x)): x \in X},
+  \prolong{\gamma}{1} = \qty{\qty(x, \prolong{f}{1}(x)): x \in B},
 \end{equation}
 where \(f\) is the function corresponding to the curve \(\gamma\).
 
@@ -108,7 +108,7 @@ An ODE of degree \(k\) can be written on the form
 \end{equation}
 while higher order jet spaces \(J_k = J_k E\) take the form
 \begin{equation}
-  J_k = X \times Y \times Y_1 \times \dots \times Y_k
+  J_k = B \times F \times F_1 \times \dots \times F_k
 \end{equation}
 with elements
 \begin{equation}
@@ -120,9 +120,9 @@ An ODE of degree \(k\) can thus be formulated as finding curves in \(J_k\) that 
 \end{equation}
 as well as the condition that the curves should be \(k\):th order prolongations
 \begin{equation}
-  \prolong{\gamma_u}{k} = \qty{\prolong{z}{k} = \qty(\fixed{x}, y, y', \dots, y^{(k)})\qq*{:} y^{(l)} = \dv[l]{u}{x}{(\fixed{x})}\qc \fixed{x} \in X\qc l = 0, \dots, k}
+  \prolong{\gamma_u}{k} = \qty{\prolong{z}{k} = \qty(\fixed{x}, y, y', \dots, y^{(k)})\qq*{:} y^{(l)} = \dv[l]{u}{x}{(\fixed{x})}\qc \fixed{x} \in B\qc l = 0, \dots, k}
 \end{equation}
-of curves \(\gamma\) corresponding to functions \(u(x) \in \cont{k}{X}\).
+of curves \(\gamma\) corresponding to functions \(u(x) \in \cont{k}{B}\).
 Here \(y^{(0)} = y\) and \(\dv[0]{u}{x} = u(x)\).
 
 %-----------------------------------------------------------------------------
@@ -269,33 +269,38 @@ Using the tangent field of a one-parameter Lie symmetry group, the symmetry cond
 %-----------------------------------------------------------------------------
 \subsection{Invariant solutions and trivial symmetries}
 
-An important property of a Lie group of symmetries is which, if any, solution curves \(\gamma\) are invariant under all transformations \(\Gamma_\epsilon\).
-The curve being invariant means that the transformed solution curve \(\Gamma_\epsilon\gamma = \gamma\).
-It should be noted that this does not mean that every point in \(\gamma\) need be transformed to itself; the equivalency must merely hold for the entire set \(\gamma\).
+An important property of a Lie group of symmetries is which, if any, solution curves \(\gamma_u\) are invariant under all transformations \(\Gamma_\epsilon\).
+The curve being invariant means that the transformed solution curve
+\begin{equation}
+  \Gamma_\epsilon \gamma_u = \qty{\Gamma_\epsilon z \qq*{:} z \in \gamma_u}
+\end{equation}
+is equal to the solution curve \(\gamma_u\).
+It should be noted that this does not mean that every point in \(\gamma_u\) need be transformed to itself; the equivalency must merely hold for the entire set \(\gamma_u\).
 
 The invariance of a solution can be studied using the characteristic
 \begin{equation}
   Q(x, y, y') = \eta(x, y) - y' \xi(x, y)
 \end{equation}
 of a Lie group of symmetries with tangent field \(\pqty{\xi(x,y), \eta(x,y)}\).
-The characteristic can be seen the magnitude of the cross product between the tangent field and the direction of solution curves
+The characteristic can be seen the magnitude of the cross product between the direction of solution curves
 \begin{equation}
-  \tD{x} \pqty{x, y} = \pqty{1, y'}.
+  \tD{x} \pqty{x, y} = \pqty{1, y'}
 \end{equation}
+and the tangent field.
 As is known from linear algebra, the cross product of two vectors has magnitude 0 if and only if they are parallel.
-So if the characteristic is equal to zero in a point \(\fixed{x}, \fixed{y}\), the tangent field is parallel with the tangent of the solution curve in that point.
-For first order ODE:s, \cref{eq:first-order-jet-ode} always holds on solution curves.
-Hence, the reduced characteristic
+So if the characteristic is equal to zero in a point \(\fixed{x}, \fixed{y}, \fixed{y'}\), the tangent field is parallel with the tangent of the solution curve in that point.
+If this hold for all points \(\qty(x, y, y') \in \prolong{\gamma_u}{1}\), the points of the solution curve \(\gamma_u\) will thus always be transformed to other points of the same solution curve.
+For a solution \(\gamma_u\) to \cref{eq:first-order-jet-ode}
+\begin{equation}
+  \prolong{\gamma_u}{1} = \qty(x, y, \omega(x, y)),
+\end{equation}
+and hence the reduced characteristic
 \begin{equation}
   \bar{Q}(x, y) = \eta(x, y) - \omega(x, y) \xi(x, y)
 \end{equation}
-can be used to find invariant solutions of a first order ODE under a specific Lie point symmetry.
-For any solution curve \(\gamma_u \subset E\) corresponding to a solution \(u(x)\), the curve is invariant under a Lie point symmetry if and only if
-\begin{equation}
-  \bar{Q}(x, u(x)) = 0.
-\end{equation}
+must be equal to \(0\) for all \(\qty(x, y) \in \gamma_u\) for the solution curve \(\gamma_u\) to be invariant under the Lie point symmetry with tangent field \(\pqty{\xi(x,y), \eta(x,y)}\).
 
-A Lie group of symmetries for which all solution curves \(\gamma\) are invariant is called a trivial symmetry group.
+A Lie group of symmetries for which all solution curves \(\gamma_u\) of \cref{eq:first-order-jet-ode} are invariant is called a trivial symmetry group.
 For such a symmetry group, the reduced characteristic will be zero everywhere, or in other words
 \begin{equation} \label{eq:trivial-symmetry-first-order}
   \bar{Q}(x, y) \equiv 0.
@@ -306,12 +311,24 @@ The Lie transformation group is a point symmetry group, since \cref{lem:lineariz
 And it is a trivial symmetry group since \cref{eq:trivial-symmetry-first-order} is always fulfilled.
 
 %=============================================================================
-\section{Generalizations to higher orders}
+\section{Generalization to higher orders and systems}
 
 The theory so far discussed has dealt with single ODE:s of the first order.
 Most systems of interest are however not modeled in this way.
-Therefore, the theory need be extended in three ways: from ordinary differential equations to partial differential equations, from first order differential equations to \(k:th\) order differential equations and from single differential equations to systems of differential equations.
-While this might seem like a large amount of generalization to do in one step, the notation needed to deal with the added complexity is common enough for all three generalizations that they are best dealt with together.
+As mentioned earlier, the theory can be extended to deal with higher order ODE:s.
+Additionally, many other types of differential equations can be treated with further generalizations, among them systems of ODE:s.
+In this section the previously stated theory will be generalized to include both higher order ODE:s and systems of first order ODE:s.
+The motivation for these generalizations are quite different.
+
+The generalization to higher order ODE:s will as previously mentioned be used as a foil for the theory used in this thesis.
+As it turns out, first order ODE:s are quite unique in that there is no clear process to find all the symmetries of the ODE:s.
+Since the theory of symmetries of differential equations in applications has mostly developed around physics, a subject where higher order differential equations are the norm, there is a clear lack of theory for first order differential equations in the literature.
+In this thesis the limitations of techniques for first order ODE:s play a large role, and it is therefore important for the reader to understand the context in which this discussion occurs.
+
+On the other hand, the generalization to systems of ODE:s is purely practical, as most biological systems are modeled with several interacting states.
+Throughout this subsection both generalizations will be presented simultaneously, as the required notation for the respective generalizations are more intuitive in tandem.
+There will also be less intuitive explanations for the calculations, as the higher dimensional geometry required is harder to grasp.
+It will therefore be useful for the reader to have the first order equivalents in mind for intuition.
 
 %-----------------------------------------------------------------------------
 \subsection{The infinitesimal generator and prolongations}
@@ -321,35 +338,19 @@ To simplify the notation a differential operator
   X = \xi(x,y) \partial_x + \eta(x,y) \partial_y
 \end{equation}
 called an infinitesimal generator, can be introduced.
-The infinitesimal generator acts on mappings from \(E\) and, since it is defined only by \(\xi\) and \(\eta\), serves as a characterization of a Lie group of transformations.
-Applying the operator to a mapping \(f: E \to E\), one gets a measure of the change in \(f\) when continuously transforming the plane which it acts on, since
+The infinitesimal generator acts on transformations \(\Gamma: E \to E\) and returns the action of the tangent field \(\qty(\xi, \eta)\) of a Lie point symmetry with elements \(\Gamma_\epsilon\) on the transformation.
+The action gives a measure of the change in \(\Gamma\) when continuously transforming the plane which it acts on, since
 \begin{equation}
-  \eval{\dv{\epsilon} f \circ \Gamma_\epsilon}_{\epsilon = 0} = X f,
+  \eval{\dv{\epsilon} \Gamma \circ \Gamma_\epsilon}_{\epsilon = 0} = X \Gamma.
 \end{equation}
-where \(\Gamma_\epsilon\) is a Lie group of symmetries with corresponding tangent field \(\pqty{\xi(x,y), \eta(x,y)}\).
+Just as the tangent field characterizes the Lie point symmetry, so does the infinitesimal generator, as it is depends uniquely on the tangent field.
 
-Without much work, the currently established mechanics of Lie point symmetries can be restated compactly using the infinitesimal generator.
-The only additional theory needed is a generalization of prolongations.
-In \cref{subsec:jet-spaces} the concept of a prolonged function was introduced.
-This allowed a function to be represented by a corresponding curve in a jet space \(J_k\).
-Both mappings \(f: E \to E\) and operators on such mappings can also be prolonged, resulting in mappings \(\prolong{f}{k}: J_k \to J_k\) and operators on such mappings.
-
-The prolongations of mappings \(f: E \to E\) should fulfill the criteria
+The infinitesimal generator can be prolonged, still entirely defined by \(\xi\) and \(\eta\), to act on functions in any given jet space \(J_k\).
+Here the requirement of the prolongation \(\prolong{X}{k}\) is that for any transformation \(\Gamma: E \to E\)
 \begin{equation}
-  \prolong{f}{k}(\prolong{\gamma_u}{k}) = \prolong{f(\gamma_u)}{k},
+  \prolong{X}{k} \prolong{\Gamma}{k} = \prolong{\left(X \Gamma\right)}{k},
 \end{equation}
-and thus 
-\begin{equation}
-  f^i(x, u) = \dv[i]{f(x, u(x))}{x}\qc i = 0, \dots, k,
-\end{equation}
-where \(f^i\) is the \(i\):th component of the prolonged mapping \(\prolong{f}{k}\), the 0:th component referring to the \(y\)-component of the original mapping \(f\).
-Using the total derivative, this can be rewritten as
-\begin{equation}
-  f^i = \tD{x} f^{i-1} \qc i = 0, \dots, k.
-\end{equation}
-In an analogous way, the prolongations of operators on mappings \(f: E \to E\) should be consistent independent of the order the prolongations are realized. % TODO: Write this more concretely
-
-The infinitesimal generator can be prolonged, still entirely defined by \(\xi\) and \(\eta\), to act on any given jet space \(J_k\).
+or in other words the prolonged action on the prolonged transformations must be the same as the prolongation of the action resulting from the action on the transformation.
 For first order ODE:s the jet space is \(J_1\), and thus the first prolongation is needed, which takes the form
 \begin{equation}
   \prolong{X}{1} =
@@ -360,18 +361,17 @@ where
   \prolongpart{\eta}{1}(x,y) =
   \eta_x(x,y) + (\eta_y(x,y) - \xi_x(x,y)) y' - \xi_y(x,y) \left(y'\right)^2,
 \end{equation}
-where the subscripts \(x\) and \(y\) denote the partial derivatives \(\partial_x\) and \(\partial_y\).
-The linearized symmetry condition in \cref{lem:linearized-first-order-symmetry} can be rewritten using the infinitesimal operator.
+where the subscripts of \(x\) and \(y\) denote the partial derivatives \(\partial_x\) and \(\partial_y\).
+The linearized symmetry condition in \cref{lem:linearized-first-order-symmetry} can hence be rewritten using the infinitesimal operator.
 \begin{lem} \label{lem:linearized-first-order-symmetry-infinitesimal}
-  A Lie group of point transformations is a symmetry of \cref{eq:first-order-ode} if
+  A Lie group of point transformations is a symmetry of \cref{eq:first-order-ode} if and only if
   \begin{equation} \label{eq:linearized-first-order-symmetry}
     \eval{\prolong{X}{1}\left(y' - \omega(x,y)\right)}_{y' = \omega(x,y)} = 0,
   \end{equation}
   where \(\prolong{X}{1}\) is the first prolongation of the infinitesimal generator of the Lie group of point transformations.
 \end{lem}
 On this form, the linearized symmetry condition is easier to interpret:
-\(\varepsilon(\prolong{z}{1}) = y' - \omega(x,y) = 0\) holds for a solution of \cref{eq:first-order-ode}.
-Since the transformations of solution curves must be solution curves in order for the transformations to be a symmetry group, the value of \(\varepsilon(\prolong{z}{1})\) must not change.
+Since the transformations of solution curves must be solution curves in order for the transformations to be a symmetry group, the value of \(\Delta(\prolong{z}{1}) = y' - \omega(x,y) = 0\) must not change.
 By evaluating the expression at \(y' = \omega(x,y)\), it is ensured that this holds for any solution to \cref{eq:first-order-ode}.
 
 By finding further prolongations of \(X\), the linearized symmetry condition can be extended to ODE:s of higher degrees.
@@ -385,6 +385,83 @@ where \(\prolongpart{\eta}{k}\) is defined recursively by
   \prolongpart{\eta}{k}(x,y) &= \tD{x}(\prolongpart{\eta}{k-1}) - y^{(k)} \tD{x} \xi.
 \end{align}
 \Cref{lem:linearized-first-order-symmetry-infinitesimal} will hold for higher order ODE:s, given that \(y'\) is replaced by \(y^{(k)}\) and \(\omega(x,y)\) with \(\omega(\prolong{z}{k-1})\), and that the infinitesimal generator is prolonged to the \(k\):th degree.
+
+The infinitesimal generator also holds as a valid construction for systems of ODE:s.
+A system of first order ODE:s has the form
+\begin{align}
+  \begin{split} \label{eq:first-order-system-ode}
+    y^1_x &= \omega^1(x, y^1, \dots, y^s) \\
+    &\equalsvdots \\
+    y^s_x &= \omega^s(x, y^1, \dots, y^s),
+  \end{split}
+\end{align}
+which can be seen as existing in the jet space \(J_1 = J_1 E = B \times F \times F_1\) with coordinates
+\begin{align}
+  x &\in B \\
+  \qty(y^1, \dots, y^s) = &\in F \\
+  \qty(y^1_x, \dots, y^s_x) &\in F_1.
+\end{align}
+Elements in the total space \(E = B \times F\) can similarly to before be denoted \(z = \qty(x, \vb{y})\), where the vector notation \(\vb{y} = \qty(y^1, \dots, y^s)\) is used.
+\Cref{eq:first-order-system-ode} can be written more succinctly as
+\begin{equation} \label{eq:first-order-system-ode-short}
+  \vb{y}_x = \vb*{\omega}(z),
+\end{equation}
+where \(\vb{y}_x = \qty(y^1_x, \dots, y^s_x)\), \(\vb*{\omega}(z) = \qty(\omega^1(z), \dots, \omega^s(z))\).
+The tangent fields of transformations on \(E\) takes the form
+\begin{equation} \label{eq:tangent-field-gen}
+  \pqty{\xi(z), \eta^1(z), \dots, \eta^s(z)}
+\end{equation}
+and the infinitesimal generator thus has the form
+\begin{equation}
+  X = \xi(z) \partial_x + \eta^1(z) \partial_{y^1} + \dots + \eta^s(z) \partial_{y^s} = \xi(z) \partial_x + \vb*{\eta}(z) \vdot \partial_{\vb{y}},
+\end{equation}
+once again employing vector notation for \(\vb*{\eta}(z) = \qty(\eta^1(z), \dots, \eta^s(z))\) and \(\partial_{\vb{y}} = \qty(\partial_{y^1}, \dots, \partial_{y^s})\) to shorten the expression.
+The infinitesimal generator can be prolonged by defining
+\begin{equation}
+  \prolongpart{\eta^k}{1}(x,y) =
+  \tD{x} \eta^k - y' \tD{x} \xi,
+\end{equation}
+where the total derivative is defined as
+\begin{equation}
+  \tD{x} = \partial_x + y^1_x \cdot \partial_{y^1} + \dots + y^s_x \cdot \partial_{y^s} + \dots
+\end{equation}
+(the second dots are due to the fact that the total derivative technically acts on the derivatives of the \(y^k\):s, which does not concern us).
+
+Using these tools, the earlier results for scalar ODE:s are easy to reformulate for first order systems of ODE:s, and whose generalization to higher order (systems of) ODE:s should be clear.
+\begin{defn}[Point symmetry] \label{defn:general-symmetry}
+  A transformation 
+  \begin{equation}
+    \Gamma: z \mapsto \hat{z}(z)
+  \end{equation}
+  is a point symmetry of \cref{eq:first-order-system-ode-short} if
+  \begin{equation}
+    \dv{\vb{y}}{x} = \vb*{\omega}(z)
+    \implies
+    \dv{\hat{\vb{y}}}{\hat{x}} = \vb*{\omega}(\hat{z}).
+  \end{equation}
+\end{defn}
+\begin{thm} \label{thm:linearized-general-symmetry}
+  A one-parameter Lie group of point transformations constitute a Lie point symmetry of \cref{eq:first-order-system-ode-short} if and only if
+  \begin{equation}
+    \eval{\prolong{X}{1}(y^k_x - \omega^k(z))}_{\vb{y}_x = \vb*{\omega}(z)} = 0,
+  \end{equation}
+  where \(X\) is the infinitesimal generator of the Lie group.
+\end{thm}
+
+\subsection{Trivial symmetries of first order systems}
+
+The concept of trivial symmetries can also be generalized, but only for systems of first order ODE:s.
+The reason for this is quite simple: if a higher order ODE:s had a symmetry which was trivial, all solutions of the ODE would flow along the tangent field of the symmetry.
+But since the tangent field of a Lie point symmetry only depends on the total space, that would mean that there was an expression for the first derivative of all solution curves of the ODE only dependent on the total space.
+Thus the ODE would not truly be of higher order, as it could be rewritten as a first order ODE.
+This fact is not of great concern here, as this thesis only deals with first order systems.
+
+For a system of ODE:s, the characteristic becomes a function \(\vb{Q}(\prolong{z}{1}) = \qty(Q^1(\prolong{z}{1}), \dots, Q^s(\prolong{z}{1}))\) defined by
+\begin{equation}
+  Q^k(\prolong{z}{1}) = \eta^k(z) - y^k_x \xi(z)
+\end{equation}
+\begin{defn}[Trivial symmetry] \label{defn:trivial-symmetry}
+\end{defn}
 
 \section{Finding Lie point symmetries}
 
