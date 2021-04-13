@@ -7,7 +7,7 @@ Intro on modelling in biology\dots
 The Hill equation is an ODE that empirically describes cooperative binding to a multi-site protein.
 It takes the form
 \begin{equation} \label{eq:original-hill}
-  \dv{Y}{t} = - v_\text{max} \frac{Y^n}{K_m + Y^n} = \Omega_n(t, Y), \quad
+  \diff{Y}{t} = - v_\text{max} \frac{Y^n}{K_m + Y^n} = \Omega_n(t, Y), \quad
   n > 0.
 \end{equation}
 By nondimensionalizing both the substrate concentration with
@@ -20,7 +20,7 @@ and the time with
 \end{equation}
 \cref{eq:original-hill} simplifies to
 \begin{equation} \label[ode]{eq:hill}
-  \dv{y}{\tau} = - \frac{y^n}{1 + y^n} = \omega_n(\tau, y), \quad
+  \diff{y}{\tau} = - \frac{y^n}{1 + y^n} = \omega_n(\tau, y), \quad
   n > 0.
 \end{equation}
 
@@ -31,7 +31,7 @@ In particular, when measuring different phenomena ranging from cell growth to th
 Exponential growth stems from a species growing in proportion to the size of the species.
 Written in mathematical terms
 \begin{equation} \label{eq:exponential}
-  \dv{W}{t} = c W(t),
+  \diff{W}{t} = c W(t),
 \end{equation}
 where \(W(t)\) is the size of our species (volume of a tumor, weight of an animal, individuals in a population etc.) at time \(t\) and \(c\) is a constant.
 While exponential growth accurately models initially growth for many systems, eventually some external factor will limit the growth.
@@ -46,7 +46,7 @@ Gompertz formulated his model as the differential equation
 \end{equation}
 where \(L_x\) is the number living at age \(x\), or formulated in modern notation
 \begin{equation} \label[ode]{eq:original-gompertz-modern}
-  \dv{L}{x} = -a q^x L(x)
+  \diff{L}{x} = -a q^x L(x)
 \end{equation}
 where \(L(x)\) is the number of people living at age \(x\).
 It is worth noting that at small \(x\) and \(c = -a\), \cref{eq:original-gompertz-modern} behaves like \cref{eq:exponential}.
@@ -87,7 +87,7 @@ All formulations of the ODE found in literature can however be sorted into one o
 
 The ODE:s in the first family can all be written on the form
 \begin{equation} \label{eq:rough-gompertz-classical-ode}
-  \dv{W}{t} = r e^{-b t} W(t).
+  \diff{W}{t} = r e^{-b t} W(t).
 \end{equation}
 These ODE:s are reparameterizations of Gompertz' original ODE \labelcref{eq:original-gompertz-modern}, often emphasizing the expected behaviors of the model in the growth context by choosing parameters that should be positive.
 In the parametrization seen in \cref{eq:rough-gompertz-classical-ode}, \(r\) should be positive for the species size \(W(t)\) to grow (as opposed to shrinking or decaying) and \(b\) should be positive for the growth to reduce over time (and thus limiting the growth).
@@ -96,8 +96,8 @@ The first family of ODE:s is tightly related to the second family, which can be 
 \begin{equation}
   \label[ode]{eq:rough-gompertz-system-ode}
   \begin{aligned} 
-    \dv{W}{t} &= \gamma(t) W(t)\\
-    \dv{\gamma}{t} &= -b \gamma(t).
+    \diff{W}{t} &= \gamma(t) W(t)\\
+    \diff{\gamma}{t} &= -b \gamma(t).
   \end{aligned}
 \end{equation}
 This system of ODE:s could also be argued to be the original Gompertz ODE, since the original differential equation \labelcref{eq:original-gompertz} was motivated by Gompertz in the following way:
@@ -111,7 +111,7 @@ The classical Gompertz ODE is the form used in the first paper on biological gro
 The third family of ODE:s appear slightly later in the literature.
 They can all be written on the form
 \begin{equation} \label{eq:rough-gompertz-autonomous-ode}
-  \dv{W}{t} = -\alpha \ln(\frac{W(t)}{K}) W(t).
+  \diff{W}{t} = -\alpha \ln(\frac{W(t)}{K}) W(t).
 \end{equation}
 While solutions to this ODE are all Gompertz curves, it is important to note that this formulation is fundamentally different than the classical ODE in \cref{eq:rough-gompertz-classical-ode}.
 This is clear from the fact that while \cref{eq:rough-gompertz-classical-ode} is directly dependent on time, \cref{eq:rough-gompertz-autonomous-ode} is not.
@@ -169,9 +169,9 @@ Comparing the solutions in \cref{eq:gompertz-classical-solution,eq:gompertz-auto
 between the parameters can be found.
 The classical Gompertz ODE \labelcref{eq:rough-gompertz-classical-ode} and the autonomous Gompertz ODE \labelcref{eq:rough-gompertz-autonomous-ode} can thus be reparametrized as
 \begin{flalign}
-    \text{Classical, } & T_i :& \dv{W}{t} &= k_G e^{-k_G (t - T_i)} W(t) &&\FlLabel{eq:gompertz-classical-ti} \\
-    \text{Classical, } & W_0 :& \dv{W}{t} &= k_G \ln(\frac{W_0}{A})e^{-k_G t} W(t) &&\FlLabel{eq:gompertz-classical-w0} \\
-    \text{Autonomous, } & T_i \text{ and } W_0 :& \dv{W}{t} &= -k_G \ln(\frac{W(t)}{A}) W(t). &&\FlLabel{eq:gompertz-autonomous}
+    \text{Classical, } & T_i :& \diff{W}{t} &= k_G e^{-k_G (t - T_i)} W(t) &&\FlLabel{eq:gompertz-classical-ti} \\
+    \text{Classical, } & W_0 :& \diff{W}{t} &= k_G \ln(\frac{W_0}{A})e^{-k_G t} W(t) &&\FlLabel{eq:gompertz-classical-w0} \\
+    \text{Autonomous, } & T_i \text{ and } W_0 :& \diff{W}{t} &= -k_G \ln(\frac{W(t)}{A}) W(t). &&\FlLabel{eq:gompertz-autonomous}
 \end{flalign}
 There are two important notes worth highlighting:
 Firstly, all three formulations have two degrees of freedom, even \cref{{eq:gompertz-classical-w0}} since \(W_0\) and \(A\) only appear in the composite form \(W_0 / A\).

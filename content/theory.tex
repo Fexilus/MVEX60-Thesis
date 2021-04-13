@@ -37,7 +37,7 @@ It is worth noting that the rotational transformations map points from the 2-dim
 In the methods used in this thesis, transformations similar to such a \(\Gamma\) are considered, but the structure of a triangle is instead replaced with the structure of a differential equation.
 Initially, assume the differential equation is an ODE of the first order and can thus be written on the form
 \begin{equation} \label[ode]{eq:first-order-ode}
-  \dv{y}{x} = \omega(x,y).
+  \diff{y}{x} = \omega(x,y).
 \end{equation}
 The structure of a first order ODE is thus defined by the function \(\omega\).
 \(\omega\) is hence related to an infinite set of solutions \(u(x)\) that all fulfill \cref{eq:first-order-ode}.
@@ -56,9 +56,9 @@ This property can be defined as:
   \end{equation}
   is a point symmetry of \cref{eq:first-order-ode} if
   \begin{equation}
-    \dv{y}{x} = \omega(x,y)
+    \diff{y}{x} = \omega(x,y)
     \implies
-    \dv{\hat{y}}{\hat{x}} = \omega(\hat{x},\hat{y}).
+    \diff{\hat{y}}{\hat{x}} = \omega(\hat{x},\hat{y}).
   \end{equation}
 \end{defn}
 The \enquote{point} in point symmetry refers to the fact that the transformation \(\Gamma\) only acts on the points belonging to the solution curves and nothing else.
@@ -84,7 +84,7 @@ All differentiable functions \(f: B \to F\) have a single equivalent function \(
 The prolongation is defined as
 % FIXME: Avoid relax
 \begin{equation}
-  \prolong{f}{1}(x) = \qty(f(x), \dv{f}{x}\relax(x)).
+  \prolong{f}{1}(x) = \qty(f(x), \diff{f}{x}\relax(x)).
 \end{equation}
 In extension to this concept, a smooth transverse curve \(\gamma \subset E\) has a prolongation which is a curve \(\prolong{\gamma}{1} \subset J_1\) defined by
 \begin{equation}
@@ -104,7 +104,7 @@ The curves \(\gamma\) will then correspond to the solutions \(u(x)\) of \cref{eq
 While only first order ODE:s are handled in this thesis, some basic knowledge of symmetry methods for higher order ODE:s is required to be able to understand how the process of finding symmetries differ between first and higher order ODE:s.
 An ODE of degree \(k\) can be written on the form
 \begin{equation}
-  \dv[k]{y}{x} = \omega\qty(x, y, \dv{y}{x}, \dots, \dv[k-1]{y}{x}),
+  \diff[k]{y}{x} = \omega\qty(x, y, \diff{y}{x}, \dots, \diff[k-1]{y}{x}),
 \end{equation}
 while higher order jet spaces \(J_k = J_k E\) take the form
 \begin{equation}
@@ -120,10 +120,10 @@ An ODE of degree \(k\) can thus be formulated as finding curves in \(J_k\) that 
 \end{equation}
 as well as the condition that the curves should be \(k\):th order prolongations
 \begin{equation}
-  \prolong{\gamma_u}{k} = \qty{\prolong{z}{k} = \qty(\fixed{x}, y, y', \dots, y^{(k)})\qq*{:} y^{(l)} = \dv[l]{u}{x}{(\fixed{x})}\qc \fixed{x} \in B\qc l = 0, \dots, k}
+  \prolong{\gamma_u}{k} = \qty{\prolong{z}{k} = \qty(\fixed{x}, y, y', \dots, y^{(k)})\qq*{:} y^{(l)} = \diff[l]{u}{x}{(\fixed{x})}\qc \fixed{x} \in B\qc l = 0, \dots, k}
 \end{equation}
 of curves \(\gamma\) corresponding to functions \(u(x) \in \cont{k}{B}\).
-Here \(y^{(0)} = y\) and \(\dv[0]{u}{x} = u(x)\).
+Here \(y^{(0)} = y\) and \(\diff[0]{u}{x} = u(x)\).
 
 %-----------------------------------------------------------------------------
 \subsection{The total derivative}
@@ -135,7 +135,7 @@ Thus a differential operator
   \tD{x} = \partial_x + y' \cdot \partial_y + y'' \cdot \partial_{y'} + \dots + y^{(l)} \cdot \partial_{y^{(l-1)}} + \dots
 \end{equation}
 on \(J_k\) is introduced, called the total derivative.
-\(\tD{x}\) will act on expressions in \(J_k\) in the same way that \(\dv{x}\) would act on corresponding expressions consisting of \(x\), \(y(x)\) and derivatives of \(y(x)\) in \(x\).
+\(\tD{x}\) will act on expressions in \(J_k\) in the same way that \(\diff*{}{x}\) would act on corresponding expressions consisting of \(x\), \(y(x)\) and derivatives of \(y(x)\) in \(x\).
 
 A change of variables
 \begin{align}
@@ -145,8 +145,8 @@ A change of variables
 in the function space can be represented in the jet space using the total derivative.
 Due to the chain rule,
 \begin{equation}
-  \dv{\hat{y}}{\hat{x}} = 
-  \frac{\pdv{\hat{y}}{x} + \pdv{\hat{y}}{y} \dv{y}{x}}{\pdv{\hat{x}}{x} + \pdv{\hat{x}}{y} \dv{y}{x}}
+  \diff{\hat{y}}{\hat{x}} = 
+  \frac{\diffp{\hat{y}}{x} + \diffp{\hat{y}}{y} \diff{y}{x}}{\diffp{\hat{x}}{x} + \diffp{\hat{x}}{y} \diff{y}{x}}
 \end{equation}
 in the function space.
 In order to keep the correspondence between the function view and the jet view, viewing the change of variables as a transformation
@@ -190,7 +190,7 @@ The following is a simple example of a one parameter Lie point symmetry.
 \begin{exmp}
   The ODE
   \begin{equation} \label{eq:ex-a:ode}
-    \dv{y}{x} = y = \omega(x, y)
+    \diff{y}{x} = y = \omega(x, y)
   \end{equation}
   has several symmetries.
   One group of symmetries is
@@ -211,8 +211,8 @@ The following is a simple example of a one parameter Lie point symmetry.
   So by \cref{lem:simple-first-order-symmetry} the transformations are point symmetries.
   By fixing \(\pqty{x,y}=\pqty{\fixed{x},\fixed{y}}\),
   \begin{equation}
-    \dv{\epsilon} \pqty{\hat{x}_\epsilon(\fixed{x},\fixed{y}), \hat{y}_\epsilon(\fixed{x},\fixed{y})} =
-    \pqty{\dv{\fixed{\hat{x}}}{\epsilon}, \dv{\fixed{\hat{y}}}{\epsilon}} =
+    \diff*{\hat{x}_\epsilon(\fixed{x},\fixed{y}), \hat{y}_\epsilon(\fixed{x},\fixed{y})}{\epsilon} =
+    \pqty{\diff{\fixed{\hat{x}}}{\epsilon}, \diff{\fixed{\hat{y}}}{\epsilon}} =
     \pqty{1,0}
   \end{equation}
   for any \(\pqty{\fixed{x},\fixed{y}}\).
@@ -225,7 +225,7 @@ While the Lie groups of point symmetries can be parametrized explicitly such as 
 also known as the tangent field of the transformation group.
 The tangent field can be calculated pointwise by 
 \begin{equation}
-  \eval{\dv{\epsilon} \pqty{\hat{x}_\epsilon(\fixed{x},\fixed{y}), \hat{y}_\epsilon(\fixed{x},\fixed{y})}}_{\epsilon=0} = \pqty{\xi(\fixed{x},\fixed{y}), \eta(\fixed{x},\fixed{y})}
+  \eval{\diff*{\hat{x}_\epsilon(\fixed{x},\fixed{y}), \hat{y}_\epsilon(\fixed{x},\fixed{y})}{\epsilon}}_{\epsilon=0} = \pqty{\xi(\fixed{x},\fixed{y}), \eta(\fixed{x},\fixed{y})}
 \end{equation}
 for every fixed point \(\pqty{\fixed{x},\fixed{y}} \in E\).
 The tangent field can be thought of as the vector field that points in \(E\) flow along when the parameter \(\epsilon\) of transformation \(\Gamma_\epsilon\) is increased.
@@ -251,8 +251,8 @@ Using the tangent field of a one-parameter Lie symmetry group, the symmetry cond
   Deriving by \(\epsilon\),
   \begin{equation}
     \begin{split} \label{eq:derive-symmetry-cond}
-      &\frac{\partial_x \dv{\hat{y}}{\epsilon} + \omega \partial_y \dv{\hat{y}}{\epsilon}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}} - \frac{\left(\partial_x \dv{\hat{x}}{\epsilon}  + \omega \partial_y \dv{\hat{x}}{\epsilon}\right)\left(\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}\right)}{\left(\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}\right)^2} -\\
-      &\quad- \dv{\hat{y}}{\epsilon} \partial_x \omega - \dv{\hat{y}}{\epsilon} \partial_y \omega = 0.
+      &\frac{\partial_x \diff{\hat{y}}{\epsilon} + \omega \partial_y \diff{\hat{y}}{\epsilon}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}} - \frac{\left(\partial_x \diff{\hat{x}}{\epsilon}  + \omega \partial_y \diff{\hat{x}}{\epsilon}\right)\left(\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}\right)}{\left(\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}\right)^2} -\\
+      &\quad- \diff{\hat{y}}{\epsilon} \partial_x \omega - \diff{\hat{y}}{\epsilon} \partial_y \omega = 0.
     \end{split}
   \end{equation}
   It is sufficient to show that this expression holds at \(\epsilon = 0\) for all \(x\) and \(y\), since evaluation in any \(\tilde{\epsilon} \neq 0\) will be equivalent to the expression for \(\epsilon = 0\) in the point \(\Gamma_{\tilde{\epsilon}}(x, y)\).
@@ -341,7 +341,7 @@ called an infinitesimal generator, can be introduced.
 The infinitesimal generator acts on transformations \(\Gamma: E \to E\) and returns the action of the tangent field \(\qty(\xi, \eta)\) of a Lie point symmetry with elements \(\Gamma_\epsilon\) on the transformation.
 The action gives a measure of the change in \(\Gamma\) when continuously transforming the plane which it acts on, since
 \begin{equation}
-  \eval{\dv{\epsilon} \Gamma \circ \Gamma_\epsilon}_{\epsilon = 0} = X \Gamma.
+  \diff*{\Gamma \circ \Gamma_\epsilon}{\epsilon}[\epsilon = 0] = X \Gamma.
 \end{equation}
 Just as the tangent field characterizes the Lie point symmetry, so does the infinitesimal generator, as it is depends uniquely on the tangent field.
 
@@ -435,9 +435,9 @@ Using these tools, the earlier results for scalar ODE:s are easy to reformulate 
   \end{equation}
   is a point symmetry of \cref{eq:first-order-system-ode-short} if
   \begin{equation}
-    \dv{\vb{y}}{x} = \vb*{\omega}(z)
+    \diff{\vb{y}}{x} = \vb*{\omega}(z)
     \implies
-    \dv{\hat{\vb{y}}}{\hat{x}} = \vb*{\omega}(\hat{z}).
+    \diff{\hat{\vb{y}}}{\hat{x}} = \vb*{\omega}(\hat{z}).
   \end{equation}
 \end{defn}
 \begin{thm} \label{thm:linearized-general-symmetry}

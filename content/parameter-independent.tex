@@ -8,27 +8,27 @@ To reiterate, the Gompertz models are\par\noindent
   Classical, & \(T_i\) :&
   \begin{minipage}{\linewidth}
     \begin{equation}
-      \dv{W}{t} = k_G e^{-k_G (t - T_i)} W(t) \label{eq:gompertz-classical-ti^param}
+      \diff{W}{t} = k_G e^{-k_G (t - T_i)} W(t) \label{eq:gompertz-classical-ti^param}
     \end{equation}
   \end{minipage}\tabularnewline
   Classical, & \(W_0\) :&
   \begin{minipage}{\linewidth}
     \begin{equation}
-      \dv{W}{t} = k_G \ln(\frac{W_0}{A})e^{-k_G t} W(t) \label{eq:gompertz-classical-w0^param}
+      \diff{W}{t} = k_G \ln(\frac{W_0}{A})e^{-k_G t} W(t) \label{eq:gompertz-classical-w0^param}
     \end{equation}
   \end{minipage}\tabularnewline
   Autonomous, & \(T_i\) and \(W_0\) :&
   \begin{minipage}{\linewidth}
     \begin{equation}
-      \dv{W}{t} = -k_G \ln(\frac{W(t)}{A}) W(t) \label{eq:gompertz-autonomous^param}
+      \diff{W}{t} = -k_G \ln(\frac{W(t)}{A}) W(t) \label{eq:gompertz-autonomous^param}
     \end{equation}
   \end{minipage}\tabularnewline
   System, & \(T_i\) and \(W_0\) :&
   \begin{minipage}{\linewidth}%
     {\begin{subequations}\label{eq:gompertz-system^param}
       \begin{align}
-        \dv{W}{t} &= G(t) W(t) \label{eq:gompertz-system-a^param}\\
-        \dv{G}{t} &= -k_G G(t). \label{eq:gompertz-system-b^param}
+        \diff{W}{t} &= G(t) W(t) \label{eq:gompertz-system-a^param}\\
+        \diff{G}{t} &= -k_G G(t). \label{eq:gompertz-system-b^param}
       \end{align}
     \end{subequations}}%
   \end{minipage}
@@ -407,8 +407,8 @@ A classic model for predator-prey dynamics is the Lotka-Volterra model, where a 
 \begin{subequations}
   \label{eq:lotka-volterra-original}  
   \begin{align}
-    \dv{N}{t} &= a N - b N P\\
-    \dv{P}{t} &= c N P - d P
+    \diff{N}{t} &= a N - b N P\\
+    \diff{P}{t} &= c N P - d P
   \end{align}
 \end{subequations}
 \cite{murray2002biology}.
@@ -432,16 +432,16 @@ The linearized symmetry condition \labelcref{eq:linearized-first-order-symmetry-
 Decomposition of \cref{eq:lotka-volterra-lin-symmetry-cond} in \(a\) gives the parameter independence determining equations
 \begin{subequations}\label{eq:lotka-volterra-det-a}
   \begin{flalign}
-    \dv{N}{t}, 1 & : & - N^{2} P^{2} b^{2} \xi_{N} - N P b \eta^1_{N} + N P b \xi_{t} + N b \eta^{2} + P b \eta^{1} +&&&\\
+    \diff{N}{t}, 1 & : & - N^{2} P^{2} b^{2} \xi_{N} - N P b \eta^1_{N} + N P b \xi_{t} + N b \eta^{2} + P b \eta^{1} +&&&\\
     &&\quad+ \left(N P c - P d\right) \eta^1_{P} + \left(N^{2} P^{2} b c - N P^{2} b d\right) \xi_{P} + \eta^1_{t} &= 0 && \FlLabel{eq:lotka-volterra-det-a-a}\\
-    \dv{N}{t}, a & : & 2 N^{2} P b \xi_{N} + N \eta^1_{N} - N \xi_{t} + \left(- N^{2} P c + N P d\right) \xi_{P} -&&&\\
+    \diff{N}{t}, a & : & 2 N^{2} P b \xi_{N} + N \eta^1_{N} - N \xi_{t} + \left(- N^{2} P c + N P d\right) \xi_{P} -&&&\\
     &&\quad- \eta^{1} &= 0 && \FlLabel{eq:lotka-volterra-det-a-b}\\
-    \dv{N}{t}, a^2 & : & - N^{2} \xi_{N} &= 0 && \FlLabel{eq:lotka-volterra-det-a-c}\\
-    \dv{P}{t}, 1 & : & - N P b \eta^2_{N} - P c \eta^{1} + \left(- N c + d\right) \eta^{2} +&&&\\
+    \diff{N}{t}, a^2 & : & - N^{2} \xi_{N} &= 0 && \FlLabel{eq:lotka-volterra-det-a-c}\\
+    \diff{P}{t}, 1 & : & - N P b \eta^2_{N} - P c \eta^{1} + \left(- N c + d\right) \eta^{2} +&&&\\
     &&\quad+  \left(- N P c + P d\right) \xi_{t} + \left(N P c - P d\right) \eta^2_{P} +&&&\\
     &&\quad+ \left(N^{2} P^{2} b c - N P^{2} b d\right) \xi_{N} +&&&\\
     &&\quad+ \left(- N^{2} P^{2} c^{2} + 2 N P^{2} c d - P^{2} d^{2}\right) \xi_{P} + \eta^2_{t} &= 0 && \FlLabel{eq:lotka-volterra-det-a-d}\\
-    \dv{P}{t}, a & : & N \eta^2_{N} + \left(- N^{2} P c + N P d\right) \xi_{N} &= 0. && \FlLabel{eq:lotka-volterra-det-a-e}
+    \diff{P}{t}, a & : & N \eta^2_{N} + \left(- N^{2} P c + N P d\right) \xi_{N} &= 0. && \FlLabel{eq:lotka-volterra-det-a-e}
   \end{flalign}
 \end{subequations}
 From \cref{eq:lotka-volterra-det-a-c,eq:lotka-volterra-det-a-e} it is clear that
