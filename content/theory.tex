@@ -413,7 +413,7 @@ The tangent fields of transformations on \(E\) takes the form
 \end{equation}
 and the infinitesimal generator thus has the form
 \begin{equation}
-  X = \xi(z) \partial_x + \eta^1(z) \partial_{y^1} + \dots + \eta^s(z) \partial_{y^s} = \xi(z) \partial_x + \vb*{\eta}(z) \vdot \partial_{\vb{y}},
+  X = \xi(z) \partial_x + \eta^1(z) \partial_{y^1} + \dots + \eta^s(z) \partial_{y^s} = \xi(z) \partial_x + \vb*{\eta}(z) \cdot \partial_{\vb{y}},
 \end{equation}
 once again employing vector notation for \(\vb*{\eta}(z) = \qty(\eta^1(z), \dots, \eta^s(z))\) and \(\partial_{\vb{y}} = \qty(\partial_{y^1}, \dots, \partial_{y^s})\) to shorten the expression.
 The infinitesimal generator can be prolonged by defining
@@ -433,7 +433,7 @@ Using these tools, the earlier results for scalar ODE:s are easy to reformulate 
   \begin{equation}
     \Gamma: z \mapsto \hat{z}(z)
   \end{equation}
-  is a point symmetry of \cref{eq:first-order-system-ode-short} if
+  is a point symmetry of of a system of first order ODE:s \labelcref{eq:first-order-system-ode-short} if
   \begin{equation}
     \diff{\vb{y}}{x} = \vb*{\omega}(z)
     \implies
@@ -458,13 +458,92 @@ This fact is not of great concern here, as this thesis only deals with first ord
 
 For a system of ODE:s, the characteristic becomes a function \(\vb{Q}(\prolong{z}{1}) = \qty(Q^1(\prolong{z}{1}), \dots, Q^s(\prolong{z}{1}))\) defined by
 \begin{equation}
-  Q^k(\prolong{z}{1}) = \eta^k(z) - y^k_x \xi(z)
+  Q^k(\prolong{z}{1}) = \eta^k(z) - y^k_x \xi(z), \quad k = 1,\dots,s.
 \end{equation}
+A solution curve \(\gamma_u\) of a system of ODE:s is an invariant of a symmetry with characteristic \(\vb{Q}\) if
+\begin{equation}
+  Q^k(\prolong{z}{1}) = 0, \quad \forall z \in \gamma_u.
+\end{equation}
+For a system of first order ODE:s \labelcref{eq:first-order-system-ode-short} the condition can be simplified, using the reduced characteristic \(\bar{\vb{Q}}(z) = \vb{Q}(z, \vb*{\omega}(z))\), to
+\begin{equation}
+  \bar{Q}^k(z) = \eta^k(z) - \omega^k(z) \xi(z) = 0, \quad \forall z \in \gamma_u.
+\end{equation}
+The concept of a trivial symmetry can thus be generalized to first order systems.
 \begin{defn}[Trivial symmetry] \label{defn:trivial-symmetry}
+  A Lie point symmetry with tangent field \(\left(\xi, \vb*{\eta}\right)\) is a trivial symmetry of a system of first order ODE:s \labelcref{eq:first-order-system-ode-short} if
+  \begin{equation}
+    \bar{\vb{Q}}(z) \equiv 0.
+  \end{equation}
 \end{defn}
 
-\section{Finding Lie point symmetries}
+\section{Properties of Lie point symmetries}
 
-% TODO: Write about basis for generators
+Before moving on to the process of finding symmetries, some further results are of interest in order to better understand and interpret the symmetries found.
+Up until this point, the definition of a Lie group has been consciously avoided.
+This is mainly due to the fact that the specifics are quite involved, and do not play a large role in finding symmetries of the type found in this thesis.
+To evaluate the results of such calculations, however, some of this theory must be explained.
+Since a complete understanding of the theory is neither necessary nor viable in this thesis, only the aspects relevant to calculations will be explained.
+Readers wishing to understand the theory it self are once again recommended \cite{olver1993applications,olver1995equivalence} as discussed in the beginning of this chapter.
+
+\subsection{Lie groups and Lie algebras}
+
+So far, only one-parameter Lie groups of transformations have been considered.
+In practice, the collection of all symmetry transformations of a differential equation will almost always include a multiparameter Lie group of transformations.
+An \(n\)-parameter Lie group is a group that also has the structure of an \(n\)-dimensional smooth manifold.
+The Lie group being a group means that it has elements, and those elements can be multiplied together in some manner.
+When the group \(G\) has transformations \(\Gamma: E \to E\) as elements, the multiplication is defined as the composition \(\circ\) of elements, defined by
+\begin{equation}
+  \Gamma \circ \tilde{\Gamma}: z \mapsto \Gamma\left(\tilde{\Gamma}(z)\right),
+\end{equation}
+where \(\Gamma, \tilde{\Gamma} \in G\).
+The Lie group having the structure of an \(n\)-dimensional smooth manifold means that operations such as differentiation of the elements are defined.
+This structure appears earlier in this chapter when differentiation \(\diff*{}{\epsilon}\) in the parameter of the one-parameter Lie group was used.
+
+Just as a one-parameter Lie group of transformations is characterized by an infinitesimal generator, an \(n\)-parameter Lie group can be characterized by a basis of \(n\) infinitesimal generators.
+For an \(n\)-parameter Lie group of transformations with basis \(X_1, \dots, X_n\), the action at a given point can always be represented as
+\begin{equation}
+  X = c_1 X_1 + \dots + c_n X_n,
+\end{equation}
+where \(c_1, \dots, c_n\) are constants.
+The basis can be seen as the available directions in which a derivative can be taken, in the same way that a partial derivative in multivariate calculus can be taken in an arbitrary direction given by a vector constructed from a base vectors.
+
+It is of interest to be able to determine if a multiparameter Lie group of transformations is a symmetry of a differential equation.
+\Cref{eq:first-order-system-ode-short} can as in the scalar case be rewritten as
+\begin{equation} \label{eq:first-order-system-ode-shorter}
+  \vb*{\Delta}(\prolong{z}{1}) = \vb{y}_x - \vb*{\omega}(z) = 0
+\end{equation}
+for the sake of convenience.
+Let \(X_1\) and \(X_2\) be the infinitesimal generators of two one-parameter Lie point symmetries of \cref{eq:first-order-system-ode-shorter}.
+A two-parameter Lie group of transformations with the basis \(X_1, X_2\) will also be a Lie point symmetry, since
+\begin{multline}
+  \eval{\prolong{(c_1 X_1 + c_2 X_2)}{1}(\vb*{\Delta}(\prolong{z}{1}))}_{\vb*{\Delta}(\prolong{z}{1}) = 0} =\\
+  = c_1 \eval{\prolong{X_1}{1}(\vb*{\Delta}(\prolong{z}{1}))}_{\vb*{\Delta}(\prolong{z}{1}) = 0} + c_2 \eval{\prolong{X_2}{1}(\vb*{\Delta}(\prolong{z}{1}))}_{\vb*{\Delta}(\prolong{z}{1}) = 0} =
+  0
+\end{multline}
+at any point \(z \in E\).
+This argument extends to any multiparameter Lie group of transformations, as it is only dependent on the fact that the infinitesimal generator is a linear differential operator.
+Thus an \(n\)-parameter Lie group of transformations is a symmetry group if the one-parameter Lie groups corresponding to its bases are symmetries.
+
+However, an \(n\)-parameter Lie symmetry can not be constructed from the infinitesimal generators of an arbitrary collection of one-parameter Lie symmetries.
+The fact that a one-parameter Lie group always can be constructed from an infinitesimal generator is a trivial case of a more general requirement.
+The correspondence between Lie groups of transformations and infinitesimal generators is a special case of a more general correspondence between Lie groups and Lie algebras.
+Every Lie algebra is equipped with an operation called the Lie bracket, which for the infinitesimal generators is defined as
+\begin{equation} \label{eq:lie-bracket}
+  \comm{X_1}{X_2} = \left(X_1(\xi_2) - X_2(\xi_1)\right) \partial_x + \left(X_1(\vb*{\eta}_1) - X_2(\vb*{\eta}_1)\right) \cdot \partial_{\vb{y}},
+\end{equation}
+where \(X_1 = \xi_1 \partial_x + \vb*{\eta}_2 \cdot \partial_{\vb{y}}\) and \(X_2 = \xi_2 \partial_x + \vb*{\eta}_2 \cdot \partial_{\vb{y}}\).
+A Lie algebra is closed under the Lie bracket, which means that
+\begin{equation} \label{eq:lie-bracket-closure}
+  \comm{X_1}{X_2} \in \mathfrak{g},
+\end{equation}
+where \(\mathfrak{g}\) is the Lie algebra with elements \(X_1, X_2 \in \mathfrak{g}\).
+The Lie bracket is a bilinear operator, so it is only necessary to check that \cref{eq:lie-bracket-closure} hold for a basis \(X_1, \dots, X_n\) in order to ensure that any linear combinations \(X = c_1 X_1 + \dots + c_n X_n\) will be closed under the Lie bracket.
+All Lie algebras have a corresponding Lie group, so in order to generalize the correspondence between Lie groups of transformations and infinitesimal generators the requirement becomes that a Lie algebra \(\mathfrak{g}\) with the basis \(X_1, \dots, X_n\) always has a corresponding Lie group of transformations.
+For one-dimensional Lie algebras this correspondence is trivial since
+\begin{equation}
+  \comm{X_1}{X_1} = 0 \in \mathfrak{g}
+\end{equation}
+for any basis \(X_1 \in \mathfrak{g}\).
+
+% TODO: Write about trivial symmetries, invariants and Lie brackets
 % TODO: Get canonical coordinates in to the text somehow
-% TODO: Write about canonical forms of generators
