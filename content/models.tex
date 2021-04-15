@@ -1,15 +1,48 @@
-\chapter{Modeling in biochemistry and ecology}
+\chapter{Modeling in biology}
 
-Intro on modelling in biology\dots
+In biology, ordinary differential equations (ODE:s) are a common tool for mathematically modelling systems under study.
+The systems are modeled to contain several interacting species, and measurements of the different species.
+The measurements vary from field to field, but common types are the concentration of a chemical species in biochemistry, the volume of organs or growths in medical science and the size of animal species populations in ecology.
+The different species are modeled to affect each other over time, and thus differential equations are a good tool.
+The limitation to ODE:s is often due to the fact that the models required to model biological phenomena are complex enough, without taking locality into account, to be at the boundaries of what is viable to simulate and compare to experiments.
+There are thus a large amount of models in these fields that take the form
+\begin{align}
+  \begin{split} \label{eq:generic-bio-ode}
+    \diff{A^1}{t} &= \omega^1(t, A^1, \dots, A^s; \vb*{\theta}) \\
+    &\equalsvdots \\
+    \diff{A^s}{t} &= \omega^s(t, A^1, \dots, A^s; \vb*{\theta}),
+  \end{split}
+\end{align}
+where \(A^1(t), \dots, A^s(t)\) are the measurements of species at time \(t\), and \(\vb*{\theta} = \left(\theta^1, \dots, \theta^m\right)\) are a collection of parameters.
+The parameters allow the models to be adopted to a large amount of different circumstances.
+They can be related to environmental factors, inherent properties of the species involved or a measurement of a species assumed to be constant for the duration of the experiment.
+
+One major obstacle in modeling and predicting the behavior of biological systems is the ability to correctly estimate these parameters.
+The reliance on estimated values in models is not unique to biology in the natural sciences, but unlike most other natural sciences the models in many biological fields are built upon these types of experiments.
+While a physicist might successfully isolate different parts of a larger system, and part by part build a theoretical model that is then tested on larger systems, a biologist often has trouble doing the same as the systems studied are large and intertwined enough that isolation of phenomena becomes nigh on impossible.
+Instead, modelers in biology use chemical principles, research on simpler but similar lifeforms and biological intuition to build models, and directly test these against living test subjects.
+Not only does this affect the speed at which correct models can be constructed, but it also means that the parameters values that can not be directly measured can not be estimated before any simulation of the model is run, since there is no underlying fundamental model to predict the values with.
+
+To solve these problems, modelers in biology have developed advanced methods with such sophistication that entirely new fields, such as systems biology, have developed around them \cite{kitano2002systems,westerhoff2004evolution}.
+Still, many problems and challenges remain.
+In this thesis, mathematical symmetries is explored as a possible tool to solve some of these challenges.
+In order to tackle such a broad question as \enquote{Can symmetries be used to enhance biological modeling?}, several concrete models from biology have been selected as examples.
+These examples serve both as a familiar setting for those working in biological modeling to learn about symmetries of differential equations, and as a way to concretely discuss the uses of these symmetries as modelling tools.
+
+The models have been selected to cover a range of biological disciplines, and to cover model complexity ranging from models simple enough to solve by hand to those used in current research.
+In this chapters the models will be introduced, along with some biological context where necessary.
 
 \section{The Hill equation}
 
-The Hill equation is an ODE that empirically describes cooperative binding to a multi-site protein.
+The Hill equation is an scalar ODE that empirically describes cooperative binding to a multi-site protein \cite{weiss1997hill}.
 It takes the form
 \begin{equation} \label{eq:original-hill}
   \diff{Y}{t} = - v_\text{max} \frac{Y^n}{K_m + Y^n} = \Omega_n(t, Y), \quad
-  n > 0.
+  n > 0,
 \end{equation}
+where \(Y\) is the concentration of some protein.
+The Hill equation has been studied using symmetries of differential equations, using its nondimensionalized form \cite{ohlsson2020symmetry}.
+Thus the Hill equation will be studied here using the same nondimensionalized form.
 By nondimensionalizing both the substrate concentration with
 \begin{equation}
   y = \frac{Y}{{K_m}^{1/n}}
@@ -18,7 +51,7 @@ and the time with
 \begin{equation}
   \tau = v_\text{max} \frac{t}{{K_m}^{1/n}},
 \end{equation}
-\cref{eq:original-hill} simplifies to
+\cref{eq:original-hill} simplifies to its nondimensionalized form
 \begin{equation} \label[ode]{eq:hill}
   \diff{y}{\tau} = - \frac{y^n}{1 + y^n} = \omega_n(\tau, y), \quad
   n > 0.
@@ -35,7 +68,7 @@ Written in mathematical terms
 \end{equation}
 where \(W(t)\) is the size of our species (volume of a tumor, weight of an animal, individuals in a population etc.) at time \(t\) and \(c\) is a constant.
 While exponential growth accurately models initially growth for many systems, eventually some external factor will limit the growth.
-The external factor might be simple like limited availability of food in the case of an animal population, or complex like limitations of infrastructure in the case of cities. % FIXME: Check validity of statement
+The external factor might be simple, like limited availability of food in the case of an animal population, or complex, like limitations of infrastructure in the case of cities. % FIXME: Check validity of statement
 Correctly modeling the external limitations is crucial when studying the long term behavior of the system.
 
 The Gompertz model is one such model that has seen success in many areas.
@@ -179,4 +212,28 @@ This must be the case since only a two parameter ODE can produce three parameter
 Secondly, it should be stressed that \cref{eq:gompertz-classical-ti,eq:gompertz-classical-w0} are just two different parametrizations of the same differential equation.
 They will thus share symmetries, and calculations need only be performed on one form.
 
-% TODO: Somewhere around here the jet space notation and \omega_c, \omega_a forms should be introduced.
+\section{The Lotka--Volterra model}
+
+A classic model for predator-prey dynamics is the Lotka--Volterra model, modeling two populations where one species feed on the other according to
+\begin{subequations} \label{eq:lotka-volterra}
+  \begin{align}
+    \diff{N}{t} &= a N - b N P\\
+    \diff{P}{t} &= c N P - d P,
+  \end{align}
+\end{subequations}
+where \(N\) is the prey population size and \(P\) the predator population size \cite{lotka1925elements,volterra1928variations}.
+The Lotka--Volterra model is by no means the most modern or correct model to use in most situations, but the model is important from a historical perspective \cite{berryman1992orgins}.
+Variations of the model have been analyzed using symmetries \cite{almeida1995lie,cherniha2004diffusive}, but there is a lack of interpretations of the symmetries in symmetries as well as studies of the original model. % FIXME: Missing 2d-case with time invariance equivalent symmetry
+
+\section{The Yildirim--Mackey lactose operon model}
+
+\begin{subequations}
+  \begin{align}
+    \diff{M}{t} = \alpha_M \frac{1 + K_1 A^n}{K + K_1 A^n} + \Gamma_0 - \gamma_M M
+    \diff{B}{t} = \alpha_B M - \gamma_B B
+    \diff{L}{t} = \alpha_L P \frac{L_e}{K_{L_e} + L_e} - \beta_{L_1} P \frac{L}{K_{L_1} + L} - \beta_{L_2} B \frac{L}{K_{L_2} + L} - \gamma_L L
+    \diff{A}{t} = \alpha_A B \frac{L}{K_L + L} - \beta_A B \frac{A}{K_A + A} - \gamma_A A
+    \diff{P}{t} = \alpha_P M - \gamma_P P
+  \end{align}
+\end{subequations}
+\cite{yildirim2003feedback}
