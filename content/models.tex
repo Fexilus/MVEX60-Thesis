@@ -1,6 +1,6 @@
 \chapter{Modeling in biology}
 
-In biology, ordinary differential equations (ODE:s) are a common tool for mathematically modelling systems under study.
+In biology, ordinary differential equations (ODE:s) are a common tool for mathematically modelling systems.
 The systems are modeled to contain several interacting species, and measurements of the different species.
 The measurements vary from field to field, but common types are the concentration of a chemical species in biochemistry, the volume of organs or growths in medical science and the size of animal species populations in ecology.
 The different species are modeled to affect each other over time, and thus differential equations are a good tool.
@@ -119,7 +119,7 @@ The ODE formulation thus often lacks proper references, rendering the origin of 
 All formulations of the ODE found in literature can however be sorted into one of three families.
 
 The ODE:s in the first family can all be written on the form
-\begin{equation} \label{eq:rough-gompertz-classical-ode}
+\begin{equation} \label[ode]{eq:rough-gompertz-classical-ode}
   \diff{W}{t} = r e^{-b t} W(t).
 \end{equation}
 These ODE:s are reparameterizations of Gompertz' original ODE \labelcref{eq:original-gompertz-modern}, often emphasizing the expected behaviors of the model in the growth context by choosing parameters that should be positive.
@@ -143,10 +143,10 @@ The classical Gompertz ODE is the form used in the first paper on biological gro
 
 The third family of ODE:s appear slightly later in the literature.
 They can all be written on the form
-\begin{equation} \label{eq:rough-gompertz-autonomous-ode}
+\begin{equation} \label[ode]{eq:rough-gompertz-autonomous-ode}
   \diff{W}{t} = -\alpha \ln(\frac{W(t)}{K}) W(t).
 \end{equation}
-While solutions to this ODE are all Gompertz curves, it is important to note that this formulation is fundamentally different than the classical ODE in \cref{eq:rough-gompertz-classical-ode}.
+While solutions to this ODE are all Gompertz curves, it is important to note that this formulation is fundamentally different than the classical ODE \labelcref{eq:rough-gompertz-classical-ode}.
 This is clear from the fact that while \cref{eq:rough-gompertz-classical-ode} is directly dependent on time, \cref{eq:rough-gompertz-autonomous-ode} is not.
 We will therefore henceforth refer to the family of ODE:s that can be rewritten as \cref{eq:rough-gompertz-autonomous-ode} as \enquote{autonomous Gompertz ODE:s}.
 The first time an autonomous Gompertz ODE appears in the literature on biological growth is in a review of the new use of the Gompertz curve in 1932 \cite{winsor1932gompertz}.
@@ -179,7 +179,7 @@ Depending on application either of these two parametrizations might be useful.
 It is therefore necessary to reparametrize both \cref{eq:rough-gompertz-classical-ode} and \cref{eq:rough-gompertz-autonomous-ode} using both forms.
 
 To reparametrize the ODE:s using Gompertz curve parametrizations, the solutions of the ODE:s must be found.
-The classical Gompertz ODE \labelcref{eq:rough-gompertz-classical-ode} is most easily solved using the fact is separable to integrate over \(W\) and \(t\) separately.
+The classical Gompertz ODE:s \labelcref{eq:rough-gompertz-classical-ode,eq:rough-gompertz-system-ode} are most easily solved using the fact that the classical ODE is separable to integrate over \(W\) and \(t\) separately.
 The solutions are thus
 \begin{equation} \label{eq:gompertz-classical-solution}
   W(t) = c e^{-r/b \cdot e^{-b t}}
@@ -200,17 +200,44 @@ Comparing the solutions in \cref{eq:gompertz-classical-solution,eq:gompertz-auto
   K &= A
 \end{align}
 between the parameters can be found.
-The classical Gompertz ODE \labelcref{eq:rough-gompertz-classical-ode} and the autonomous Gompertz ODE \labelcref{eq:rough-gompertz-autonomous-ode} can thus be reparametrized as
-\begin{flalign}
-    \text{Classical, } & T_i :& \diff{W}{t} &= k_G e^{-k_G (t - T_i)} W(t) &&\FlLabel{eq:gompertz-classical-ti} \\
-    \text{Classical, } & W_0 :& \diff{W}{t} &= k_G \ln(\frac{W_0}{A})e^{-k_G t} W(t) &&\FlLabel{eq:gompertz-classical-w0} \\
-    \text{Autonomous, } & T_i \text{ and } W_0 :& \diff{W}{t} &= -k_G \ln(\frac{W(t)}{A}) W(t). &&\FlLabel{eq:gompertz-autonomous}
-\end{flalign}
+The classical Gompertz ODE:s \labelcref{eq:rough-gompertz-classical-ode,eq:rough-gompertz-system-ode} and the autonomous Gompertz ODE \labelcref{eq:rough-gompertz-autonomous-ode} can thus be reparametrized as
+
+\noindent
+\begin{tabularx}{\linewidth}{rrM}
+  Classical, & \(T_i\) :&
+  \begin{minipage}{\linewidth}
+    \begin{equation}
+      \diff{W}{t} = k_G e^{-k_G (t - T_i)} W(t) \label{eq:gompertz-classical-ti}
+    \end{equation}
+  \end{minipage}\tabularnewline
+  Classical, & \(W_0\) :&
+  \begin{minipage}{\linewidth}
+    \begin{equation}
+      \diff{W}{t} = k_G \ln(\frac{W_0}{A})e^{-k_G t} W(t) \label{eq:gompertz-classical-w0}
+    \end{equation}
+  \end{minipage}\tabularnewline
+  Autonomous, & \(T_i\) and \(W_0\) :&
+  \begin{minipage}{\linewidth}
+    \begin{equation}
+      \diff{W}{t} = -k_G \ln(\frac{W(t)}{A}) W(t) \label{eq:gompertz-autonomous}
+    \end{equation}
+  \end{minipage}\tabularnewline
+  System, & \(T_i\) and \(W_0\) :&
+  \begin{minipage}{\linewidth}%
+    {\begin{subequations}\label{eq:gompertz-system}
+      \begin{align}
+        \diff{W}{t} &= G(t) W(t) \label{eq:gompertz-system-a}\\
+        \diff{G}{t} &= -k_G G(t). \label{eq:gompertz-system-b}
+      \end{align}
+    \end{subequations}}%
+  \end{minipage}
+\end{tabularx}
 There are two important notes worth highlighting:
 Firstly, all three formulations have two degrees of freedom, even \cref{{eq:gompertz-classical-w0}} since \(W_0\) and \(A\) only appear in the composite form \(W_0 / A\).
 This must be the case since only a two parameter ODE can produce three parameter solutions (which the Gompertz curves are).
 Secondly, it should be stressed that \cref{eq:gompertz-classical-ti,eq:gompertz-classical-w0} are just two different parametrizations of the same differential equation.
 They will thus share symmetries, and calculations need only be performed on one form.
+
 
 \section{The Lotka--Volterra model}
 
@@ -225,15 +252,19 @@ where \(N\) is the prey population size and \(P\) the predator population size \
 The Lotka--Volterra model is by no means the most modern or correct model to use in most situations, but the model is important from a historical perspective \cite{berryman1992orgins}.
 Variations of the model have been analyzed using symmetries \cite{almeida1995lie,cherniha2004diffusive}, but there is a lack of interpretations of the symmetries in symmetries as well as studies of the original model. % FIXME: Missing 2d-case with time invariance equivalent symmetry
 
+
 \section{The Yildirim--Mackey lactose operon model}
 
-\begin{subequations}
+A more modern model in the style and scope of those used today in biology is the Yildirim--Mackey model for the Lactose Operon \cite{yildirim2003feedback}.
+It models the biochemical reaction to lactose in \textit{Escherichia coli} with a delay differential equation.
+Since this thesis only covers ODE:s, the slightly simplified ODE model used in \cite{yildirim2011deterministic} will instead be used, which is modeled by
+\begin{subequations} \label{eq:lac-operon}
   \begin{align}
     \diff{M}{t} &= \alpha_M \frac{1 + K_1 A^n}{K + K_1 A^n} + \Gamma_0 - \gamma_M M \\
     \diff{B}{t} &= \alpha_B M - \gamma_B B \\
     \diff{L}{t} &= \alpha_L P \frac{L_e}{K_{L_e} + L_e} - \beta_{L_1} P \frac{L}{K_{L_1} + L} - \beta_{L_2} B \frac{L}{K_{L_2} + L} - \gamma_L L \\
     \diff{A}{t} &= \alpha_A B \frac{L}{K_L + L} - \beta_A B \frac{A}{K_A + A} - \gamma_A A \\
-    \diff{P}{t} &= \alpha_P M - \gamma_P P
+    \diff{P}{t} &= \alpha_P M - \gamma_P P,
   \end{align}
 \end{subequations}
-\cite{yildirim2003feedback}
+where \(M\) is mRNA production, \(B\) is the concentration of \(\beta\)-galactosidase, \(A\) is the concentration of allolactose, \(L\) is the concentration of intracellular lactose and \(P\) the concentration of permease.
