@@ -1,7 +1,28 @@
 \chapter{Finding symmetries using ansätze}
 
-In this chapter symmetries of the models are found using ansätze.
-At some point there will be a nice introduction here.
+Finding symmetries of first order ODE:s is as previously stated different than finding symmetries of higher order models.
+For the sake of simplicity, the problem will be shown for scalar explicit ODE:s, or in other words ODE:s on the form
+\begin{equation} \label{eq:scalar-explicit-ode}
+  \prolongpart{y}{n} = \omega(\prolong{z}{n-1}),
+\end{equation}
+where \(\prolongpart{y}{n}\) is the \(n\):th derivative in \(x\).
+Since \cref{eq:scalar-explicit-ode} is of degree \(n\), the linearized symmetry condition is
+\begin{equation} \label{eq:linearized-general-symmetry^ansatze}
+  \eval{\prolong{X}{n}(\prolongpart{y}{n} - \omega(\prolong{z}{n-1}))}_{\prolongpart{y}{n} = \omega(\prolong{z}{n-1})} = 0.
+\end{equation}
+\Cref{eq:linearized-general-symmetry^ansatze} is a partial differential equation \(PDE\) of degree \(n\) in the functions \(\xi(x, y), \eta(x, y)\).
+The highest order jet variable \(\prolongpart{y}{n}\) will not be present anywhere in \cref{eq:linearized-general-symmetry^ansatze} as the evaluation on \cref{eq:scalar-explicit-ode} removes all such dependence.
+For an ODE of degree \(n > 1\), jet variables \(y_x, \dots, \prolongpart{y}{n-1}\) will still be present in \cref{eq:linearized-general-symmetry^ansatze}, and since neither \(\xi\) nor \(\eta\) has any dependence on those variables the equation can be decomposed in those variables.
+This means that \cref{eq:linearized-general-symmetry^ansatze} will be turned into a system of PDE:s, still of degree \(n\) in the functions \(\xi(x, y), \eta(x, y)\), called the determining equations of the symmetries.
+In general, such a system is solvable and thus all symmetries of the systems can be calculated.
+Much theory in the literature is built around the assumption that the determining equations exist, and that they (at least in theory) can be solved.
+
+For an ODE of degree \(n = 1\) such a decompositions is not possible, since no jet variables except for \(x\) and \(y\) are present in \cref{eq:linearized-general-symmetry^ansatze}.
+Instead, the \enquote{determining equations} is the same equation as the linearized symmetry condition.
+The common solution to this problem is to use an ansatz for the tangent field \(\xi, \eta\) that turns the linearized symmetry condition into a solvable system.
+Except for some common ansätze like polynomial dependence in one or more variables, coming up with a good ansatz comes down to intuition and luck.
+In this chapter symmetries of the biological models, all of which are of first order, are going to be found using such ansätze.
+%For the larger models, testing ansätze by hand
 
 \section{The Hill equation}
 
