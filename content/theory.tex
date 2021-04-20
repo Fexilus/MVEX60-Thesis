@@ -443,7 +443,7 @@ Using these tools, the earlier results for scalar ODE:s are easy to reformulate 
 \begin{thm} \label{thm:linearized-general-symmetry}
   A one-parameter Lie group of point transformations constitute a Lie point symmetry of \cref{eq:first-order-system-ode-short} if and only if
   \begin{equation} \label{eq:linearized-general-symmetry}
-    \eval{\prolong{X}{1}(\vb{y}_x - \vb*{\omega}(z)}_{\vb{y}_x = \vb*{\omega}(z)} = 0,
+    \eval{\prolong{X}{1}(\vb{y}_x - \vb*{\omega}(z))}_{\vb{y}_x = \vb*{\omega}(z)} = 0,
   \end{equation}
   where \(X\) is the infinitesimal generator of the Lie group.
 \end{thm}
@@ -545,5 +545,67 @@ For one-dimensional Lie algebras this correspondence is trivial since
 \end{equation}
 for any basis \(X_1 \in \mathfrak{g}\).
 
-% TODO: Write about trivial symmetries, invariants and Lie brackets
+\subsection{The structure of the full group of symmetries}
+
+Every infinitesimal generator \(X\) with corresponding tangent field \((\xi, \vb*{\eta})\) can, given a system of ODE:s \labelcref{eq:first-order-system-ode-shorter}, be written on the form
+\begin{equation}
+  X = \xi \partial_x + \left(\xi \vb*{\omega} + \bar{\vb{Q}}\right) \cdot \partial_{\vb{y}},
+\end{equation}
+where \(\bar{\vb{Q}}\) is the reduced characteristic.
+Considering the infinitesimal generators
+\begin{align}
+  X_{\text{T}} &= \partial_x + \vb*{\omega} \cdot \partial_{\vb{y}} \\
+  X_{\bar{\vb{Q}}} &= \bar{\vb{Q}} \cdot \partial_{\vb{y}},
+\end{align}
+\(X\) can thus be decomposed into
+\begin{equation} \label{eq:inf-gen-decomposition}
+  X = \xi X_{\text{T}} + X_{\bar{\vb{Q}}}
+\end{equation}
+The linearized symmetry condition \labelcref{eq:linearized-general-symmetry} then simplifies to
+\begin{equation} \label{eq:linearized-symmetry-characteristic}
+  \bar{Q}_x^k + \vb*{\omega} \cdot \bar{Q}_{\vb{y}}^k - \bar{\vb{Q}} \cdot \omega_{\vb{y}}^k = 0 \qc k = 1, \dots, s.
+\end{equation}
+Using the Lie bracket, \cref{eq:linearized-symmetry-characteristic} can be further simplified to
+\begin{equation} \label{eq:linearized-symmetry-bracket}
+  \comm{X_{\text{T}}}{X_{\bar{\vb{Q}}}} = 0.
+\end{equation}
+This formulation reveals several properties of the space of all Lie point symmetries for first order systems of ODE:s \labelcref{eq:first-order-system-ode-shorter}.
+
+The first result concerns the trivial symmetries of a first order ODE.
+If \(X\) is a trivial symmetry, \(X_{\bar{\vb{Q}}} = 0\).
+Since \cref{eq:linearized-symmetry-bracket} always holds if \(X_{\bar{\vb{Q}}} = 0\), a one-parameter Lie point transformation is a trivial symmetry of \cref{eq:first-order-system-ode-shorter} if and only if
+\begin{equation}
+  X = \xi X_{\text{T}}
+\end{equation}
+for any function \(\xi: E \to \reals\).
+Given two arbitrary trivial symmetry generators \(\xi X_{\text{T}}\) and \(\tilde{\xi} X_{\text{T}}\), the Lie bracket of the two is
+\begin{equation}
+  \comm{\xi X_{\text{T}}}{\tilde{\xi} X_{\text{T}}} = \left(\xi \tilde{\xi}_x + \xi \vb*{\omega} \cdot \tilde{\xi}_{\vb{y}} - \tilde{\xi} \xi_x - \tilde{\xi} \vb*{\omega} \cdot \xi_{\vb{y}} \right) X_{\text{T}},
+\end{equation}
+which in turn is a trivial symmetry generator.
+Hence, the set of all trivial symmetry generators form an algebra of their own, denoted \(\mathfrak{g}^\infty\).
+\(\mathfrak{g}^\infty\) is a subalgebra of the Lie algebra \(\mathfrak{g}\) of all infinitesimal generators corresponding Lie point symmetries of \cref{eq:first-order-system-ode-shorter}, since its elements are a subset of all elements in \(\mathfrak{g}\), and \(\mathfrak{g}^\infty\) in it self is an algebra.
+Similarly, all symmetries on the form \(\vb*{\eta} \cdot \partial_{\vb{y}}\) form a subalgebra \(\mathfrak{g}^0\), since
+\begin{equation}
+  \comm{\vb*{\eta} \cdot \partial_{\vb{y}}}{\tilde{\vb*{\eta}} \cdot \partial_{\vb{y}}} = \left(\vb*{\eta} \cdot \tilde{\eta}^1_{\vb{y}} - \tilde{\vb*{\eta}} \cdot \eta^1_{\vb{y}}\right) \partial_{y^1} + \dots + \left(\vb*{\eta} \cdot \tilde{\eta}^s_{\vb{y}} - \tilde{\vb*{\eta}} \cdot \eta^s_{\vb{y}}\right) \partial_{y^s}
+\end{equation}
+for arbitrary functions \(\vb*{\eta}, \tilde{\vb*{\eta}}: E \to \reals^s\)
+The decomposition in \cref{eq:inf-gen-decomposition} can thus be rewritten in more algebraic language as the fact that the algebra of all Lie point symmetries \(\mathfrak{g}\) can be written as the direct sum
+\begin{equation}
+  \mathfrak{g} = \mathfrak{g}^\infty \oplus \mathfrak{g}^0
+\end{equation}
+of subalgebras.
+Additionally, given an arbitrary infinitesimal generator \(X = \xi X_{\text{T}} + X_{\bar{\vb{Q}}} \in \mathfrak{g}\) and an arbitrary trivial Lie point symmetry generator \(\tilde{\xi} X_{\text{T}} \in \mathfrak{g}^\infty\), the Lie bracket of the two
+\begin{multline}
+  \comm{X}{\tilde{\xi} X_{\text{T}}} =
+  \comm{\xi X_{\text{T}}}{\tilde{\xi} X_{\text{T}}} + \comm{X_{\bar{\vb{Q}}}}{\tilde{\xi} X_{\text{T}}} =\\
+  = \comm{\xi X_{\text{T}}}{\tilde{\xi} X_{\text{T}}} + \bar{Q} \tilde{\xi}_y X_{\text{T}} + \tilde{\xi} \comm{X_{\bar{\vb{Q}}}}{X_{\text{T}}} =
+  \comm{\xi X_{\text{T}}}{\tilde{\xi} X_{\text{T}}} + \bar{Q} \tilde{\xi}_y X_{\text{T}}
+\end{multline}
+is a trivial Lie point symmetry generator; in algebraic language \(\mathfrak{g}^\infty\) is an ideal of \(\mathfrak{g}\).
+Hence, the trivial component of any symmetry can safely be ignored when studying the structure of the Lie algebra \(\mathfrak{g}\), known as the full Lie algebra, corresponding to the Lie group of all Lie point symmetries of \cref{eq:first-order-system-ode-shorter}.
+
+The second, and far less trivial result from formulation \labelcref{eq:linearized-symmetry-bracket} of the linearized symmetry condition concerns the structure of the subalgebra \(\mathfrak{g}^0\) containing the non-trivial components of all symmetries of \cref{eq:first-order-system-ode-shorter}.
+Finding this structure is analogous to finding all functions \(\bar{\vb{Q}}: E \to \reals^s\) solving \cref{eq:linearized-symmetry-bracket}, or in other words finding all reduced characteristics corresponding to Lie point symmetries of \cref{eq:first-order-system-ode-shorter}.
+
 % TODO: Get canonical coordinates in to the text somehow
