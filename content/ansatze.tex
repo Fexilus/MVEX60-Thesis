@@ -21,8 +21,7 @@ For an ODE of degree \(n = 1\) such a decompositions is not possible, since no j
 Instead, the \enquote{determining equations} is the same equation as the linearized symmetry condition.
 The common solution to this problem is to use an ansatz for the tangent field \(\xi, \eta\) that turns the linearized symmetry condition into a solvable system.
 Except for some common ansätze like polynomial dependence in one or more variables, coming up with a good ansatz comes down to intuition and luck.
-In this chapter symmetries of the biological models, all of which are of first order, are going to be found using such ansätze.
-%For the larger models, testing ansätze by hand
+In this chapter symmetries of the biological models, all of which are of first order, are found using such ansätze.
 
 \section{The Hill equation}
 
@@ -240,7 +239,43 @@ where \(X_1\) generates the non-varying symmetry group observed.
 
 \section{The Gompertz model}
 
-\subsection{The autonomous Gompertz ODE}
+\subsection{The classical Gompertz model}
+
+For the classical Gompertz model, two parameterizations exist.
+As the success of the ansatz method does not hinge on the parameterization, the \(T_i\)-parameterization is chosen arbitrarily.
+
+The ansatz
+\begin{align}
+  \xi &= f_{1}(t) + f_{2}(t) W \\
+  \eta &= f_{3}(t) + f_{4}(t) W
+\end{align}
+can be taken, where \(f_i\) for \(i =1,2,3,4\) are arbitrary functions in \(t\).
+This results in the determining equation
+\begin{multline}
+  - W^{2} k_{G}^{2} \operatorname{f_{2}}{\left(t \right)} e^{2 T_{i} k_{G}} e^{- 2 k_{G} t} + W^{2} k_{G}^{2} \operatorname{f_{2}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} -\\- W^{2} k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} \operatorname{f_{2}}'{\left(t \right)} + W k_{G}^{2} \operatorname{f_{1}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} - W k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} \operatorname{f_{1}}'{\left(t \right)} +\\+ W \operatorname{f_{4}}'{\left(t \right)} - k_{G} \operatorname{f_{3}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} + \operatorname{f_{3}}'{\left(t \right)} = 0.
+\end{multline}
+Separating the system by powers of \(W\), the ansatz determining equations are
+\begin{flalign}
+  W^2 & : &  k_{G}^{2} \operatorname{f_{2}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} - k_{G}^{2} \operatorname{f_{2}}{\left(t \right)} e^{2 T_{i} k_{G}} e^{- 2 k_{G} t} - k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} \operatorname{f_{2}}'{\left(t \right)} &= 0 &&\\
+  W & : & k_{G}^{2} \operatorname{f_{1}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} - k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} \operatorname{f_{1}}'{\left(t \right)} + \operatorname{f_{4}}'{\left(t \right)} &= 0 && \\
+  1 & : & - k_{G} \operatorname{f_{3}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} + \operatorname{f_{3}}'{\left(t \right)} &= 0. &&
+\end{flalign}
+This system of equations has solutions resulting in the general form for a tangent field corresponding to a symmetry being
+\begin{align}
+  \xi{\left(t,W \right)} &= W c_{2} e^{\left(k_{G} t e^{k_{G} t} + e^{T_{i} k_{G}}\right) e^{- k_{G} t}} + c_{1} e^{k_{G} t} + \frac{\operatorname{f_{4}}{\left(t \right)} e^{- T_{i} k_{G}} e^{k_{G} t}}{k_{G}} \\
+  \eta{\left(t,W \right)} &= W \operatorname{f_{4}}{\left(t \right)} + c_{3} e^{- e^{T_{i} k_{G}} e^{- k_{G} t}},
+\end{align}
+where \(c_1, c_2, c_3\) are arbitrary constants.
+Thus, by separating the tangent field into terms with independent arbitrary elements, the infinitesimal generators
+\begin{align}
+  X_1 &= e^{k_{G} t} \partial_t \\
+  X_2 &= W e^{\left(k_{G} t e^{k_{G} t} + e^{T_{i} k_{G}}\right) e^{- k_{G} t}} \partial_t \\
+  X_3 &= e^{- e^{T_{i} k_{G}} e^{- k_{G} t}} \partial_W \\
+  X_f &= \frac{f{\left(t \right)} e^{- T_{i} k_{G}} e^{k_{G} t}}{k_{G}} \partial_t + W f{\left(t \right)} \partial_W
+\end{align}
+of Lie point symmetries of the autonomous Gompertz ODE \labelcref{eq:gompertz-classical-ti} can be found.
+
+\subsection{The autonomous Gompertz model}
 
 The ansatz
 \begin{align}
@@ -282,11 +317,36 @@ Thus, by separating the tangent field into terms with independent arbitrary elem
 \end{align}
 of Lie point symmetries of the autonomous Gompertz ODE \labelcref{eq:gompertz-autonomous} can be found.
 
-\section{The Lotka--Volterra model}
+\subsection{The system Gompertz model}
 
 As models and ansätze grow in size, the determining equations grow.
 This becomes particularly prominent for systems of ODE:s.
 For this reason, the calculations for the remaining models in this chapter have been made using computer algebra using code outlined in \cref{app:computer-algebra}.
+
+Similarly to the classical Gompertz model, the ansatz
+\begin{align}
+  \xi{\left(t,W,G \right)} &= \operatorname{f_{1}}{\left(t \right)} + \operatorname{f_{2}}{\left(t \right)} W + \operatorname{f_{3}}{\left(t \right)} G \\
+  \eta^{1}{\left(t,W,G \right)} &= \operatorname{f_{4}}{\left(t \right)} + \operatorname{f_{5}}{\left(t \right)} W + \operatorname{f_{6}}{\left(t \right)} G\\
+  \eta^{2}{\left(t,W,G \right)} &= \operatorname{f_{7}}{\left(t \right)} + \operatorname{f_{8}}{\left(t \right)} W + \operatorname{f_{9}}{\left(t \right)} G,
+\end{align}
+where \(f_i\) are arbitrary functions in \(t\), is used.
+The two determining equations can be decomposed in \(W\) and \(G\), resulting in 15 algebraic and ordinary differential equations.
+By first solving the algebraic equations, followed by the differential for the arbitrary functions \(f_i\), their form can be determined resulting in the general form
+\begin{align}
+  \xi{\left(t,W,G \right)} &= G c_{3} e^{k_{G} t} + c_{1} - \frac{c_{2} e^{k_{G} t}}{k_{G}} \\
+  \eta^{1}{\left(t,W,G \right)} &= W c_{4} - \frac{W c_{5} e^{- k_{G} t}}{k_{G}} \\
+  \eta^{2}{\left(t,W,G \right)} &= G c_{2} e^{k_{G} t} + c_{5} e^{- k_{G} t}.
+\end{align}
+Decomposition in arbitrary constants result in the basis
+\begin{align}
+  X_1 &= \partial_t \\
+  X_2 &= - \frac{e^{k_{G} t}}{k_{G}} \partial_t + G e^{k_{G} t} \partial_G \\
+  X_3 &= G e^{k_{G} t} \partial_t \\
+  X_4 &= W \partial_W \\
+  X_5 &= - \frac{W e^{- k_{G} t}}{k_{G}} \partial_W + e^{- k_{G} t} \partial_G.
+\end{align}
+
+\section{The Lotka--Volterra model}
 
 The Lotka--Volterra predator-prey model formulated in \cref{eq:lotka-volterra} has a right hand side formulated as second order polynomial in the two states \(N\) and \(P\).
 A good starting point for ansätze is therefore polynomials, and arbitrary third degree polynomials in \(t\), \(N\) and \(P\) are chosen.
