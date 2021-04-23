@@ -476,7 +476,7 @@ The concept of a trivial symmetry can thus be generalized to first order systems
   \end{equation}
 \end{defn}
 
-\section{Properties of Lie point symmetries}
+\section{Properties of Lie point symmetries} \label{sec:lie-point-properties}
 
 Before moving on to the process of finding symmetries, some further results are of interest in order to better understand and interpret the symmetries found.
 Up until this point, the definition of a Lie group has been consciously avoided.
@@ -607,5 +607,15 @@ Hence, the trivial component of any symmetry can safely be ignored when studying
 
 The second, and far less trivial result from formulation \labelcref{eq:linearized-symmetry-bracket} of the linearized symmetry condition concerns the structure of the subalgebra \(\mathfrak{g}^0\) containing the non-trivial components of all symmetries of \cref{eq:first-order-system-ode-shorter}.
 Finding this structure is analogous to finding all functions \(\bar{\vb{Q}}: E \to \reals^s\) solving \cref{eq:linearized-symmetry-bracket}, or in other words finding all reduced characteristics corresponding to Lie point symmetries of \cref{eq:first-order-system-ode-shorter}.
+
+\vdots
+
+\begin{cor}
+  A function \(\bar{\vb{Q}}: E \to \reals^s\) is a solution to \cref{eq:linearized-symmetry-bracket} if and only if
+  \begin{equation}
+    \bar{\vb{Q}} = (\partial_{\vb{y}} \vb{J})^{-1} \cdot \vb{I},
+  \end{equation}
+  where \(\vb{J}: E \to \reals^s\) is a universal invariant and \(\vb{I}: E \to \reals^s\) an arbitrary invariant of the infinitesimal generator \(X_{\text{T}}\).
+\end{cor}
 
 % TODO: Get canonical coordinates in to the text somehow

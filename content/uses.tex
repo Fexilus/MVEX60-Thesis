@@ -1,14 +1,30 @@
-\chapter{Interpreting symmetries in biology}
+\chapter{Interpreting and using symmetries in biology}
 
-In this chapter biological interpretations and uses of the found symmetries will be discussed.
+In the previous two chapters, two different methods were used to find symmetries of parametrized first order ODE:s.
+However, finding symmetries has little to no value unless they can be used to better understand biological processes.
+While some of the possible uses for symmetries have been mentioned in passing in earlier chapters, this chapter intends to explore these ideas more completely.
+The chapter will consist of two parts.
+In the first introductory part, an overview of how symmetries could fit into biological modeling is presented.
+Most ideas will be open ended, as they constitute one or several research project on their own.
+In the second part, one such use, namely the interpretation of symmetries as relating to invariants of the differential system, is explored for the biological models for which symmetries have been found.
+It turns out, based on the mathematics in \cref{sec:lie-point-properties}, that the relation between invariants of the differential system and the symmetries thereof is quite straight forward for first order ODE systems.
+
+\section{Symmetries as a tool in modeling}
+
+\emph{
+  Here there will be some discussion, similar to the one in the planning report and introduction, pertaining to the different use cases.
+  Some notes that will be struck are: using symmetries for model construction, using symmetries to test models against data à la Fredrik and Johannes, using symmetries to compare models, how parameters are good to have in symmetries for data check vs. bad for general biological statements, conservation laws and their preservation in model reduction, using symmetries for full and partial integration of systems and looking at symmetries of subsystems of ODE:s.
+}
 
 \section{Invariant solutions under symmetry of the Hill equation}
 
+% TODO: This is a different kind of invariance, so a connection is needed
 To better understand the underlying source of the Lie symmetry groups of the Hill equation, it is of interest to find curves invariant under the solution.
-That is, solutions to the ODE that are mapped by the Lie symmetry group to the same curve.
-
-% TODO: Add some references to theory and glue the paragraphs together
-The reduced characteristic of the generator \(X_2 = - \left( (n-1) x + n y \right) \partial_\tau + y \partial_y\) is
+The reduced characteristic of the generator
+\begin{equation}
+  X_2 = - \left( (n-1) x + n y \right) \partial_\tau + y \partial_y
+\end{equation}
+is
 \begin{align}
   \bar{Q} &= 
   \eta - \omega \xi = 
@@ -31,11 +47,126 @@ For all \(n>0\) except \(n=1\) such solutions exist, and take the form
 \begin{equation} \label{eq:hill-invariants}
   \tau y^{n-1} + y^n = \frac{1}{n-1}.
 \end{equation}
-Determining the functions \(y(\tau)\) that are invariant for a given \(n\) can be bothersome, but some general insights can be made.
-Since \cref{eq:hill-invariants} is a polynomial in \(y\) of degree \(n\), there will exist a finite amount of solutions (this holds for non-integer \(n\) too, as it can be bounded by Descartes' rule of signs). % FIXME: Strengthen this claim with a source https://math.stackexchange.com/a/1291211
-Thus, the symmetries are not trivial since there exist an infinite amount of solutions to \cref{eq:hill}.
 Additionally, since \(\tau\) is (dimensionless) time, any application of the model will have an initial condition on the form \(y(0) = y_0\).
 By fixing \(\tau=0\) in \cref{eq:hill-invariants}, the initial condition of an invariant curve given any \(n>0, n\neq1\) is shown to be
 \begin{equation}
   y(0) =\frac{1}{(n-1)^{1/n}}.
 \end{equation}
+
+\section{The structure of the full symmetry groups of the Gompertz model}
+
+As discussed in \cref{sec:lie-point-properties}, all symmetries of first order systems of ODE:s can be separated in to two parts: the trivial component and the characteristic component.
+Furthermore, the characteristic component's general form depends only on the invariants of the differential system.
+Here this connection will be shown explicitly for all formulations of the Gompertz model, serving both as a case study and as a further investigation of the different formulations of the Gompertz model.
+
+\subsection{The classical Gompertz model}
+
+For notational convenience, the symmetries of the classical Gompertz model found using an ansatz are relabeled
+\begin{align}
+  X_{\text{c},1} &= e^{k_{G} t} \partial_t \\
+  X_{\text{c},2} &= W e^{k_{G} t + e^{T_{i} k_{G}} e^{- k_{G} t}} \partial_t \\
+  X_{\text{c},3} &= e^{- e^{T_{i} k_{G}} e^{- k_{G} t}} \partial_W \\
+  X_{\text{c},f} &= \frac{f{\left(t \right)} e^{- T_{i} k_{G}} e^{k_{G} t}}{k_{G}} \partial_t + W f{\left(t \right)} \partial_W
+\end{align}
+and the symmetries found using parameter independence are relabeled
+\begin{align}
+  X_{\text{c},4} &= W \partial_W \\
+  X_{\text{c},5} &= \partial_t - k_G W \ln(W) \partial_W \\
+  X_{\text{c},1} &= e^{k_G t} \partial_t.
+\end{align}
+The corresponding reduced characteristics of the symmetry generators are
+\begin{align}
+  \bar{Q}_{\text{c},1} &= -k_G e^{k_G T_i} W \\
+  \bar{Q}_{\text{c},2} &= - k_G e^{k_{G} T_i + e^{-k_G (t - T_i)}} W^2 \\
+  \bar{Q}_{\text{c},3} &= e^{- e^{- k_{G} \left(t - T_{i}\right)}} \\
+  \bar{Q}_{\text{c},4} &= W \\
+  \bar{Q}_{\text{c},5} &= - k_G W \ln(W) - k_G e^{-k_G (t - T_i)} W \\
+  \bar{Q}_{\text{c},f} &= 0.
+\end{align}
+Thus it is clear that the symmetry generator \(X_{\text{c},f}\) is a trivial symmetry generator.
+From the mathematical theory
+\begin{equation}
+  \bar{Q} = (\partial_W J)^{-1} I,
+\end{equation}
+where \(J\) is the universal invariant and \(I\) any invariant.
+As the classical Gompertz model is a scalar first order ODE, the universal invariant is one-dimensional, and thus the quotient of two reduced characteristics must be an invariant.
+Picking the reduced characteristics \(\bar{Q}_{\text{c},4}\) and \(\bar{Q}_{\text{c},5}\) that differ by more than a constant expression (assuming the parameters are constant),
+\begin{equation}
+  \frac{\bar{Q}_{\text{c},5}}{\bar{Q}_{\text{c},4}} = - k_G \left(\ln(W) + e^{-k_G (t - T_i)} \right) = I
+\end{equation}
+is an invariant since
+\begin{equation}
+  I_t + k_G e^{-k_G (t - T_i)} W I_W = k_G^2 e^{-k_G (t - T_i)} - k_G e^{-k_G (t - T_i)} W \frac{k_G}{W} = 0.
+\end{equation}
+Of course, for the particular case of scalar first order equations with known solutions such as the classical Gompertz ODE, the above described methodology is not the most direct path to finding such an invariant.
+The formulation
+\begin{equation}
+  I_t + k_G e^{-k_G (t - T_i)} W I_W = 0
+\end{equation}
+of the invariance condition can be solved using the method of characteristics, which reformulates the problem as
+\begin{equation}
+  \frac{\dl{t}}{1} = \frac{\dl{W}}{k_G e^{-k_G (t - T_i)} W}
+\end{equation}
+which simplifies to
+\begin{equation}
+  \dl \left(e^{-k_G (t - T_i)} + \ln{W}\right) = 0
+\end{equation}
+leading to the equivalent invariant.
+Returning to the task of determining the general structure of the group of all symmetries,
+\begin{equation}
+  J(t, W) = e^{-k_G (t - T_i)} + \ln{W}
+\end{equation}
+can be taken as the universal invariant.
+Thus
+\begin{equation}
+  \partial_W J = \frac{1}{W}
+\end{equation}
+and
+\begin{equation}
+  \left(\partial_W J\right)^{-1} = W.
+\end{equation}
+Similarly, an arbitrary invariant \(I\) of the differential equation can be written as
+\begin{equation}
+  I(t, W) = F\left(e^{-k_G (t - T_i)} + \ln{W}\right)
+\end{equation}
+for and arbitrary function \(F\).
+Thus, the reduced characteristic of any symmetry generator must have the form
+\begin{equation}
+  \bar{Q} = W F\left(e^{-k_G (t - T_i)} + \ln{W}\right)
+\end{equation}
+and the general form for a symmetry generator is
+\begin{equation}
+  X = \xi(t, W) \partial_t + \left(k_G e^{-k_G (t - T_i)} W \xi(t, W) + W F\left(e^{-k_G (t - T_i)} + \ln{W}\right)\right) \partial_W
+\end{equation}
+for arbitrary functions \(\xi\) and \(F\).
+
+%The symmetry generator \(X_f\) is a trivial symmetry of the autonomous ODE, since the reduced %characteristic of it is
+%\begin{align}
+%  \bar{Q}_{f,a}(t, W) &= \eta_f(t, W) - \omega_a(t, W) \xi_f(t, W)\\
+%  &= - k_G f(t) \ln(\frac{W}{A}) W - \left(-k_G \ln(\frac{W}{A}) W \right) f(t) \equiv 0.
+%\end{align}
+%The reduced characteristic of \(X_F\) for the classical ODE is
+%\begin{align}
+%  \bar{Q}_{f,c}(t, W) &= \eta_f(t, W) - \omega_c(t, W) \xi_f(t, W)\\
+%  &= - k_G f(t) \ln(\frac{W}{A}) W - k_G e^{-k_G (t - T_i)} W f(t)\\
+%  &= - k_G f(t) W \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right).
+%\end{align}
+%It is worth noting that since \(A\) is not a parameter of the classical ODE \labelcref%{eq:gompertz-classical-ti}, only symmetries that hold for any \(A\) will be actual symmetries.
+%The linearized symmetry condition for the classical ODE can be formulated as
+%\begin{equation}
+%  \partial_t(\bar{Q}_{f,c}) + \omega_c \partial_W(\bar{Q}_{f,c}) = \partial_W(\omega_c) \bar{Q}_%{f,c}
+%\end{equation}
+%Letting \(f(t) \equiv 1\), the left hand side becomes
+%\begin{gather}
+%  k_G^2 W e^{-k_G (t - T_i)} + \left(k_G e^{-k_G (t - T_i)} W\right) \left(-k_G \left(\ln(\frac%{W}{A}) + e^{-k_G (t - T_i)} + 1\right)\right)\\
+%  -k_G^2 e^{-k_G (t - T_i)} W\left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right)
+%\end{gather}
+%while the right hand side becomes
+%\begin{gather}
+%  \left(k_G e^{-k_G (t - T_i)}\right) \left(- k_G W \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}%\right)\right)\\
+%  -k_G^2 e^{-k_G (t - T_i)} W \left(\ln(\frac{W}{A}) + e^{-k_G (t - T_i)}\right).
+%\end{gather}
+%The two sides are equivalent, and thus \(X_{f\equiv1}\) is a symmetry of the classical Gompertz %ODE.
+%Since \(X_{f\equiv1}\) is trivial on the autonomous ODE, the lines along the tangent field are %solutions to the autonomous ODE.
+%This means that the solutions to the autonomous ODE are orbits of the classical ODE.
+%It is worth noting that for all of the above calculations to hold, the growth parameter \(k_G\) %must be the same for both ODE:s.
