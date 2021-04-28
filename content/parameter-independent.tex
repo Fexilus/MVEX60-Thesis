@@ -146,7 +146,7 @@ Thus any \(k_G\)-independent symmetry generator of the classical Gompertz model 
 \end{align}
 which is spanned by the generator basis
 \begin{equation}
-  X_{\text{c},1} = W \partial_W.
+  X_{\text{c},4} = W \partial_W.
 \end{equation}
 
 \subsubsection{\texorpdfstring{\(T_i\)-independent symmetries}{Inflection time-independent symmetries}}
@@ -198,25 +198,25 @@ Thus any \(T_i\)-independent symmetry generator of the classical Gompertz model 
 \end{align}
 which is spanned by the generator basis
 \begin{align}
-  X_{\text{c},2} &= \partial_t - k_G W \ln(W) \partial_W \\
-  X_{\text{c},3} &= e^{k_G t} \partial_t \\
-  X_{\text{c},4} &= W \partial_W = X_{\text{c},1}.
+  X_{\text{c},1} &= e^{k_G t} \partial_t \\
+  X_{\text{c},4} &= W \partial_W \\
+  X_{\text{c},5} &= \partial_t - k_G W \ln(W) \partial_W.
 \end{align}
 
-\subsubsection{Analysis of the found generators}
+\subsubsection{All of the found generators}
 The basis of all the generators found by the parameter independence method for the classical Gompertz model are
 \begin{align}
-  X_{\text{c},1} &= W \partial_W \\
-  X_{\text{c},2} &= \partial_t - k_G W \ln(W) \partial_W \\
-  X_{\text{c},3} &= e^{k_G t} \partial_t.
+  X_{\text{c},1} &= e^{k_G t} \partial_t \\
+  X_{\text{c},4} &= W \partial_W \\
+  X_{\text{c},5} &= \partial_t - k_G W \ln(W) \partial_W.
 \end{align}
-By looking at the Lie brackets
-\begin{align}
-  \comm{X_{\text{c},1}}{X_{\text{c},2}} &= -k_G X_{\text{c},1} \\
-  \comm{X_{\text{c},1}}{X_{\text{c},3}} &= 0 \\
-  \comm{X_{\text{c},2}}{X_{\text{c},3}} &= k_G X_{\text{c},3}.
-\end{align}
-it is clear that they constitute a full Lie algebra.
+The corresponding transformations can be seen in \cref{fig:gompertz-classical-param}.
+\begin{figure}
+  \centering
+  \includegraphics[width=.95\textwidth]{images/gompertz-classical-param}
+  \caption{Representative transformations of the Lie groups corresponding to symmetry generators of the classical Gompertz model found using the parameter independence method.}
+  \label{fig:gompertz-classical-param}
+\end{figure}
 
 
 \subsection{The autonomous Gompertz model}
@@ -268,9 +268,9 @@ Thus any \(k_G\)-independent symmetry generator of the autonomous Gompertz model
 \end{align}
 which is spanned by the generator basis
 \begin{align}
-  X_{\text{a},1} &= \partial_t \\
-  X_{\text{a},2} &= t \partial_t + \ln(\ln(\frac{W}{A})) \ln(\frac{W}{A}) W \partial_W\\
-  X_{\text{a},3} &= \ln(\frac{W}{A}) W \partial_W.
+  X_{\text{a},3} &= \ln(\frac{W}{A}) W \partial_W \\
+  X_{\text{a},4} &= \partial_t \\
+  X_{\text{a},5} &= t \partial_t + \ln(\ln(\frac{W}{A})) \ln(\frac{W}{A}) W \partial_W.
 \end{align}
 
 \subsubsection{\texorpdfstring{\(A\)-independent symmetries}{Carrying capacity-independent symmetries}}
@@ -318,63 +318,27 @@ Thus any \(A\)-independent symmetry generator of the autonomous Gompertz model \
 \end{align}
 which is spanned by the generator basis
 \begin{align}
-  X_{\text{a},4} &= e^{-k_G t} \partial_t - k_G e^{-k_G t} \ln(W) W \partial_W\\
-  X_{\text{a},5} &= \partial_t = X_{\text{a},1}\\
-  X_{\text{a},6} &= e^{-k_G t} W \partial_W.
+  X_{\text{a},2} &= e^{-k_G t} W \partial_W \\
+  X_{\text{a},4} &= \partial_t \\
+  X_{\text{a},6} &= e^{-k_G t} \partial_t - k_G e^{-k_G t} \ln(W) W \partial_W.
 \end{align}
 
-\subsubsection{Analysis of the found generators}
+\subsubsection{All found generators}
 The basis of all the generators found by the parameter independence method for the autonomous Gompertz model are
 \begin{align}
-  X_{\text{a},1} &= \partial_t \\
-  X_{\text{a},2} &= t \partial_t + \ln(\ln(\frac{W}{A})) \ln(\frac{W}{A}) W \partial_W\\
+  X_{\text{a},2} &= e^{-k_G t} W \partial_W \\
   X_{\text{a},3} &= \ln(\frac{W}{A}) W \partial_W \\
-  X_{\text{a},4} &= e^{-k_G t} \partial_t - k_G e^{-k_G t} \ln(W) W \partial_W\\
-  X_{\text{a},6} &= e^{-k_G t} W \partial_W.
+  X_{\text{a},4} &= \partial_t \\
+  X_{\text{a},5} &= t \partial_t + \ln(\abs{\ln(\frac{W}{A})}) \ln(\frac{W}{A}) W \partial_W \\
+  X_{\text{a},6} &= e^{-k_G t} \partial_t - k_G e^{-k_G t} \ln(W) W \partial_W.
 \end{align}
-Looking at the Lie brackets
-\begin{align}
-  \comm{X_{\text{a},1}}{X_{\text{a},2}} &= X_{\text{a},1} \\
-  \comm{X_{\text{a},1}}{X_{\text{a},3}} &= 0 \\
-  \comm{X_{\text{a},1}}{X_{\text{a},4}} &= - k_G X_{\text{a},4} \\
-  \comm{X_{\text{a},1}}{X_{\text{a},6}} &= - k_G X_{\text{a},6} \\
-  \comm{X_{\text{a},2}}{X_{\text{a},3}} &= - X_{\text{a},3} \\
-  \begin{split} \label{eq:gompertz-autonomous-new-generator-1}
-    \comm{X_{\text{a},2}}{X_{\text{a},4}} &= -\frac{1}{k_G} X_{\text{a},4} - t e^{-k_G t} \partial_t + \\
-    &\quad + e^{-k_G t} W \left(k_G t \ln(W) + \ln(A) \ln(\ln(\frac{W}{A}))\right) \partial_W
-  \end{split}\\
-  \comm{X_{\text{a},2}}{X_{\text{a},6}} &= -(1 + k_G t) X_{\text{a},6} - e^{-k_G t} \ln(\ln(\frac{W}{A})) W \partial_W \label{eq:gompertz-autonomous-new-generator-2} \\
-  \comm{X_{\text{a},3}}{X_{\text{a},4}} &= k_G \ln(A) X_{\text{a},6} \\
-  \comm{X_{\text{a},3}}{X_{\text{a},6}} &= - X_{\text{a},6}\\
-  \comm{X_{\text{a},4}}{X_{\text{a},6}} &= 0
-\end{align}
-the basis does not seem to be a full Lie algebra.
-Assigning the additional generator
-\begin{equation}
-  X_{\text{a},7} = - \left(\comm{X_{\text{a},2}}{X_{\text{a},6}} + X_{\text{a},6}\right) = e^{-k_G t} W \left(k_G t + \ln(\ln(\frac{W}{A}))\right) \partial_W,
-\end{equation}
-\cref{eq:gompertz-autonomous-new-generator-1,eq:gompertz-autonomous-new-generator-2} can be written as
-\begin{align}
-  \comm{X_{\text{a},2}}{X_{\text{a},4}} &= -X_{\text{a},6} - X_{\text{a},7} \\
-  \comm{X_{\text{a},2}}{X_{\text{a},6}} &= -k_G t e^{-k_G t} X_{\text{a},0} - X_{\text{a},4} + k_G \ln(A) X_{\text{a},7}
-\end{align}
-where \(X_{\text{a},0}\) is the trivial generator
-\begin{equation}
-  X_{\text{a},0} = \partial_t + \omega_a \partial_W = \partial_t - k_G \ln(\frac{W}{A}) W \partial_W.
-\end{equation}
-Since
-\begin{equation}
-  X_{\text{a},7} = \left(k_G t + \ln(\ln(\frac{W}{A}))\right) X_{\text{a},6},
-\end{equation}
-\(k_G t + \ln(\ln(\frac{W}{A}))\) must be an invariant of the autonomous Gompertz ODE, and \(X_{\text{a},7}\) thus practically has the same action as \(X_{\text{a},6}\).
-%Looking at the additional Lie brackets
-%\begin{align}
-%  \comm{X_{\text{a},1}}{X_{\text{a},7}} &= k_G X_{\text{a},6} - k_G X_{\text{a},7} %\\
-%  \comm{X_{\text{a},2}}{X_{\text{a},7}} &= - e^{-k_G t} W \left((k_G)^2 t^2 + 2 k_G %t \ln(\ln(\frac{W}{A})) + \left(\ln(\ln(\frac{W}{A}))\right)^2 \right) \partial_W %\\
-%  \comm{X_{\text{a},3}}{X_{\text{a},7}} &= X_{\text{a},6} - X_{\text{a},7} \\
-%  \comm{X_{\text{a},4}}{X_{\text{a},7}} &= 0 \\
-%  \comm{X_{\text{a},6}}{X_{\text{a},7}} &= \frac{e^{-2 k_G t} W}{\ln(\frac{W}{A})} %\partial_W.
-%\end{align}
+The corresponding transformations can be seen in \cref{fig:gompertz-autonomous-param}.
+\begin{figure}
+  \centering
+  \includegraphics[width=.95\textwidth]{images/gompertz-autonomous-param}
+  \caption{Representative transformations of the Lie groups corresponding to symmetry generators of the autonomous Gompertz model found using the parameter independence method.}
+  \label{fig:gompertz-autonomous-param}
+\end{figure}
 
 \subsection{The system Gompertz model}
 

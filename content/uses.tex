@@ -62,18 +62,18 @@ Here this connection will be shown explicitly for all formulations of the Gomper
 
 \subsection{The classical Gompertz model}
 
-For notational convenience, the symmetries of the classical Gompertz model found using an ansatz are relabeled
+The symmetries of the classical Gompertz model found using an ansatz in \cref{ch:ansatze} were
 \begin{align}
   X_{\text{c},1} &= e^{k_{G} t} \partial_t \\
   X_{\text{c},2} &= W e^{k_{G} t + e^{T_{i} k_{G}} e^{- k_{G} t}} \partial_t \\
   X_{\text{c},3} &= e^{- e^{T_{i} k_{G}} e^{- k_{G} t}} \partial_W \\
   X_{\text{c},f} &= \frac{f{\left(t \right)} e^{- T_{i} k_{G}} e^{k_{G} t}}{k_{G}} \partial_t + W f{\left(t \right)} \partial_W
 \end{align}
-and the symmetries found using parameter independence are relabeled
+and the symmetries found using parameter independence in \cref{ch:param-ind} were
 \begin{align}
+  X_{\text{c},1} &= e^{k_G t} \partial_t \\
   X_{\text{c},4} &= W \partial_W \\
-  X_{\text{c},5} &= \partial_t - k_G W \ln(W) \partial_W \\
-  X_{\text{c},1} &= e^{k_G t} \partial_t.
+  X_{\text{c},5} &= \partial_t - k_G W \ln(W) \partial_W.
 \end{align}
 The corresponding reduced characteristics of the symmetry generators are
 \begin{align}
@@ -143,20 +143,20 @@ for arbitrary functions \(\xi\) and \(F\).
 
 \subsection{The autonomous Gompertz model}
 
-The symmetries of the autonomous Gompertz model found using an ansatz are relabeled
+The symmetries of the autonomous Gompertz model found using an ansatz in \cref{ch:ansatze} were
 \begin{align}
   X_{\text{a},1} &= e^{k_G t} \ln(\frac{W}{A}) \partial_t \\
   X_{\text{a},2} &= e^{-k_G t} W \partial_W \\
   X_{\text{a},3} &= \ln(\frac{W}{A}) W \partial_W \\
   X_{\text{a},f} &= f(t) \partial_t - k_G f(t) \ln(\frac{W}{A}) W \partial_W
 \end{align}
-and the symmetries found using parameter independence are relabeled
+and the symmetries found using parameter independence in \cref{ch:param-ind} were
 \begin{align}
-  X_{\text{a},4} &= \partial_t \\
-  X_{\text{a},5} &= t \partial_t + \ln(\abs{\ln(\frac{W}{A})}) \ln(\frac{W}{A}) W \partial_W\\
+  X_{\text{a},2} &= e^{-k_G t} W \partial_W \\
   X_{\text{a},3} &= \ln(\frac{W}{A}) W \partial_W \\
-  X_{\text{a},6} &= e^{-k_G t} \partial_t - k_G e^{-k_G t} \ln(W) W \partial_W\\
-  X_{\text{a},2} &= e^{-k_G t} W \partial_W.
+  X_{\text{a},4} &= \partial_t \\
+  X_{\text{a},5} &= t \partial_t + \ln(\abs{\ln(\frac{W}{A})}) \ln(\frac{W}{A}) W \partial_W \\
+  X_{\text{a},6} &= e^{-k_G t} \partial_t - k_G e^{-k_G t} \ln(W) W \partial_W.
 \end{align}
 The corresponding reduced characteristics of the symmetry generators are
 \begin{align}
