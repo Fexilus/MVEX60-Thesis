@@ -35,7 +35,7 @@ Since the edges are unchanged relative to the points, these rotations thus const
 It is worth noting that the rotational transformations map points from the 2-dimensional plane to the two dimensional plane or, stated in mathematical terms, the rotations are mappings \(\Gamma: \reals^2 \to \reals^2\).
 \begin{figure}
   \centering
-  \includegraphics[width=.95\textwidth]{images/triangles}
+  \includegraphics[width=.96\textwidth]{images/triangles}
   \caption{Rotational symmetries of an equilateral triangle.}
   \label{fig:triangle-rotation}
 \end{figure}
@@ -108,7 +108,7 @@ The curves \(\gamma\) will then correspond to the solutions \(u(x)\) of \cref{eq
 This can be seen in \cref{fig:jet-surface}, where the prolongations of the solution curves lies on the jet-surface defined by \cref{eq:first-order-jet-ode}.
 \begin{figure}
   \centering
-  \includegraphics[width=.95\textwidth]{images/jet-surface}
+  \includegraphics[width=.96\textwidth]{images/jet-surface}
   \caption{The surface \(y' = y\), and solution curves to the corresponding differential equation both prolonged to the jet space and projected on the \(x\)-\(y\)-plane.}
   \label{fig:jet-surface}
 \end{figure}
@@ -557,7 +557,7 @@ For one-dimensional Lie algebras this correspondence is trivial since
 \end{equation}
 for any basis \(X_1 \in \mathfrak{g}\).
 
-\subsection{The structure of the full group of symmetries}
+\subsection{The structure of the group of all symmetries of first order ODE:s}
 
 Every infinitesimal generator \(X\) with corresponding tangent field \((\xi, \vb*{\eta})\) can, given a system of ODE:s \labelcref{eq:first-order-system-ode-shorter}, be written on the form
 \begin{equation}
@@ -565,10 +565,12 @@ Every infinitesimal generator \(X\) with corresponding tangent field \((\xi, \vb
 \end{equation}
 where \(\bar{\vb{Q}}\) is the reduced characteristic.
 Considering the infinitesimal generators
-\begin{align}
-  X_{\text{T}} &= \partial_x + \vb*{\omega} \cdot \partial_{\vb{y}} \\
-  X_{\bar{\vb{Q}}} &= \bar{\vb{Q}} \cdot \partial_{\vb{y}},
-\end{align}
+\begin{subequations}
+  \begin{align}
+    X_{\text{T}} &= \partial_x + \vb*{\omega} \cdot \partial_{\vb{y}} \label{eq:trivial-generator-base}\\
+    X_{\bar{\vb{Q}}} &= \bar{\vb{Q}} \cdot \partial_{\vb{y}},
+  \end{align}
+\end{subequations}
 \(X\) can thus be decomposed into
 \begin{equation} \label{eq:inf-gen-decomposition}
   X = \xi X_{\text{T}} + X_{\bar{\vb{Q}}}
@@ -620,14 +622,48 @@ Hence, the trivial component of any symmetry can safely be ignored when studying
 The second, and far less trivial result from formulation \labelcref{eq:linearized-symmetry-bracket} of the linearized symmetry condition concerns the structure of the subalgebra \(\mathfrak{g}^0\) containing the non-trivial components of all symmetries of \cref{eq:first-order-system-ode-shorter}.
 Finding this structure is analogous to finding all functions \(\bar{\vb{Q}}: E \to \reals^s\) solving \cref{eq:linearized-symmetry-bracket}, or in other words finding all reduced characteristics corresponding to Lie point symmetries of \cref{eq:first-order-system-ode-shorter}.
 
-\vdots
+The concept of invariants can be generalized.
+\begin{defn}[Invariant function]
+  A function
+  \begin{equation}
+    \vb{I}: E \to \reals^n
+  \end{equation}
+  is invariant of a vector field corresponding to the infinitesimal generator \(X\) if and only if
+  \begin{equation}
+    X(\vb{I}) \equiv 0.
+  \end{equation}
+\end{defn}
+For a first order ODE, there is an equivalent vector field with corresponding infinitesimal generator \(X_T\) as defined in \cref{eq:trivial-generator-base}.
+A function \(\vb{I}\) is called an invariant of a first order ODE if it is invariant of its corresponding vector field.
+For any vector field corresponding to an infinitesimal generator \(X\), there is the concept of a general form for any invariant of the vector field.
+\begin{defn}[Universal invariant]
+  A function
+  \begin{equation}
+    \vb{J}: E \to \reals^n
+  \end{equation}
+  is called a universal invariant of a vector field corresponding to the infinitesimal generator \(X\) if any invariant \(\vb{I}\) of that vector field can be written as
+  \begin{equation}
+    \vb{I}(x, \vb{y}) = F(\vb{J}(x, \vb{y})),
+  \end{equation}
+  where \(F\) is a differentiable function.
+\end{defn}
+It can be proven that a universal invariant of a vector field on \(E \simeq \reals^{n+1}\) only needs to have a domain of \(\reals^n\).
+For universal invariants with larger domains, only \(n\) of the composite functions will be functionally independent.
 
+Using these definitions, the following result pertaining to the solutions of \cref{eq:linearized-symmetry-bracket} can be established.
+\begin{thm}
+  A function \(\bar{\vb{Q}}\) is a solution of \cref{eq:linearized-symmetry-bracket} if and only if
+  \begin{equation}
+    \partial_{\vb{y}} \vb{J} \cdot \bar{\vb{Q}}
+  \end{equation}
+  is an invariant of the vector field corresponding to the infinitesimal generator \(X_{\text{T}}\).
+\end{thm}
+Here \(\partial_{\vb{y}} \vb{J}\) will for all intents and purposes be the Jacobian, excluding the derivative in \(x\).
+It can also be established that \(\partial_{\vb{y}} \vb{J}\) is invertible, and thus a general form for the functions \(\bar{\vb{Q}}\) that are solutions to \cref{eq:linearized-symmetry-bracket} exists.
 \begin{cor} \label{cor:reduced-characteristic-decomposition}
   A function \(\bar{\vb{Q}}: E \to \reals^s\) is a solution to \cref{eq:linearized-symmetry-bracket} if and only if
   \begin{equation}
     \bar{\vb{Q}} = (\partial_{\vb{y}} \vb{J})^{-1} \cdot \vb{I},
   \end{equation}
-  where \(\vb{J}: E \to \reals^s\) is a universal invariant and \(\vb{I}: E \to \reals^s\) an arbitrary invariant of the infinitesimal generator \(X_{\text{T}}\).
+  where \(\vb{J}: E \to \reals^s\) is a universal invariant and \(\vb{I}: E \to \reals^s\) an arbitrary invariant of the vector field corresponding to the infinitesimal generator \(X_{\text{T}}\).
 \end{cor}
-
-% TODO: Get canonical coordinates in to the text somehow
