@@ -124,13 +124,14 @@ The ODE:s in the first family can all be written on the form
 \end{equation}
 These ODE:s are reparameterizations of Gompertz' original ODE \labelcref{eq:original-gompertz-modern}, often emphasizing the expected behaviors of the model in the growth context by choosing parameters that should be positive.
 In the parametrization seen in \cref{eq:rough-gompertz-classical-ode}, \(r\) should be positive for the species size \(W(t)\) to grow (as opposed to shrinking or decaying) and \(b\) should be positive for the growth to reduce over time (and thus limiting the growth).
+Solutions to this family of ODE:s can be seen in \cref{fig:gompertz-classical-solutions}.
 
 The first family of ODE:s is tightly related to the second family, which can be written on the form
 \begin{equation}
   \label[ode]{eq:rough-gompertz-system-ode}
   \begin{aligned} 
-    \diff{W}{t} &= \gamma(t) W(t)\\
-    \diff{\gamma}{t} &= -b \gamma(t).
+    \diff{W}{t} &= G(t) W(t)\\
+    \diff{G}{t} &= -b G(t).
   \end{aligned}
 \end{equation}
 This system of ODE:s could also be argued to be the original Gompertz ODE, since the original differential equation \labelcref{eq:original-gompertz} was motivated by Gompertz in the following way:
@@ -138,8 +139,27 @@ This system of ODE:s could also be argued to be the original Gompertz ODE, since
   If the average exhaustions of a man's power to avoid death were such that at the end of equal infinitely small intervals of time, he lost equal portions of his remaining power to oppose destruction which he had at the commencement of thoseintervals, then at the age his power to avoid death, or the intensity of his mortality might be denoted by \(aq^x\), \(a\) and \(q\) being constant quantities;
 }
 The intensity of mortality can be seen as \(\gamma(t)\) in \cref{eq:rough-gompertz-system-ode}, with \(\gamma(t) = aq^x\) serving as a solution to the lower equation in \cref{eq:rough-gompertz-system-ode} when \(\ln(q) = -b\).
-Since \cref{eq:rough-gompertz-classical-ode} is a partial solution to \cref{eq:rough-gompertz-system-ode}, these two families of differential equations will henceforth be referred to collectively as \enquote{classical Gompertz ODE:s}, the latter formulation being specified as \enquote{classical Gompertz ODE:s on system form}.
+Solutions to this family of ODE:s can be seen in \cref{fig:gompertz-system-solutions-varw,fig:gompertz-system-solutions-varg}.
+Since \cref{eq:rough-gompertz-classical-ode} is a partial solution to \cref{eq:rough-gompertz-system-ode}, these two families of differential equations will henceforth be referred to collectively as \enquote{classical Gompertz ODE:s}, the latter formulation being specified as \enquote{classical Gompertz ODE:s on system form} or simply \enquote{system Gompertz ODE:s}.
 The classical Gompertz ODE is the form used in the first paper on biological growth \cite{davidson1928growth}.
+\begin{figure}
+  \centering
+  \includegraphics[width=.32\textwidth]{images/gompertz-classical-solutions}
+  \caption{Example solutions curves of the classical Gompertz model with varying initial values for \(W\).}
+  \label{fig:gompertz-classical-solutions}
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[width=.64\textwidth]{images/gompertz-system-solutions-varw}
+  \caption{Example solutions curves of the system Gompertz model with varying initial values for \(W\).}
+  \label{fig:gompertz-system-solutions-varw}
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[width=.64\textwidth]{images/gompertz-system-solutions-varg}
+  \caption{Example solutions curves of the system Gompertz model with varying initial values for \(G\).}
+  \label{fig:gompertz-system-solutions-varg}
+\end{figure}
 
 The third family of ODE:s appear slightly later in the literature.
 They can all be written on the form
@@ -149,8 +169,15 @@ They can all be written on the form
 While solutions to this ODE are all Gompertz curves, it is important to note that this formulation is fundamentally different than the classical ODE \labelcref{eq:rough-gompertz-classical-ode}.
 This is clear from the fact that while \cref{eq:rough-gompertz-classical-ode} is directly dependent on time, \cref{eq:rough-gompertz-autonomous-ode} is not.
 We will therefore henceforth refer to the family of ODE:s that can be rewritten as \cref{eq:rough-gompertz-autonomous-ode} as \enquote{autonomous Gompertz ODE:s}.
+Solutions to the autonomous Gompertz model can be seen in \cref{fig:gompertz-autonomous-solutions}
 The first time an autonomous Gompertz ODE appears in the literature on biological growth is in a review of the new use of the Gompertz curve in 1932 \cite{winsor1932gompertz}.
 In the review (which also features a classical Gompertz ODE) the autonomous form is used to liken the Gompertz curve to another popular growth curve, the logistic growth curve, in order to generalize the Gompertz model.
+\begin{figure}
+  \centering
+  \includegraphics[width=.32\textwidth]{images/gompertz-autonomous-solutions}
+  \caption{Example solutions curves of the autonomous Gompertz model with varying initial values for \(W\).}
+  \label{fig:gompertz-autonomous-solutions}
+\end{figure}
 
 In order to better understand what separates the classical and autonomous ODE:s, a consistent parametrization is required.
 Due to the sporadic use of the ODE form, no such standardization has been made.
@@ -239,7 +266,7 @@ Secondly, it should be stressed that \cref{eq:gompertz-classical-ti,eq:gompertz-
 They will thus share symmetries, and calculations need only be performed on one form.
 
 
-\section{The Lotka--Volterra model}
+\section{The Lotka--Volterra predator--prey model}
 
 A classic model for predator-prey dynamics is the Lotka--Volterra model, modeling two populations where one species feed on the other according to
 \begin{subequations} \label{eq:lotka-volterra}
@@ -249,9 +276,22 @@ A classic model for predator-prey dynamics is the Lotka--Volterra model, modelin
   \end{align}
 \end{subequations}
 where \(N\) is the prey population size and \(P\) the predator population size \cite{lotka1925elements,volterra1928variations}.
+The parameter \(a\) the rate at which the prey population grows without interference, \(b\) and \(c\) how the predator and prey populations affect each other and \(d\) the rate at which predators die without prey to hunt.
+Solutions to \cref{eq:lotka-volterra} can be seen in \cref{fig:lotka-volterra-solutions-varn,fig:lotka-volterra-solutions-varp}.
 The Lotka--Volterra model is by no means the most modern or correct model to use in most situations, but the model is important from a historical perspective \cite{berryman1992orgins}.
 Variations of the model have been analyzed using symmetries \cite{almeida1995lie,cherniha2004diffusive}, but there is a lack of interpretations of the symmetries in symmetries as well as studies of the original model. % FIXME: Missing 2d-case with time invariance equivalent symmetry
-
+\begin{figure}
+  \centering
+  \includegraphics[width=.96\textwidth]{images/lotka-volterra-solutions-varn}
+  \caption{Example solutions curves of the Lotka--Volterra predator--prey model with varying initial values for \(N\).}
+  \label{fig:lotka-volterra-solutions-varn}
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[width=.96\textwidth]{images/lotka-volterra-solutions-varp}
+  \caption{Example solutions curves of the Lotka--Volterra predator--prey model with varying initial values for \(P\).}
+  \label{fig:lotka-volterra-solutions-varp}
+\end{figure}
 
 \section{The Yildirim--Mackey lactose operon model}
 
