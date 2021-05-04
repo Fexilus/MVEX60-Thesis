@@ -533,3 +533,93 @@ which is spanned by the manifest generator
 \begin{equation}
   X_1 = \partial_t.
 \end{equation}
+
+\subsubsection{\texorpdfstring{\(b\)-independent symmetries}{b-independent symmetries}}
+
+Decomposition of \cref{eq:lotka-volterra-lin-symmetry-cond} in \(b\) gives the parameter independence determining equations
+\begin{subequations}\label{eq:lotka-volterra-det-b}
+  \begin{flalign}
+    \diff{N}{t}, 1 & : & - N^{2} a^{2} \xi_{N} + N a \eta^1_{N} - N a \xi_{t} - a \eta^{1} + \left(N P c - P d\right) \eta^1_{P} +&&&\\&&+ \left(- N^{2} P a c + N P a d\right) \xi_{P} + \eta^1_{t} &= 0 && \FlLabel{eq:lotka-volterra-det-b-a}\\
+    \diff{N}{t}, b & : & 2 N^{2} P a \xi_{N} - N P \eta^1_{N} + N P \xi_{t} + N \eta^{2} + P \eta^{1} +&&&\\&&+ \left(N^{2} P^{2} c - N P^{2} d\right) \xi_{P} &= 0 && \FlLabel{eq:lotka-volterra-det-b-b}\\
+    \diff{N}{t}, b^2 & : & - N^{2} P^{2} \xi_{N} &= 0 && \FlLabel{eq:lotka-volterra-det-b-c}\\
+    \diff{P}{t}, 1 & : & N a \eta^2_{N} - P c \eta^{1} + \left(- N c + d\right) \eta^{2} + \left(- N P c + P d\right) \xi_{t} +&&&\\&&+ \left(N P c - P d\right) \eta^2_{P} + \left(- N^{2} P a c + N P a d\right) \xi_{N} +&&&\\&&+ \left(- N^{2} P^{2} c^{2} + 2 N P^{2} c d - P^{2} d^{2}\right) \xi_{P} + \eta^2_{t} &= 0 && \FlLabel{eq:lotka-volterra-det-b-d}\\
+    \diff{P}{t}, b & : & - N P \eta^2_{N} + \left(N^{2} P^{2} c - N P^{2} d\right) \xi_{N} &= 0. && \FlLabel{eq:lotka-volterra-det-b-e}
+  \end{flalign}
+\end{subequations}
+From \cref{eq:lotka-volterra-det-b-c,eq:lotka-volterra-det-b-e} it is clear that
+\begin{align}
+  \xi &= \xi(t, P) \\
+  \eta^2 &= \eta^2(t, P),
+\end{align}
+and thus \cref{eq:lotka-volterra-det-b-d} can be written as
+\begin{multline}
+  \eta^{1} = - N^{2} P c \xi_{P} + 2 N P d \xi_{P} + N \eta^2_{P} - N \xi_{t} -\\- \frac{N \eta^{2}}{P} - \frac{P d^{2} \xi_{P}}{c} - \frac{d \eta^2_{P}}{c} + \frac{d \xi_{t}}{c} + \frac{d \eta^{2}}{P c} + \frac{\eta^2_{t}}{P c}.
+\end{multline}
+Since neither \(\xi\) nor \(\eta^2\) depends on \(N\), and \(\eta^1\) thus only depends explicitly on \(N\), the remaining parameter independence determining equations \labelcref{eq:lotka-volterra-det-b-a,eq:lotka-volterra-det-b-b} can be decomposed further in \(N\) resulting in the equations
+\begin{subequations}
+  \begin{flalign}
+    1 & : & \frac{P^{2} d^{3} \xi_{PP}}{c} + \frac{P d^{2} \eta^2_{PP}}{c} - \frac{2 P d^{2} \xi_{Pt}}{c} - \frac{a d \xi_{t}}{c} +&&&\\&&+ \left(- \frac{a}{P c} + \frac{2 d}{P c}\right) \eta^2_{t} + \left(\frac{a d}{c} - \frac{d^{2}}{c}\right) \eta^2_{P} +&&&\\&&+ \left(- \frac{a d}{P c} + \frac{d^{2}}{P c}\right) \eta^{2} + \left(\frac{P a d^{2}}{c} + \frac{P d^{3}}{c}\right) \xi_{P} +&&&\\&&+ \frac{d \xi_{tt}}{c} - \frac{2 d \eta^2_{Pt}}{c} + \frac{\eta^2_{tt}}{P c} &= 0 && \FlLabel{eq:lotka-volterra-det-bN-a}\\
+    N & : & - 3 P^{2} d^{2} \xi_{PP} - 2 P d \eta^2_{PP} + 4 P d \xi_{Pt} - a \xi_{t} + 2 d \eta^2_{P} +&&&\\&&+ \left(P a d - 3 P d^{2}\right) \xi_{P} - \xi_{tt} + 2 \eta^2_{Pt} - \frac{2 d \eta^{2}}{P} - \frac{2 \eta^2_{t}}{P} &= 0 && \FlLabel{eq:lotka-volterra-det-bN-b}\\
+    N^{2} & : & 3 P^{2} c d \xi_{PP} + P c \eta^2_{PP} - 2 P c \xi_{Pt} - c \eta^2_{P} +&&&\\&&+ \left(- 2 P a c + 3 P c d\right) \xi_{P} + \frac{c \eta^{2}}{P} &= 0 && \FlLabel{eq:lotka-volterra-det-bN-c}\\
+    N^{3} & : & - P^{2} c^{2} \xi_{PP} - P c^{2} \xi_{P} &= 0 && \FlLabel{eq:lotka-volterra-det-bN-d}\\
+    b & : & - \frac{P^{2} d^{2} \xi_{P}}{c} - \frac{P d \eta^2_{P}}{c} + \frac{P d \xi_{t}}{c} + \frac{d \eta^{2}}{c} + \frac{\eta^2_{t}}{c} &= 0 && \FlLabel{eq:lotka-volterra-det-bN-e}\\
+    N b & : & - P^{2} d \xi_{P} + P \xi_{t} + \eta^{2} &= 0 && \FlLabel{eq:lotka-volterra-det-bN-f}\\
+    N^{2} b & : & 2 P^{2} c \xi_{P} &= 0. && \FlLabel{eq:lotka-volterra-det-bN-g}
+  \end{flalign}
+\end{subequations}
+Given \cref{eq:lotka-volterra-det-bN-g},
+\begin{equation}
+  \xi_{P} = 0,
+\end{equation}
+and thus \cref{eq:lotka-volterra-det-bN-f} gives that
+\begin{equation}
+  \eta^{2} = - P \xi_t
+\end{equation}
+Since the only functional dependence left is in \(t\) for the unknown function
+\begin{equation}
+  \xi = \xi(t),
+\end{equation}
+\cref{eq:lotka-volterra-det-bN-a,eq:lotka-volterra-det-bN-b,eq:lotka-volterra-det-bN-e} can be further decomposed in \(P\), resulting in the equations
+\begin{flalign}
+  1 & : & - \frac{a d \xi'}{c} + \left(\frac{a}{c} + \frac{d}{c}\right) \xi'' - \frac{\xi'''}{c} &= 0 && \FlLabel{eq:lotka-volterra-det-bNP-a}\\
+  N & : & - a \xi' - \xi'' &= 0 && \FlLabel{eq:lotka-volterra-det-bNP-b}\\
+  P b & : & \frac{d \xi'}{c} - \frac{\xi''}{c} &= 0. && \FlLabel{eq:lotka-volterra-det-bNP-c}
+\end{flalign}
+Unless \(a = -d\), which will not be the case as both parameters are strictly positive,
+\begin{equation}
+  \xi' = 0,
+\end{equation}
+and thus
+\begin{equation}
+  \xi = c_1
+\end{equation}
+for an arbitrary constant \(c_1\).
+Thus, the general solution to the parameter independence determining equations \labelcref{eq:lotka-volterra-det-b} is
+\begin{align}
+  \xi &= c_1 \\
+  \eta^1 &= 0\\
+  \eta^2 &= 0
+\end{align}
+which is spanned by the manifest generator
+\begin{equation}
+  X_1 = \partial_t.
+\end{equation}
+
+\subsubsection{\texorpdfstring{\(c\) and \(d\)-independent symmetries}{c and d-independent symmetries}}
+
+The only assumption about the parameters used in the calculations of \(a\) and \(b\)-independent symmetries are that the parameters are non-zero and that all parameters have the same sign (namely they are all positive).
+Using the variable and parameter substitutions
+\begin{align}
+  \tilde{N} &= P \\
+  \tilde{P} &= N \\
+  \tilde{a} &= -d \\
+  \tilde{b} &= -c \\
+  \tilde{c} &= -b \\
+  \tilde{d} &= -a,
+\end{align}
+the same calculations will thus hold for finding \(\tilde{a}\) and \(\tilde{b}\)-independent symmetries of the model after substitution, as all parameters still are non-zero and have the same sign.
+Substituting back to the original model, the manifest symmetry generator
+\begin{equation}
+  X_1 = \partial_t
+\end{equation}
+must thus be the only \(c\) and \(d\)-independent symmetry generator.
