@@ -198,7 +198,7 @@ for arbitrary functions \(\xi\) and \(F\).
 
 \subsection{The system Gompertz model}
 
-The symmetries of the system Gompertz model found using an ansatz are relabeled
+The symmetries of the system Gompertz model found using an ansatz in \cref{ch:ansatze} were
 \begin{align}
   X_{\text{s},1} &= \partial_t \\
   X_{\text{s},2} &= - \frac{e^{k_{G} t}}{k_{G}} \partial_t + G e^{k_{G} t} \partial_G \\
@@ -206,7 +206,7 @@ The symmetries of the system Gompertz model found using an ansatz are relabeled
   X_{\text{s},4} &= W \partial_W \\
   X_{\text{s},5} &= - \frac{W e^{- k_{G} t}}{k_{G}} \partial_W + e^{- k_{G} t} \partial_G
 \end{align}
-and the symmetries found using parameter independence are relabeled
+and the symmetries found using parameter independence in \cref{ch:param-ind} were
 \begin{align}
   X_{\text{s},1} &= \partial_t \\
   X_{\text{s},4} &= W \partial_W \\
@@ -403,3 +403,60 @@ then has the same form as
   \end{pmatrix}
   \cdot F_2\left(k_G t + \ln(G)\right).
 \end{equation}
+
+\section{The structure of the symmetry group of the Lotka--Volterra model}
+
+The symmetries of the Lotka--Volterra model found using an ansatz in \cref{ch:ansatze} were
+\begin{align}
+  X_1 &= \partial_t \\
+  X_2 &= \frac{-bNP + aN}{c} \partial_N + \frac{cNP - dP}{c} \partial_P \\
+  X_3 &= \frac{t}{c} \partial_t + \frac{-btNP + atN}{c} \partial_N + \frac{ctNP - dtP}{c} \partial_P \\
+  X_4 &= \frac{N}{c} \partial_t + \frac{-bcN^2P + acN^2 - bdNP + adN}{c^2} \partial_N + \frac{c^2N^2P - d^2P}{c^2} \partial_P \\
+  X_5 &= \frac{P}{c} \partial_t + \frac{-bNP^2 + aNP}{c} \partial_N + \frac{cNP^2 - dP^2}{c} \partial_P
+\end{align}
+and the symmetries found using parameter independence in \cref{ch:param-ind} were
+\begin{equation}
+  X_1 = \partial_t.
+\end{equation}
+The corresponding reduced characteristics of the symmetry generators are
+\begin{align}
+  \bar{\vb{Q}}_1 &= - \left(a N - b N P, c N P - d P\right) \\
+  \bar{\vb{Q}}_2 &= \frac{1}{c} \left(a N - b N P, c N P - d P\right) \\
+  \bar{\vb{Q}}_3 &= 0 \\
+  \bar{\vb{Q}}_4 &= \frac{d}{c^2}\left(aN- bNP, cNP - dP\right) \\
+  \bar{\vb{Q}}_5 &= 0.
+\end{align}
+Thus only one of the potentially two forms of reduced characteristic (modulo multiplication by invariants) is found.
+Furthermore, the reduced characteristics reveal no invariants by themselves.
+
+Using the method of characteristics, one such invariant can be found with ease.
+The invariance condition 
+\begin{equation}
+  I_t + \left(a N - b N P\right) I_N + \left(c N P - d P\right) I_P = 0
+\end{equation}
+results in the reformulated problem
+\begin{equation} \label{eq:moc-lotka-volterra}
+  \frac{\dl t}{1} = \frac{\dl N}{a N - b N P} = \frac{\dl P}{c N P - d P}.
+\end{equation}
+The second equality can be simplified to
+\begin{equation}
+  \frac{\dl N}{N} \left(c N - d\right) = \frac{\dl P}{P} \left(a - b P\right)
+\end{equation}
+which has the solution
+\begin{equation} \label{eq:invariant-lotka-volterra}
+  \dl \left(cN + bP - d \ln(N) - a \ln(P)\right) = 0.
+\end{equation}
+The first equality in \cref{eq:moc-lotka-volterra} does not have an explicit solution, for the same reason the Lotka--Volterra system itself does not have an explicit solution, but must instead be studied mostly using the invariant in \cref{eq:invariant-lotka-volterra} \cite{murray2002biology}.
+
+Using the characteristics and invariants easily calculable, it can thus be concluded that all reduced characteristics
+\begin{equation} \label{eq:lotka-volterra-characteristic}
+  \bar{\vb{Q}} = F\left(cN + bP - d \ln(N) - a \ln(P)\right) \left(a N - b N P, c N P - d P\right)
+\end{equation}
+correspond to symmetry generators of the Lotka--Volterra predator prey model \labelcref{eq:lotka-volterra}, where \(F\) is an arbitrary function.
+All generators on the form
+\begin{align}
+  X =& \xi(t, W, G) \partial_t + \\
+  &+ \left(a N - b N P\right) \left(\xi(t, W, G) + F\left(cN + bP - d \ln(N) - a \ln(P)\right)\right) \partial_W + \\
+  &+ \left(c N P - d P\right) \left(\xi(t, W, G) + F\left(cN + bP - d \ln(N) - a \ln(P)\right)\right) \partial_W
+\end{align}
+are thus symmetry generators of the Lotka--Volterra model.
