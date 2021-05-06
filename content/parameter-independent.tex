@@ -368,11 +368,11 @@ Decomposition of \cref{eq:gompertz-system-lin-symmetry-cond} in \(k_G\) gives th
   \end{flalign}
 \end{subequations}
 From \cref{eq:gompertz-system-det-kg-e} it is clear that
-\begin{equation}
+\begin{equation} \label{eq:system-gompertz-kG-first-simplification-1}
   \xi = \xi(t, W),
 \end{equation}
 and thus from \cref{eq:gompertz-system-det-kg-b}
-\begin{equation}
+\begin{equation} \label{eq:system-gompertz-kG-first-simplification-2}
   \eta^1 = \eta^1(t, W).
 \end{equation}
 From \cref{eq:gompertz-system-det-kg-a}
@@ -462,10 +462,12 @@ Decomposition of \cref{eq:lotka-volterra-lin-symmetry-cond} in \(a\) gives the p
   \end{flalign}
 \end{subequations}
 From \cref{eq:lotka-volterra-det-a-c,eq:lotka-volterra-det-a-e} it is clear that
-\begin{align}
-  \eta^2 &= \eta^2(t, P)\\
-  \xi &= \xi(t, P),
-\end{align}
+\begin{subequations} \label{eq:lotka-volterra-a-first-simplification}
+  \begin{align}
+    \eta^2 &= \eta^2(t, P)\\
+    \xi &= \xi(t, P),
+  \end{align}
+\end{subequations}
 and thus \cref{eq:lotka-volterra-det-a-d} can be written as
 \begin{align}
   \begin{split}
@@ -547,10 +549,12 @@ Decomposition of \cref{eq:lotka-volterra-lin-symmetry-cond} in \(b\) gives the p
   \end{flalign}
 \end{subequations}
 From \cref{eq:lotka-volterra-det-b-c,eq:lotka-volterra-det-b-e} it is clear that
-\begin{align}
-  \xi &= \xi(t, P) \\
-  \eta^2 &= \eta^2(t, P),
-\end{align}
+\begin{subequations} \label{eq:lotka-volterra-b-first-simplification}
+  \begin{align}
+    \xi &= \xi(t, P) \\
+    \eta^2 &= \eta^2(t, P),
+  \end{align}
+\end{subequations}
 and thus \cref{eq:lotka-volterra-det-b-d} can be written as
 \begin{multline}
   \eta^{1} = - N^{2} P c \xi_{P} + 2 N P d \xi_{P} + N \eta^2_{P} - N \xi_{t} -\\- \frac{N \eta^{2}}{P} - \frac{P d^{2} \xi_{P}}{c} - \frac{d \eta^2_{P}}{c} + \frac{d \xi_{t}}{c} + \frac{d \eta^{2}}{P c} + \frac{\eta^2_{t}}{P c}.
@@ -623,3 +627,52 @@ Substituting back to the original model, the manifest symmetry generator
   X_1 = \partial_t
 \end{equation}
 must thus be the only \(c\) and \(d\)-independent symmetry generator.
+
+\section{The Yildirim--Mackey lactose operon model}
+
+As seen in the previous sections of this chapter, the naïve approach to solving the parameter independence determining equations requires guidance by a human; in general systems of first order PDE:s are not solvable in any algorithmic manner.
+Additionally, as was seen in \cref{ch:ansatze} the linearized symmetry condition grows quickly with additional states.
+As a consequence, it becomes unviable to solve the parameter independence determining equations for the Yildirim--Mackey lactose operon model the naïve way.
+Not only will the decomposed equations be hard to get an overview on, leading to time consuming selection processes for the \enquote{next step} in the calculations.
+The amount of calculations required will also grow as the amount of parameters of a model generally grows together with the number of states.
+
+To exemplify this, the number of terms in the parameter independence determining equations for \(\alpha_M\)-independent generators is shown in \cref{tab:lac-operon-parameter-independence-terms}.
+\begin{table}
+  \centering
+  \begin{tabular}{r@{ }rr@{ }l}
+    \(\diff{M}{t}\),& \(1\):& 179& terms \\
+    \(\diff{M}{t}\),& \(\alpha_M\):& 79& terms \\
+    \(\diff{M}{t}\),& \(\left(\alpha_M\right)^2\):& 3& terms \\
+    \(\diff{B}{t}\),& \(1\):& 112& terms \\
+    \(\diff{B}{t}\),& \(\alpha_M\):& 6& terms \\
+    \(\diff{L}{t}\),& \(1\):& 529& terms \\
+    \(\diff{L}{t}\),& \(\alpha_M\):& 42& terms \\
+    \(\diff{A}{t}\),& \(1\):& 307& terms \\
+    \(\diff{A}{t}\),& \(\alpha_M\):& 18& terms \\
+    \(\diff{P}{t}\),& \(1\):& 112& terms \\
+    \(\diff{P}{t}\),& \(\alpha_M\):& 6& terms
+  \end{tabular}
+  \caption{Terms of the the parameter independence determining equations for \(\alpha_M\)-independent generators.}
+  \label{tab:lac-operon-parameter-independence-terms}
+\end{table}
+In the process of refining forms of the unknown functions \(\xi, \eta^1, \dots, \eta^5\), each of these terms might in the worst case decompose into individual equations to be solved.
+This extreme case would of course be easy to solve as all available undetermined functions and derivatives would have to be zero everywhere, but it nonetheless gives an upper bound on the number of the equations in the systems resulting from using the naïve approach.
+For certain forms of equations, some first steps of simplification can be done algorithmically.
+Looking at the earlier calculations for the Gompertz and Lotka--Volterra models, most have a common first step of eliminating dependence in one of the states for \(\xi\) and all but one of the \(\eta^i\) functions (see \cref{eq:system-gompertz-kG-first-simplification-1,eq:system-gompertz-kG-first-simplification-2,eq:lotka-volterra-a-first-simplification,eq:lotka-volterra-b-first-simplification}).
+This pattern, which also fits for \(\alpha_M\)-independence, holds when only one equation (\cref{eq:lac-operon-a}) of the system of equations (\cref{eq:lac-operon}) is dependent on a parameter (\(\alpha_M\)) linearly.
+If those conditions are true, \(\xi\) and all but one of the equations \(\eta^i\) will not be dependent on a state.
+In the case of \(\alpha_M\)-independence, only \(\eta^1\) can be dependent on \(M\).
+While this knowledge simplifies the parameter independence determining equations, the determining system is still large, as seen in \cref{tab:lac-operon-parameter-independence-terms-simplified}, and not viable to solve the naïve way.
+\begin{table}
+  \centering
+  \begin{tabular}{r@{ }rr@{ }l}
+    \(\diff{M}{t}\),& \(1\):& 170& terms \\
+    \(\diff{M}{t}\),& \(\alpha_M\):& 71& terms \\
+    \(\diff{B}{t}\),& \(1\):& 100& terms \\
+    \(\diff{L}{t}\),& \(1\):& 445& terms \\
+    \(\diff{A}{t}\),& \(1\):& 271& terms \\
+    \(\diff{P}{t}\),& \(1\):& 100& terms
+  \end{tabular}
+  \caption{Terms of the the parameter independence determining equations for \(\alpha_M\)-independent generators after an easy to find simplification.}
+  \label{tab:lac-operon-parameter-independence-terms-simplified}
+\end{table}
