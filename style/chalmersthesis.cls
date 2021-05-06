@@ -267,9 +267,9 @@
   \pagestyle{empty}
   \vspace*{-4.3cm}
   \noindent
-  \textcolor{white}{\footnotesize \textbf{\@department}\\
-  \textbf{CHALMERS UNIVERSITY OF TECHNOLOGY} \\
-  Gothenburg, Sweden \\
+  \textcolor{white}{\footnotesize \textbf{\@department}\newline
+  \textbf{CHALMERS UNIVERSITY OF TECHNOLOGY} \newline
+  Gothenburg, Sweden \newline
   \href{www.chalmers.se}{\textcolor{white}{www.chalmers.se}}}
 }
 
