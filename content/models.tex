@@ -251,7 +251,7 @@ The classical Gompertz ODE:s \labelcref{eq:rough-gompertz-classical-ode,eq:rough
   \end{minipage}\tabularnewline
   System, & \(T_i\) and \(W_0\) :&
   \begin{minipage}{\linewidth}%
-    {\begin{subequations}\label{eq:gompertz-system}
+    {\begin{subequations} \label[subequations]{eq:gompertz-system}
       \begin{align}
         \diff{W}{t} &= G(t) W(t) \label{eq:gompertz-system-a}\\
         \diff{G}{t} &= -k_G G(t). \label{eq:gompertz-system-b}
@@ -269,7 +269,7 @@ They will thus share symmetries, and calculations need only be performed on one 
 \section{The Lotka--Volterra predator--prey model}
 
 A classic model for predator-prey dynamics is the Lotka--Volterra model, modeling two populations where one species feed on the other according to
-\begin{subequations} \label{eq:lotka-volterra}
+\begin{subequations} \label[subequations]{eq:lotka-volterra}
   \begin{align}
     \diff{N}{t} &= a N - b N P\\
     \diff{P}{t} &= c N P - d P,
@@ -298,7 +298,7 @@ Variations of the model have been analyzed using symmetries \cite{almeida1995lie
 A more modern model in the style and scope of those used today in biology is the Yildirim--Mackey model for the Lactose Operon \cite{yildirim2003feedback}.
 It models the biochemical reaction to lactose in \textit{Escherichia coli} with a delay differential equation.
 Since this thesis only covers ODE:s, the slightly simplified ODE model used in \cite{yildirim2011deterministic} will instead be used, which is modeled by
-\begin{subequations} \label{eq:lac-operon}
+\begin{subequations} \label[subequations]{eq:lac-operon}
   \begin{align}
     \diff{M}{t} &= \alpha_M \frac{1 + K_1 A^n}{K + K_1 A^n} + \Gamma_0 - \gamma_M M \label{eq:lac-operon-a}\\
     \diff{B}{t} &= \alpha_B M - \gamma_B B \\

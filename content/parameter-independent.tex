@@ -86,7 +86,7 @@ To reiterate, the Gompertz models are\par\noindent
   \end{minipage}\tabularnewline
   System, & \(T_i\) and \(W_0\) :&
   \begin{minipage}{\linewidth}%
-    {\begin{subequations}\label{eq:gompertz-system^param}
+    {\begin{subequations} \label[subequations]{eq:gompertz-system^param}
       \begin{align}
         \diff{W}{t} &= G(t) W(t) \label{eq:gompertz-system-a^param}\\
         \diff{G}{t} &= -k_G G(t). \label{eq:gompertz-system-b^param}
@@ -344,7 +344,7 @@ The corresponding transformations can be seen in \cref{fig:gompertz-autonomous-p
 
 For the system Gompertz model there is also only one parametrization of interest.
 The linearized symmetry condition \labelcref{eq:linearized-first-order-symmetry} is for the system Gompertz model
-\begin{subequations}\label{eq:gompertz-system-lin-symmetry-cond}
+\begin{subequations} \label[subequations]{eq:gompertz-system-lin-symmetry-cond}
   \begin{align}
     \begin{split}\label{eq:gompertz-system-lin-symmetry-cond-a}
       \eta^1_t + W G \left(\eta^1_W - \xi_t\right) -k_G G \eta^1_G - W^2 G^2 \xi_W +&\\+ k_G W G^2 \xi_G - G \eta^1 - W \eta^2 &= 0 
@@ -430,7 +430,7 @@ The corresponding transformations can be seen in \cref{fig:gompertz-system-param
 \section{The Lotka--Volterra model}
 
 The linearized symmetry condition \labelcref{eq:linearized-general-symmetry} is for the Lotka--Volterra model
-\begin{subequations}\label{eq:lotka-volterra-lin-symmetry-cond}
+\begin{subequations} \label[subequations]{eq:lotka-volterra-lin-symmetry-cond}
   \begin{align}
     \begin{split}
       \eta^1_t &+ \qty(a N - b N) \qty(\eta^1_{N} - \xi_t) + \qty(c N P - d P) \eta^1_{P} - \qty(a N - b N P)^2 \xi_{N} -\\
@@ -447,7 +447,7 @@ The linearized symmetry condition \labelcref{eq:linearized-general-symmetry} is 
 \subsubsection{\texorpdfstring{\(a\)-independent symmetries}{a-independent symmetries}}
 
 Decomposition of \cref{eq:lotka-volterra-lin-symmetry-cond} in \(a\) gives the parameter independence determining equations
-\begin{subequations}\label{eq:lotka-volterra-det-a}
+\begin{subequations} \label[subequations]{eq:lotka-volterra-det-a}
   \begin{flalign}
     \diff{N}{t}, 1 & : & - N^{2} P^{2} b^{2} \xi_{N} - N P b \eta^1_{N} + N P b \xi_{t} + N b \eta^{2} + P b \eta^{1} +&&\\
     &&\quad+ \left(N P c - P d\right) \eta^1_{P} + \left(N^{2} P^{2} b c - N P^{2} b d\right) \xi_{P} + \eta^1_{t} &= 0 &\label{eq:lotka-volterra-det-a-a}\\
@@ -462,7 +462,7 @@ Decomposition of \cref{eq:lotka-volterra-lin-symmetry-cond} in \(a\) gives the p
   \end{flalign}
 \end{subequations}
 From \cref{eq:lotka-volterra-det-a-c,eq:lotka-volterra-det-a-e} it is clear that
-\begin{subequations} \label{eq:lotka-volterra-a-first-simplification}
+\begin{subequations} \label[subequations]{eq:lotka-volterra-a-first-simplification}
   \begin{align}
     \eta^2 &= \eta^2(t, P)\\
     \xi &= \xi(t, P),
@@ -539,7 +539,7 @@ which is spanned by the manifest generator
 \subsubsection{\texorpdfstring{\(b\)-independent symmetries}{b-independent symmetries}}
 
 Decomposition of \cref{eq:lotka-volterra-lin-symmetry-cond} in \(b\) gives the parameter independence determining equations
-\begin{subequations}\label{eq:lotka-volterra-det-b}
+\begin{subequations} \label[subequations]{eq:lotka-volterra-det-b}
   \begin{flalign}
     \diff{N}{t}, 1 & : & - N^{2} a^{2} \xi_{N} + N a \eta^1_{N} - N a \xi_{t} - a \eta^{1} + \left(N P c - P d\right) \eta^1_{P} +&&\\&&+ \left(- N^{2} P a c + N P a d\right) \xi_{P} + \eta^1_{t} &= 0 &\label{eq:lotka-volterra-det-b-a}\\
     \diff{N}{t}, b & : & 2 N^{2} P a \xi_{N} - N P \eta^1_{N} + N P \xi_{t} + N \eta^{2} + P \eta^{1} +&&\\&&+ \left(N^{2} P^{2} c - N P^{2} d\right) \xi_{P} &= 0 &\label{eq:lotka-volterra-det-b-b}\\
@@ -549,7 +549,7 @@ Decomposition of \cref{eq:lotka-volterra-lin-symmetry-cond} in \(b\) gives the p
   \end{flalign}
 \end{subequations}
 From \cref{eq:lotka-volterra-det-b-c,eq:lotka-volterra-det-b-e} it is clear that
-\begin{subequations} \label{eq:lotka-volterra-b-first-simplification}
+\begin{subequations} \label[subequations]{eq:lotka-volterra-b-first-simplification}
   \begin{align}
     \xi &= \xi(t, P) \\
     \eta^2 &= \eta^2(t, P),
