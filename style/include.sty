@@ -17,15 +17,11 @@
 % Figures
 \RequirePackage{graphicx}
 \RequirePackage{float}
-%\usepackage{subcaption}
 
 % Text formatting
 \RequirePackage{csquotes}
 
 % Bibliography
-\usepackage{etoolbox}%              Fix compatibility with autonum
-\cslet{blx@noerroretextools}\empty% Fix compatibility with autonum
-% https://github.com/plk/biblatex/issues/669#issuecomment-436153041
 \RequirePackage[
   sorting   = none,
   sortcites = true,
@@ -38,11 +34,7 @@
 \RequirePackage[
   pdfusetitle,
   hidelinks,
-  hypertexnames = false,% Compatibility with autonum
 ]{hyperref}
 \RequirePackage[
   nameinlink
 ]{cleveref}
-\RequirePackage{autonum}
-\autonum@generatePatchedReferenceCSL{Cref}% Patch autonum
-\autonum@generatePatchedReferenceCSL{labelcref}

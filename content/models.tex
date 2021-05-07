@@ -6,13 +6,13 @@ The measurements vary from field to field, but common types are the concentratio
 The different species are modeled to affect each other over time, and thus differential equations are a good tool.
 The limitation to ODE:s is often due to the fact that the models required to model biological phenomena are complex enough, without taking locality into account, to be at the boundaries of what is viable to simulate and compare to experiments.
 There are thus a large amount of models in these fields that take the form
-\begin{align}
-  \begin{split} \label{eq:generic-bio-ode}
+\begin{align*}
+  \begin{split} %\label{eq:generic-bio-ode}
     \diff{A^1}{t} &= \omega^1(t, A^1, \dots, A^s; \vb*{\theta}) \\
     &\equalsvdots \\
     \diff{A^s}{t} &= \omega^s(t, A^1, \dots, A^s; \vb*{\theta}),
   \end{split}
-\end{align}
+\end{align*}
 where \(A^1(t), \dots, A^s(t)\) are the measurements of species at time \(t\), and \(\vb*{\theta} = \left(\theta^1, \dots, \theta^m\right)\) are a collection of parameters.
 The parameters allow the models to be adopted to a large amount of different circumstances.
 They can be related to environmental factors, inherent properties of the species involved or a measurement of a species assumed to be constant for the duration of the experiment.
@@ -44,13 +44,13 @@ where \(Y\) is the concentration of some protein.
 The Hill equation has been studied using symmetries of differential equations, using its nondimensionalized form \cite{ohlsson2020symmetry}.
 Thus the Hill equation will be studied here using the same nondimensionalized form.
 By nondimensionalizing both the substrate concentration with
-\begin{equation}
+\begin{equation*}
   y = \frac{Y}{{K_m}^{1/n}}
-\end{equation}
+\end{equation*}
 and the time with
-\begin{equation}
+\begin{equation*}
   \tau = v_\text{max} \frac{t}{{K_m}^{1/n}},
-\end{equation}
+\end{equation*}
 \cref{eq:original-hill} simplifies to its nondimensionalized form
 \begin{equation} \label[ode]{eq:hill}
   \diff{y}{\tau} = - \frac{y^n}{1 + y^n} = \omega_n(\tau, y), \quad
@@ -219,13 +219,13 @@ The solutions are thus on the form
 \end{equation}
 where \(c\) is an integration constant.
 Comparing the solutions in \cref{eq:gompertz-classical-solution,eq:gompertz-autonomous-solution} to the \(T_i\)- and \(W_0\)-formulations in \cref{eq:gompertz-ti-function,eq:gompertz-w0-function}, the relationships
-\begin{align}
+\begin{align*}
   b &= k_G\\
   r &= k_G e^{k_G T_i}\\
   r &= k_G \ln(\frac{W_0}{A})\\
   \alpha &= k_G\\
   K &= A
-\end{align}
+\end{align*}
 between the parameters can be found.
 The classical Gompertz ODE:s \labelcref{eq:rough-gompertz-classical-ode,eq:rough-gompertz-system-ode} and the autonomous Gompertz ODE \labelcref{eq:rough-gompertz-autonomous-ode} can thus be reparametrized as
 

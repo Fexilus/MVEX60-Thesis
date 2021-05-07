@@ -45,15 +45,15 @@ Any Lie point symmetry group must fulfill the linearized symmetry condition \lab
 To solve \cref{eq:linearized-first-order-symmetry}, an Ansatz must be made.
 The tangent fields of many Lie symmetries of ODE:s are linear in \(y\).
 The Ansatz
-\begin{equation}
+\begin{equation*}
   \pqty{\xi(\tau,y),\eta(\tau,y)} = \pqty{A(\tau) + B(\tau)y,C(\tau) + D(\tau)y}
-\end{equation}
+\end{equation*}
 is therefore used.
 Inserting the Ansatz into \cref{eq:linearized-first-order-symmetry}, and using the fact that \(y' = y^n / (1 + y^n)\), gives that
-\begin{equation}
+\begin{equation*}
   (C' + D'y) + (A' + B'y - D) \frac{y^n}{1 + y^n} - B \frac{y^{2n}}{(1 + y^n)^2} =
   -n(C + Dy) \frac{y^{n-1}}{(1 + y^n)^2}.
-\end{equation}
+\end{equation*}
 Multiplication with \((1 + y^n)^2\) in turn gives that
 \begin{equation} \label{eq:hill-linear-symmetry}
   (C' + D'y)(1 + y^n)^2 + (A' + B'y - D)y^n(1 + y^n) - By^{2n} =
@@ -68,46 +68,46 @@ When \(n>0\) and \(n\neq1,2\), all of the possible powers of \(y\) will be diffe
 \Cref{eq:hill-linear-symmetry} can the be separated into the system
 \begin{subequations}
   \begin{flalign}
-    y^0:      && C'(\tau) &= 0                               &&\FlLabel{eq:det-any-0}\\
-    y^1:      && D'(\tau) &= 0                               &&\FlLabel{eq:det-any-1} \\
-    y^{n-1}:  && 0 &= -nC(\tau)                              &&\FlLabel{eq:det-any-nm1} \\
-    y^n:      && 2C'(\tau) + A'(\tau) - D(\tau) &= -nD(\tau) &&\FlLabel{eq:det-any-n} \\
-    y^{n+1}:  && 2D'(\tau) + B'(\tau) &= 0                   &&\FlLabel{eq:det-any-np1} \\
-    y^{2n}:   && C'(\tau) A'(\tau) - D(\tau) - B(\tau) &= 0  &&\FlLabel{eq:det-any-2n} \\
-    y^{2n+1}: && D'(\tau) + B'(\tau) &= 0.                   &&\FlLabel{eq:det-any-2np1}
+    y^0:      && C'(\tau) &= 0                               &\label{eq:det-any-0}\\
+    y^1:      && D'(\tau) &= 0                               &\label{eq:det-any-1} \\
+    y^{n-1}:  && 0 &= -nC(\tau)                              &\label{eq:det-any-nm1} \\
+    y^n:      && 2C'(\tau) + A'(\tau) - D(\tau) &= -nD(\tau) &\label{eq:det-any-n} \\
+    y^{n+1}:  && 2D'(\tau) + B'(\tau) &= 0                   &\label{eq:det-any-np1} \\
+    y^{2n}:   && C'(\tau) A'(\tau) - D(\tau) - B(\tau) &= 0  &\label{eq:det-any-2n} \\
+    y^{2n+1}: && D'(\tau) + B'(\tau) &= 0.                   &\label{eq:det-any-2np1}
   \end{flalign}
 \end{subequations}
 From \cref{eq:det-any-nm1}
-\begin{equation}
+\begin{equation*}
   C(\tau) = 0,
-\end{equation}
+\end{equation*}
 which renders \cref{eq:det-any-0} irrelevant.
 \Cref{eq:det-any-1} gives
-\begin{equation}
+\begin{equation*}
   D(\tau) = c_1
-\end{equation}
+\end{equation*}
 for a constant \(c_1\) (constants will further be denoted \(c_i\)).
 \Cref{eq:det-any-n} can with the determined values for \(C\) and \(D\) be reduced to
-\begin{equation}
+\begin{equation*}
   A'(\tau) = (1-n) c_1,
-\end{equation}
+\end{equation*}
 which means that
-\begin{equation}
+\begin{equation*}
   A(\tau) = c_2 + (1-n) c_1 x.
-\end{equation}
+\end{equation*}
 Using \cref{eq:det-any-np1} and the determined value of \(D\),
-\begin{equation}
+\begin{equation*}
   B(\tau) = c_3,
-\end{equation}
+\end{equation*}
 which in turn renders \cref{eq:det-any-2np1} irrelevant.
 Lastly, \cref{eq:det-any-2n} can be reduced to
-\begin{equation}
+\begin{equation*}
   (1-n) c_1 - c_1 - c_3 = 0,
-\end{equation}
+\end{equation*}
 which means that
-\begin{equation}
+\begin{equation*}
   c_3 = -n c_1.
-\end{equation}
+\end{equation*}
 All tangent fields given the Ansatz must therefore be on the form
 \begin{equation} \label{eq:hill-tangent-field-any}
   \pqty{\xi_n(\tau,y),\eta_n(\tau,y)} = 
@@ -121,10 +121,10 @@ When \(n=1\) several pairs of powers of \(y\) become equal.
 \Cref{eq:hill-linear-symmetry} is therefore separated into the system
 \begin{subequations}
   \begin{flalign}
-    y^0:  && C'(\tau) &= -C(\tau) &&\FlLabel{eq:det-1-0}\\
-    y^1:  && D'(\tau) + 2C'(\tau) + A'(\tau) - D(\tau) &= -D(\tau) &&\FlLabel{eq:det-1-1}\\
-    y^2:  && 2D'(\tau) + B'(\tau) + C'(\tau) + A'(\tau) - D(\tau) - B(\tau) &= 0 &&\FlLabel{eq:det-1-2}\\
-    y^3:  && D'(\tau) + B'(\tau) &= 0. &&\FlLabel{eq:det-1-3}
+    y^0:  && C'(\tau) &= -C(\tau) &\label{eq:det-1-0}\\
+    y^1:  && D'(\tau) + 2C'(\tau) + A'(\tau) - D(\tau) &= -D(\tau) &\label{eq:det-1-1}\\
+    y^2:  && 2D'(\tau) + B'(\tau) + C'(\tau) + A'(\tau) - D(\tau) - B(\tau) &= 0 &\label{eq:det-1-2}\\
+    y^3:  && D'(\tau) + B'(\tau) &= 0. &\label{eq:det-1-3}
   \end{flalign}
 \end{subequations}
 Using \cref{eq:det-1-3}, the relation
@@ -137,26 +137,26 @@ can be established.
   C(\tau) = c_2 e^{-\tau}.
 \end{equation}
 Subtracting \cref{eq:det-1-1} from \cref{eq:det-1-2} leads to the equation
-\begin{equation}
+\begin{equation*}
   D'(\tau) + B'(\tau) - C'(\tau) - B(\tau) = D(\tau),
-\end{equation}
+\end{equation*}
 which by using \cref{eq:det-1-DB-rel,eq:det-1-first-C} can be simplified to
-\begin{equation}
+\begin{equation*}
   c_2 e^{-\tau} = c_1.
-\end{equation}
+\end{equation*}
 This only holds if \(c_1 = c_2 = 0\) so
-\begin{gather}
-  C(\tau) = 0 \\
-  D(\tau) = - B(\tau).
-\end{gather}
+\begin{align}
+  C(\tau) &= 0 \\
+  D(\tau) &= - B(\tau).
+\end{align}
 Finally, \cref{eq:det-1-1} simplifies to
-\begin{equation}
+\begin{equation*}
   D'(\tau) + A'(\tau) = 0,
-\end{equation}
+\end{equation*}
 which integrates to
-\begin{equation}
+\begin{equation*}
   D(\tau) = - A(\tau) + c_3.
-\end{equation}
+\end{equation*}
 Thus, all tangent fields given the Ansatz must be on the form
 \begin{equation} \label{eq:hill-tangent-field-1}
   \pqty{\xi_1(\tau,y),\eta_1(\tau,y)} = 
@@ -169,43 +169,43 @@ When \(n=2\), \(y^1 = y^{n-1}\).
 \Cref{eq:hill-linear-symmetry} then separates into the system
 \begin{subequations}
   \begin{flalign}
-      y^0:  && C'(\tau) &= 0                               &&\FlLabel{eq:det-2-0}\\
-      y^1:  && D'(\tau) &= -2C(\tau)                       &&\FlLabel{eq:det-2-1}\\
-      y^2:  && 2C'(\tau) + A'(\tau) - D(\tau) &= -2D(\tau) &&\FlLabel{eq:det-2-2}\\
-      y^3:  && 2D'(\tau) + B'(\tau) &= 0                   &&\FlLabel{eq:det-2-3}\\
-      y^4:  && C'(\tau) A'(\tau) - D(\tau) - B(\tau) &= 0  &&\FlLabel{eq:det-2-4}\\
-      y^5:  && D'(\tau) + B'(\tau) &= 0.                   &&\FlLabel{eq:det-2-5}
+      y^0:  && C'(\tau) &= 0                               &\label{eq:det-2-0}\\
+      y^1:  && D'(\tau) &= -2C(\tau)                       &\label{eq:det-2-1}\\
+      y^2:  && 2C'(\tau) + A'(\tau) - D(\tau) &= -2D(\tau) &\label{eq:det-2-2}\\
+      y^3:  && 2D'(\tau) + B'(\tau) &= 0                   &\label{eq:det-2-3}\\
+      y^4:  && C'(\tau) A'(\tau) - D(\tau) - B(\tau) &= 0  &\label{eq:det-2-4}\\
+      y^5:  && D'(\tau) + B'(\tau) &= 0.                   &\label{eq:det-2-5}
   \end{flalign}
 \end{subequations}
 Subtracting \cref{eq:det-2-5} from \cref{eq:det-2-3} gives
-\begin{equation}
+\begin{equation*}
   D'(\tau) = 0,
-\end{equation}
+\end{equation*}
 which integrates to
-\begin{equation}
+\begin{equation*}
   D(\tau) = c_1.
-\end{equation}
+\end{equation*}
 Thus \cref{eq:det-2-1} gives
-\begin{equation}
+\begin{equation*}
   C(\tau) = 0,
-\end{equation}
+\end{equation*}
 which renders \cref{eq:det-2-0} irrelevant.
 \Cref{eq:det-2-2} simplifies to
-\begin{equation}
+\begin{equation*}
   A'(\tau) = - c_1,
-\end{equation}
+\end{equation*}
 which integrates to
-\begin{equation}
+\begin{equation*}
   A(\tau) = c_2 - c_1 \tau.
-\end{equation}
+\end{equation*}
 \Cref{eq:det-2-4} simplifies to
-\begin{equation}
+\begin{equation*}
   - c_1 - c_1 - B(\tau) = 0,
-\end{equation}
+\end{equation*}
 which means that
-\begin{equation}
+\begin{equation*}
   B(\tau) = -2 c_1
-\end{equation}
+\end{equation*}
 and renders \cref{eq:det-2-5} irrelevant.
 Thus, all tangent fields must given the Ansatz be on the form
 \begin{equation} \label{eq:hill-tangent-field-2}
@@ -230,10 +230,10 @@ Just from looking at the problem, it was also determined that there is a symmetr
 As this generator is linear in \(y\), it is part of the generator in \cref{eq:hill-tangent-field}.
 By separating the generator by the terms with \(\tilde{c}_1\) and \(\tilde{c}_2\), a basis for the vector space of symmetry groups on the form in \cref{eq:hill-tangent-field} can be established.
 One natural basis is
-\begin{gather}
+\begin{align*}
   X_1 = \partial_\tau \\
   X_2 = - \left( (n-1) \tau + n y \right) \partial_\tau + y \partial_y,
-\end{gather}
+\end{align*}
 where \(X_1\) generates the non-varying symmetry group observed.
 \(X_2\) on the other hand generates symmetry groups varying with \(n\), and can thus be used to distinguish between different Hill equations.
 
@@ -245,34 +245,36 @@ For the classical Gompertz model, two parameterizations exist.
 As the success of the ansatz method does not hinge on the parameterization, the \(T_i\)-parameterization is chosen arbitrarily.
 
 The ansatz
-\begin{align}
+\begin{align*}
   \xi &= f_{1}(t) + f_{2}(t) W \\
   \eta &= f_{3}(t) + f_{4}(t) W
-\end{align}
+\end{align*}
 can be taken, where \(f_i\) for \(i =1,2,3,4\) are arbitrary functions in \(t\).
 This results in the determining equation
-\begin{multline}
+\begin{multline*}
   - W^{2} k_{G}^{2} \operatorname{f_{2}}{\left(t \right)} e^{2 T_{i} k_{G}} e^{- 2 k_{G} t} + W^{2} k_{G}^{2} \operatorname{f_{2}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} -\\- W^{2} k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} \operatorname{f_{2}}'{\left(t \right)} + W k_{G}^{2} \operatorname{f_{1}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} - W k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} \operatorname{f_{1}}'{\left(t \right)} +\\+ W \operatorname{f_{4}}'{\left(t \right)} - k_{G} \operatorname{f_{3}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} + \operatorname{f_{3}}'{\left(t \right)} = 0.
-\end{multline}
+\end{multline*}
 Separating the system by powers of \(W\), the ansatz determining equations are
-\begin{flalign}
-  W^2 & : &  k_{G}^{2} \operatorname{f_{2}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} - k_{G}^{2} \operatorname{f_{2}}{\left(t \right)} e^{2 T_{i} k_{G}} e^{- 2 k_{G} t} - k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} \operatorname{f_{2}}'{\left(t \right)} &= 0 &&\\
-  W & : & k_{G}^{2} \operatorname{f_{1}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} - k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} \operatorname{f_{1}}'{\left(t \right)} + \operatorname{f_{4}}'{\left(t \right)} &= 0 && \\
-  1 & : & - k_{G} \operatorname{f_{3}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} + \operatorname{f_{3}}'{\left(t \right)} &= 0. &&
-\end{flalign}
+\begin{subequations}
+  \begin{flalign*}
+    W^2 & : &  k_{G}^{2} \operatorname{f_{2}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} - k_{G}^{2} \operatorname{f_{2}}{\left(t \right)} e^{2 T_{i} k_{G}} e^{- 2 k_{G} t} - k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} \operatorname{f_{2}}'{\left(t \right)} &= 0 &&\\
+    W & : & k_{G}^{2} \operatorname{f_{1}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} - k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} \operatorname{f_{1}}'{\left(t \right)} + \operatorname{f_{4}}'{\left(t \right)} &= 0 && \\
+    1 & : & - k_{G} \operatorname{f_{3}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} + \operatorname{f_{3}}'{\left(t \right)} &= 0. &&
+  \end{flalign*}
+\end{subequations}
 This system of equations has solutions resulting in the general form for a tangent field corresponding to a symmetry being
-\begin{align}
+\begin{align*}
   \xi{\left(t,W \right)} &= W c_{2} e^{\left(k_{G} t e^{k_{G} t} + e^{T_{i} k_{G}}\right) e^{- k_{G} t}} + c_{1} e^{k_{G} t} + \frac{\operatorname{f_{4}}{\left(t \right)} e^{- T_{i} k_{G}} e^{k_{G} t}}{k_{G}} \\
   \eta{\left(t,W \right)} &= W \operatorname{f_{4}}{\left(t \right)} + c_{3} e^{- e^{T_{i} k_{G}} e^{- k_{G} t}},
-\end{align}
+\end{align*}
 where \(c_1, c_2, c_3\) are arbitrary constants.
 Thus, by separating the tangent field into terms with independent arbitrary elements, the infinitesimal generators
-\begin{align}
+\begin{align*}
   X_1 &= e^{k_{G} t} \partial_t \\
   X_2 &= W e^{k_{G} t + e^{T_{i} k_{G}} e^{- k_{G} t}} \partial_t \\
   X_3 &= e^{- e^{T_{i} k_{G}} e^{- k_{G} t}} \partial_W \\
   X_f &= \frac{f{\left(t \right)} e^{- T_{i} k_{G}} e^{k_{G} t}}{k_{G}} \partial_t + W f{\left(t \right)} \partial_W
-\end{align}
+\end{align*}
 of Lie point symmetries of the autonomous Gompertz ODE \labelcref{eq:gompertz-classical-ti} can be found.
 The corresponding transformations can be seen in \cref{fig:gompertz-classical-ansatz}.
 \begin{figure}
@@ -285,43 +287,45 @@ The corresponding transformations can be seen in \cref{fig:gompertz-classical-an
 \subsection{The autonomous Gompertz model}
 
 The ansatz
-\begin{align}
+\begin{align*}
   \xi(t, W) &= f_1(t) + f_2(t) \ln(\frac{W}{A}),\\
   \eta(t, W) &= f_3(t) W + f_4(t) \ln(\frac{W}{A}) W
-\end{align}
+\end{align*}
 can be taken, where \(f_i\) for \(i =1,2,3,4\) are arbitrary functions in \(t\).
 This results in the determining equation
-\begin{align}
+\begin{align*}
   f_3'(t) W &+ f_4'(t) \ln(\frac{W}{A}) W \\
   &+ \left( f_3(t) + f_4(t) \left( 1 + \ln(\frac{W}{A}) \right) - \left( f_1'(t) + f_2'(t) \ln(\frac{W}{A}) \right) \right) \cdot -k_G \ln(\frac{W}{A}) W \\
   &- \frac{f_2(t)}{W} \left( k_G \ln(\frac{W}{A}) W \right)^2 =\\
   &= \left( f_3(t) W + f_4(t) \ln(\frac{W}{A}) W \right) \cdot -k_G \left( 1 + \ln(\frac{W}{A}) \right)
-\end{align}
+\end{align*}
 which can be reduced to
-\begin{align}
+\begin{align*}
   f_3'(t) W &+ \left( f_4'(t) + k_G f_1'(t) \right) \ln(\frac{W}{A}) W + \left( f_2'(t) - k_G f_2(t) \right) k_G \ln(\frac{W}{A})^2 W =\\
   &= - k_G f_3(t) W
-\end{align}
+\end{align*}
 By separating the equation based on powers of \(\ln(\frac{W}{A})\), the system
-\begin{flalign}
-  W & : & f_3'(t) &= -k_G f_3(t) && \FlLabel{eq:W}\\
-  \ln(\frac{W}{A}) W & : & f_4'(t) + k_G f_1'(t) &= 0 && \FlLabel{eq:WA}\\
-  k_G \ln(\frac{W}{A})^2 W & : & f_2'(t) - k_G f_2(t) &= 0 && \FlLabel{eq:kW2A2W}
-\end{flalign}
+\begin{subequations}
+  \begin{flalign}
+    W & : & f_3'(t) &= -k_G f_3(t) &\label{eq:W}\\
+    \ln(\frac{W}{A}) W & : & f_4'(t) + k_G f_1'(t) &= 0 &\label{eq:WA}\\
+    k_G \ln(\frac{W}{A})^2 W & : & f_2'(t) - k_G f_2(t) &= 0 &\label{eq:kW2A2W}
+  \end{flalign}
+\end{subequations}
 can be acquired.
 This system of equations has the solution
-\begin{align}
+\begin{align*}
   \xi(t, W) &= f_1(t) + c_1 e^{k_G t} \ln(\frac{W}{A}),\\
   \eta(t, W) &= c_2 e^{-k_G t} W + \left( c_3 - k_G f_1(t) \right) \ln(\frac{W}{A}) W,
-\end{align}
+\end{align*}
 where \(c_1\), \(c_2\) and \(c_3\) are arbitrary constants.
 Thus, by separating the tangent field into terms with independent arbitrary elements, the infinitesimal generators
-\begin{align}
+\begin{align*}
   X_{\text{a},1} &= e^{k_G t} \ln(\frac{W}{A}) \partial_t \\
   X_{\text{a},2} &= e^{-k_G t} W \partial_W \\
   X_{\text{a},3} &= \ln(\frac{W}{A}) W \partial_W \\
   X_{\text{a},f} &= f(t) \partial_t - k_G f(t) \ln(\frac{W}{A}) W \partial_W
-\end{align}
+\end{align*}
 of Lie point symmetries of the autonomous Gompertz ODE \labelcref{eq:gompertz-autonomous} can be found.
 The corresponding transformations can be seen in \cref{fig:gompertz-autonomous-ansatz}.
 \begin{figure}
@@ -338,27 +342,27 @@ This becomes particularly prominent for systems of ODE:s.
 For this reason, the calculations for the remaining models in this chapter have been made using computer algebra using code outlined in \cref{app:computer-algebra}.
 
 Similarly to the classical Gompertz model, the ansatz
-\begin{align}
+\begin{align*}
   \xi{\left(t,W,G \right)} &= \operatorname{f_{1}}{\left(t \right)} + \operatorname{f_{2}}{\left(t \right)} W + \operatorname{f_{3}}{\left(t \right)} G \\
   \eta^{1}{\left(t,W,G \right)} &= \operatorname{f_{4}}{\left(t \right)} + \operatorname{f_{5}}{\left(t \right)} W + \operatorname{f_{6}}{\left(t \right)} G\\
   \eta^{2}{\left(t,W,G \right)} &= \operatorname{f_{7}}{\left(t \right)} + \operatorname{f_{8}}{\left(t \right)} W + \operatorname{f_{9}}{\left(t \right)} G,
-\end{align}
+\end{align*}
 where \(f_i\) are arbitrary functions in \(t\), is used.
 The two determining equations can be decomposed in \(W\) and \(G\), resulting in 15 algebraic and ordinary differential equations.
 By first solving the algebraic equations, followed by the differential for the arbitrary functions \(f_i\), their form can be determined resulting in the general form
-\begin{align}
+\begin{align*}
   \xi{\left(t,W,G \right)} &= G c_{3} e^{k_{G} t} + c_{1} - \frac{c_{2} e^{k_{G} t}}{k_{G}} \\
   \eta^{1}{\left(t,W,G \right)} &= W c_{4} - \frac{W c_{5} e^{- k_{G} t}}{k_{G}} \\
   \eta^{2}{\left(t,W,G \right)} &= G c_{2} e^{k_{G} t} + c_{5} e^{- k_{G} t}.
-\end{align}
+\end{align*}
 Decomposition in arbitrary constants result in the basis
-\begin{align}
+\begin{align*}
   X_{\text{s},1} &= \partial_t \\
   X_{\text{s},2} &= - \frac{e^{k_{G} t}}{k_{G}} \partial_t + G e^{k_{G} t} \partial_G \\
   X_{\text{s},3} &= G e^{k_{G} t} \partial_t \\
   X_{\text{s},4} &= W \partial_W \\
   X_{\text{s},5} &= - \frac{W e^{- k_{G} t}}{k_{G}} \partial_W + e^{- k_{G} t} \partial_G.
-\end{align}
+\end{align*}
 The corresponding transformations can be seen in \cref{fig:gompertz-system-ansatz}.
 \begin{figure}
   \centering
@@ -372,22 +376,22 @@ The corresponding transformations can be seen in \cref{fig:gompertz-system-ansat
 The Lotka--Volterra predator-prey model formulated in \cref{eq:lotka-volterra} has a right hand side formulated as second order polynomial in the two states \(N\) and \(P\).
 A good starting point for ansätze is therefore polynomials, and arbitrary third degree polynomials in \(t\), \(N\) and \(P\) are chosen.
 The ansatz will thus have the form
-\begin{align}
+\begin{align*}
   \xi &= c_{1,1} + c_{1,2}t + c_{1,3}N + c_{1,4}P + c_{1,5}t^{2} + c_{1,6}tN + c_{1,7}N^{2} + c_{1,8}tP + \\ & \qquad + c_{1,9}NP + c_{1,10}P^{2} + c_{1,11}t^{3} + c_{1,12}t^{2}N + c_{1,13}tN^{2} + c_{1,14}N^{3} + \\ & \qquad + c_{1,15}t^{2}P + c_{1,16}tNP + c_{1,17}N^{2}P + c_{1,18}tP^{2} + c_{1,19}NP^{2} + c_{1,20}P^{3} \\
   \eta^{1} &= c_{2,1} + c_{2,2}t + c_{2,3}N + c_{2,4}P + c_{2,5}t^{2} + c_{2,6}tN + c_{2,7}N^{2} + c_{2,8}tP + \\ & \qquad + c_{2,9}NP + c_{2,10}P^{2} + c_{2,11}t^{3} + c_{2,12}t^{2}N + c_{2,13}tN^{2} + c_{2,14}N^{3} + \\ & \qquad + c_{2,15}t^{2}P + c_{2,16}tNP + c_{2,17}N^{2}P + c_{2,18}tP^{2} + c_{2,19}NP^{2} + c_{2,20}P^{3} \\
   \eta^{2} &= c_{3,1} + c_{3,2}t + c_{3,3}N + c_{3,4}P + c_{3,5}t^{2} + c_{3,6}tN + c_{3,7}N^{2} + c_{3,8}tP + \\ & \qquad + c_{3,9}NP + c_{3,10}P^{2} + c_{3,11}t^{3} + c_{3,12}t^{2}N + c_{3,13}tN^{2} + c_{3,14}N^{3} + \\ & \qquad + c_{3,15}t^{2}P + c_{3,16}tNP + c_{3,17}N^{2}P + c_{3,18}tP^{2} + c_{3,19}NP^{2} + c_{3,20}P^{3},
-\end{align}
+\end{align*}
 where \(c_{i,j}\) are arbitrary constants.
 The linearized symmetry condition will thus consist of two equations, each of which must hold for arbitrary \(t\), \(N\) and \(P\).
 The two equations can thus be decomposed into 98 linear equations in the arbitrary constants \(c_{i,j}\).
 The solution to this overdetermined system of equations gives that any symmetry generator on the form of the ansatz can be written as a linear combination of the generators
-\begin{align}
+\begin{align*}
   X_1 &= \partial_t \\
   X_2 &= \frac{-bNP + aN}{c} \partial_N + \frac{cNP - dP}{c} \partial_P \\
   X_3 &= \frac{t}{c} \partial_t + \frac{-btNP + atN}{c} \partial_N + \frac{ctNP - dtP}{c} \partial_P \\
   X_4 &= \frac{N}{c} \partial_t + \frac{-bcN^2P + acN^2 - bdNP + adN}{c^2} \partial_N + \frac{c^2N^2P - d^2P}{c^2} \partial_P \\
   X_5 &= \frac{P}{c} \partial_t + \frac{-bNP^2 + aNP}{c} \partial_N + \frac{cNP^2 - dP^2}{c} \partial_P
-\end{align}
+\end{align*}
 
 \section{The Yildirim--Mackey lactose operon model}
 
@@ -395,20 +399,20 @@ Since the lactose operon model formulated in \cref{eq:lac-operon} is significant
 Additionally, the decomposition of the linearized symmetry condition becomes less straight forward as the right hand side of the lactose operon model contains both fractions and arbitrary powers of the state \(A\).
 
 A simple ansatz is that the infinitesimal generator is linear in time and the states, formulated as
-\begin{align}
+\begin{align*}
   \xi &= c_{1,1} + c_{1,2}t + c_{1,3}M + c_{1,4}B + c_{1,5}L + c_{1,6}A + c_{1,7}P \\
   \eta^{1} &= c_{2,1} + c_{2,2}t + c_{2,3}M + c_{2,4}B + c_{2,5}L + c_{2,6}A + c_{2,7}P \\
   \eta^{2} &= c_{3,1} + c_{3,2}t + c_{3,3}M + c_{3,4}B + c_{3,5}L + c_{3,6}A + c_{3,7}P \\
   \eta^{3} &= c_{4,1} + c_{4,2}t + c_{4,3}M + c_{4,4}B + c_{4,5}L + c_{4,6}A + c_{4,7}P \\
   \eta^{4} &= c_{5,1} + c_{5,2}t + c_{5,3}M + c_{5,4}B + c_{5,5}L + c_{5,6}A + c_{5,7}P \\
   \eta^{5} &= c_{6,1} + c_{6,2}t + c_{6,3}M + c_{6,4}B + c_{6,5}L + c_{6,6}A + c_{6,7}P,
-\end{align}
+\end{align*}
 where  \(c_{i,j}\) are arbitrary constants.
 The linearized symmetry condition will thus consist of 5 equations, which will consist of sums of fractional expressions in the states.
 To decompose the system, the sums in all equations are rewritten with a common denominator.
 Additionally, since the power \(A^n\) appear in some of the equations, and all equations sought should hold for an arbitrary \(n\), the numerator of the equations written with common denominators is decomposed in \(t\), \(M\), \(B\), \(L\), \(A\) \(P\) and \(A^n\).
 The decomposition results in 1901 equations, all linear in the arbitrary constants \(c_{i,j}\).
 The solution to the overdetermined system of equations gives that the only symmetry generator on the form of the ansatz is the manifest generator
-\begin{equation}
+\begin{equation*}
   X_1 = \partial_t.
-\end{equation}
+\end{equation*}

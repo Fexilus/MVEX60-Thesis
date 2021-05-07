@@ -30,9 +30,6 @@
 }
 
 % Math table-likes
-\newcommand\FlLabel[1]{% Label that is affects the maximal spreading of flalign.
-  \,\label{#1}% TODO: Sometimes overflows last label
-}
 \newcolumntype{M}{% Column fixes padding of equations and aligns in minipagees
   >{%
     \abovedisplayskip=4.15pt% Set skip before align
@@ -54,9 +51,6 @@
 \crefname{subequation}{eqs.}{eqs.}
 \Crefname{subequation}{Eqs.}{Eqs.}
 \creflabelformat{subequation}{#2(#1)#3}
-% FIXME: Temp fix for reference in mathmode
-\newcommand{\ghostref}[1]{}
-\autonum@generatePatchedReference{ghostref}
 
 % Notation
 %\RequirePackage{xspace}

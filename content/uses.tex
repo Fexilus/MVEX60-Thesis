@@ -58,37 +58,37 @@ The question of whether parameters in symmetry generators are desirable or not t
 % TODO: This is a different kind of invariance, so a connection is needed
 To better understand the underlying source of the Lie symmetry groups of the Hill equation, it is of interest to find curves invariant under the solution.
 The reduced characteristic of the generator
-\begin{equation}
+\begin{equation*}
   X_2 = - \left( (n-1) x + n y \right) \partial_\tau + y \partial_y
-\end{equation}
+\end{equation*}
 is
-\begin{align}
+\begin{align*}
   \bar{Q} &= 
   \eta - \omega \xi = 
   y - \left( -\frac{y^n}{1+y^2} \right) \left( - \left( (n-1) \tau + n y \right) \right) =\\
   &= y \left(1 -\frac{y^{n-1} \left( (n-1) \tau + n y \right)}{1+y^2} \right).
-\end{align}
+\end{align*}
 Since solutions are invariant under a symmetry if the characteristic is 0 on the entire solution curve, invariant solutions must satisfy
-\begin{equation}
+\begin{equation*}
   y \left(1 -\frac{y^{n-1} \left( (n-1) \tau + n y \right)}{1+y^n} \right) = 0.
-\end{equation}
+\end{equation*}
 The solutions that meet this condition (aside from the trivial case \(y \equiv 0\)) must thus be on the form
-\begin{equation}
+\begin{equation*}
   y^{n-1} \left( (n-1) \tau + n y \right) = 1+y^n,
-\end{equation}
+\end{equation*}
 which is more clearly stated as
-\begin{equation}
+\begin{equation*}
   (n-1) \left( \tau y^{n-1} + y^n \right) = 1.
-\end{equation}
+\end{equation*}
 For all \(n>0\) except \(n=1\) such solutions exist, and take the form
 \begin{equation} \label{eq:hill-invariants}
   \tau y^{n-1} + y^n = \frac{1}{n-1}.
 \end{equation}
 Additionally, since \(\tau\) is (dimensionless) time, any application of the model will have an initial condition on the form \(y(0) = y_0\).
 By fixing \(\tau=0\) in \cref{eq:hill-invariants}, the initial condition of an invariant curve given any \(n>0, n\neq1\) is shown to be
-\begin{equation}
+\begin{equation*}
   y(0) =\frac{1}{(n-1)^{1/n}}.
-\end{equation}
+\end{equation*}
 
 \section{The structure of the symmetry groups of the Gompertz models}
 
@@ -99,73 +99,73 @@ Here this connection will be shown explicitly for all formulations of the Gomper
 \subsection{The classical Gompertz model}
 
 The symmetries of the classical Gompertz model found using an ansatz in \cref{ch:ansatze} were
-\begin{align}
+\begin{align*}
   X_{\text{c},1} &= e^{k_{G} t} \partial_t \\
   X_{\text{c},2} &= W e^{k_{G} t + e^{T_{i} k_{G}} e^{- k_{G} t}} \partial_t \\
   X_{\text{c},3} &= e^{- e^{T_{i} k_{G}} e^{- k_{G} t}} \partial_W \\
   X_{\text{c},f} &= \frac{f{\left(t \right)} e^{- T_{i} k_{G}} e^{k_{G} t}}{k_{G}} \partial_t + W f{\left(t \right)} \partial_W
-\end{align}
+\end{align*}
 and the symmetries found using parameter independence in \cref{ch:param-ind} were
-\begin{align}
+\begin{align*}
   X_{\text{c},1} &= e^{k_G t} \partial_t \\
   X_{\text{c},4} &= W \partial_W \\
   X_{\text{c},5} &= \partial_t - k_G W \ln(W) \partial_W.
-\end{align}
+\end{align*}
 The corresponding reduced characteristics of the symmetry generators are
-\begin{align}
+\begin{align*}
   \bar{Q}_{\text{c},1} &= -k_G e^{k_G T_i} W \\
   \bar{Q}_{\text{c},2} &= - k_G e^{k_{G} T_i + e^{-k_G (t - T_i)}} W^2 \\
   \bar{Q}_{\text{c},3} &= e^{- e^{- k_{G} \left(t - T_{i}\right)}} \\
   \bar{Q}_{\text{c},4} &= W \\
   \bar{Q}_{\text{c},5} &= - k_G W \ln(W) - k_G e^{-k_G (t - T_i)} W \\
   \bar{Q}_{\text{c},f} &= 0.
-\end{align}
+\end{align*}
 Thus it is clear that the symmetry generator \(X_{\text{c},f}\) is a trivial symmetry generator.
 From the mathematical theory
-\begin{equation}
+\begin{equation*}
   \bar{Q} = (\partial_W J)^{-1} I,
-\end{equation}
+\end{equation*}
 where \(J\) is the universal invariant and \(I\) any invariant.
 As the classical Gompertz model is a scalar first order ODE, the universal invariant is one-dimensional, and thus the quotient of two reduced characteristics must be an invariant.
 Picking the reduced characteristics \(\bar{Q}_{\text{c},4}\) and \(\bar{Q}_{\text{c},5}\) that differ by more than a constant expression (assuming the parameters are constant),
-\begin{equation}
+\begin{equation*}
   \frac{\bar{Q}_{\text{c},5}}{\bar{Q}_{\text{c},4}} = - k_G \left(\ln(W) + e^{-k_G (t - T_i)} \right) = I
-\end{equation}
+\end{equation*}
 is an invariant since
-\begin{equation}
+\begin{equation*}
   I_t + k_G e^{-k_G (t - T_i)} W I_W = k_G^2 e^{-k_G (t - T_i)} - k_G e^{-k_G (t - T_i)} W \frac{k_G}{W} = 0.
-\end{equation}
+\end{equation*}
 For the particular case of scalar first order equations with known solutions such as the classical Gompertz ODE, the above described methodology is not the most direct path to finding such an invariant.
 The formulation
-\begin{equation}
+\begin{equation*}
   I_t + k_G e^{-k_G (t - T_i)} W I_W = 0
-\end{equation}
+\end{equation*}
 of the invariance condition can be solved using the method of characteristics, which reformulates the problem as
-\begin{equation}
+\begin{equation*}
   \frac{\dl{t}}{1} = \frac{\dl{W}}{k_G e^{-k_G (t - T_i)} W}
-\end{equation}
+\end{equation*}
 which simplifies to
-\begin{equation}
+\begin{equation*}
   \dl \left(e^{-k_G (t - T_i)} + \ln{W}\right) = 0
-\end{equation}
+\end{equation*}
 leading to the equivalent invariant.
 Returning to the task of determining the general structure of the group of all symmetries,
-\begin{equation}
+\begin{equation*}
   J(t, W) = e^{-k_G (t - T_i)} + \ln{W}
-\end{equation}
+\end{equation*}
 can be taken as the universal invariant.
 Thus
-\begin{equation}
+\begin{equation*}
   \partial_W J = \frac{1}{W}
-\end{equation}
+\end{equation*}
 and
-\begin{equation}
+\begin{equation*}
   \left(\partial_W J\right)^{-1} = W.
-\end{equation}
+\end{equation*}
 Similarly, an arbitrary invariant \(I\) of the differential equation can be written as
-\begin{equation}
+\begin{equation*}
   I(t, W) = F\left(e^{-k_G (t - T_i)} + \ln{W}\right)
-\end{equation}
+\end{equation*}
 for and arbitrary function \(F\).
 Thus, the reduced characteristic of any symmetry generator must have the form
 \begin{equation} \label{eq:general-classical-gompertz-characteristic}
@@ -180,22 +180,22 @@ for arbitrary functions \(\xi\) and \(F\).
 \subsection{The autonomous Gompertz model}
 
 The symmetries of the autonomous Gompertz model found using an ansatz in \cref{ch:ansatze} were
-\begin{align}
+\begin{align*}
   X_{\text{a},1} &= e^{k_G t} \ln(\frac{W}{A}) \partial_t \\
   X_{\text{a},2} &= e^{-k_G t} W \partial_W \\
   X_{\text{a},3} &= \ln(\frac{W}{A}) W \partial_W \\
   X_{\text{a},f} &= f(t) \partial_t - k_G f(t) \ln(\frac{W}{A}) W \partial_W
-\end{align}
+\end{align*}
 and the symmetries found using parameter independence in \cref{ch:param-ind} were
-\begin{align}
+\begin{align*}
   X_{\text{a},2} &= e^{-k_G t} W \partial_W \\
   X_{\text{a},3} &= \ln(\frac{W}{A}) W \partial_W \\
   X_{\text{a},4} &= \partial_t \\
   X_{\text{a},5} &= t \partial_t + \ln(\abs{\ln(\frac{W}{A})}) \ln(\frac{W}{A}) W \partial_W \\
   X_{\text{a},6} &= e^{-k_G t} \partial_t - k_G e^{-k_G t} \ln(W) W \partial_W.
-\end{align}
+\end{align*}
 The corresponding reduced characteristics of the symmetry generators are
-\begin{align}
+\begin{align*}
   \bar{Q}_{\text{c},1} &= k_G e^{k_G t} \left(\ln(\frac{W}{A})\right)^2 W \\
   \bar{Q}_{\text{c},2} &= e^{-k_G t} W \\
   \bar{Q}_{\text{c},3} &= \ln(\frac{W}{A}) W\\
@@ -203,25 +203,25 @@ The corresponding reduced characteristics of the symmetry generators are
   \bar{Q}_{\text{c},5} &= \ln(\abs{\ln(\frac{W}{A})}) \ln(\frac{W}{A}) W + k_G t \ln(\frac{W}{A}) W \\
   \bar{Q}_{\text{c},6} &= - k_G \ln(A) e^{-k_G t} W \\
   \bar{Q}_{\text{c},f} &= 0.
-\end{align}
+\end{align*}
 Just as for the classical Gompertz model, there are several ways to find a universal invariant of the autonomous Gompertz model.
 Using the most straight-forward method,
-\begin{equation}
+\begin{equation*}
   \frac{\bar{Q}_{\text{c},5}}{\bar{Q}_{\text{c},3}} = \ln(\abs{\ln(\frac{W}{A})}) + k_G t
-\end{equation}
+\end{equation*}
 is an invariant, and thus
-\begin{equation}
+\begin{equation*}
   J(t, W) = \ln(\abs{\ln(\frac{W}{A})}) + k_G t
-\end{equation}
+\end{equation*}
 can be chosen as a universal invariant.
 Thus
-\begin{equation}
+\begin{equation*}
   \partial_W J = \frac{1}{\ln(\frac{W}{A}) W}
-\end{equation}
+\end{equation*}
 and
-\begin{equation}
+\begin{equation*}
   \left(\partial_W J\right)^{-1} = \ln(\frac{W}{A}) W.
-\end{equation}
+\end{equation*}
 Using \cref{cor:reduced-characteristic-decomposition}, the reduced characteristic of symmetry generators of the autonomous Gompertz model thus has the general form
 \begin{equation} \label{eq:general-autonomous-gompertz-characteristic}
   \bar{Q} = \ln(\frac{W}{A}) W F\left(\ln(\abs{\ln(\frac{W}{A})}) + k_G t\right),
@@ -235,51 +235,51 @@ for arbitrary functions \(\xi\) and \(F\).
 \subsection{The system Gompertz model}
 
 The symmetries of the system Gompertz model found using an ansatz in \cref{ch:ansatze} were
-\begin{align}
+\begin{align*}
   X_{\text{s},1} &= \partial_t \\
   X_{\text{s},2} &= - \frac{e^{k_{G} t}}{k_{G}} \partial_t + G e^{k_{G} t} \partial_G \\
   X_{\text{s},3} &= e^{k_{G} t} G \partial_t \\
   X_{\text{s},4} &= W \partial_W \\
   X_{\text{s},5} &= - \frac{W e^{- k_{G} t}}{k_{G}} \partial_W + e^{- k_{G} t} \partial_G
-\end{align}
+\end{align*}
 and the symmetries found using parameter independence in \cref{ch:param-ind} were
-\begin{align}
+\begin{align*}
   X_{\text{s},1} &= \partial_t \\
   X_{\text{s},4} &= W \partial_W \\
   X_{\text{s},6} &= \ln(W) W \partial_W + G \partial_G.
-\end{align}
+\end{align*}
 The corresponding reduced characteristics of the symmetry generators are
-\begin{align}
+\begin{align*}
   \bar{\vb{Q}}_{\text{s},1} &= \left(-W G, k_G G\right) \\
   \bar{\vb{Q}}_{\text{s},2} &= \left(\frac{e^{k_{G} t}}{k_{G}} W G, 0\right) \\
   \bar{\vb{Q}}_{\text{s},3} &= \left(- e^{k_{G} t} W G^2, k_G e^{k_{G} t} G^2\right) \\
   \bar{\vb{Q}}_{\text{s},4} &= \left(W, 0\right) \\
   \bar{\vb{Q}}_{\text{s},5} &= \left(- \frac{W e^{- k_{G} t}}{k_{G}}, e^{- k_{G} t} \right) \\
   \bar{\vb{Q}}_{\text{s},6} &= \left(\ln(W) W, G\right).
-\end{align}
+\end{align*}
 Since the system Gompertz model has two equations, two functionally independent invariants exist.
 While it is a bit more cumbersome than in the scalar case to calculate invariants from the reduced characteristics, it is still possible.
 However, in the particular case of the system Gompertz ODE, using the method of characteristics to solve the invariance condition is also a viable approach.
 Both methods will be shown here to exemplify how the calculations are made for non-scalar ODE:s.
 
 Using the reduced characteristics, one invariant can be found using the fact that
-\begin{equation}
+\begin{equation*}
   \bar{\vb{Q}}_{\text{s},3} = e^{k_{G} t} G \left(-W G, k_G G\right) = e^{k_{G} t} G \bar{\vb{Q}}_{\text{s},1}
-\end{equation}
+\end{equation*}
 implies that \(e^{k_{G} t} G\) is an invariant.
 Using this invariant, all of the reduced characteristics \(\bar{\vb{Q}}_{\text{s},1}, \dots, \bar{\vb{Q}}_{\text{s},5}\) found using the ansatz method can be divided into two linearly independent\footnote{} sets of vectors % TODO: Write footnote
-\begin{align}
+\begin{align*}
   \bar{\vb{Q}}_{\text{s},1} &= \frac{\bar{\vb{Q}}_{\text{s},3}}{e^{k_{G} t} G} = \left(k_G e^{k_{G} t} G\right) \bar{\vb{Q}}_{\text{s},5} \\
   \frac{e^{k_{G} t} G}{k_G} \bar{\vb{Q}}_{\text{s},2} &= \bar{\vb{Q}}_{\text{s},4}.
-\end{align}
+\end{align*}
 \(-\bar{\vb{Q}}_{\text{s},1}\) and \(\bar{\vb{Q}}_{\text{s},4}\), being functionally independent, could be used to construct
-\begin{equation}
+\begin{equation*}
   \begin{pmatrix}
     W & W G \\
     0 & -k_G G
   \end{pmatrix}
   = \left(\partial_{(W, G)} \vb{J}\right)^{-1},
-\end{equation}
+\end{equation*}
 and thus a universal invariant would be the solutions to the differential equation
 \begin{equation} \label{eq:universal-invariant-system-gompertz-hint}
   \partial_{(W, G)} \vb{J} =
@@ -289,7 +289,7 @@ and thus a universal invariant would be the solutions to the differential equati
   \end{pmatrix}^{-1}
 \end{equation}
 that also fulfill the original invariance condition
-\begin{equation}
+\begin{equation*}
   \partial_{(t, W, G)} \vb{J} \cdot
   \begin{pmatrix}
     1 \\
@@ -297,42 +297,42 @@ that also fulfill the original invariance condition
     -k_G G
   \end{pmatrix}
   = 0.
-\end{equation}
+\end{equation*}
 Thus, finding a universal invariant using only the reduced characteristics \(\bar{\vb{Q}}_{\text{s},1}, \dots, \bar{\vb{Q}}_{\text{s},5}\) found using the ansatz method is essentially the problem of finding invariants, but with \cref{eq:universal-invariant-system-gompertz-hint} serving as a hint.
 But, using the reduced characteristic \(\bar{\vb{Q}}_{\text{s},6}\) found using the parameter independence method, this calculation can be avoided since
-\begin{multline}
+\begin{multline*}
   \bar{\vb{Q}}_{\text{s},6} = \left(\ln(W) W, G\right) = \left(-\frac{W G}{k_G}, G\right) + \left(\ln(W) W + \frac{W G}{k_G}, 0\right) =\\= \frac{1}{k_G} \bar{\vb{Q}}_{\text{s},1} + \left(\ln(W) + \frac{G}{k_G}\right) \bar{\vb{Q}}_{\text{s},4}.
-\end{multline}
+\end{multline*}
 \(\ln(W) + \frac{G}{k_G}\) must thus be an invariant, and since \(e^{k_{G} t} G\) and \(\ln(W) + \frac{G}{k_G}\) are functionally independent,
-\begin{equation}
+\begin{equation*}
   \vb{J}(t, W, G) = \left(\ln(W) + \frac{G}{k_G}, \ln(e^{k_{G} t} G)\right) = \left(\ln(W) + \frac{G}{k_G}, k_G t + \ln(G)\right)
-\end{equation}
+\end{equation*}
 must be a universal invariant.
 
 Using the method of characteristics to solve the invariance condition
-\begin{equation}
+\begin{equation*}
   I_t + W G I_W - k_G G I_G = 0,
-\end{equation}
+\end{equation*}
 results in the reformulated problem
-\begin{equation}
+\begin{equation*}
   \frac{\dl t}{1} = \frac{\dl W}{W G} = \frac{\dl G}{- k_G G}.
-\end{equation}
+\end{equation*}
 The expression
-\begin{equation}
+\begin{equation*}
   \frac{\dl W}{W G} = \frac{\dl G}{- k_G G}
-\end{equation}
+\end{equation*}
 simplifies to
-\begin{equation}
+\begin{equation*}
   \dl \left(\ln(W) + \frac{G}{k_G}\right) = 0,
-\end{equation}
+\end{equation*}
 while
-\begin{equation}
+\begin{equation*}
   \frac{\dl t}{1} = \frac{\dl G}{- k_G G}
-\end{equation}
+\end{equation*}
 simplifies to
-\begin{equation}
+\begin{equation*}
   \dl \left(k_G t + \ln(G)\right) = 0.
-\end{equation}
+\end{equation*}
 Thus the universal invariant
 \begin{equation} \label{eq:universal-invariant-system-gompertz}
   \vb{J}(t, W, G) = \left(\ln(W) + \frac{G}{k_G}, k_G t + \ln(G)\right)
@@ -340,21 +340,21 @@ Thus the universal invariant
 is once again found.
 
 Using the universal invariant \labelcref{eq:universal-invariant-system-gompertz},
-\begin{equation}
+\begin{equation*}
   \partial_{(W, G)} \vb{J} =
   \begin{pmatrix}
     \frac{1}{W} & \frac{1}{k_G} \\
     0 & \frac{1}{G}
   \end{pmatrix}
-\end{equation}
+\end{equation*}
 and thus
-\begin{equation}
+\begin{equation*}
   \left(\partial_{(W, G)} \vb{J}\right)^{-1} =
   \begin{pmatrix}
     W & - \frac{W G}{k_G} \\
     0 & G
   \end{pmatrix}.
-\end{equation}
+\end{equation*}
 Using \cref{cor:reduced-characteristic-decomposition}, the reduced characteristic of any symmetry generator must thus have the form
 \begin{equation} \label{eq:general-system-gompertz-characteristic}
   \bar{\vb{Q}} =
@@ -370,16 +370,16 @@ Using \cref{cor:reduced-characteristic-decomposition}, the reduced characteristi
 \end{equation}
 where \(F_1\) and \(F_2\) are arbitrary functions.
 The general form of Lie point symmetry generators of the system Gompertz model is thus
-\begin{align}
+\begin{align*}
   X =& \xi(t, W, G) \partial_t + \\
   &+ \left(W G \xi(t, W, G) + W I_1(t, W, G) - \frac{W G}{k_G} I_2(t, W, G)\right) \partial_W + \\
   &+ \left(-k_G G \xi(t, W, G) + G I_2(t, W, G)\right) \partial_W,
-\end{align}
+\end{align*}
 where \(\xi\) is an arbitrary function and
-\begin{align}
+\begin{align*}
   I_1(t, W, G) &= F_1\left(\ln(W) + \frac{G}{k_G}, k_G t + \ln(G)\right) \\
   I_2(t, W, G) &= F_2\left(\ln(W) + \frac{G}{k_G}, k_G t + \ln(G)\right)
-\end{align}
+\end{align*}
 are invariants.
 
 \subsection{Comparison of the Gompertz models}
@@ -388,22 +388,22 @@ With the general forms of the Gompertz model Lie point symmetries established, f
 Since both the classical and the autonomous model exist in the same space (\(B \simeq \reals(t)\) and \(F \simeq \reals(W)\)), comparison between the scalar models is a natural starting point.
 
 The trivial symmetry generator
-\begin{equation}
+\begin{equation*}
   X_{\text{a},T} = \partial_t - k_G \ln(\frac{W}{A}) W \partial_W
-\end{equation}
+\end{equation*}
 of the autonomous Gompertz model is symmetry of the classical Gompertz model, since
-\begin{equation}
-  -k_G \ln(\frac{W}{A}) W = W \left(k_G e^{-k_G (t - T_i)} - k_G \left(e^{-k_G (t - T_i)} + \ln(W)\right) + k_G \ln(A)\right),
-\end{equation}
+\begin{multline*}
+  -k_G \ln(\frac{W}{A}) W =\\= W \left(k_G e^{-k_G (t - T_i)} - k_G \left(e^{-k_G (t - T_i)} + \ln(W)\right) + k_G \ln(A)\right),
+\end{multline*}
 and thus \(X_{a,T}\) can be written on the general form \cref{eq:general-classical-gompertz-symmetry} of classical Gompertz symmetries, with \(F(x) = -k_G x + k_G \ln(A)\) and \(\xi(t, W) \equiv 1\).
 Similarly, the trivial symmetry generator
-\begin{equation}
+\begin{equation*}
   X_{\text{c},T} = \partial_t + k_G e^{-k_G (t - T_i)} W \partial_W
-\end{equation}
+\end{equation*}
 of the classical Gompertz model can be written on the general form \cref{eq:general-autonomous-gompertz-symmetry} of autonomous Gompertz symmetries, since
-\begin{equation}
+\begin{equation*}
   k_G e^{-k_G (t - T_i)} W = \ln(\frac{W}{A}) W \left(-k_G + k_G e^{k_G T_i} e^{-\left(\ln(\abs{\ln(\frac{W}{A})}) + k_G t\right)} + k_G\right). % TODO: Figure out abs problems
-\end{equation}
+\end{equation*}
 The parameter \(k_G\) is assumed to have the same value in both models for these statements to hold, which is reasonable since the parametrization of all three models is done in such a way that \(k_G\) has the same effect on solution curves.
 It is also worth noting that the parameters \(A\) and \(T_i\) are arbitrary values for the classical and autonomous Gompertz models respectively; they have no relation to the properties they represent when they are not part of the ODE formulation.
 As long as \(A\) is considered an invariant of the classical Gompertz model and \(T_i\) is considered an invariant of the autonomous Gompertz model, the arbitrary invariant multipliers of the characteristic components of the respective symmetries can be chosen so that the vector field corresponding to the autonomous model is a symmetry of the classical model and vice versa.
@@ -412,72 +412,72 @@ The system Gompertz model can not as stringently be compared to the scalar model
 Consider first the classical model and the system model.
 In this case, \(G\) is \enquote{equal} to \(k_G e^{-k_G (t - T_i)}\).
 The general form of the reduced characteristic for the classical model \labelcref{eq:general-classical-gompertz-characteristic} can then be seen as the first column and first invariant in the general form of the reduced characteristic for the system model \labelcref{eq:general-system-gompertz-characteristic}, since
-\begin{equation}
+\begin{equation*}
   \bar{Q}_{\text{c}} = W F\left(e^{-k_G (t - T_i)} + \ln{W}\right)
-\end{equation}
+\end{equation*}
 then has the same form as
-\begin{equation}
+\begin{equation*}
   \bar{\vb{Q}}_{\text{s}} =
   \begin{pmatrix}
     W \\
     0
   \end{pmatrix}
   \cdot F_1\left(\ln(W) + \frac{G}{k_G}\right).
-\end{equation}
+\end{equation*}
 
 Instead considering the autonomous and the system model, \(G\) is \enquote{equal} to \(-k_G \ln(\frac{W}{A}) W\)
 The general form of the reduced characteristic for the autonomous model \labelcref{eq:general-autonomous-gompertz-characteristic} can then be seen as the second column and second invariant in the general form of the reduced characteristic for the system model \labelcref{eq:general-system-gompertz-characteristic}, since
-\begin{equation}
+\begin{equation*}
   \bar{Q}_{\text{a}} = \ln(\frac{W}{A}) W F\left(\ln(\abs{\ln(\frac{W}{A})}) + k_G t\right)
-\end{equation}
+\end{equation*}
 then has the same form as
-\begin{equation}
+\begin{equation*}
   \bar{\vb{Q}}_{\text{s}} =
   \begin{pmatrix}
     - \frac{W G}{k_G} \\
     G
   \end{pmatrix}
   \cdot F_2\left(k_G t + \ln(G)\right).
-\end{equation}
+\end{equation*}
 
 \section{The structure of the symmetry group of the Lotka--Volterra model}
 
 The symmetries of the Lotka--Volterra model found using an ansatz in \cref{ch:ansatze} were
-\begin{align}
+\begin{align*}
   X_1 &= \partial_t \\
   X_2 &= \frac{-bNP + aN}{c} \partial_N + \frac{cNP - dP}{c} \partial_P \\
   X_3 &= \frac{t}{c} \partial_t + \frac{-btNP + atN}{c} \partial_N + \frac{ctNP - dtP}{c} \partial_P \\
   X_4 &= \frac{N}{c} \partial_t + \frac{-bcN^2P + acN^2 - bdNP + adN}{c^2} \partial_N + \frac{c^2N^2P - d^2P}{c^2} \partial_P \\
   X_5 &= \frac{P}{c} \partial_t + \frac{-bNP^2 + aNP}{c} \partial_N + \frac{cNP^2 - dP^2}{c} \partial_P
-\end{align}
+\end{align*}
 and the symmetries found using parameter independence in \cref{ch:param-ind} were
-\begin{equation}
+\begin{equation*}
   X_1 = \partial_t.
-\end{equation}
+\end{equation*}
 The corresponding reduced characteristics of the symmetry generators are
-\begin{align}
+\begin{align*}
   \bar{\vb{Q}}_1 &= - \left(a N - b N P, c N P - d P\right) \\
   \bar{\vb{Q}}_2 &= \frac{1}{c} \left(a N - b N P, c N P - d P\right) \\
   \bar{\vb{Q}}_3 &= 0 \\
   \bar{\vb{Q}}_4 &= \frac{d}{c^2}\left(aN- bNP, cNP - dP\right) \\
   \bar{\vb{Q}}_5 &= 0.
-\end{align}
+\end{align*}
 Thus only one of the potentially two forms of reduced characteristic (modulo multiplication by invariants) is found.
 Furthermore, the reduced characteristics reveal no invariants by themselves.
 
 Using the method of characteristics, one such invariant can be found with ease.
 The invariance condition 
-\begin{equation}
+\begin{equation*}
   I_t + \left(a N - b N P\right) I_N + \left(c N P - d P\right) I_P = 0
-\end{equation}
+\end{equation*}
 results in the reformulated problem
 \begin{equation} \label{eq:moc-lotka-volterra}
   \frac{\dl t}{1} = \frac{\dl N}{a N - b N P} = \frac{\dl P}{c N P - d P}.
 \end{equation}
 The second equality can be simplified to
-\begin{equation}
+\begin{equation*}
   \frac{\dl N}{N} \left(c N - d\right) = \frac{\dl P}{P} \left(a - b P\right)
-\end{equation}
+\end{equation*}
 which has the solution
 \begin{equation} \label{eq:invariant-lotka-volterra}
   \dl \left(cN + bP - d \ln(N) - a \ln(P)\right) = 0.
@@ -485,14 +485,14 @@ which has the solution
 The first equality in \cref{eq:moc-lotka-volterra} does not have an explicit solution, for the same reason the Lotka--Volterra system itself does not have an explicit solution, but must instead be studied mostly using the invariant in \cref{eq:invariant-lotka-volterra} \cite{murray2002biology}.
 
 Using the characteristics and invariants easily calculable, it can thus be concluded that all reduced characteristics
-\begin{equation} \label{eq:lotka-volterra-characteristic}
+\begin{equation*} %\label{eq:lotka-volterra-characteristic}
   \bar{\vb{Q}} = F\left(cN + bP - d \ln(N) - a \ln(P)\right) \left(a N - b N P, c N P - d P\right)
-\end{equation}
+\end{equation*}
 correspond to symmetry generators of the Lotka--Volterra predator prey model \labelcref{eq:lotka-volterra}, where \(F\) is an arbitrary function.
 All generators on the form
-\begin{align}
+\begin{align*}
   X =& \xi(t, W, G) \partial_t + \\
   &+ \left(a N - b N P\right) \left(\xi(t, W, G) + F\left(cN + bP - d \ln(N) - a \ln(P)\right)\right) \partial_W + \\
   &+ \left(c N P - d P\right) \left(\xi(t, W, G) + F\left(cN + bP - d \ln(N) - a \ln(P)\right)\right) \partial_W
-\end{align}
+\end{align*}
 are thus symmetry generators of the Lotka--Volterra model.
