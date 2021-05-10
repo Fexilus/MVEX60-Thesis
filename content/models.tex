@@ -8,12 +8,12 @@ The limitation to ODE:s is often due to the fact that the models required to mod
 There are thus a large amount of models in these fields that take the form
 \begin{align*}
   \begin{split} %\label{eq:generic-bio-ode}
-    \diff{A^1}{t} &= \omega^1(t, A^1, \dots, A^s; \vb*{\theta}) \\
+    \diff{A^1}{t} &= \omega^1(t, A^1, \dots, A^s; \vect{\theta}) \\
     &\equalsvdots \\
-    \diff{A^s}{t} &= \omega^s(t, A^1, \dots, A^s; \vb*{\theta}),
+    \diff{A^s}{t} &= \omega^s(t, A^1, \dots, A^s; \vect{\theta}),
   \end{split}
 \end{align*}
-where \(A^1(t), \dots, A^s(t)\) are the measurements of species at time \(t\), and \(\vb*{\theta} = \left(\theta^1, \dots, \theta^m\right)\) are a collection of parameters.
+where \(A^1(t), \dots, A^s(t)\) are the measurements of species at time \(t\), and \(\vect{\theta} = \left(\theta^1, \dots, \theta^m\right)\) are a collection of parameters.
 The parameters allow the models to be adopted to a large amount of different circumstances.
 They can be related to environmental factors, inherent properties of the species involved or a measurement of a species assumed to be constant for the duration of the experiment.
 
@@ -104,7 +104,7 @@ In Gompertz original paper, this function takes the form
 \begin{equation} \label{eq:original-gompertz-solution}
   L(x) = d g^{q^x}
 \end{equation}
-where \(g = \exp(-a/\ln(q))\) in \cref{eq:original-gompertz-modern}.
+where \(g = \exp(-a/\ln\left(q\right))\) in \cref{eq:original-gompertz-modern}.
 Note that the parameter \(d\) is not included in the differential equation but instead stems from the constant of integration.
 By replacing Gompertz' \(L(x)\) (amount of people of age \(x\)) with \(W(t)\) (the size of a species at time \(t\)) the function can be used to model growth without any structural changes to the function.
 The function form of the model is not only sufficient as description when the goal is to fit the model to some data; the third parameter \(d\) is necessary since it relates to the initial value needed to solve \cref{eq:original-gompertz-modern}.
@@ -138,7 +138,7 @@ This system of ODE:s could also be argued to be the original Gompertz ODE, since
 \blockquote[{\cite[518]{gompertz1825nature}}]{
   If the average exhaustions of a man's power to avoid death were such that at the end of equal infinitely small intervals of time, he lost equal portions of his remaining power to oppose destruction which he had at the commencement of thoseintervals, then at the age his power to avoid death, or the intensity of his mortality might be denoted by \(aq^x\), \(a\) and \(q\) being constant quantities;
 }
-The intensity of mortality can be seen as \(\gamma(t)\) in \cref{eq:rough-gompertz-system-ode}, with \(\gamma(t) = aq^x\) serving as a solution to the lower equation in \cref{eq:rough-gompertz-system-ode} when \(\ln(q) = -b\).
+The intensity of mortality can be seen as \(\gamma(t)\) in \cref{eq:rough-gompertz-system-ode}, with \(\gamma(t) = aq^x\) serving as a solution to the lower equation in \cref{eq:rough-gompertz-system-ode} when \(\ln\left(q\right) = -b\).
 Solutions to this family of ODE:s can be seen in \cref{fig:gompertz-system-solutions-varw,fig:gompertz-system-solutions-varg}.
 Since \cref{eq:rough-gompertz-classical-ode} is a partial solution to \cref{eq:rough-gompertz-system-ode}, these two families of differential equations will henceforth be referred to collectively as \enquote{classical Gompertz ODE:s}, the latter formulation being specified as \enquote{classical Gompertz ODE:s on system form} or simply \enquote{system Gompertz ODE:s}.
 The classical Gompertz ODE is the form used in the first paper on biological growth \cite{davidson1928growth}.
@@ -164,7 +164,7 @@ The classical Gompertz ODE is the form used in the first paper on biological gro
 The third family of ODE:s appear slightly later in the literature.
 They can all be written on the form
 \begin{equation} \label[ode]{eq:rough-gompertz-autonomous-ode}
-  \diff{W}{t} = -\alpha \ln(\frac{W(t)}{K}) W(t).
+  \diff{W}{t} = -\alpha \ln\left(\frac{W(t)}{K}\right) W(t).
 \end{equation}
 While solutions to this ODE are all Gompertz curves, it is important to note that this formulation is fundamentally different than the classical ODE \labelcref{eq:rough-gompertz-classical-ode}.
 This is clear from the fact that while \cref{eq:rough-gompertz-classical-ode} is directly dependent on time, \cref{eq:rough-gompertz-autonomous-ode} is not.
@@ -212,7 +212,7 @@ The solutions are thus
   W(t) = c e^{-r/b \cdot e^{-b t}}
 \end{equation}
 where \(c\) is an arbitrary constant.
-The autonomous Gompertz ODE \labelcref{eq:rough-gompertz-autonomous-ode} is most easily solved using the variable substitution \(y(t) = \ln(W(t)/K)\) and then solving the resulting ODE.
+The autonomous Gompertz ODE \labelcref{eq:rough-gompertz-autonomous-ode} is most easily solved using the variable substitution \(y(t) = \ln\left(W(t)/K\right)\) and then solving the resulting ODE.
 The solutions are thus on the form
 \begin{equation} \label{eq:gompertz-autonomous-solution}
   W(t) = K e^{c e^{-\alpha t}}
@@ -222,7 +222,7 @@ Comparing the solutions in \cref{eq:gompertz-classical-solution,eq:gompertz-auto
 \begin{align*}
   b &= k_G\\
   r &= k_G e^{k_G T_i}\\
-  r &= k_G \ln(\frac{W_0}{A})\\
+  r &= k_G \ln\left(\frac{W_0}{A}\right)\\
   \alpha &= k_G\\
   K &= A
 \end{align*}
@@ -240,13 +240,13 @@ The classical Gompertz ODE:s \labelcref{eq:rough-gompertz-classical-ode,eq:rough
   Classical, & \(W_0\) :&
   \begin{minipage}{\linewidth}
     \begin{equation}
-      \diff{W}{t} = k_G \ln(\frac{W_0}{A})e^{-k_G t} W(t) \label{eq:gompertz-classical-w0}
+      \diff{W}{t} = k_G \ln\left(\frac{W_0}{A}\right)e^{-k_G t} W(t) \label{eq:gompertz-classical-w0}
     \end{equation}
   \end{minipage}\tabularnewline
   Autonomous, & \(T_i\) and \(W_0\) :&
   \begin{minipage}{\linewidth}
     \begin{equation}
-      \diff{W}{t} = -k_G \ln(\frac{W(t)}{A}) W(t) \label{eq:gompertz-autonomous}
+      \diff{W}{t} = -k_G \ln\left(\frac{W(t)}{A}\right) W(t) \label{eq:gompertz-autonomous}
     \end{equation}
   \end{minipage}\tabularnewline
   System, & \(T_i\) and \(W_0\) :&

@@ -1,7 +1,6 @@
 % Custom definitions
 
 % amsthm definitions
-% TODO: Decide on a style. Right now these are copied from amsthm's docs.
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lem}[thm]{Lemma}
@@ -18,9 +17,15 @@
 \newtheorem*{note}{Note}
 \newtheorem{case}{Case}
 
+% Fix \left\right spacing next to functions
+\let\originalleft\left
+\let\originalright\right
+\renewcommand*{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand*{\right}{\aftergroup\egroup\originalright}
+
 % Sets
-\newcommand{\reals}{\mathbb{R}}
-\newcommand{\cont}[2]
+\newcommand*{\reals}{\ensuremath{\mathbb{R}}}
+\newcommand*{\cont}[2]
 {
   \ensuremath{
     \mathcal{C}
@@ -52,12 +57,10 @@
 \Crefname{subequations}{Eqs.}{Eqs.}
 \creflabelformat{subequations}{#2(#1)#3}
 
-% Notation
-%\RequirePackage{xspace}
 % Fixed values
-\newcommand{\fixed}[1]{#1^*}
+\newcommand{\fixed}[1]{\ensuremath{#1^*}}
 % Total derivative
-\newcommand{\tD}[1]{D_{#1}\,}
+\newcommand{\tD}[1]{\ensuremath{D_{#1}\,}}
 
 % Jet space commands
 \newcommand*{\prolong}[2]{\ensuremath{\underset{#2}{#1}}}
@@ -66,3 +69,9 @@
 
 % Nice vdots
 \newcommand*{\equalsvdots}{\setbox0\hbox{=}\mathrel{\makebox[\wd0]{\hfil\vdots\hfil}}}
+
+% Physics package substitutions
+\newcommand*{\eval}[1]{\ensuremath{\left.#1\right\rvert}}
+\newcommand*{\vect}[1]{\ensuremath{\boldsymbol{#1}}}
+\newcommand*{\abs}[1]{\ensuremath{\left\lvert#1\right\rvert}}
+\newcommand*{\comm}[2]{\ensuremath{\left[#1,\,#2\right]}}

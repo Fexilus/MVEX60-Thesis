@@ -53,12 +53,12 @@ A curve corresponds to a function if and only if it is transverse, that is: the 
 Additionally for a given ODE, every point in the \(xy\)-plane belongs to exactly one such curve \(\gamma_u\): the curve of the solution that runs through that point.
 
 A symmetry of a first order ODE \labelcref{eq:first-order-ode} is a transformation that preserves the solution curves.
-This means that if two points \(\pqty{x_1,y_1}\) and \(\pqty{x_2,y_2}\) belong to the same solution curve \(\gamma\), the transformed points \(\Gamma(x_1,y_1)\) and \(\Gamma(x_2,y_2)\) must belong to the same solution curve, denoted by \(\Gamma\gamma\), for the transformation \(\Gamma\) to be a symmetry.
+This means that if two points \(\left(x_1,y_1\right)\) and \(\left(x_2,y_2\right)\) belong to the same solution curve \(\gamma\), the transformed points \(\Gamma(x_1,y_1)\) and \(\Gamma(x_2,y_2)\) must belong to the same solution curve, denoted by \(\Gamma\gamma\), for the transformation \(\Gamma\) to be a symmetry.
 This property can be defined as:
 \begin{defn}[Point symmetry] \label{defn:first-order-symmetry}
   A transformation 
   \begin{equation*}
-    \Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}
+    \Gamma: \left(x,y\right) \mapsto \left(\hat{x}(x,y), \hat{y}(x,y)\right)
   \end{equation*}
   is a point symmetry of \cref{eq:first-order-ode} if
   \begin{equation*}
@@ -89,11 +89,11 @@ It is however important to note that \(F_1\) is no more the space of derivative 
 All differentiable functions \(f: B \to F\) have a single equivalent function \(\prolong{f}{1}: B \to \prolong{F}{1}\) called the first prolongation of \(f(x)\).
 The prolongation is defined as
 \begin{equation*}
-  \prolong{f}{1}(x) = \qty(f(x), \diff{f}{x}(x)).
+  \prolong{f}{1}(x) = \left(f(x), \diff{f}{x}(x)\right).
 \end{equation*}
 In extension to this concept, a smooth transverse curve \(\gamma \subset E\) has a prolongation which is a curve \(\prolong{\gamma}{1} \subset J_1\) defined by
 \begin{equation*}
-  \prolong{\gamma}{1} = \qty{\qty(x, \prolong{f}{1}(x)): x \in B},
+  \prolong{\gamma}{1} = \left\{\left(x, \prolong{f}{1}(x)\right): x \in B\right\},
 \end{equation*}
 where \(f\) is the function corresponding to the curve \(\gamma\).
 
@@ -116,7 +116,7 @@ This can be seen in \cref{fig:jet-surface}, where the prolongations of the solut
 While only first order ODE:s are handled in this thesis, some basic knowledge of symmetry methods for higher order ODE:s is required to be able to understand how the process of finding symmetries differ between first and higher order ODE:s.
 An ODE of degree \(k\) can be written on the form
 \begin{equation*}
-  \diff[k]{y}{x} = \omega\qty(x, y, \diff{y}{x}, \dots, \diff[k-1]{y}{x}),
+  \diff[k]{y}{x} = \omega\left(x, y, \diff{y}{x}, \dots, \diff[k-1]{y}{x}\right),
 \end{equation*}
 while higher order jet spaces \(J_k = J_k E\) take the form
 \begin{equation*}
@@ -124,7 +124,7 @@ while higher order jet spaces \(J_k = J_k E\) take the form
 \end{equation*}
 with elements
 \begin{equation*}
-  \prolong{z}{k} = \qty(x, y, y', \dots, y^{(k)}).
+  \prolong{z}{k} = \left(x, y, y', \dots, y^{(k)}\right).
 \end{equation*}
 An ODE of degree \(k\) can thus be formulated as finding curves in \(J_k\) that satisfy
 \begin{equation*}
@@ -132,7 +132,7 @@ An ODE of degree \(k\) can thus be formulated as finding curves in \(J_k\) that 
 \end{equation*}
 as well as the condition that the curves should be \(k\):th order prolongations
 \begin{equation*}
-  \prolong{\gamma_u}{k} = \qty{\prolong{z}{k} = \qty(\fixed{x}, y, y', \dots, y^{(k)})\qq*{:} y^{(l)} = \diff[l]{u}{x}{(\fixed{x})}\qc \fixed{x} \in B\qc l = 0, \dots, k}
+  \prolong{\gamma_u}{k} = \left\{\prolong{z}{k} = \left(\fixed{x}, y, y', \dots, y^{(k)}\right):\quad y^{(l)} = \diff[l]{u}{x}{(\fixed{x})},\quad \fixed{x} \in B,\quad l = 0, \dots, k\right\}
 \end{equation*}
 of curves \(\gamma\) corresponding to functions \(u(x) \in \cont{k}{B}\).
 Here \(y^{(0)} = y\) and \(\diff[0]{u}{x} = u(x)\).
@@ -163,17 +163,17 @@ Due to the chain rule,
 in the function space.
 In order to keep the correspondence between the function view and the jet view, viewing the change of variables as a transformation
 \begin{equation*}
-  \Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)},
+  \Gamma: \left(x,y\right) \mapsto \left(\hat{x}(x,y), \hat{y}(x,y)\right),
 \end{equation*}
 the first prolongation of that transformation defined by
 \begin{equation*}
-  \prolong{\Gamma}{1}: \pqty{x,y,y'} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y), \frac{\tD{x} \hat{y}(x,y)}{\tD{x} \hat{x}(x,y)}}
+  \prolong{\Gamma}{1}: \left(x,y,y'\right) \mapsto \left(\hat{x}(x,y), \hat{y}(x,y), \frac{\tD{x} \hat{y}(x,y)}{\tD{x} \hat{x}(x,y)}\right)
 \end{equation*}
 will retain the correspondence to the ODE in the changed variables.
 
 Using the prolongation of the transformation, \cref{defn:first-order-symmetry} of a first order symmetry for \cref{eq:first-order-ode} can be restated in the first order jet space \(J_1\) for the corresponding \cref{eq:first-order-jet-ode}.
 \begin{lem} \label{lem:simple-first-order-symmetry}
-  A transformation \(\Gamma: \pqty{x,y} \mapsto \pqty{\hat{x}(x,y), \hat{y}(x,y)}\) is a point symmetry of \cref{eq:first-order-ode} if and only if
+  A transformation \(\Gamma: \left(x,y\right) \mapsto \left(\hat{x}(x,y), \hat{y}(x,y)\right)\) is a point symmetry of \cref{eq:first-order-ode} if and only if
   \begin{equation} \label{eq:simple-first-order-symmetry}
     \frac{\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}} = \omega(\hat{x},\hat{y})
   \end{equation}
@@ -192,10 +192,10 @@ A Lie group of transformations on \(E\) is thus a group with composition as the 
 If the transformations can be indexed by a single real parameter \(\epsilon \in \reals\), the Lie group is said to be a one-parameter (real) Lie group of transformations.
 The transformations in such a Lie group can be parametrized as
 \begin{equation*} %\label{eq:1p-lie-point-symmetry}
-  \Gamma_\epsilon: \pqty{x,y} \mapsto \pqty{\hat{x}_\epsilon(x,y), \hat{y}_\epsilon(x,y)},
+  \Gamma_\epsilon: \left(x,y\right) \mapsto \left(\hat{x}_\epsilon(x,y), \hat{y}_\epsilon(x,y)\right),
 \end{equation*}
 where both \(\hat{x}_\epsilon(x,y)\) and \(\hat{y}_\epsilon(x,y)\) are smooth (and therefore differentiable) in \(\epsilon\) when fixing \(x\) and \(y\).
-Additionally, the transformation parametrized by \(\epsilon = 0\) will be the identity transformation \(\Gamma_0: \pqty{x,y} \mapsto \pqty{x,y}\).
+Additionally, the transformation parametrized by \(\epsilon = 0\) will be the identity transformation \(\Gamma_0: \left(x,y\right) \mapsto \left(x,y\right)\).
 
 If all transformations in such a group are symmetries of a differential equation, the group is said to be a Lie point symmetry of the differential equation.
 The following is a simple example of a one parameter Lie point symmetry.
@@ -208,8 +208,8 @@ The following is a simple example of a one parameter Lie point symmetry.
   One group of symmetries is
   \begin{equation} \label{eq:ex-a:transformation}
     \Gamma_\epsilon(x,y) =
-    \pqty{\hat{x}_\epsilon(x,y), \hat{y}_\epsilon(x,y)} =
-    \pqty{x + \epsilon, y}, \quad
+    \left(\hat{x}_\epsilon(x,y), \hat{y}_\epsilon(x,y)\right) =
+    \left(x + \epsilon, y\right), \quad
     \forall \epsilon \in \reals
   \end{equation}
   This can be shown by viewing \cref{eq:ex-a:ode} in the jet space \(J_1\), resulting in
@@ -221,25 +221,25 @@ The following is a simple example of a one parameter Lie point symmetry.
     \forall \epsilon.
   \end{equation*}
   So by \cref{lem:simple-first-order-symmetry} the transformations are point symmetries.
-  By fixing \(\pqty{x,y}=\pqty{\fixed{x},\fixed{y}}\),
+  By fixing \(\left(x,y\right)=\left(\fixed{x},\fixed{y}\right)\),
   \begin{equation*}
     \diff*{\hat{x}_\epsilon(\fixed{x},\fixed{y}), \hat{y}_\epsilon(\fixed{x},\fixed{y})}{\epsilon} =
-    \pqty{\diff{\fixed{\hat{x}}}{\epsilon}, \diff{\fixed{\hat{y}}}{\epsilon}} =
-    \pqty{1,0}
+    \left(\diff{\fixed{\hat{x}}}{\epsilon}, \diff{\fixed{\hat{y}}}{\epsilon}\right) =
+    \left(1,0\right)
   \end{equation*}
-  for any \(\pqty{\fixed{x},\fixed{y}}\).
+  for any \(\left(\fixed{x},\fixed{y}\right)\).
   This means that the transformations are smooth in \(\epsilon\), and thus constitute a one parameter Lie point symmetry.
 \end{exmp}
 While the Lie groups of point symmetries can be parametrized explicitly such as in \cref{eq:ex-a:transformation}, it is more useful to characterize the Lie group by its associated vector field
 \begin{equation*}
-  \pqty{\xi(x,y), \eta(x,y)},
+  \left(\xi(x,y), \eta(x,y)\right),
 \end{equation*}
 also known as the tangent field of the transformation group.
 The tangent field can be calculated pointwise by 
 \begin{equation*}
-  \eval{\diff*{\hat{x}_\epsilon(\fixed{x},\fixed{y}), \hat{y}_\epsilon(\fixed{x},\fixed{y})}{\epsilon}}_{\epsilon=0} = \pqty{\xi(\fixed{x},\fixed{y}), \eta(\fixed{x},\fixed{y})}
+  \eval{\diff*{\hat{x}_\epsilon(\fixed{x},\fixed{y}), \hat{y}_\epsilon(\fixed{x},\fixed{y})}{\epsilon}}_{\epsilon=0} = \left(\xi(\fixed{x},\fixed{y}), \eta(\fixed{x},\fixed{y})\right)
 \end{equation*}
-for every fixed point \(\pqty{\fixed{x},\fixed{y}} \in E\).
+for every fixed point \(\left(\fixed{x},\fixed{y}\right) \in E\).
 The tangent field can be thought of as the vector field that points in \(E\) flow along when the parameter \(\epsilon\) of transformation \(\Gamma_\epsilon\) is increased.
 % TODO: Write about relation to parameterized transformation
 
@@ -253,7 +253,7 @@ Using the tangent field of a one-parameter Lie symmetry group, the symmetry cond
     \partial_x \eta + (\partial_y \eta - \partial_x \xi) \omega - \partial_y (\xi) \omega^2 -
     \xi \partial_x \omega - \eta \partial_y \omega = 0,
   \end{equation*}
-  where \(\pqty{\xi(x,y), \eta(x,y)}\) is the tangent field of the Lie group.
+  where \(\left(\xi(x,y), \eta(x,y)\right)\) is the tangent field of the Lie group.
 \end{lem}
 \begin{proof}
   The transformations \(\Gamma_\epsilon\) are point symmetries of \cref{eq:first-order-ode} if and only if
@@ -268,7 +268,7 @@ Using the tangent field of a one-parameter Lie symmetry group, the symmetry cond
     \end{split}
   \end{equation}
   It is sufficient to show that this expression holds at \(\epsilon = 0\) for all \(x\) and \(y\), since evaluation in any \(\tilde{\epsilon} \neq 0\) will be equivalent to the expression for \(\epsilon = 0\) in the point \(\Gamma_{\tilde{\epsilon}}(x, y)\).
-  Evaluation at \(\epsilon = 0\) yields \(\dv*{\hat{x}}{\epsilon} = \xi\) and \(\dv*{\hat{y}}{\epsilon} = \eta\).
+  Evaluation at \(\epsilon = 0\) yields \(\diff{\hat{x}}/{\epsilon} = \xi\) and \(\diff{\hat{y}}/{\epsilon} = \eta\).
   Additionally, \(\eval{\hat{x}(x,y;\epsilon)}_{\epsilon = 0} = x\) and \(\eval{\hat{y}(x,y;\epsilon)}_{\epsilon = 0} = y\) since the transformation parametrized by \(\epsilon = 0\) is always the identity transformation in a one-parameter Lie groups of transformations.
   \Cref{eq:derive-symmetry-cond} evaluates to
   \begin{equation*} %\label{eq:linearized-first-order-symmetry-result}
@@ -284,7 +284,7 @@ Using the tangent field of a one-parameter Lie symmetry group, the symmetry cond
 An important property of a Lie group of symmetries is which, if any, solution curves \(\gamma_u\) are invariant under all transformations \(\Gamma_\epsilon\).
 The curve being invariant means that the transformed solution curve
 \begin{equation*}
-  \Gamma_\epsilon \gamma_u = \qty{\Gamma_\epsilon z \qq*{:} z \in \gamma_u}
+  \Gamma_\epsilon \gamma_u = \left\{\Gamma_\epsilon z :\quad z \in \gamma_u\right\}
 \end{equation*}
 is equal to the solution curve \(\gamma_u\).
 It should be noted that this does not mean that every point in \(\gamma_u\) need be transformed to itself; the equivalency must merely hold for the entire set \(\gamma_u\).
@@ -293,24 +293,24 @@ The invariance of a solution can be studied using the characteristic
 \begin{equation*}
   Q(x, y, y') = \eta(x, y) - y' \xi(x, y)
 \end{equation*}
-of a Lie group of symmetries with tangent field \(\pqty{\xi(x,y), \eta(x,y)}\).
+of a Lie group of symmetries with tangent field \(\left(\xi(x,y), \eta(x,y)\right)\).
 The characteristic can be seen the magnitude of the cross product between the direction of solution curves
 \begin{equation*}
-  \tD{x} \pqty{x, y} = \pqty{1, y'}
+  \tD{x} \left(x, y\right) = \left(1, y'\right)
 \end{equation*}
 and the tangent field.
 As is known from linear algebra, the cross product of two vectors has magnitude 0 if and only if they are parallel.
 So if the characteristic is equal to zero in a point \(\fixed{x}, \fixed{y}, \fixed{y'}\), the tangent field is parallel with the tangent of the solution curve in that point.
-If this hold for all points \(\qty(x, y, y') \in \prolong{\gamma_u}{1}\), the points of the solution curve \(\gamma_u\) will thus always be transformed to other points of the same solution curve.
+If this hold for all points \(\left(x, y, y'\right) \in \prolong{\gamma_u}{1}\), the points of the solution curve \(\gamma_u\) will thus always be transformed to other points of the same solution curve.
 For a solution \(\gamma_u\) to \cref{eq:first-order-jet-ode}
 \begin{equation*}
-  \prolong{\gamma_u}{1} = \qty(x, y, \omega(x, y)),
+  \prolong{\gamma_u}{1} = \left(x, y, \omega(x, y)\right),
 \end{equation*}
 and hence the reduced characteristic
 \begin{equation*}
   \bar{Q}(x, y) = \eta(x, y) - \omega(x, y) \xi(x, y)
 \end{equation*}
-must be equal to \(0\) for all \(\qty(x, y) \in \gamma_u\) for the solution curve \(\gamma_u\) to be invariant under the Lie point symmetry with tangent field \(\pqty{\xi(x,y), \eta(x,y)}\).
+must be equal to \(0\) for all \(\left(x, y\right) \in \gamma_u\) for the solution curve \(\gamma_u\) to be invariant under the Lie point symmetry with tangent field \(\left(\xi(x,y), \eta(x,y)\right)\).
 
 A Lie group of symmetries for which all solution curves \(\gamma_u\) of \cref{eq:first-order-jet-ode} are invariant is called a trivial symmetry group.
 For such a symmetry group, the reduced characteristic will be zero everywhere, or in other words
@@ -318,7 +318,7 @@ For such a symmetry group, the reduced characteristic will be zero everywhere, o
   \bar{Q}(x, y) \equiv 0.
 \end{equation}
 Trivial symmetries are called trivial, since finding one is easy.
-Simply let the tangent field \(\pqty{\xi(x,y), \eta(x,y)} = \pqty{1, \omega(x,y)}\).
+Simply let the tangent field \(\left(\xi(x,y), \eta(x,y)\right) = \left(1, \omega(x,y)\right)\).
 The Lie transformation group is a point symmetry group, since \cref{lem:linearized-first-order-symmetry} is fulfilled.
 And it is a trivial symmetry group since \cref{eq:trivial-symmetry-first-order} is always fulfilled.
 
@@ -350,7 +350,7 @@ To simplify the notation a differential operator
   X = \xi(x,y) \partial_x + \eta(x,y) \partial_y
 \end{equation*}
 called an infinitesimal generator, can be introduced.
-The infinitesimal generator acts on transformations \(\Gamma: E \to E\) and returns the action of the tangent field \(\qty(\xi, \eta)\) of a Lie point symmetry with elements \(\Gamma_\epsilon\) on the transformation.
+The infinitesimal generator acts on transformations \(\Gamma: E \to E\) and returns the action of the tangent field \(\left(\xi, \eta\right)\) of a Lie point symmetry with elements \(\Gamma_\epsilon\) on the transformation.
 The action gives a measure of the change in \(\Gamma\) when continuously transforming the plane which it acts on, since
 \begin{equation*}
   \diff*{\Gamma \circ \Gamma_\epsilon}{\epsilon}[\epsilon = 0] = X \Gamma.
@@ -410,24 +410,24 @@ A system of first order ODE:s has the form
 which can be seen as existing in the jet space \(J_1 = J_1 E = B \times F \times F_1\) with coordinates
 \begin{align*}
   x &\in B \\
-  \qty(y^1, \dots, y^s) = &\in F \\
-  \qty(y^1_x, \dots, y^s_x) &\in F_1.
+  \left(y^1, \dots, y^s\right) = &\in F \\
+  \left(y^1_x, \dots, y^s_x\right) &\in F_1.
 \end{align*}
-Elements in the total space \(E = B \times F\) can similarly to before be denoted \(z = \qty(x, \vb{y})\), where the vector notation \(\vb{y} = \qty(y^1, \dots, y^s)\) is used.
+Elements in the total space \(E = B \times F\) can similarly to before be denoted \(z = \left(x, \vect{y}\right)\), where the vector notation \(\vect{y} = \left(y^1, \dots, y^s\right)\) is used.
 \Cref{eq:first-order-system-ode} can be written more succinctly as
 \begin{equation} \label{eq:first-order-system-ode-short}
-  \vb{y}_x = \vb*{\omega}(z),
+  \vect{y}_x = \vect{\omega}(z),
 \end{equation}
-where \(\vb{y}_x = \qty(y^1_x, \dots, y^s_x)\), \(\vb*{\omega}(z) = \qty(\omega^1(z), \dots, \omega^s(z))\).
+where \(\vect{y}_x = \left(y^1_x, \dots, y^s_x\right)\), \(\vect{\omega}(z) = \left(\omega^1(z), \dots, \omega^s(z)\right)\).
 The tangent fields of transformations on \(E\) takes the form
 \begin{equation*} %\label{eq:tangent-field-gen}
-  \pqty{\xi(z), \eta^1(z), \dots, \eta^s(z)}
+  \left(\xi(z), \eta^1(z), \dots, \eta^s(z)\right)
 \end{equation*}
 and the infinitesimal generator thus has the form
 \begin{equation*}
-  X = \xi(z) \partial_x + \eta^1(z) \partial_{y^1} + \dots + \eta^s(z) \partial_{y^s} = \xi(z) \partial_x + \vb*{\eta}(z) \cdot \partial_{\vb{y}},
+  X = \xi(z) \partial_x + \eta^1(z) \partial_{y^1} + \dots + \eta^s(z) \partial_{y^s} = \xi(z) \partial_x + \vect{\eta}(z) \cdot \partial_{\vect{y}},
 \end{equation*}
-once again employing vector notation for \(\vb*{\eta}(z) = \qty(\eta^1(z), \dots, \eta^s(z))\) and \(\partial_{\vb{y}} = \qty(\partial_{y^1}, \dots, \partial_{y^s})\) to shorten the expression.
+once again employing vector notation for \(\vect{\eta}(z) = \left(\eta^1(z), \dots, \eta^s(z)\right)\) and \(\partial_{\vect{y}} = \left(\partial_{y^1}, \dots, \partial_{y^s}\right)\) to shorten the expression.
 The infinitesimal generator can be prolonged by defining
 \begin{equation*}
   \prolongpart{\eta^k}{1}(x,y) =
@@ -447,15 +447,15 @@ Using these tools, the earlier results for scalar ODE:s are easy to reformulate 
   \end{equation*}
   is a point symmetry of of a system of first order ODE:s \labelcref{eq:first-order-system-ode-short} if
   \begin{equation*}
-    \diff{\vb{y}}{x} = \vb*{\omega}(z)
+    \diff{\vect{y}}{x} = \vect{\omega}(z)
     \implies
-    \diff{\hat{\vb{y}}}{\hat{x}} = \vb*{\omega}(\hat{z}).
+    \diff{\hat{\vect{y}}}{\hat{x}} = \vect{\omega}(\hat{z}).
   \end{equation*}
 \end{defn}
 \begin{thm} \label{thm:linearized-general-symmetry}
   A one-parameter Lie group of point transformations constitute a Lie point symmetry of \cref{eq:first-order-system-ode-short} if and only if
   \begin{equation*} \label{eq:linearized-general-symmetry}
-    \eval{\prolong{X}{1}(\vb{y}_x - \vb*{\omega}(z))}_{\vb{y}_x = \vb*{\omega}(z)} = 0,
+    \eval{\prolong{X}{1}(\vect{y}_x - \vect{\omega}(z))}_{\vect{y}_x = \vect{\omega}(z)} = 0,
   \end{equation*}
   where \(X\) is the infinitesimal generator of the Lie group.
 \end{thm}
@@ -468,23 +468,23 @@ But since the tangent field of a Lie point symmetry only depends on the total sp
 Thus the ODE would not truly be of higher order, as it could be rewritten as a first order ODE.
 This fact is not of great concern here, as this thesis only deals with first order systems.
 
-For a system of ODE:s, the characteristic becomes a function \(\vb{Q}(\prolong{z}{1}) = \qty(Q^1(\prolong{z}{1}), \dots, Q^s(\prolong{z}{1}))\) defined by
+For a system of ODE:s, the characteristic becomes a function \(\vect{Q}(\prolong{z}{1}) = \left(Q^1(\prolong{z}{1}), \dots, Q^s(\prolong{z}{1})\right)\) defined by
 \begin{equation*}
   Q^k(\prolong{z}{1}) = \eta^k(z) - y^k_x \xi(z), \quad k = 1,\dots,s.
 \end{equation*}
-A solution curve \(\gamma_u\) of a system of ODE:s is an invariant of a symmetry with characteristic \(\vb{Q}\) if
+A solution curve \(\gamma_u\) of a system of ODE:s is an invariant of a symmetry with characteristic \(\vect{Q}\) if
 \begin{equation*}
   Q^k(\prolong{z}{1}) = 0, \quad \forall z \in \gamma_u.
 \end{equation*}
-For a system of first order ODE:s \labelcref{eq:first-order-system-ode-short} the condition can be simplified, using the reduced characteristic \(\bar{\vb{Q}}(z) = \vb{Q}(z, \vb*{\omega}(z))\), to
+For a system of first order ODE:s \labelcref{eq:first-order-system-ode-short} the condition can be simplified, using the reduced characteristic \(\bar{\vect{Q}}(z) = \vect{Q}(z, \vect{\omega}(z))\), to
 \begin{equation*}
   \bar{Q}^k(z) = \eta^k(z) - \omega^k(z) \xi(z) = 0, \quad \forall z \in \gamma_u.
 \end{equation*}
 The concept of a trivial symmetry can thus be generalized to first order systems.
 \begin{defn}[Trivial symmetry] \label{defn:trivial-symmetry}
-  A Lie point symmetry with tangent field \(\left(\xi, \vb*{\eta}\right)\) is a trivial symmetry of a system of first order ODE:s \labelcref{eq:first-order-system-ode-short} if
+  A Lie point symmetry with tangent field \(\left(\xi, \vect{\eta}\right)\) is a trivial symmetry of a system of first order ODE:s \labelcref{eq:first-order-system-ode-short} if
   \begin{equation*}
-    \bar{\vb{Q}}(z) \equiv 0.
+    \bar{\vect{Q}}(z) \equiv 0.
   \end{equation*}
 \end{defn}
 
@@ -522,14 +522,14 @@ The basis can be seen as the available directions in which a derivative can be t
 It is of interest to be able to determine if a multiparameter Lie group of transformations is a symmetry of a differential equation.
 \Cref{eq:first-order-system-ode-short} can as in the scalar case be rewritten as
 \begin{equation} \label{eq:first-order-system-ode-shorter}
-  \vb*{\Delta}(\prolong{z}{1}) = \vb{y}_x - \vb*{\omega}(z) = 0
+  \vect{\Delta}(\prolong{z}{1}) = \vect{y}_x - \vect{\omega}(z) = 0
 \end{equation}
 for the sake of convenience.
 Let \(X_1\) and \(X_2\) be the infinitesimal generators of two one-parameter Lie point symmetries of \cref{eq:first-order-system-ode-shorter}.
 A two-parameter Lie group of transformations with the basis \(X_1, X_2\) will also be a Lie point symmetry, since
 \begin{multline*}
-  \eval{\prolong{(c_1 X_1 + c_2 X_2)}{1}(\vb*{\Delta}(\prolong{z}{1}))}_{\vb*{\Delta}(\prolong{z}{1}) = 0} =\\
-  = c_1 \eval{\prolong{X_1}{1}(\vb*{\Delta}(\prolong{z}{1}))}_{\vb*{\Delta}(\prolong{z}{1}) = 0} + c_2 \eval{\prolong{X_2}{1}(\vb*{\Delta}(\prolong{z}{1}))}_{\vb*{\Delta}(\prolong{z}{1}) = 0} =
+  \eval{\prolong{(c_1 X_1 + c_2 X_2)}{1}(\vect{\Delta}(\prolong{z}{1}))}_{\vect{\Delta}(\prolong{z}{1}) = 0} =\\
+  = c_1 \eval{\prolong{X_1}{1}(\vect{\Delta}(\prolong{z}{1}))}_{\vect{\Delta}(\prolong{z}{1}) = 0} + c_2 \eval{\prolong{X_2}{1}(\vect{\Delta}(\prolong{z}{1}))}_{\vect{\Delta}(\prolong{z}{1}) = 0} =
   0
 \end{multline*}
 at any point \(z \in E\).
@@ -541,9 +541,9 @@ The fact that a one-parameter Lie group always can be constructed from an infini
 The correspondence between Lie groups of transformations and infinitesimal generators is a special case of a more general correspondence between Lie groups and Lie algebras.
 Every Lie algebra is equipped with an operation called the Lie bracket, which for the infinitesimal generators is defined as
 \begin{equation*} %\label{eq:lie-bracket}
-  \comm{X_1}{X_2} = \left(X_1(\xi_2) - X_2(\xi_1)\right) \partial_x + \left(X_1(\vb*{\eta}_1) - X_2(\vb*{\eta}_1)\right) \cdot \partial_{\vb{y}},
+  \comm{X_1}{X_2} = \left(X_1(\xi_2) - X_2(\xi_1)\right) \partial_x + \left(X_1(\vect{\eta}_1) - X_2(\vect{\eta}_1)\right) \cdot \partial_{\vect{y}},
 \end{equation*}
-where \(X_1 = \xi_1 \partial_x + \vb*{\eta}_2 \cdot \partial_{\vb{y}}\) and \(X_2 = \xi_2 \partial_x + \vb*{\eta}_2 \cdot \partial_{\vb{y}}\).
+where \(X_1 = \xi_1 \partial_x + \vect{\eta}_2 \cdot \partial_{\vect{y}}\) and \(X_2 = \xi_2 \partial_x + \vect{\eta}_2 \cdot \partial_{\vect{y}}\).
 A Lie algebra is closed under the Lie bracket, which means that
 \begin{equation} \label{eq:lie-bracket-closure}
   \comm{X_1}{X_2} \in \mathfrak{g},
@@ -559,91 +559,91 @@ for any basis \(X_1 \in \mathfrak{g}\).
 
 \subsection{The structure of the group of all symmetries of first order ODE:s}
 
-Every infinitesimal generator \(X\) with corresponding tangent field \((\xi, \vb*{\eta})\) can, given a system of ODE:s \labelcref{eq:first-order-system-ode-shorter}, be written on the form
+Every infinitesimal generator \(X\) with corresponding tangent field \((\xi, \vect{\eta})\) can, given a system of ODE:s \labelcref{eq:first-order-system-ode-shorter}, be written on the form
 \begin{equation*}
-  X = \xi \partial_x + \left(\xi \vb*{\omega} + \bar{\vb{Q}}\right) \cdot \partial_{\vb{y}},
+  X = \xi \partial_x + \left(\xi \vect{\omega} + \bar{\vect{Q}}\right) \cdot \partial_{\vect{y}},
 \end{equation*}
-where \(\bar{\vb{Q}}\) is the reduced characteristic.
+where \(\bar{\vect{Q}}\) is the reduced characteristic.
 Considering the infinitesimal generators
 \begin{subequations}
   \begin{align}
-    X_{\text{T}} &= \partial_x + \vb*{\omega} \cdot \partial_{\vb{y}} \label{eq:trivial-generator-base}\\
-    X_{\bar{\vb{Q}}} &= \bar{\vb{Q}} \cdot \partial_{\vb{y}},
+    X_{\text{T}} &= \partial_x + \vect{\omega} \cdot \partial_{\vect{y}} \label{eq:trivial-generator-base}\\
+    X_{\bar{\vect{Q}}} &= \bar{\vect{Q}} \cdot \partial_{\vect{y}},
   \end{align}
 \end{subequations}
 \(X\) can thus be decomposed into
 \begin{equation} \label{eq:inf-gen-decomposition}
-  X = \xi X_{\text{T}} + X_{\bar{\vb{Q}}}
+  X = \xi X_{\text{T}} + X_{\bar{\vect{Q}}}
 \end{equation}
 The linearized symmetry condition \labelcref{eq:linearized-general-symmetry} then simplifies to
 \begin{equation} \label{eq:linearized-symmetry-characteristic}
-  \bar{Q}_x^k + \vb*{\omega} \cdot \bar{Q}_{\vb{y}}^k - \bar{\vb{Q}} \cdot \omega_{\vb{y}}^k = 0 \qc k = 1, \dots, s.
+  \bar{Q}_x^k + \vect{\omega} \cdot \bar{Q}_{\vect{y}}^k - \bar{\vect{Q}} \cdot \omega_{\vect{y}}^k = 0 ,\quad k = 1, \dots, s.
 \end{equation}
 Using the Lie bracket, \cref{eq:linearized-symmetry-characteristic} can be further simplified to
 \begin{equation} \label{eq:linearized-symmetry-bracket}
-  \comm{X_{\text{T}}}{X_{\bar{\vb{Q}}}} = 0.
+  \comm{X_{\text{T}}}{X_{\bar{\vect{Q}}}} = 0.
 \end{equation}
 This formulation reveals several properties of the space of all Lie point symmetries for first order systems of ODE:s \labelcref{eq:first-order-system-ode-shorter}.
 
 The first result concerns the trivial symmetries of a first order ODE.
-If \(X\) is a trivial symmetry, \(X_{\bar{\vb{Q}}} = 0\).
-Since \cref{eq:linearized-symmetry-bracket} always holds if \(X_{\bar{\vb{Q}}} = 0\), a one-parameter Lie point transformation is a trivial symmetry of \cref{eq:first-order-system-ode-shorter} if and only if
+If \(X\) is a trivial symmetry, \(X_{\bar{\vect{Q}}} = 0\).
+Since \cref{eq:linearized-symmetry-bracket} always holds if \(X_{\bar{\vect{Q}}} = 0\), a one-parameter Lie point transformation is a trivial symmetry of \cref{eq:first-order-system-ode-shorter} if and only if
 \begin{equation*}
   X = \xi X_{\text{T}}
 \end{equation*}
 for any function \(\xi: E \to \reals\).
 Given two arbitrary trivial symmetry generators \(\xi X_{\text{T}}\) and \(\tilde{\xi} X_{\text{T}}\), the Lie bracket of the two is
 \begin{equation*}
-  \comm{\xi X_{\text{T}}}{\tilde{\xi} X_{\text{T}}} = \left(\xi \tilde{\xi}_x + \xi \vb*{\omega} \cdot \tilde{\xi}_{\vb{y}} - \tilde{\xi} \xi_x - \tilde{\xi} \vb*{\omega} \cdot \xi_{\vb{y}} \right) X_{\text{T}},
+  \comm{\xi X_{\text{T}}}{\tilde{\xi} X_{\text{T}}} = \left(\xi \tilde{\xi}_x + \xi \vect{\omega} \cdot \tilde{\xi}_{\vect{y}} - \tilde{\xi} \xi_x - \tilde{\xi} \vect{\omega} \cdot \xi_{\vect{y}} \right) X_{\text{T}},
 \end{equation*}
 which in turn is a trivial symmetry generator.
 Hence, the set of all trivial symmetry generators form an algebra of their own, denoted \(\mathfrak{g}^\infty\).
 \(\mathfrak{g}^\infty\) is a subalgebra of the Lie algebra \(\mathfrak{g}\) of all infinitesimal generators corresponding Lie point symmetries of \cref{eq:first-order-system-ode-shorter}, since its elements are a subset of all elements in \(\mathfrak{g}\), and \(\mathfrak{g}^\infty\) in it self is an algebra.
-Similarly, all symmetries on the form \(\vb*{\eta} \cdot \partial_{\vb{y}}\) form a subalgebra \(\mathfrak{g}^0\), since
+Similarly, all symmetries on the form \(\vect{\eta} \cdot \partial_{\vect{y}}\) form a subalgebra \(\mathfrak{g}^0\), since
 \begin{equation*}
-  \comm{\vb*{\eta} \cdot \partial_{\vb{y}}}{\tilde{\vb*{\eta}} \cdot \partial_{\vb{y}}} = \left(\vb*{\eta} \cdot \tilde{\eta}^1_{\vb{y}} - \tilde{\vb*{\eta}} \cdot \eta^1_{\vb{y}}\right) \partial_{y^1} + \dots + \left(\vb*{\eta} \cdot \tilde{\eta}^s_{\vb{y}} - \tilde{\vb*{\eta}} \cdot \eta^s_{\vb{y}}\right) \partial_{y^s}
+  \comm{\vect{\eta} \cdot \partial_{\vect{y}}}{\tilde{\vect{\eta}} \cdot \partial_{\vect{y}}} = \left(\vect{\eta} \cdot \tilde{\eta}^1_{\vect{y}} - \tilde{\vect{\eta}} \cdot \eta^1_{\vect{y}}\right) \partial_{y^1} + \dots + \left(\vect{\eta} \cdot \tilde{\eta}^s_{\vect{y}} - \tilde{\vect{\eta}} \cdot \eta^s_{\vect{y}}\right) \partial_{y^s}
 \end{equation*}
-for arbitrary functions \(\vb*{\eta}, \tilde{\vb*{\eta}}: E \to \reals^s\)
+for arbitrary functions \(\vect{\eta}, \tilde{\vect{\eta}}: E \to \reals^s\)
 The decomposition in \cref{eq:inf-gen-decomposition} can thus be rewritten in more algebraic language as the fact that the algebra of all Lie point symmetries \(\mathfrak{g}\) can be written as the direct sum
 \begin{equation*}
   \mathfrak{g} = \mathfrak{g}^\infty \oplus \mathfrak{g}^0
 \end{equation*}
 of subalgebras.
-Additionally, given an arbitrary infinitesimal generator \(X = \xi X_{\text{T}} + X_{\bar{\vb{Q}}} \in \mathfrak{g}\) and an arbitrary trivial Lie point symmetry generator \(\tilde{\xi} X_{\text{T}} \in \mathfrak{g}^\infty\), the Lie bracket of the two
+Additionally, given an arbitrary infinitesimal generator \(X = \xi X_{\text{T}} + X_{\bar{\vect{Q}}} \in \mathfrak{g}\) and an arbitrary trivial Lie point symmetry generator \(\tilde{\xi} X_{\text{T}} \in \mathfrak{g}^\infty\), the Lie bracket of the two
 \begin{multline*}
   \comm{X}{\tilde{\xi} X_{\text{T}}} =
-  \comm{\xi X_{\text{T}}}{\tilde{\xi} X_{\text{T}}} + \comm{X_{\bar{\vb{Q}}}}{\tilde{\xi} X_{\text{T}}} =\\
-  = \comm{\xi X_{\text{T}}}{\tilde{\xi} X_{\text{T}}} + \bar{Q} \tilde{\xi}_y X_{\text{T}} + \tilde{\xi} \comm{X_{\bar{\vb{Q}}}}{X_{\text{T}}} =
+  \comm{\xi X_{\text{T}}}{\tilde{\xi} X_{\text{T}}} + \comm{X_{\bar{\vect{Q}}}}{\tilde{\xi} X_{\text{T}}} =\\
+  = \comm{\xi X_{\text{T}}}{\tilde{\xi} X_{\text{T}}} + \bar{Q} \tilde{\xi}_y X_{\text{T}} + \tilde{\xi} \comm{X_{\bar{\vect{Q}}}}{X_{\text{T}}} =
   \comm{\xi X_{\text{T}}}{\tilde{\xi} X_{\text{T}}} + \bar{Q} \tilde{\xi}_y X_{\text{T}}
 \end{multline*}
 is a trivial Lie point symmetry generator; in algebraic language \(\mathfrak{g}^\infty\) is an ideal of \(\mathfrak{g}\).
 Hence, the trivial component of any symmetry can safely be ignored when studying the structure of the Lie algebra \(\mathfrak{g}\), known as the full Lie algebra, corresponding to the Lie group of all Lie point symmetries of \cref{eq:first-order-system-ode-shorter}.
 
 The second, and far less trivial result from formulation \labelcref{eq:linearized-symmetry-bracket} of the linearized symmetry condition concerns the structure of the subalgebra \(\mathfrak{g}^0\) containing the non-trivial components of all symmetries of \cref{eq:first-order-system-ode-shorter}.
-Finding this structure is analogous to finding all functions \(\bar{\vb{Q}}: E \to \reals^s\) solving \cref{eq:linearized-symmetry-bracket}, or in other words finding all reduced characteristics corresponding to Lie point symmetries of \cref{eq:first-order-system-ode-shorter}.
+Finding this structure is analogous to finding all functions \(\bar{\vect{Q}}: E \to \reals^s\) solving \cref{eq:linearized-symmetry-bracket}, or in other words finding all reduced characteristics corresponding to Lie point symmetries of \cref{eq:first-order-system-ode-shorter}.
 
 The concept of invariants can be generalized.
 \begin{defn}[Invariant function]
   A function
   \begin{equation*}
-    \vb{I}: E \to \reals^n
+    \vect{I}: E \to \reals^n
   \end{equation*}
   is invariant of a vector field corresponding to the infinitesimal generator \(X\) if and only if
   \begin{equation*}
-    X(\vb{I}) \equiv 0.
+    X(\vect{I}) \equiv 0.
   \end{equation*}
 \end{defn}
 For a first order ODE, there is an equivalent vector field with corresponding infinitesimal generator \(X_T\) as defined in \cref{eq:trivial-generator-base}.
-A function \(\vb{I}\) is called an invariant of a first order ODE if it is invariant of its corresponding vector field.
+A function \(\vect{I}\) is called an invariant of a first order ODE if it is invariant of its corresponding vector field.
 For any vector field corresponding to an infinitesimal generator \(X\), there is the concept of a general form for any invariant of the vector field.
 \begin{defn}[Universal invariant]
   A function
   \begin{equation*}
-    \vb{J}: E \to \reals^n
+    \vect{J}: E \to \reals^n
   \end{equation*}
-  is called a universal invariant of a vector field corresponding to the infinitesimal generator \(X\) if any invariant \(\vb{I}\) of that vector field can be written as
+  is called a universal invariant of a vector field corresponding to the infinitesimal generator \(X\) if any invariant \(\vect{I}\) of that vector field can be written as
   \begin{equation*}
-    \vb{I}(x, \vb{y}) = F(\vb{J}(x, \vb{y})),
+    \vect{I}(x, \vect{y}) = F(\vect{J}(x, \vect{y})),
   \end{equation*}
   where \(F\) is a differentiable function.
 \end{defn}
@@ -652,18 +652,18 @@ For universal invariants with larger domains, only \(n\) of the composite functi
 
 Using these definitions, the following result pertaining to the solutions of \cref{eq:linearized-symmetry-bracket} can be established.
 \begin{thm}
-  A function \(\bar{\vb{Q}}\) is a solution of \cref{eq:linearized-symmetry-bracket} if and only if
+  A function \(\bar{\vect{Q}}\) is a solution of \cref{eq:linearized-symmetry-bracket} if and only if
   \begin{equation*}
-    \partial_{\vb{y}} \vb{J} \cdot \bar{\vb{Q}}
+    \partial_{\vect{y}} \vect{J} \cdot \bar{\vect{Q}}
   \end{equation*}
   is an invariant of the vector field corresponding to the infinitesimal generator \(X_{\text{T}}\).
 \end{thm}
-Here \(\partial_{\vb{y}} \vb{J}\) will for all intents and purposes be the Jacobian, excluding the derivative in \(x\).
-It can also be established that \(\partial_{\vb{y}} \vb{J}\) is invertible, and thus a general form for the functions \(\bar{\vb{Q}}\) that are solutions to \cref{eq:linearized-symmetry-bracket} exists.
+Here \(\partial_{\vect{y}} \vect{J}\) will for all intents and purposes be the Jacobian, excluding the derivative in \(x\).
+It can also be established that \(\partial_{\vect{y}} \vect{J}\) is invertible, and thus a general form for the functions \(\bar{\vect{Q}}\) that are solutions to \cref{eq:linearized-symmetry-bracket} exists.
 \begin{cor} \label{cor:reduced-characteristic-decomposition}
-  A function \(\bar{\vb{Q}}: E \to \reals^s\) is a solution to \cref{eq:linearized-symmetry-bracket} if and only if
+  A function \(\bar{\vect{Q}}: E \to \reals^s\) is a solution to \cref{eq:linearized-symmetry-bracket} if and only if
   \begin{equation*}
-    \bar{\vb{Q}} = (\partial_{\vb{y}} \vb{J})^{-1} \cdot \vb{I},
+    \bar{\vect{Q}} = (\partial_{\vect{y}} \vect{J})^{-1} \cdot \vect{I},
   \end{equation*}
-  where \(\vb{J}: E \to \reals^s\) is a universal invariant and \(\vb{I}: E \to \reals^s\) an arbitrary invariant of the vector field corresponding to the infinitesimal generator \(X_{\text{T}}\).
+  where \(\vect{J}: E \to \reals^s\) is a universal invariant and \(\vect{I}: E \to \reals^s\) an arbitrary invariant of the vector field corresponding to the infinitesimal generator \(X_{\text{T}}\).
 \end{cor}
