@@ -6,11 +6,11 @@
 % Technology Master's Thesis" by Magnus Gustaver, 2020, found at
 % https://sv.overleaf.com/latex/templates/chalmers-university-of-technology-masters-thesis/vnjxsndxqxfy,
 % licensed under CC BY by Felix Augustsson.
-% The pages have been modified to use commands implemented in this class.
+% The pages have been modified to use commands implemented in this package.
 % The work of Magnus Gustaver is in turn based on the works by David Frisk,
 % 2018, with updates to the title page and last page.
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{chalmersthesis}[2021/02/02 Chalmers University of Technology thesis]
+\ProvidesPackage{chalmersthesis}[2021/05/10 Chalmers University of Technology thesis]
 
 % Keyword options and corresponding logic switches
 \RequirePackage{kvoptions}
@@ -55,9 +55,6 @@
 
 \DeclareStringOption{thesistype}
 
-% Feed options forward to report class
-\DeclareDefaultOption{\PassOptionsToClass{\CurrentOptionKey}{report}}
-
 \ProcessKeyvalOptions*
 
 % Process thesistype option
@@ -93,12 +90,8 @@
 
 \definecolor{headerBrown}{RGB}{144,102,78}
 
-\LoadClass[a4paper]{report}
-
 % Use different footnotes
 \renewcommand\thefootnote{\@fnsymbol\c@footnote}
-
-\newcommand{\tagtemp}{\textcolor{white}{, template by Magnus Gustaver}}
 
 % Definition of new title pages
 \renewcommand*{\maketitle}{
