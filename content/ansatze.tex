@@ -12,7 +12,7 @@ Since \cref{eq:scalar-explicit-ode} is of degree \(n\), the linearized symmetry 
 \end{equation}
 \Cref{eq:linearized-general-symmetry^ansatze} is a partial differential equation \(PDE\) of degree \(n\) in the functions \(\xi(x, y), \eta(x, y)\).
 The highest order jet variable \(\prolongpart{y}{n}\) will not be present anywhere in \cref{eq:linearized-general-symmetry^ansatze} as the evaluation on \cref{eq:scalar-explicit-ode} removes all such dependence.
-For an ODE of degree \(n > 1\), jet variables \(y_x, \dots, \prolongpart{y}{n-1}\) will still be present in \cref{eq:linearized-general-symmetry^ansatze}, and since neither \(\xi\) nor \(\eta\) has any dependence on those variables the equation can be decomposed in those variables.
+For an ODE of degree \(n > 1\), jet variables \(\prolongpart{y}{1}, \dots, \prolongpart{y}{n-1}\) will still be present in \cref{eq:linearized-general-symmetry^ansatze}, and since neither \(\xi\) nor \(\eta\) has any dependence on those variables the equation can be decomposed in those variables.
 This means that \cref{eq:linearized-general-symmetry^ansatze} will be turned into a system of PDE:s, still of degree \(n\) in the functions \(\xi(x, y), \eta(x, y)\), called the determining equations of the symmetries.
 In general, such a system is solvable and thus all symmetries of the systems can be calculated.
 Much theory in the literature is built around the assumption that the determining equations exist, and that they (at least in theory) can be solved.
@@ -21,35 +21,34 @@ For an ODE of degree \(n = 1\) such a decompositions is not possible, since no j
 Instead, the \enquote{determining equations} is the same equation as the linearized symmetry condition.
 The common solution to this problem is to use an ansatz for the tangent field \(\xi, \eta\) that turns the linearized symmetry condition into a solvable system.
 Except for some common ansätze like polynomial dependence in one or more variables, coming up with a good ansatz comes down to intuition and luck.
-In this chapter symmetries of the biological models, all of which are of first order, are found using such ansätze.
+In this chapter symmetries of the biological models outlined in \cref{ch:models}, all of which are of first order, are found using such ansätze.
 
 \section{The Hill equation} \label{sec:hill-ansatze}
 
 In this section, Lie point symmetries for the Hill equation will be calculated.
 Since this work has already been done in \cite{ohlsson2020symmetry}, this will serve as a reproduction of their results.
+The calculations are included here as an introduction to the basics of using an ansatz.
 
 \subsection{A useful infinitesimal generator}
 
 The Hill equation
 \begin{equation} \label{eq:hill^ansatze}
-  \diff{y}{\tau} = - \frac{y^n}{1 + y^n} = \omega_n(\tau, y), \quad
+  y_\tau = - \frac{y^n}{1 + y^n} = \omega_n(\tau, y), \quad
   n > 0.
 \end{equation}
 clearly has at least the Lie symmetry generator \(X=\partial_\tau\).
-This can be seen by observing that \cref{eq:hill^ansatze} has no \(\tau\) in either side's expression (remember that the equation is viewed in terms of its lift, residing in the jet space \(J^1\)).
+This can be seen by observing that \cref{eq:hill^ansatze} has no dependence on \(\tau\) (since the equation exists in the jet space \(J_1\) where \(y\) and \(y_\tau\) are independent of \(\tau\)).
 However, one purpose of finding symmetries of differential equations is to distinguish between models.
 Since the symmetry \(X=\partial_\tau\) holds for all \(n\), it can not be used to compare different degrees of Hill equations.
-Thus, finding an additional Lie symmetry group of the Hill equation is therefore of interest.
+Thus, finding an additional one-parameter Lie symmetry group of the Hill equation is therefore of interest.
 
-Any Lie point symmetry group must fulfill the linearized symmetry condition \labelcref{lem:linearized-first-order-symmetry}.
-To solve \cref{eq:linearized-first-order-symmetry}, an Ansatz must be made.
 The tangent fields of many Lie symmetries of ODE:s are linear in \(y\).
 The Ansatz
 \begin{equation*}
   \left(\xi(\tau,y),\eta(\tau,y)\right) = \left(A(\tau) + B(\tau)y,C(\tau) + D(\tau)y\right)
 \end{equation*}
 is therefore used.
-Inserting the Ansatz into \cref{eq:linearized-first-order-symmetry}, and using the fact that \(y' = y^n / (1 + y^n)\), gives that
+Inserting the Ansatz into \cref{eq:linearized-first-order-symmetry}, and using the fact that \(y' = - y^n / (1 + y^n)\), gives that
 \begin{equation*}
   (C' + D'y) + (A' + B'y - D) \frac{y^n}{1 + y^n} - B \frac{y^{2n}}{(1 + y^n)^2} =
   -n(C + Dy) \frac{y^{n-1}}{(1 + y^n)^2}.
@@ -86,16 +85,16 @@ which renders \cref{eq:det-any-0} irrelevant.
 \begin{equation*}
   D(\tau) = c_1
 \end{equation*}
-for a constant \(c_1\) (constants will further be denoted \(c_i\)).
-\Cref{eq:det-any-n} can with the determined values for \(C\) and \(D\) be reduced to
+for a constant \(c_1\) (constants will henceforth be denoted \(c_i\)).
+\Cref{eq:det-any-n} can be reduced to
 \begin{equation*}
   A'(\tau) = (1-n) c_1,
 \end{equation*}
 which means that
 \begin{equation*}
-  A(\tau) = c_2 + (1-n) c_1 x.
+  A(\tau) = c_2 + (1-n) c_1 \tau.
 \end{equation*}
-Using \cref{eq:det-any-np1} and the determined value of \(D\),
+Using \cref{eq:det-any-np1},
 \begin{equation*}
   B(\tau) = c_3,
 \end{equation*}
@@ -108,10 +107,10 @@ which means that
 \begin{equation*}
   c_3 = -n c_1.
 \end{equation*}
-All tangent fields given the Ansatz must therefore be on the form
+All tangent fields given the ansatz must therefore be on the form
 \begin{equation} \label{eq:hill-tangent-field-any}
   \left(\xi_n(\tau,y),\eta_n(\tau,y)\right) = 
-  \left(\tilde{c}_1 + \tilde{c}_2 \left( (1-n) \tau - n y \right), \tilde{c}_2 y\right).
+  \left(c_2 + c_1 \left( (1-n) \tau - n y \right), c_1 y\right).
 \end{equation}
 
 \subsubsection{Case of \texorpdfstring{\(n=1\)}{n is 1}}
@@ -160,7 +159,7 @@ which integrates to
 Thus, all tangent fields given the Ansatz must be on the form
 \begin{equation} \label{eq:hill-tangent-field-1}
   \left(\xi_1(\tau,y),\eta_1(\tau,y)\right) = 
-  \left(A(\tau) + \left( A(\tau) + \tilde{c}_1 \right) y, - \left( A(\tau) + \tilde{c}_1 \right) y\right).
+  \left(A(\tau) + \left( A(\tau) - c_3 \right) y, \left( -A(\tau) + c_3 \right) y\right).
 \end{equation}
 
 \subsubsection{Case of \texorpdfstring{\(n=2\)}{n is 2}}
@@ -210,7 +209,7 @@ and renders \cref{eq:det-2-5} irrelevant.
 Thus, all tangent fields must given the Ansatz be on the form
 \begin{equation} \label{eq:hill-tangent-field-2}
   \left(\xi_2(\tau,y),\eta_2(\tau,y)\right) = 
-  \left(\tilde{c}_1 + \tilde{c}_2 \left( - \tau -2 y \right), \tilde{c}_2 y\right).
+  \left(c_2 - c_1 \left( \tau + 2 y \right), c_1 y\right).
 \end{equation}
 
 \subsection{General form}
@@ -218,8 +217,9 @@ Thus, all tangent fields must given the Ansatz be on the form
 To unify notation for any \(n>0\), \cref{eq:hill-tangent-field-any,eq:hill-tangent-field-1,eq:hill-tangent-field-2} can be summarized as
 \begin{equation} \label{eq:hill-tangent-field}
   \left(\xi_n(\tau,y),\eta_n(\tau,y)\right) = 
-  \left(\tilde{c}_1 + \tilde{c}_2 \left( (1-n) \tau - n y \right), \tilde{c}_2 y\right).
+  \left(\tilde{c}_1 + \tilde{c}_2 \left( (1-n) \tau - n y \right), \tilde{c}_2 y\right),
 \end{equation}
+where \(\tilde{c}_1\) and \(\tilde{c}_2\) are constants.
 For \(n=1\) this form can be achieved by specifying that \(A(\tau)\) has a constant value and grouping the two resulting constants in the right way.
 As this constriction on \(A(\tau)\) when \(n=1\) is only made to get a common expression, while for all other \(n>0\) the expression in \cref{eq:hill-tangent-field} constitutes all symmetries whose generators are linear in \(y\), certain underlying structures of the ODE are only present when \(n=1\). % FIXME: Bad formulation
 
@@ -235,47 +235,49 @@ One natural basis is
   X_2 = - \left( (n-1) \tau + n y \right) \partial_\tau + y \partial_y,
 \end{align*}
 where \(X_1\) generates the non-varying symmetry group observed.
-\(X_2\) on the other hand generates symmetry groups varying with \(n\), and can thus be used to distinguish between different Hill equations.
+\(X_2\) on the other hand generates symmetry groups varying with \(n\), and can thus be used to distinguish between different Hill equations. % TODO: Indeed! After the last sentence, maybe one can repeat the implication of this fact by referring to the wonderful journal of interface article. For example, one can say something like "This was used in \cite[our nice article] to select the correct model in a model selection problem where multiple models were fitted to experimental data". When I read my suggestion I realized it was quite terrible, but I guess the suggestion is to add some explanatory sentences (and of course another nice reference to our article :)) where it is explained why it is important that the symmetries "can be used to distinguish between different Hill equations" as you put it. 
 
 \section{The Gompertz model}
+
+% TODO: Add sentence
 
 \subsection{The classical Gompertz model}
 
 For the classical Gompertz model, two parameterizations exist.
-As the success of the ansatz method does not hinge on the parameterization, the \(T_i\)-parameterization is chosen arbitrarily.
+As the success of the ansatz method does not hinge on the parameterization, the \(T_i\)-parameterization is chosen.
 
 The ansatz
 \begin{align*}
   \xi &= f_{1}(t) + f_{2}(t) W \\
   \eta &= f_{3}(t) + f_{4}(t) W
 \end{align*}
-can be taken, where \(f_i\) for \(i =1,2,3,4\) are arbitrary functions in \(t\).
+is chosen, where \(f_i\) for \(i =1,2,3,4\) are arbitrary functions in \(t\).
 This results in the determining equation
 \begin{multline*}
-  - W^{2} k_{G}^{2} \operatorname{f_{2}}{\left(t \right)} e^{2 T_{i} k_{G}} e^{- 2 k_{G} t} + W^{2} k_{G}^{2} \operatorname{f_{2}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} -\\- W^{2} k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} \operatorname{f_{2}}'{\left(t \right)} + W k_{G}^{2} \operatorname{f_{1}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} - W k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} \operatorname{f_{1}}'{\left(t \right)} +\\+ W \operatorname{f_{4}}'{\left(t \right)} - k_{G} \operatorname{f_{3}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} + \operatorname{f_{3}}'{\left(t \right)} = 0.
+  - W^{2} k_{G}^{2} f_{2}{\left(t \right)} e^{2 T_{i} k_{G}} e^{- 2 k_{G} t} + W^{2} k_{G}^{2} f_{2}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} -\\- W^{2} k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} f_{2}'{\left(t \right)} + W k_{G}^{2} f_{1}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} - W k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} f_{1}'{\left(t \right)} +\\+ W f_{4}'{\left(t \right)} - k_{G} f_{3}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} + f_{3}'{\left(t \right)} = 0.
 \end{multline*}
 Separating the system by powers of \(W\), the ansatz determining equations are
 \begin{subequations}
   \begin{flalign*}
-    W^2 & : &  k_{G}^{2} \operatorname{f_{2}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} - k_{G}^{2} \operatorname{f_{2}}{\left(t \right)} e^{2 T_{i} k_{G}} e^{- 2 k_{G} t} - k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} \operatorname{f_{2}}'{\left(t \right)} &= 0 &&\\
-    W & : & k_{G}^{2} \operatorname{f_{1}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} - k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} \operatorname{f_{1}}'{\left(t \right)} + \operatorname{f_{4}}'{\left(t \right)} &= 0 && \\
-    1 & : & - k_{G} \operatorname{f_{3}}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} + \operatorname{f_{3}}'{\left(t \right)} &= 0. &&
+    W^2 & : &  k_{G}^{2} f_{2}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} - k_{G}^{2} f_{2}{\left(t \right)} e^{2 T_{i} k_{G}} e^{- 2 k_{G} t} - k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} f_{2}'{\left(t \right)} &= 0 &&\\
+    W & : & k_{G}^{2} f_{1}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} - k_{G} e^{T_{i} k_{G}} e^{- k_{G} t} f_{1}'{\left(t \right)} + f_{4}'{\left(t \right)} &= 0 && \\
+    1 & : & - k_{G} f_{3}{\left(t \right)} e^{T_{i} k_{G}} e^{- k_{G} t} + f_{3}'{\left(t \right)} &= 0. &&
   \end{flalign*}
 \end{subequations}
 This system of equations has solutions resulting in the general form for a tangent field corresponding to a symmetry being
 \begin{align*}
-  \xi{\left(t,W \right)} &= W c_{2} e^{\left(k_{G} t e^{k_{G} t} + e^{T_{i} k_{G}}\right) e^{- k_{G} t}} + c_{1} e^{k_{G} t} + \frac{\operatorname{f_{4}}{\left(t \right)} e^{- T_{i} k_{G}} e^{k_{G} t}}{k_{G}} \\
-  \eta{\left(t,W \right)} &= W \operatorname{f_{4}}{\left(t \right)} + c_{3} e^{- e^{T_{i} k_{G}} e^{- k_{G} t}},
+  \xi{\left(t,W \right)} &= W c_{2} e^{\left(k_{G} t e^{k_{G} t} + e^{T_{i} k_{G}}\right) e^{- k_{G} t}} + c_{1} e^{k_{G} t} + \frac{f_{4}{\left(t \right)} e^{- T_{i} k_{G}} e^{k_{G} t}}{k_{G}} \\
+  \eta{\left(t,W \right)} &= W f_{4}{\left(t \right)} + c_{3} e^{- e^{T_{i} k_{G}} e^{- k_{G} t}},
 \end{align*}
 where \(c_1, c_2, c_3\) are arbitrary constants.
 Thus, by separating the tangent field into terms with independent arbitrary elements, the infinitesimal generators
 \begin{align*}
-  X_1 &= e^{k_{G} t} \partial_t \\
-  X_2 &= W e^{k_{G} t + e^{T_{i} k_{G}} e^{- k_{G} t}} \partial_t \\
-  X_3 &= e^{- e^{T_{i} k_{G}} e^{- k_{G} t}} \partial_W \\
-  X_f &= \frac{f{\left(t \right)} e^{- T_{i} k_{G}} e^{k_{G} t}}{k_{G}} \partial_t + W f{\left(t \right)} \partial_W
+  X_{\text{a},1} &= e^{k_{G} t} \partial_t \\
+  X_{\text{a},2} &= W e^{k_{G} t + e^{T_{i} k_{G}} e^{- k_{G} t}} \partial_t \\
+  X_{\text{a},3} &= e^{- e^{T_{i} k_{G}} e^{- k_{G} t}} \partial_W \\
+  X_{\text{a},f} &= \frac{f{\left(t \right)} e^{- T_{i} k_{G}} e^{k_{G} t}}{k_{G}} \partial_t + W f{\left(t \right)} \partial_W
 \end{align*}
-of Lie point symmetries of the autonomous Gompertz ODE \labelcref{eq:gompertz-classical-ti} can be found.
+of Lie point symmetries of the autonomous Gompertz ODE \labelcref{eq:gompertz-classical-ti} are found.
 The corresponding transformations can be seen in \cref{fig:gompertz-classical-ansatz}.
 \begin{figure}
   \centering
@@ -326,7 +328,7 @@ Thus, by separating the tangent field into terms with independent arbitrary elem
   X_{\text{a},3} &= \ln\left(\frac{W}{A}\right) W \partial_W \\
   X_{\text{a},f} &= f(t) \partial_t - k_G f(t) \ln\left(\frac{W}{A}\right) W \partial_W
 \end{align*}
-of Lie point symmetries of the autonomous Gompertz ODE \labelcref{eq:gompertz-autonomous} can be found.
+of Lie point symmetries of the autonomous Gompertz ODE \labelcref{eq:gompertz-autonomous} are found.
 The corresponding transformations can be seen in \cref{fig:gompertz-autonomous-ansatz}.
 \begin{figure}
   \centering
@@ -343,9 +345,9 @@ For this reason, the calculations for the remaining models in this chapter have 
 
 Similarly to the classical Gompertz model, the ansatz
 \begin{align*}
-  \xi{\left(t,W,G \right)} &= \operatorname{f_{1}}{\left(t \right)} + \operatorname{f_{2}}{\left(t \right)} W + \operatorname{f_{3}}{\left(t \right)} G \\
-  \eta^{1}{\left(t,W,G \right)} &= \operatorname{f_{4}}{\left(t \right)} + \operatorname{f_{5}}{\left(t \right)} W + \operatorname{f_{6}}{\left(t \right)} G\\
-  \eta^{2}{\left(t,W,G \right)} &= \operatorname{f_{7}}{\left(t \right)} + \operatorname{f_{8}}{\left(t \right)} W + \operatorname{f_{9}}{\left(t \right)} G,
+  \xi{\left(t,W,G \right)} &= f_{1}{\left(t \right)} + f_{2}{\left(t \right)} W + f_{3}{\left(t \right)} G \\
+  \eta^{1}{\left(t,W,G \right)} &= f_{4}{\left(t \right)} + f_{5}{\left(t \right)} W + f_{6}{\left(t \right)} G\\
+  \eta^{2}{\left(t,W,G \right)} &= f_{7}{\left(t \right)} + f_{8}{\left(t \right)} W + f_{9}{\left(t \right)} G,
 \end{align*}
 where \(f_i\) are arbitrary functions in \(t\), is used.
 The two determining equations can be decomposed in \(W\) and \(G\), resulting in 15 algebraic and ordinary differential equations.
