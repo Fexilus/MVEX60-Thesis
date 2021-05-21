@@ -95,6 +95,7 @@
 \definecolor{headerBrown}{RGB}{144,102,78}
 
 % Use different footnotes
+\let\originalfootnote\thefootnote
 \renewcommand\thefootnote{\@fnsymbol\c@footnote}
 
 % Definition of new title pages
@@ -270,6 +271,7 @@
   \global\let\author\relax
   \global\let\date\relax
   \global\let\and\relax
+  \renewcommand\thefootnote\originalfootnote
 }
 
 \AtEndDocument{
