@@ -34,13 +34,16 @@ In this chapter the models will be introduced, along with some biological contex
 
 \section{The Hill equation}
 
-The Hill equation is a scalar ODE that empirically describes cooperative binding to to an enzyme with multiple active sites \cite{weiss1997hill}. % TODO: would be nice to mention application to enzyme catalysis or hemoglobin
+The Hill equation is a scalar ODE that was originally used to model the binding of oxygen to hemoglobin \cite{hill1913combinations}.
+Since then, it has been used to describe many binding phenomena such as ligand--receptor and substrate-enzyme reactions \cite{weiss1997hill}.
 It takes the form
 \begin{equation} \label{eq:original-hill}
   \diff{Y}{t} = - v_\text{max} \frac{Y^n}{K_m + Y^n} = \Omega_n(t, Y), \quad
   n > 0,
 \end{equation}
-where \(Y\) is the concentration of the substrate that binds to the enzyme. % TODO: what is n? what are K_m and v_max?
+where \(Y\) is the concentration of the substrate that binds to the enzyme.
+The parameter \(v_\text{max}\) models the maximum reaction speed, \(K_m\) is a dissociation constant and \(n\) is the Hill coefficient.
+The biological interpretation of the Hill coefficient \(n\) has historically been a contentious matter, but it is roughly a measure of the cooperativity among binding sites.
 The Hill equation has been studied using symmetries of differential equations, using its nondimensionalized form \cite{ohlsson2020symmetry}.
 By nondimensionalizing both the substrate concentration with
 \begin{equation*}
