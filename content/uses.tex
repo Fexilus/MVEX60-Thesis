@@ -267,20 +267,21 @@ Using the reduced characteristics, one invariant can be found using the fact tha
   \bar{\vect{Q}}_{\text{s},3} = e^{k_{G} t} G \left(-W G, k_G G\right) = e^{k_{G} t} G \bar{\vect{Q}}_{\text{s},1}
 \end{equation*}
 implies that \(e^{k_{G} t} G\) is an invariant.
-Using this invariant, all of the reduced characteristics \(\bar{\vect{Q}}_{\text{s},1}, \dots, \bar{\vect{Q}}_{\text{s},5}\) found using the ansatz method can be divided into two linearly independent\footnote{} sets of vectors % TODO: Write footnote
+Using this invariant, all of the reduced characteristics \(\bar{\vect{Q}}_{\text{s},1}, \dots, \bar{\vect{Q}}_{\text{s},5}\) found using the ansatz method can be divided into two sets of vectors that only differ by invariant coefficients.
 \begin{align*}
   \bar{\vect{Q}}_{\text{s},1} &= \frac{\bar{\vect{Q}}_{\text{s},3}}{e^{k_{G} t} G} = \left(k_G e^{k_{G} t} G\right) \bar{\vect{Q}}_{\text{s},5} \\
   \frac{e^{k_{G} t} G}{k_G} \bar{\vect{Q}}_{\text{s},2} &= \bar{\vect{Q}}_{\text{s},4}.
 \end{align*}
-\(-\bar{\vect{Q}}_{\text{s},1}\) and \(\bar{\vect{Q}}_{\text{s},4}\), being functionally independent, could be used to construct
+Since no function \(f\) could result in the relationship \(-\bar{\vect{Q}}_{\text{s},1} = f(t, W, G) bar{\vect{Q}}_{\text{s},4}\),
 \begin{equation*}
   \begin{pmatrix}
     W & W G \\
     0 & -k_G G
   \end{pmatrix}
-  = \left(\partial_{(W, G)} \vect{J}\right)^{-1},
+  = \left(\partial_{(W, G)} \vect{J}\right)^{-1}
 \end{equation*}
-and thus a function \(J\) consisting of functionally independent invariants would be the solutions to the differential equation
+must hold for some function \(J\) consisting of functionally independent invariants.
+Thus a valid \(J\) is the solution to the differential equation
 \begin{equation} \label{eq:universal-invariant-system-gompertz-hint}
   \partial_{(W, G)} \vect{J} =
   \begin{pmatrix}
@@ -288,7 +289,7 @@ and thus a function \(J\) consisting of functionally independent invariants woul
     0 & -k_G G
   \end{pmatrix}^{-1}
 \end{equation}
-that also fulfill the original invariance condition
+that also fulfills the original invariance condition
 \begin{equation*}
   \partial_{(t, W, G)} \vect{J} \cdot
   \begin{pmatrix}
