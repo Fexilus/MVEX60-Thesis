@@ -46,6 +46,10 @@
 \newcommand*{\@illustration}{}
 \newcommand*{\illustrationdescription}[1]{\gdef\@illustrationdescription{#1}}
 \newcommand*{\@illustrationdescription}{Use \string\illustrationdescription}
+\newcommand{\setabstract}[1]{\long\gdef\@abstract{#1}}
+\newcommand{\@abstract}{Use \string\setabstract}
+\newcommand*{\keywords}[1]{\gdef\@keywords{#1}}
+\newcommand*{\@keywords}{}
 
 % Create class options
 \SetupKeyvalOptions{
@@ -141,8 +145,8 @@
     \makebox[\textwidth][c]{\textcolor{thesisHeaderColor}{\rule{1.1\textwidth}{0.8pt}}}
     \vspace*{\dimexpr-\parskip-\baselineskip+1mm}
 
-    {\small \MakeUppercase{Chalmers University of Technology}} \\
-    {\small Gothenburg, Sweden \@date \\
+    {\small \MakeUppercase{Chalmers University of Technology}}\newline
+    {\small Gothenburg, Sweden \@date\newline
     \href{www.chalmers.se}{www.chalmers.se}}\vspace{1.7cm}
     % Reset standard font
     \renewcommand{\familydefault}{\rmdefault} \normalfont
@@ -184,10 +188,10 @@
     \renewcommand{\and}{\unskip,\xspace}
 
     \vspace*{4.5cm}
-    \@title\\
+    \@title\newline
     \ifx\@subtitle\@empty
     \else
-      \@subtitle\\
+      \@subtitle\newline
     \fi
     \MakeUppercase{\@author} \setlength{\parskip}{1cm}
 
@@ -195,9 +199,9 @@
 
     % Print supervisor(s) depending on amount
     \IfSubStr{\detokenize\expandafter{\@supervisor}}{\detokenize{\and}}{
-      Supervisors: \@supervisor\\
+      Supervisors: \@supervisor\newline
     }{
-      Supervisor: \@supervisor\\
+      Supervisor: \@supervisor\newline
     }
     \IfSubStr{\detokenize\expandafter{\@examiner}}{\detokenize{\and}}{
       Examiners: \@examiner\setlength{\parskip}{1cm}
@@ -205,11 +209,11 @@
       Examiner: \@examiner\setlength{\parskip}{1cm}
     }
 
-    \@thesistype \xspace \@date\\	
-    \@department\\
-    Chalmers University of Technology\\
-    SE-412 96 Gothenburg\\
-    Sweden\\
+    \@thesistype \xspace \@date\newline
+    \@department\newline
+    Chalmers University of Technology\newline
+    SE-412 96 Gothenburg\newline
+    Sweden\newline
     Telephone +46 (0)31 772 1000 \setlength{\parskip}{0.5cm}
 
     \vfill
@@ -219,10 +223,40 @@
       Cover: \@illustrationdescription \setlength{\parskip}{0.5cm}
     \fi
     
-    Typeset in \LaTeX\\
-    Printed by Chalmers Reproservice\\
-    Gothenburg, Sweden \@date\\
+    Typeset in \LaTeX\newline
+    Printed by Chalmers Reproservice\newline
+    Gothenburg, Sweden \@date\newline
     \@thanks
+  \end{titlepage}
+  \begin{titlepage}
+    \renewcommand{\and}{\unskip,\xspace}
+    \noindent\@title\newline
+    \ifx\@subtitle\@empty
+    \else
+      \@subtitle\newline
+    \fi
+    \MakeUppercase{\@author}\newline
+    \@department\newline
+    Chalmers University of Technology
+    \vfill
+    % Copy of abstract definition with notitlepage option in report class
+    \small
+    \begin{center}%
+      {\bfseries \abstractname\vspace{-.5em}\vspace{\z@}}%
+    \end{center}%
+    \quotation
+    \@abstract
+    \endquotation
+    \vfill
+    \ifx\@keywords\@empty
+    \else
+      \noindent
+      Keywords: \@keywords
+    \fi
+  \end{titlepage}
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \mbox{}
   \end{titlepage}
   \restoregeometry
   \setcounter{footnote}{0}%
