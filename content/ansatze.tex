@@ -278,14 +278,24 @@ Thus, by separating the tangent field into terms with independent arbitrary elem
   X_{\text{a},f} &= \frac{f{\left(t \right)} e^{- T_{i} k_{G}} e^{k_{G} t}}{k_{G}} \partial_t + W f{\left(t \right)} \partial_W
 \end{align*}
 of Lie point symmetries of the autonomous Gompertz ODE \labelcref{eq:gompertz-classical-ti} are found.
-The corresponding transformations can be seen in \cref{fig:gompertz-classical-ansatz}.
+The generator \(X_{\text{c},f}\) is easily shown to be trivial, and is therefore not very useful.
+Additionally, both \(X_{\text{c},1}\) and \(X_{\text{c},2}\) only generate local symmetries.
+This is due to their exponential growth in \(t\) for the \(\partial_t\)-term, which can be seen in \cref{fig:gompertz-classical-local}.
 \begin{figure}
   \centering
-  \includegraphics[width=.96\textwidth]{images/gompertz-classical-ansatz}
+  \includegraphics[width=.6517\textwidth]{images/gompertz-classical-local}
   \caption{
-    Representative transformations of the Lie groups corresponding to symmetry generators of the classical Gompertz model found using an ansatz.
-    For the generators \(X_{\text{c},1}\) and \(X_{\text{c},2}\), vector fields are instead shown since the symmetry generators only act locally.
-    The \(\dl t\)-- and \(\dl W\)--components of the vector fields are shown on a \(\log(1 + x)\) scale.
+    The vector field of generators \(X_{\text{c},1}\) and \(X_{\text{c},2}\) superimposed on a solution curve.
+    The \(\dl t\)- and \(\dl W\)-components of the vector fields are shown on a \(\log(1 + x)\) scale.
+  }
+  \label{fig:gompertz-classical-local}
+\end{figure}
+A representative of the only remaining transformation group, corresponding to \(X_{\text{c},3}\), is shown in \cref{fig:gompertz-classical-ansatz}.
+\begin{figure}
+  \centering
+  \includegraphics[width=.3355\textwidth]{images/gompertz-classical-ansatz}
+  \caption{
+    A representative transformation of the Lie group corresponding to the only non-trivial non-local symmetry generator of the classical Gompertz model found using an ansatz.
   }
   \label{fig:gompertz-classical-ansatz}
 \end{figure}
