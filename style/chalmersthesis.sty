@@ -230,6 +230,8 @@
     \@thanks
   \end{titlepage}
   \begin{titlepage}
+    \thispagestyle{empty}
+
     \renewcommand{\and}{\unskip,\xspace}
     \noindent\@title\newline
     \ifx\@subtitle\@empty
@@ -239,15 +241,9 @@
     \MakeUppercase{\@author}\newline
     \@department\newline
     Chalmers University of Technology
-    \vfill
-    % Copy of abstract definition with notitlepage option in report class
-    \small
-    \begin{center}%
-      {\bfseries \abstractname\vspace{-.5em}\vspace{\z@}}%
-    \end{center}%
-    \quotation
+    \vspace{0.5cm}
+    \section*{\abstractname}
     \@abstract
-    \endquotation
     \vfill
     \ifx\@keywords\@empty
     \else
