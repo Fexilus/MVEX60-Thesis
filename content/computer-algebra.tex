@@ -1,2 +1,138 @@
 \chapter{Computer algebra system} \label{app:computer-algebra}
 
+% Fix description/listings interaction
+% This breaks other parts of the document if defined in definitions.sty,
+% so it is defined here instead.
+% Based on: https://tex.stackexchange.com/a/93950
+\makeatletter
+  \let\orig@item\item
+
+  \def\item{%
+      \@ifnextchar{[}%
+          {\lstinline@item}%
+          {\orig@item}%
+  }
+
+  \begingroup
+  \catcode`\]=\active
+  \gdef\lstinline@item[{%
+      \setbox0\hbox\bgroup
+          \catcode`\]=\active
+          \let]\lstinline@item@end
+  }
+  \endgroup
+
+  \def\lstinline@item@end{%
+      \egroup
+      \orig@item[\usebox0]%
+  }
+\makeatother
+
+\section*{symmetries}
+
+Calculate symmetries of ODE:s symbolically.
+
+\subsection*{class \lstinline{symmetries.Generator(xis, etas, total_space)}}
+
+   A local coordinate representation of an infinitesimal generator.
+
+   \subsubsection*{\lstinline{__call__(expr, jet_space=None)}}
+
+      Apply the generator on an expression on a jet space.
+
+\subsection*{class \lstinline{symmetries.JetSpace(base_coord, fibre_coord, degree)}}
+
+   A local coordinate representation of a jet space.
+
+   \subsubsection*{\lstinline{base_index(base_symbol)}}
+
+      Returns the derivative index for a coordinate in the base space.
+
+   \subsubsection*{\lstinline{extension(new_degree)}}
+
+      Creates a jet space on the same total space of a higher degree.
+
+   \subsubsection*{\lstinline{get_dependents()}}
+
+      Return the dependent coordinates of the jet space.
+
+   \subsubsection*{property \lstinline{original_total_space}}
+
+      Return the coordinates of the total space on which the jet
+      space is built
+
+      Returns:
+         A 2-tuple of lists of the coordinates of the base space and
+         fiber respectively.
+
+\subsection*{\lstinline{symmetries.decompose_generator(generator, basis)}}
+
+   Decompose a generator by a basis of arbitrary constants or
+   functions.
+
+   Only generators linear in the basis is implemented.
+
+\subsection*{\lstinline{symmetries.generator_on(total_space)}}
+
+   Returns a initialization method for generators on the total space.
+
+   Is meant to be used in code where several generators on the same
+   space are used to reduce visual clutter.
+
+\subsection*{\lstinline{symmetries.get_lin_symmetry_cond(diff_eqs, generator, jet_space,}\newline\lstinline{derivative_hints=None)}}
+
+   Test if the linearized symmetry conditions hold differential
+   equations.
+
+   \begin{description}
+      \item[Args:] \leavevmode
+        \begin{description}
+          \item[\lstinline{diff_eqs}:] A single or iterable of differential equations
+            formulated in a jet space.
+
+          \item[\lstinline{generator}:] An infinitesimal generator that takes an expression
+            and a jet space and applies the prolongation on that jet
+            space to the expression.
+
+          \item[\lstinline{jet_space}:] The jet space on which the differential equations
+            exist.
+
+          \item[\lstinline{derivative_hints}:] If given, contains a single item or list
+            (depending on the form of the differential equations) of the
+            highest order derivatives to be solved for.
+        \end{description}
+
+      \item[Returns:]
+        A single or list (depending on the form of the differential
+        equations) of differential equations that must hold for the
+        infinitesimal generator to generate a group of symmetries that
+        constitute a symmetry.
+   \end{description}
+
+\subsection*{\lstinline{symmetries.get_prolongations(xis, etas, jet_space)}}
+
+   Calculate the coefficients of a vector field prolonged over a jet
+   space.
+
+   The vector field is characterized by the coefficients of
+   derivatives in the base space (xis) and the coefficients of
+   derivatives in the fiber of the original fiber bundle (etas) from
+   which the jet space is created.
+
+\subsection*{\lstinline{symmetries.lie_bracket(generator1, generator2)}}
+
+   The Lie bracket of two generators in the same coordinate system.
+
+\subsection*{\lstinline{symmetries.total_derivative(jet_exp, coordinate, domain)}}
+
+   The total derivative of an expression in a coordinate.
+
+
+\section*{\lstinline{symmetries.ansatz}}
+
+Make ansätze for generators.
+
+\subsection*{\lstinline{symmetries.ansatz.create_poly_ansatz(jet_space, degree=1)}}
+
+   Create an infinitesimal generator that is polynomial in the
+   components of a given jet space.
