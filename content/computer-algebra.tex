@@ -28,7 +28,50 @@
   }
 \makeatother
 
-\section*{symmetries}
+% Raise asterisks in the code listings
+% Based on: https://tex.stackexchange.com/a/303477
+\makeatletter
+\lst@CCPutMacro
+    \lst@ProcessOther {"2A}{%
+      \lst@ttfamily 
+         {\raisebox{2pt}{*}}% used with ttfamily
+         \textasteriskcentered}% used with other fonts
+    \@empty\z@\@empty
+\makeatother  
+
+% Listings settings
+\lstset{
+   alsoletter={.},
+   emph={
+      sympy.Expr,
+      ValueError,
+      Generator,
+      __call__,
+      get_jet_space_basis,
+      get_tangent_field,
+      JetSpace,
+      base_index,
+      dependents,
+      extension,
+      original_total_space,
+      decompose_generator,
+      generator_on,
+      get_lin_symmetry_cond,
+      get_prolongations,
+      lie_bracket,
+      total_derivative,
+      create_poly_ansatz,
+      derivatives_sort_key,
+      iter_wrapper,
+      optional_iter,
+      replace_consts,
+      zip_strict,
+   },
+   emphstyle=\textbf,
+   basicstyle=\linespread{0.83}\ttfamily,
+}
+
+\section*{\lstinline{symmetries}}
 
 Calculate symmetries of ODE:s symbolically.
 
@@ -36,48 +79,151 @@ Calculate symmetries of ODE:s symbolically.
 
    A local coordinate representation of an infinitesimal generator.
 
+   \begin{description}
+      \item[Parameters:] \leavevmode
+        \begin{description}
+            \item[\lstinline{xis (list[sympy.Expr])} -] The base space components of the tangent field.
+            \item[\lstinline{etas (list[sympy.Expr])} -] The fiber components of the tangent field.
+            \item[\lstinline{total_space (tuple[list[sympy.Expr], list["sympy.Expr"]])} -] The base\newline vectors of the total space on which the generator acts.
+        \end{description}
+   \end{description}
+
    \subsubsection*{\lstinline{__call__(expr, jet_space=None)}}
 
       Apply the generator on an expression on a jet space.
 
-\subsection*{class \lstinline{symmetries.JetSpace(base_coord, fibre_coord, degree)}}
+      \begin{description}
+         \item[Parameters:] \leavevmode
+           \begin{description}
+               \item[\lstinline{expr (sympy.Expr)} -] The expression to apply the generator on.
+               \item[\lstinline{jet_space (JetSpace, optional)} -] The jet space in which the expression lives.
+           \end{description}
+         \item[Returns:] The expression after application of the generator.
+         \item[Return type:] \lstinline{sympy.Expr}
+      \end{description}
+   
+   \subsubsection*{\lstinline{get_jet_space_basis(degree=0)}}
+
+      Return the basis of a jet space on which the generator can act.
+
+      The ordering is the same as the ordering of \lstinline{get_tangent_field()}.
+
+      \begin{description}
+         \item[Parameters:] \leavevmode
+           \begin{description}
+               \item[\lstinline{degree (int, optional)} -] The degree of the jet space.
+           \end{description}
+         \item[Returns:] The expressions corresponding to the basis vectors of the jet space.
+         \item[Return type:] \lstinline{list[sympy.Expr]}
+      \end{description}
+
+   \subsubsection*{\lstinline{get_tangent_field(degree=0)}}
+
+      Return the corresponding prolonged tangent field of the
+      generator.
+
+      The ordering is the same as the ordering of \lstinline{get_jet_space_basis()}.
+
+      \begin{description}
+         \item[Parameters:] \leavevmode
+           \begin{description}
+               \item[\lstinline{degree (int, optional)} -] The degree of the prolongation.
+           \end{description}
+         \item[Returns:] The expressions corresponding to the components of the (possibly prolonged) tangent field.
+         \item[Return type:] \lstinline{list[sympy.Expr]}
+      \end{description}
+
+\subsection*{class \lstinline{symmetries.JetSpace(base_coord, fiber_coord, degree)}}
 
    A local coordinate representation of a jet space.
+
+   \begin{description}
+      \item[Parameters:] \leavevmode
+        \begin{description}
+            \item[\lstinline{base_coord (list[sympy.Expr])} -] The basis vectors of the base space.
+            \item[\lstinline{fiber_coord (list[sympy.Expr])} -] The basis vectors of the fibers.
+            \item[\lstinline{degree (int)} -] The degree of the created jet space. A degree of 0 corresponds to the total space.
+        \end{description}     
+   \end{description}
 
    \subsubsection*{\lstinline{base_index(base_symbol)}}
 
       Returns the derivative index for a coordinate in the base space.
 
+      \begin{description}
+         \item[Parameters:] \leavevmode
+           \begin{description}
+               \item[\lstinline{base_symbol (sympy.Expr)} -] The symbol to find the base index of.
+           \end{description}
+         \item[Returns:] The multiindex of the desired symbol in the base space.
+         \item[Return type:] \lstinline{tuple[int, ...]} 
+      \end{description}
+
+   \subsubsection*{property \lstinline{dependents}}
+
+      The fibers of the total space on which the jet space is built.
+
+      \begin{description}
+         \item[Returns:] The symbols of the original fibers.
+         \item[Return type:] \lstinline{list[sympy.Expr]}
+      \end{description}
+   
    \subsubsection*{\lstinline{extension(new_degree)}}
 
       Creates a jet space on the same total space of a higher degree.
 
-   \subsubsection*{\lstinline{get_dependents()}}
-
-      Return the dependent coordinates of the jet space.
+      \begin{description}
+         \item[Parameters:] \leavevmode
+           \begin{description}
+               \item[\lstinline{new_degree (int)} -] The degree of the extended jet space. Must be higher than the current degree.
+           \end{description}
+         \item[Returns:] A deep copy of the jet space, with additional jet fibers of higher degree.
+         \item[Return type:] \lstinline{JetSpace}
+      \end{description}
 
    \subsubsection*{property \lstinline{original_total_space}}
 
       Return the coordinates of the total space on which the jet
       space is built
 
-      Returns:
-         A 2-tuple of lists of the coordinates of the base space and
-         fiber respectively.
+      \begin{description}
+         \item[Returns:] The coordinates of the base space and fiber.
+         \item[Return type:] \lstinline{tuple[list[sympy.Expr], list[sympy.Expr]]}
+      \end{description}         
 
 \subsection*{\lstinline{symmetries.decompose_generator(generator, basis)}}
 
    Decompose a generator by a basis of arbitrary constants or
    functions.
 
-   Only generators linear in the basis is implemented.
+   Only decomposition of generators linear in the basis is
+   implemented.
+
+   \begin{description}
+      \item[Parameters:] \leavevmode
+        \begin{description}
+            \item[\lstinline{generator (Generator)} -] The generator to decompose.
+            \item[\lstinline{basis (list[sympy.Expr])} -] The arbitrary constants or functions in which the generator can be decomposed.
+        \end{description}
+      \item[Returns:] The generators that span the space the input generator was in.
+      \item[Return type:] \lstinline{list[Generator]}
+   \end{description}
 
 \subsection*{\lstinline{symmetries.generator_on(total_space)}}
 
    Returns a initialization method for generators on the total space.
 
-   Is meant to be used in code where several generators on the same
-   space are used to reduce visual clutter.
+   Is meant to be used to reduce visual clutter in code where several
+   generators on the same space are used.
+
+   \begin{description}
+      \item[Parameters:] \leavevmode
+        \begin{description}
+            \item[\lstinline{total_space (tuple[list[sympy.Expr], list[sympy.Expr]])} -] The base\newline vectors of the total space on which the generator acts.
+        \end{description}
+      \item[Returns:] A generator subclass without the total space argument in the initializer.
+      \item[Return type:] \lstinline{Generator}
+   \end{description}
 
 \subsection*{\lstinline{symmetries.get_lin_symmetry_cond(diff_eqs, generator, jet_space,}\newline\lstinline{derivative_hints=None)}}
 
@@ -85,28 +231,16 @@ Calculate symmetries of ODE:s symbolically.
    equations.
 
    \begin{description}
-      \item[Args:] \leavevmode
+      \item[Parameters:] \leavevmode
         \begin{description}
-          \item[\lstinline{diff_eqs}:] A single or iterable of differential equations
-            formulated in a jet space.
-
-          \item[\lstinline{generator}:] An infinitesimal generator that takes an expression
-            and a jet space and applies the prolongation on that jet
-            space to the expression.
-
-          \item[\lstinline{jet_space}:] The jet space on which the differential equations
-            exist.
-
-          \item[\lstinline{derivative_hints}:] If given, contains a single item or list
-            (depending on the form of the differential equations) of the
-            highest order derivatives to be solved for.
+            \item[\lstinline{diff_eqs (sympy.Expr or list[sympy.Expr])} -] The differential equation(s)\newline expressed in jet space notation.
+            \item[\lstinline{generator (Generator)} -] The generator corresponding to the Lie group of transformations to be tested.
+            \item[\lstinline{jet_space (JetSpace)} -] The jet space on which the differential equations exist.
+            \item[\lstinline{derivative_hints (sympy.Expr or list[sympy.Expr])} -] The highest order\newline derivative(s) that the differential equation(s) can be solved for.
         \end{description}
 
-      \item[Returns:]
-        A single or list (depending on the form of the differential
-        equations) of differential equations that must hold for the
-        infinitesimal generator to generate a group of symmetries that
-        constitute a symmetry.
+      \item[Returns:] The differential equation(s) that must hold for the infinitesimal generator to generate a Lie group of symmetries. The differential equations are expressed in jet space notation.
+      \item[Return type:] \lstinline{sympy.Expr or list[sympy.Expr]}
    \end{description}
 
 \subsection*{\lstinline{symmetries.get_prolongations(xis, etas, jet_space)}}
@@ -119,14 +253,45 @@ Calculate symmetries of ODE:s symbolically.
    derivatives in the fiber of the original fiber bundle (etas) from
    which the jet space is created.
 
+   \begin{description}
+      \item[Parameters:] \leavevmode
+        \begin{description}
+            \item[\lstinline{xis (list[sympy.Expr])} -] The base space components of the tangent field.
+            \item[\lstinline{etas (list[sympy.Expr])} -] The fiber components of the tangent field.
+            \item[\lstinline{jet_space (JetSpace)} -] The jet space on which the prolonged tangent field will be calculated.
+        \end{description}
+      \item[Returns:] The prolonged fiber expressions, ordered firstly by original fiber and secondly by corresponding derivative multiindex.
+      \item[Return type:] \lstinline{dict[str, dict[tuple[int, ...], sympy.Expr]]}
+   \end{description}
+
 \subsection*{\lstinline{symmetries.lie_bracket(generator1, generator2)}}
 
    The Lie bracket of two generators in the same coordinate system.
+
+   \begin{description}
+      \item[Parameters:] \leavevmode
+        \begin{description}
+            \item[\lstinline{generator1 (Generator)} -] The left generator in the Lie bracket.
+            \item[\lstinline{generator2 (Generator)} -] The right generator in the Lie bracket.
+        \end{description}
+      \item[Returns:] The Lie bracket of the two generators.
+      \item[Return type:] \lstinline{Generator}
+   \end{description}
 
 \subsection*{\lstinline{symmetries.total_derivative(jet_exp, coordinate, domain)}}
 
    The total derivative of an expression in a coordinate.
 
+   \begin{description}
+      \item[Parameters:] \leavevmode
+        \begin{description}
+            \item[\lstinline{jet_exp (sympy.Expr)} -] The expression to be derived.
+            \item[\lstinline{coordinate (sympy.Expr)} -] The coordinate to derive in. Should be one of the symbols of the base space.
+            \item[\lstinline{domain (JetSpace)} -] The jet space in which \lstinline{jet_exp} exists.
+        \end{description}
+      \item[Returns:] The derived expression. This expression exists in the the (once) extended jet space compared to the domain of the derivative.
+      \item[Return type:] \lstinline{sympy.Expr}
+   \end{description}
 
 \section*{\lstinline{symmetries.ansatz}}
 
@@ -136,3 +301,86 @@ Make ansätze for generators.
 
    Create an infinitesimal generator that is polynomial in the
    components of a given jet space.
+
+   \begin{description}
+      \item[Parameters:] \leavevmode
+        \begin{description}
+            \item[\lstinline{jet_space (JetSpace)} -] The jet space on which the generator can act.
+            \item[\lstinline{degree (int, optional)} -] The degree of the polynomials in all generator components.
+        \end{description}
+      \item[Returns:] The generator and arbitrary constants defined by the ansatz.
+      \item[Return type:] \lstinline{tuple[Generator, list[sympy.Expr]]}
+   \end{description}
+
+\section*{\lstinline{symmetries.utils}}
+
+Utilities for the main symmetries package.
+
+\subsection*{\lstinline{symmetries.utils.derivatives_sort_key(function_order=None,}\newline\lstinline{argument_order=None)}}
+
+   Ad hoc sort key for derivatives.
+
+   \begin{description}
+      \item[Parameters:] \leavevmode
+        \begin{description}
+            \item[\lstinline{function_order (list[sympy.Derivative], optional)} -] An ordering of the\newline functions.
+            \item[\lstinline{argument_order (list[sympy.Expr], optional)} -] An ordering of the\newline arguments.
+        \end{description}
+      \item[Returns:] A sorting key for \lstinline{sympy.Derivative} that sorts firstly by function, secondly by derivative degree and thirdly by derivative arguments.
+   \end{description}
+
+\subsection*{\lstinline{symmetries.utils.iter_wrapper(possible_iter)}}
+
+   Ensures that the argument can be treated as an iterable.
+
+   \begin{description}
+      \item[Parameters:] \leavevmode
+        \begin{description}
+            \item[\lstinline{possible_iter} -] A possible iterable.
+        \end{description}
+      \item[Returns:] A guaranteed iterable.
+   \end{description}      
+
+\subsection*{\lstinline{symmetries.utils.optional_iter(func)}}
+
+   Decorator that allows the first argument and return value to be
+   optionally treated as iterables.
+
+   \begin{description}
+      \item[Parameters:] \leavevmode
+        \begin{description}
+            \item[\lstinline{func} -] The function should take an iterable as first argument and return an iterable.
+        \end{description}
+      \item[Returns:] The decorated function will accept either a single element or an iterable as first argument, and will return a single element or an iterable depending on the input type.
+   \end{description}
+
+\subsection*{\lstinline{symmetries.utils.replace_consts(exprs, new_const_name)}}
+
+   Replace arbitrary constant from eg. \lstinline{sympy.dsolve}.
+
+   \begin{description}
+      \item[Parameters:] \leavevmode
+        \begin{description}
+            \item[\lstinline{exprs (sympy.Expr or list[sympy.Expr])} -] The expression(s) to\newline replace constants in.
+            \item[\lstinline{new_const_name (str)} -] The new base name to give to the constants. E.g.\newline \lstinline{new_const_name = r"\\alpha"} will result in constants \lstinline|r"\alpha_{1}"|,\newline \lstinline|r"\alpha_{2}"| etc.
+        \end{description}
+      \item[Returns:] The new expressions and all the new constants.
+      \item[Return type:] \lstinline{tuple[sympy.Expr or list[sympy.Expr], list[sympy.Expr]]}
+   \end{description}
+
+\subsection*{\lstinline{symmetries.utils.zip_strict(*iters)}}
+
+   Zip two iterables and ensure that they are equal. Will be replaced
+   with \lstinline{strict=True} argument in Python 3.10.
+
+   \begin{description}
+      \item[Parameters:] \leavevmode
+        \begin{description}
+          \item[\lstinline{*iters} -] Any number of iterables.
+        \end{description}
+      \item[Returns:] An iterable through tuples of the ingoing iterables.
+      \item[Raises:] \leavevmode
+      \begin{description}
+        \item[\lstinline{ValueError} -] if the iterables have different lengths.
+      \end{description}
+   \end{description}     

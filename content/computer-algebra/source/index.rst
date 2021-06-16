@@ -11,12 +11,19 @@ symmetries
 .. automodule:: symmetries
    :imported-members:
    :members:
+   :exclude-members: Generator
 
    .. autoclass:: Generator
+      :members:
       :special-members: __call__
 
 symmetries.ansatz
 -----------------
 .. automodule:: symmetries.ansatz
    :imported-members:
+   :members:
+
+symmetries.utils
+-----------------
+.. automodule:: symmetries.utils
    :members:
