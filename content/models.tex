@@ -72,7 +72,7 @@ Written in mathematical terms:
 \end{equation}
 where \(W(t)\) is the size of the species (volume of a tumor, weight of an animal, individuals in a population etc.) at time \(t\) and \(c\) is a constant.
 While exponential growth accurately models the initial stages of the growth process for many systems, eventually some external factor will limit the growth.
-The external factor might be simple, like limited availability of food in the case of an animal population, or complex, like limitations of infrastructure in the case of cities. % FIXME: Check validity of statement
+The external factor might be simple, like limited availability of food in the case of an animal population, or complex, like limitations of infrastructure in the case of cities.
 Correctly modeling the external limitations is crucial when studying the long term behavior of the system.
 
 The Gompertz model is one such model that has seen success in many areas.
@@ -98,7 +98,7 @@ In this chapter, this question will be tackled using the theory of Lie point sym
 
 \subsection{Finding a standardized ODE description}
 
-Even though Gompertz first stated his model as \cref{eq:original-gompertz}, the differential form is not the most commonly used.
+Even though Gompertz first stated his model as \cref{eq:original-gompertz-modern}, the differential form is not the most commonly used.
 Instead the Gompertz model is usually formulated as the solution to \cref{eq:original-gompertz-modern}.
 In Gompertz' original paper \cite{gompertz1825nature}, this function takes the form
 \begin{equation} \label{eq:original-gompertz-solution}
@@ -194,13 +194,12 @@ and
   W(t) = A \left(\frac{W_0}{A}\right)^{-e^{-k_G t}}
 \end{equation}
 respectively.
-These two parametrizations are useful, since the parameters \(A\), \(k_G\), \(T_i\) and \(W_0\) have clear interpretations. % TODO: Maybe plot this?
+These two parametrizations are useful, since the parameters \(A\), \(k_G\), \(T_i\) and \(W_0\) have clear interpretations.
 \(A\) is the value of the upper asymptote, also known as the carrying capacity of the system.
 \(k_G\), although lacking in interpretation itself, is proportional to \(k_U = k_G / e\), where \(k_U\) is the relative (to \(A\)) maximum slope during the process.
 Together, \(A\) and \(k_G\) control the shape of the curve.
 \(T_i\) or \(W_0\) depending on the formulation control the localization of the curve.
 \(T_i\) is the point in time where the curve achieves its maximum slope, also known as the point of inflection.
-% TODO: Write about when this formulation is useful
 \(W_0\) on the other hand is the size at \(t=0\).
 Depending on application either of these two parametrizations might be useful.
 It is therefore necessary to reparametrize both \cref{eq:rough-gompertz-classical-ode} and \cref{eq:rough-gompertz-autonomous-ode} using both forms.
