@@ -98,6 +98,20 @@
 \let\originalfootnote\thefootnote
 \renewcommand\thefootnote{\@fnsymbol\c@footnote}
 
+% Command to help ensure that the back cover will be on an even page
+% Based on https://tex.stackexchange.com/a/11709
+\newcommand*{\cleartoleftpage}{%
+  \clearpage
+    \if@twoside
+    \ifodd\c@page
+      \hbox{}\newpage
+      \if@twocolumn
+        \hbox{}\newpage
+      \fi
+    \fi
+  \fi
+}
+
 % Definition of new title pages
 \renewcommand*{\maketitle}{
   \begin{titlepage}
@@ -271,6 +285,9 @@
 }
 
 \AtEndDocument{
+  \cleardoublepage
+  \thispagestyle{empty}
+  \cleartoleftpage
   \newgeometry{
     top=30mm,
     bottom=30mm,
