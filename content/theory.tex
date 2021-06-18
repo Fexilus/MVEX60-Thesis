@@ -26,7 +26,7 @@ In mathematics, a symmetry is a transformation that preserves some structure.
 The word symmetry is used since the mathematical concept of symmetry encompasses what is meant by symmetry in everyday speech.
 A symmetric face is a face such that when mirrored it looks the same.
 Here, mirroring is the transformation and \enquote{looking the same} is the structure.
-In mathematics, however, the structure must be well defined, or in more common language must be a statement that has a clear distinction between being true or false.
+In mathematics, however, the structure must be well defined, or in more common language, must be a statement that has a clear distinction between being true or false.
 The transformation can also be chosen more freely, beyond the transformations usually implied when talking about symmetries in everyday speech.
 
 The most common example of a mathematical symmetry is rotating and flipping a triangle.
@@ -76,7 +76,7 @@ This must not always be the case when generalizing the theory, but those general
 
 The observant reader might have already noted that there is some need for clarification of \cref{defn:first-order-symmetry}.
 While the transformation \(\Gamma\) treats \(y\) as a point in \(\reals\), \cref{eq:first-order-ode} treats \(y\) as a differentiable function of \(x\), or in other words an element \(y(x)\) of the set of once continuously differentiable functions \(\mathcal{C}^1(\reals)\).
-In many contexts this abuse of notation could be accepted without further remarks, but when using symmetry methods the subtleties of this operation is key to the calculations performed.
+In many contexts this abuse of notation could be accepted without further remarks, but when using symmetry methods the subtlety of this operation is key to the calculations performed.
 To avoid confusion while introducing the subject in this subsection, the point representation will be denoted by \(y\) while the function representation will be denoted by \(f(x)\).
 
 The \(xy\)-plane previously mentioned can be seen as consisting of two components: the space of independent variables \(B \simeq \reals\), also known as the base space, and the space of dependent variables \(F \simeq \reals\), also known as the fiber.\footnote{The symbol \(\simeq\) is used here to mean that the space must only be similar to the real numbers. This means that, for example, only the positive real numbers could be used as the space \(B\).}
@@ -181,7 +181,7 @@ Using the prolongation of the transformation, \cref{defn:first-order-symmetry} o
   holds.
 \end{lem}
 Given a transformation \(\Gamma\), it is therefore easy to check whether it is a point symmetry of \cref{eq:first-order-ode}.
-The reverse process (finding point symmetries of \cref{eq:first-order-ode}) is on the other hand not easy, as \cref{eq:simple-first-order-symmetry} will in all but the most trivial cases result in a non-linear PDE in with two unknown functions.
+The reverse process (finding point symmetries of \cref{eq:first-order-ode}) is on the other hand not easy, as \cref{eq:simple-first-order-symmetry} will in all but the most trivial cases result in a non-linear PDE with two unknown functions.
 However, by restricting attention to a specific type of point symmetries, these conditions can be simplified.
 
 %=============================================================================
@@ -189,7 +189,7 @@ However, by restricting attention to a specific type of point symmetries, these 
 
 A common restriction when studying symmetries is to limit the scope of sought symmetries to Lie groups of symmetries.
 A Lie group is a mathematical group\footnote{For readers not familiar with abstract algebra: a group is a set (collection of elements), together with some operation that is associative. A group must also have an identity element, and all elements must have an inverse. An example of a group is the set of real numbers \(\reals\), together with the operation \(+\) (it is associative since \((a + b) + c = a + (b + c)\)). The identity element is then \(0\), and all elements have inverses (the inverse of \(a\) is \(-a\)).}, where the members of the group can be parametrized by one or several continuous parameters.
-A Lie group of transformations on \(E\) is thus a group with composition as the operator, where the transformations are parameterized by one or several continuous parameters.
+A Lie group of transformations on \(E\) is thus a group with composition as the operator, where the transformations are parametrized by one or several continuous parameters.
 If the transformations can be indexed by a single real parameter \(\epsilon \in \reals\), the Lie group is said to be a one-parameter (real) Lie group of transformations.
 The transformations in such a Lie group can be parametrized as
 \begin{equation*} %\label{eq:1p-lie-point-symmetry}
@@ -262,7 +262,7 @@ Using the tangent field of a one-parameter Lie symmetry group, the symmetry cond
   \end{equation*}
   Differentiating with respect to \(\epsilon\),
   \begin{equation} \label{eq:derive-symmetry-cond}
-    \frac{\partial_x \diff{\hat{y}}{\epsilon} + \omega \partial_y \diff{\hat{y}}{\epsilon}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}} - \frac{\left(\partial_x \diff{\hat{x}}{\epsilon}  + \omega \partial_y \diff{\hat{x}}{\epsilon}\right)\left(\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}\right)}{\left(\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}\right)^2} - \diff{\hat{y}}{\epsilon} \partial_x \omega - \diff{\hat{y}}{\epsilon} \partial_y \omega = 0.
+    \frac{\partial_x \diff{\hat{y}}{\epsilon} + \omega \partial_y \diff{\hat{y}}{\epsilon}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}} - \frac{\left(\partial_x \diff{\hat{x}}{\epsilon}  + \omega \partial_y \diff{\hat{x}}{\epsilon}\right)\left(\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}\right)}{\left(\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}\right)^2} - \diff{\hat{x}}{\epsilon} \partial_x \omega - \diff{\hat{y}}{\epsilon} \partial_y \omega = 0.
   \end{equation}
   It is sufficient to show that this expression holds at \(\epsilon = 0\) for all \(x\) and \(y\), since evaluation in any \(\tilde{\epsilon} \neq 0\) will be equivalent to the expression for \(\epsilon = 0\) in the point \(\Gamma_{\tilde{\epsilon}}(x, y)\).
   Evaluation at \(\epsilon = 0\) yields \(\diff{\hat{x}}/{\epsilon} = \xi\) and \(\diff{\hat{y}}/{\epsilon} = \eta\).
@@ -417,7 +417,7 @@ Elements in the total space \(E = B \times F\) can similarly to before be denote
   \vect{y}_x = \vect{\omega}(z),
 \end{equation}
 where \(\vect{y}_x = \left(y^1_x, \dots, y^s_x\right)\), \(\vect{\omega}(z) = \left(\omega^1(z), \dots, \omega^s(z)\right)\).
-The tangent fields of transformations on \(E\) takes the form
+The tangent fields of transformations on \(E\) take the form
 \begin{equation*} %\label{eq:tangent-field-gen}
   \left(\xi(z), \eta^1(z), \dots, \eta^s(z)\right)
 \end{equation*}
@@ -601,7 +601,7 @@ Given two arbitrary trivial symmetry generators \(\xi X_{\text{T}}\) and \(\tild
 \end{equation*}
 which in turn is a trivial symmetry generator.
 Hence, the set of all trivial symmetry generators form an algebra of their own, denoted \(\mathfrak{g}^\infty\).
-\(\mathfrak{g}^\infty\) is a subalgebra of the Lie algebra \(\mathfrak{g}\) of all infinitesimal generators corresponding Lie point symmetries of \cref{eq:first-order-system-ode-shorter}, since its elements are a subset of all elements in \(\mathfrak{g}\), and \(\mathfrak{g}^\infty\) in it self is an algebra.
+\(\mathfrak{g}^\infty\) is a subalgebra of the Lie algebra \(\mathfrak{g}\) of all infinitesimal generators corresponding Lie point symmetries of \cref{eq:first-order-system-ode-shorter}, since its elements are a subset of all elements in \(\mathfrak{g}\), and \(\mathfrak{g}^\infty\) in itself is an algebra.
 Similarly, all symmetry generators on the form \(\vect{\eta} \cdot \partial_{\vect{y}} = \bar{\vect{Q}} \cdot \partial_{\vect{y}}\) form a subalgebra \(\mathfrak{g}^0\), since
 \begin{equation*}
   \comm{\vect{\eta} \cdot \partial_{\vect{y}}}{\tilde{\vect{\eta}} \cdot \partial_{\vect{y}}} = \left(\vect{\eta} \cdot \tilde{\eta}^1_{\vect{y}} - \tilde{\vect{\eta}} \cdot \eta^1_{\vect{y}}\right) \partial_{y^1} + \dots + \left(\vect{\eta} \cdot \tilde{\eta}^s_{\vect{y}} - \tilde{\vect{\eta}} \cdot \eta^s_{\vect{y}}\right) \partial_{y^s}
@@ -624,7 +624,7 @@ Hence, the trivial component of any symmetry can safely be ignored when studying
 
 The second, and far less trivial result from formulation \labelcref{eq:linearized-symmetry-bracket} of the linearized symmetry condition concerns the structure of the subalgebra \(\mathfrak{g}^0\) containing the non-trivial components of all symmetries of \cref{eq:first-order-system-ode-shorter}.
 Finding this structure is analogous to finding all functions \(\bar{\vect{Q}}: E \to \reals^s\) solving \cref{eq:linearized-symmetry-bracket}, or in other words finding all reduced characteristics corresponding to Lie point symmetries of \cref{eq:first-order-system-ode-shorter}.
-Two state this result, two definitions are required.
+To state this result, two definitions are required.
 
 The first definition relates to a generalization of the concept of invariants.
 \begin{defn}[Invariant function]
@@ -662,7 +662,7 @@ Such a function \(\vect{J}\) can hence be seen as a \enquote{basis} with dimensi
 
 Using these definitions, the following result pertaining to the solutions of \cref{eq:linearized-symmetry-bracket} can be established.
 \begin{thm}
-  Let \(\vect{J}(x, \vect{y}) = \left(J_1(x, \vect{y}), \dots, J_s(x, \vect{y})\right)\) consists of the functionally independent invariants \(J_1, \dots, J_s\).
+  Let \(\vect{J}(x, \vect{y}) = \left(J_1(x, \vect{y}), \dots, J_s(x, \vect{y})\right)\) consist of the functionally independent invariants \(J_1, \dots, J_s\).
   A function \(\bar{\vect{Q}}\) is a solution of \cref{eq:linearized-symmetry-bracket} if and only if
   \begin{equation*}
     \partial_{\vect{y}} \vect{J} \cdot \bar{\vect{Q}}

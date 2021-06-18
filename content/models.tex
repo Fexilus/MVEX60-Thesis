@@ -18,14 +18,14 @@ The parameters allow the models to be adopted to a vast variety of circumstances
 They can be related to environmental factors, inherent properties of the species involved or a measurement of a species assumed to be constant for the duration of the experiment.
 
 One major obstacle in modeling and predicting the behavior of biological systems is the ability to correctly estimate these parameters.
-The reliance on estimated values in models is not unique to biology in the natural sciences, but unlike most other natural sciences the models in many biological fields are are constructed based on these types of experiments.
+The reliance on estimated values in models is not unique to biology in the natural sciences, but unlike most other natural sciences the models in many biological fields are constructed based on these types of experiments.
 While one can in physics isolate different parts of a larger system, and part by part build a theoretical model that is then tested on larger systems, the same approach can not be used in biology as the systems studied are large and intertwined enough that isolation of phenomena becomes nigh on impossible.
 Instead chemical principles, research on simpler but similar lifeforms and biological intuition is used to build models, which can then be tested against data from living test subjects (in vitro or in vivo).
 Not only does this affect the speed at which good models can be constructed; it also means that the parameters values that can not be directly measured can not be estimated before any simulation of the model is run, since there is no underlying fundamental model to predict the values with.
 
-To solve these problems, a number of advanced methods with have been developed with such sophistication that entirely new fields, such as systems biology, have developed around them \cite{kitano2002systems,westerhoff2004evolution}.
+To solve these problems, a number of advanced methods have been developed with such sophistication that entirely new fields, such as systems biology, have developed around them \cite{kitano2002systems,westerhoff2004evolution}.
 Still, many problems and challenges remain.
-In this thesis, mathematical symmetries is explored as a possible tool to solve some of these challenges.
+In this thesis, mathematical symmetries are explored as a possible tool to solve some of these challenges.
 In order to tackle such a broad question as \enquote{Can symmetries be used to enhance biological modeling?}, several concrete models from biology have been selected as examples.
 These examples serve both as a familiar setting for those working in biological modeling to learn about symmetries of differential equations, and as a way to concretely discuss the uses of these symmetries as modeling tools.
 
@@ -92,7 +92,7 @@ The breadth of animals (and parts of animals) where the Gompertz model can be fi
 The other branch of the life sciences where the Gompertz model has seen success is in modeling tumor growth.
 The model was first used (apart from as a tool for making graphs \cite{casey1934alteration}) for this purpose in 1964 \cite{laird1964dynamics}.
 It has since become one of the most widely used models for tumor growth \cite{gerlee2013muddle} (for a summary of applications, see the introduction of \cite{benzekry2014classical}).
-When studying both organism and tumor growth, the same question have been asked about the Gompertz model, namely what the biological interpretation of the model is.
+When studying both organism and tumor growth, the same question has been asked about the Gompertz model, namely what the biological interpretation of the model is.
 In this chapter, this question will be tackled using the theory of Lie point symmetries.
 
 \subsection{Finding a standardized ODE description}
@@ -121,7 +121,7 @@ The ODE:s in the first family can all be written on the form
 \begin{equation} \label[ode]{eq:rough-gompertz-classical-ode}
   \diff{W}{t} = r e^{-b t} W(t).
 \end{equation}
-These ODE:s are reparameterizations of Gompertz' original ODE \labelcref{eq:original-gompertz-modern}, often emphasizing the expected behaviors of the model in the growth context by choosing parameters that should be positive.
+These ODE:s are reparametrizations of Gompertz' original ODE \labelcref{eq:original-gompertz-modern}, often emphasizing the expected behaviors of the model in the growth context by choosing parameters that should be positive.
 In the parametrization seen in \cref{eq:rough-gompertz-classical-ode}, \(r\) should be positive for the species size \(W(t)\) to grow (as opposed to shrinking or decaying) and \(b\) should be positive for the growth to reduce over time (and thus limiting the growth).
 Solutions to this family of ODE:s can be seen in \cref{fig:gompertz-classical-solutions}.
 
@@ -168,7 +168,7 @@ They can all be written on the form
 While solutions to this ODE are all Gompertz curves, it is important to note that this formulation is fundamentally different than the classical ODE \labelcref{eq:rough-gompertz-classical-ode}.
 This is clear from the fact that while \cref{eq:rough-gompertz-classical-ode} is directly dependent on time, \cref{eq:rough-gompertz-autonomous-ode} is not.
 We will therefore henceforth refer to the family of ODE:s that can be rewritten as \cref{eq:rough-gompertz-autonomous-ode} as \enquote{autonomous Gompertz ODE:s}.
-Solutions to the autonomous Gompertz model can be seen in \cref{fig:gompertz-autonomous-solutions}
+Solutions to the autonomous Gompertz model can be seen in \cref{fig:gompertz-autonomous-solutions}.
 The first time an autonomous Gompertz ODE appears in the literature on biological growth is in a review of the new use of the Gompertz curve in 1932 \cite{winsor1932gompertz}.
 In the review (which also features a classical Gompertz ODE) the autonomous form is used to liken the Gompertz curve to another popular growth curve, the logistic growth curve, in order to generalize the Gompertz model.
 \begin{figure}
@@ -274,7 +274,7 @@ A classic model for predator-prey dynamics is the Lotka--Volterra model, modelin
   \end{align}
 \end{subequations}
 where \(N\) is the prey population size and \(P\) the predator population size \cite{lotka1925elements,volterra1928variations}.
-The parameter \(a\) the rate at which the prey population grows without interference, \(b\) and \(c\) how the predator and prey populations affect each other and \(d\) the rate at which predators die without prey to hunt.
+The parameter \(a\) is the rate at which the prey population grows without interference, \(b\) and \(c\) how the predator and prey populations affect each other and \(d\) the rate at which predators die without prey to hunt.
 Solutions to \cref{eq:lotka-volterra} can be seen in \cref{fig:lotka-volterra-solutions-varn,fig:lotka-volterra-solutions-varp}.
 The Lotka--Volterra model is by no means the most modern or correct model to use in most situations, but the model is important from a historical perspective \cite{berryman1992orgins}.
 Variations of the model have been analyzed using symmetries \cite{almeida1995lie,cherniha2004diffusive}, but there is a lack of interpretations of the symmetries in such literature as well as studies of the original model.

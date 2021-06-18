@@ -10,14 +10,14 @@ Since \cref{eq:scalar-explicit-ode} is of degree \(n\), the linearized symmetry 
 \begin{equation} \label{eq:linearized-general-symmetry^ansatze}
   \eval{\prolong{X}{n}(\prolongpart{y}{n} - \omega(\prolong{z}{n-1}))}_{\prolongpart{y}{n} = \omega(\prolong{z}{n-1})} = 0.
 \end{equation}
-\Cref{eq:linearized-general-symmetry^ansatze} is a partial differential equation \(PDE\) of degree \(n\) in the functions \(\xi(x, y), \eta(x, y)\).
+\Cref{eq:linearized-general-symmetry^ansatze} is a partial differential equation (PDE) of degree \(n\) in the functions \(\xi(x, y), \eta(x, y)\).
 The highest order jet variable \(\prolongpart{y}{n}\) will not be present anywhere in \cref{eq:linearized-general-symmetry^ansatze} as the evaluation on \cref{eq:scalar-explicit-ode} removes all such dependence.
 For an ODE of degree \(n > 1\), jet variables \(\prolongpart{y}{1}, \dots, \prolongpart{y}{n-1}\) will still be present in \cref{eq:linearized-general-symmetry^ansatze}, and since neither \(\xi\) nor \(\eta\) has any dependence on those variables the equation can be decomposed in those variables.
 This means that \cref{eq:linearized-general-symmetry^ansatze} will be turned into a system of PDE:s, still of degree \(n\) in the functions \(\xi(x, y), \eta(x, y)\), called the determining equations of the symmetries.
 In general, such a system is solvable and thus all symmetries of the systems can be calculated.
 Much theory in the literature is built around the assumption that the determining equations exist, and that they (at least in theory) can be solved.
 
-For an ODE of degree \(n = 1\) such a decompositions is not possible, since no jet variables except for \(x\) and \(y\) are present in \cref{eq:linearized-general-symmetry^ansatze}.
+For an ODE of degree \(n = 1\) such a decomposition is not possible, since no jet variables except for \(x\) and \(y\) are present in \cref{eq:linearized-general-symmetry^ansatze}.
 Instead, the \enquote{determining equations} is the same equation as the linearized symmetry condition.
 The common solution to this problem is to use an ansatz for the tangent field \(\xi, \eta\) that turns the linearized symmetry condition into a solvable system.
 Except for some common ansätze like polynomial dependence in one or more variables, coming up with a good ansatz comes down to intuition and luck.
@@ -244,8 +244,8 @@ Since there are 3 different formulations of the Gompertz model, symmetries for e
 
 \subsection{The classical Gompertz model}
 
-For the classical Gompertz model, two parameterizations exist.
-As the success of the ansatz method does not hinge on the parameterization, the \(T_i\)-parameterization is chosen.
+For the classical Gompertz model, two parametrizations exist.
+As the success of the ansatz method does not hinge on the parametrization, the \(T_i\)-parametrization is chosen.
 
 The ansatz
 \begin{align*}
@@ -429,7 +429,7 @@ A simple ansatz is that the infinitesimal generator is linear in time and the st
 where  \(c_{i,j}\) are arbitrary constants.
 The linearized symmetry condition will thus consist of 5 equations, which will consist of sums of fractional expressions in the states.
 To decompose the system, the sums in all equations are rewritten with a common denominator.
-Additionally, since the power \(A^n\) appear in some of the equations, and all equations sought should hold for an arbitrary \(n\), the numerator of the equations written with common denominators is decomposed in \(t\), \(M\), \(B\), \(L\), \(A\) \(P\) and \(A^n\).
+Additionally, since the power \(A^n\) appear in some of the equations, and all equations sought should hold for an arbitrary \(n\), the numerator of the equations written with common denominators is decomposed in \(t\), \(M\), \(B\), \(L\), \(A\), \(P\) and \(A^n\).
 The decomposition results in 1901 equations, all linear in the arbitrary constants \(c_{i,j}\).
 The solution to the overdetermined system of equations gives that the only symmetry generator on the form of the ansatz is the manifest generator
 \begin{equation*}
