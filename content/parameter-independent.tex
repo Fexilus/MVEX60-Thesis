@@ -1,4 +1,4 @@
-\chapter{Finding symmetries using parameter independence} \label{ch:param-ind}
+\chapter{Finding symmetries using parameter independence}\label{ch:param-ind}
 
 In \cref{ch:ansatze} the traditional approach of using ansätze to find symmetries of first order ODE:s was used.
 There are two main problems with using ansätze.
@@ -253,18 +253,18 @@ for an additional arbitrary constant \(c_2\).
 \end{equation*}
 which is a scalar first order ODE with the solution
 \begin{equation*}
-  \eta = c_1 \ln\left(\ln\left(\frac{W}{A}\right)\right) \ln\left(\frac{W}{A}\right) W + c_3 \ln\left(\frac{W}{A}\right) W.
+  \eta = c_1 \ln\left(\abs{\ln\left(\frac{W}{A}\right)}\right) \ln\left(\frac{W}{A}\right) W + c_3 \ln\left(\frac{W}{A}\right) W.
 \end{equation*}
 Thus any \(k_G\)-independent symmetry generator of the autonomous Gompertz model \labelcref{eq:gompertz-autonomous^param} must have the form
 \begin{align*}
   \xi &= c_2 + c_1 t \\
-  \eta &= c_1 \ln\left(\ln\left(\frac{W}{A}\right)\right) \ln\left(\frac{W}{A}\right) W + c_3 \ln\left(\frac{W}{A}\right) W,
+  \eta &= c_1 \ln\left(\abs{\ln\left(\frac{W}{A}\right)}\right) \ln\left(\frac{W}{A}\right) W + c_3 \ln\left(\frac{W}{A}\right) W,
 \end{align*}
 which is spanned by the generator basis
 \begin{align*}
   X_{\text{a},3} &= \ln\left(\frac{W}{A}\right) W \partial_W \\
   X_{\text{a},4} &= \partial_t \\
-  X_{\text{a},5} &= t \partial_t + \ln\left(\ln\left(\frac{W}{A}\right)\right) \ln\left(\frac{W}{A}\right) W \partial_W.
+  X_{\text{a},5} &= t \partial_t + \ln\left(\abs{\ln\left(\frac{W}{A}\right)}\right) \ln\left(\frac{W}{A}\right) W \partial_W.
 \end{align*}
 
 \subsubsection{\texorpdfstring{\(A\)-independent symmetries}{Carrying capacity-independent symmetries}}

@@ -71,7 +71,13 @@
    basicstyle=\linespread{0.83}\ttfamily,
 }
 
-\section*{\lstinline{symmetries}}
+For some of the larger calculations, a computer algebra system was used.
+This appendix contains an outline of the package developed in Python to make those calculations.
+The package is based on SymPy \cite{meurer2017sympy}, and primarily adds tools relating to the trivial jet spaces encountered in this thesis, and the implementation and prolongation of infinitesimal generators.
+Three of the modules are described here.
+A fourth module, used for the visualizations in this thesis can be found along with the other three in the online repository available at \href{https://github.com/Fexilus/MVEX60-Code}{https://github.com/Fexilus/MVEX60-Code}.
+
+\addsec{\texorpdfstring{\lstinline{symmetries}}{symmetries}}
 
 Calculate symmetries of ODE:s symbolically.
 
@@ -293,7 +299,7 @@ Calculate symmetries of ODE:s symbolically.
       \item[Return type:] \lstinline{sympy.Expr}
    \end{description}
 
-\section*{\lstinline{symmetries.ansatz}}
+\addsec{\texorpdfstring{\lstinline{symmetries.ansatz}}{symmetries.ansatz}}
 
 Make ansätze for generators.
 
@@ -312,7 +318,7 @@ Make ansätze for generators.
       \item[Return type:] \lstinline{tuple[Generator, list[sympy.Expr]]}
    \end{description}
 
-\section*{\lstinline{symmetries.utils}}
+\addsec{\texorpdfstring{\lstinline{symmetries.utils}}{symmetries.utils}}
 
 Utilities for the main symmetries package.
 

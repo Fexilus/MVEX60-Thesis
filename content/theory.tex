@@ -86,7 +86,7 @@ To be able to formulate first order differential statements, the space \(F_1 \si
 The elements of \(F_1\) will be denoted \(y'\) or \(y^{(1)}\), implying that the elements correspond to the first derivative \(f'(x)\) of the function \(f(x)\).
 It is however important to note that \(F_1\) is no more the space of derivative functions \(f'(x)\) than \(F\) is the space of once continuously differentiable functions \(f(x)\); the implied relation between the two is merely aesthetic so far.
 Together with the fiber \(F\), \(F_1\) forms the prolonged fiber \(\prolong{F}{1} = F \times F_1\).
-The prolonged fiber \(\prolong{F}{1}\) can be combined with the base space \(B\) to create \(J_1 = J_1 E = E \times F_1 = B \times \prolong{F}{1} \simeq \reals^3\), the first order jet space of \(E\).%
+The prolonged fiber \(\prolong{F}{1}\) can be combined with the base space \(B\) to create \(J_1 = J_1 E = E \times F_1 = B \times \prolong{F}{1} \simeq \reals^3\), the first order jet space of \(E\).
 
 All differentiable functions \(f: B \to F\) have a unique equivalent function \(\prolong{f}{1}: B \to \prolong{F}{1}\) called the first prolongation of \(f(x)\), defined as
 \begin{equation*}
@@ -416,7 +416,11 @@ Elements in the total space \(E = B \times F\) can similarly to before be denote
 \begin{equation} \label{eq:first-order-system-ode-short}
   \vect{y}_x = \vect{\omega}(z),
 \end{equation}
-where \(\vect{y}_x = \left(y^1_x, \dots, y^s_x\right)\), \(\vect{\omega}(z) = \left(\omega^1(z), \dots, \omega^s(z)\right)\).
+where
+\begin{align*}
+  \vect{y}_x &= \left(y^1_x, \dots, y^s_x\right)\\
+  \vect{\omega}(z) &= \left(\omega^1(z), \dots, \omega^s(z)\right).
+\end{align*}
 The tangent fields of transformations on \(E\) take the form
 \begin{equation*} %\label{eq:tangent-field-gen}
   \left(\xi(z), \eta^1(z), \dots, \eta^s(z)\right)
@@ -425,7 +429,12 @@ and the infinitesimal generator thus has the form
 \begin{equation*}
   X = \xi(z) \partial_x + \eta^1(z) \partial_{y^1} + \dots + \eta^s(z) \partial_{y^s} = \xi(z) \partial_x + \vect{\eta}(z) \cdot \partial_{\vect{y}},
 \end{equation*}
-once again employing vector notation for \(\vect{\eta}(z) = \left(\eta^1(z), \dots, \eta^s(z)\right)\) and \(\partial_{\vect{y}} = \left(\partial_{y^1}, \dots, \partial_{y^s}\right)\) to shorten the expression.
+once again employing the vector notation
+\begin{align*}
+  \vect{\eta}(z) &= \left(\eta^1(z), \dots, \eta^s(z)\right)\\
+  \partial_{\vect{y}} &= \left(\partial_{y^1}, \dots, \partial_{y^s}\right)
+\end{align*}
+to shorten the expression.
 The infinitesimal generator can be prolonged by defining
 \begin{equation*}
   \prolongpart{\eta^k}{1}(x,y) =
