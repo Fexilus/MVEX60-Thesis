@@ -13,7 +13,8 @@ This is mainly due to fact that theory is only introduced on a need to know basi
 The second sources \cite{olver1993applications,olver1995equivalence} by \citeauthor{olver1993applications}, on the other hand treats the subject stringently and serves as good reference points for readers wishing to understand the theory in more depth.
 While \cite{olver1993applications} focuses more on the specific application to differential equations, \cite{olver1995equivalence} puts more focus on the geometric concepts involved.
 
-The third source \cite{ovsiannikov1982group} by \citeauthor{ovsiannikov1982group}, deals with group classification, a slightly more advanced subject on which the technique developed in \cref{ch:param-ind} is based. % TODO: Maybe elaborate on group classification
+The third source \cite{ovsiannikov1982group} by \citeauthor{ovsiannikov1982group}, deals with group classification, a slightly more advanced subject on which the technique developed in \cref{ch:param-ind} is based.
+Roughly, group classification is about finding which specializations of a differential equation with some arbitrary function in its formulation share symmetries.
 Due to its earlier publication date, the book treats some subjects in a less modern way than the works by \citeauthor{hydon2000symmetry} and \citeauthor{olver1993applications}, and is therefore not recommended for readers unfamiliar with the concerned theory.
 
 The notation in this thesis will be based on the notation in \cite{hydon2000symmetry}, employing partial notational concepts from \cite{olver1995equivalence} and \cite{ovsiannikov1982group} when further clarity is desired.
@@ -78,14 +79,14 @@ While the transformation \(\Gamma\) treats \(y\) as a point in \(\reals\), \cref
 In many contexts this abuse of notation could be accepted without further remarks, but when using symmetry methods the subtleties of this operation is key to the calculations performed.
 To avoid confusion while introducing the subject in this subsection, the point representation will be denoted by \(y\) while the function representation will be denoted by \(f(x)\).
 
-The \(xy\)-plane previously mentioned can be seen as consisting of two components: the space of independent variables \(B \simeq \reals\), also known as the base space, and the space of dependent variables \(F \simeq \reals\), also known as the fiber.
+The \(xy\)-plane previously mentioned can be seen as consisting of two components: the space of independent variables \(B \simeq \reals\), also known as the base space, and the space of dependent variables \(F \simeq \reals\), also known as the fiber.\footnote{The symbol \(\simeq\) is used here to mean that the space must only be similar to the real numbers. This means that, for example, only the positive real numbers could be used as the space \(B\).}
 The plane then is the product space \(E = B \times F \simeq \reals^2\).
 It is in this plane \(E\), commonly called the total space, that the curves \(\gamma\) live.
 To be able to formulate first order differential statements, the space \(F_1 \simeq \reals\) is used.
 The elements of \(F_1\) will be denoted \(y'\) or \(y^{(1)}\), implying that the elements correspond to the first derivative \(f'(x)\) of the function \(f(x)\).
 It is however important to note that \(F_1\) is no more the space of derivative functions \(f'(x)\) than \(F\) is the space of once continuously differentiable functions \(f(x)\); the implied relation between the two is merely aesthetic so far.
 Together with the fiber \(F\), \(F_1\) forms the prolonged fiber \(\prolong{F}{1} = F \times F_1\).
-The prolonged fiber \(\prolong{F}{1}\) can be combined with the base space \(B\) to create \(J_1 = J_1 E = E \times F_1 = B \times \prolong{F}{1} \simeq \reals^3\), the first order jet space of \(E\).
+The prolonged fiber \(\prolong{F}{1}\) can be combined with the base space \(B\) to create \(J_1 = J_1 E = E \times F_1 = B \times \prolong{F}{1} \simeq \reals^3\), the first order jet space of \(E\).%
 
 All differentiable functions \(f: B \to F\) have a unique equivalent function \(\prolong{f}{1}: B \to \prolong{F}{1}\) called the first prolongation of \(f(x)\), defined as
 \begin{equation*}
@@ -93,7 +94,7 @@ All differentiable functions \(f: B \to F\) have a unique equivalent function \(
 \end{equation*}
 In extension to this concept, a smooth transverse curve \(\gamma \subset E\) has a prolongation which is a curve \(\prolong{\gamma}{1} \subset J_1\) defined by
 \begin{equation*}
-  \prolong{\gamma}{1} = \left\{\left(x, \prolong{f}{1}(x)\right): x \in B\right\},
+  \prolong{\gamma}{1} = \left\{\left(x, \prolong{f}{1}(x)\right):\quad x \in B\right\},
 \end{equation*}
 where \(f\) is the function corresponding to the curve \(\gamma\).
 
@@ -113,7 +114,7 @@ This can be seen in \cref{fig:jet-surface}, where the prolongations of the solut
   \label{fig:jet-surface}
 \end{figure}
 
-While only first order ODE:s are handled in this thesis, some basic knowledge of symmetry methods for higher order ODE:s is required to be able to understand how the process of finding symmetries differ between first and higher order ODE:s.
+While only first order ODE:s are studied in this thesis, some basic knowledge of symmetry methods for higher order ODE:s is required to be able to understand how the process of finding symmetries differ between first and higher order ODE:s.
 An ODE of degree \(k\) can be written on the form
 \begin{equation*}
   \diff[k]{y}{x} = \omega\left(x, y, \diff{y}{x}, \dots, \diff[k-1]{y}{x}\right),
@@ -173,12 +174,12 @@ will retain the correspondence to the ODE in the changed variables.
 
 Using the prolongation of the transformation, \cref{defn:first-order-symmetry} of a first order symmetry for \cref{eq:first-order-ode} can be restated in the first order jet space \(J_1\) for the corresponding \cref{eq:first-order-jet-ode}.
 \begin{lem} \label{lem:simple-first-order-symmetry}
-  A transformation \(\Gamma: \left(x,y\right) \mapsto \left(\hat{x}(x,y), \hat{y}(x,y)\right)\) is a point symmetry of \cref{eq:first-order-ode} if and only if
+  A diffeomorphic transformation \(\Gamma: \left(x,y\right) \mapsto \left(\hat{x}(x,y), \hat{y}(x,y)\right)\) is a point symmetry of \cref{eq:first-order-ode} if and only if
   \begin{equation} \label{eq:simple-first-order-symmetry}
     \frac{\partial_x \hat{y} + \omega(x,y) \partial_y \hat{y}}{\partial_x \hat{x} + \omega(x,y) \partial_y \hat{x}} = \omega(\hat{x},\hat{y})
   \end{equation}
   holds.
-\end{lem} % FIXME: Requirement of diffeomorphism
+\end{lem}
 Given a transformation \(\Gamma\), it is therefore easy to check whether it is a point symmetry of \cref{eq:first-order-ode}.
 The reverse process (finding point symmetries of \cref{eq:first-order-ode}) is on the other hand not easy, as \cref{eq:simple-first-order-symmetry} will in all but the most trivial cases result in a non-linear PDE in with two unknown functions.
 However, by restricting attention to a specific type of point symmetries, these conditions can be simplified.
@@ -187,7 +188,7 @@ However, by restricting attention to a specific type of point symmetries, these 
 \section{Lie point symmetries}
 
 A common restriction when studying symmetries is to limit the scope of sought symmetries to Lie groups of symmetries.
-A Lie group is a mathematical group, where the members of the group can be parametrized by one or several continuous parameters. % TODO: Write footnote on groups
+A Lie group is a mathematical group\footnote{For readers not familiar with abstract algebra: a group is a set (collection of elements), together with some operation that is associative. A group must also have an identity element, and all elements must have an inverse. An example of a group is the set of real numbers \(\reals\), together with the operation \(+\) (it is associative since \((a + b) + c = a + (b + c)\)). The identity element is then \(0\), and all elements have inverses (the inverse of \(a\) is \(-a\)).}, where the members of the group can be parametrized by one or several continuous parameters.
 A Lie group of transformations on \(E\) is thus a group with composition as the operator, where the transformations are parameterized by one or several continuous parameters.
 If the transformations can be indexed by a single real parameter \(\epsilon \in \reals\), the Lie group is said to be a one-parameter (real) Lie group of transformations.
 The transformations in such a Lie group can be parametrized as
@@ -241,7 +242,6 @@ The tangent field can be calculated pointwise by
 \end{equation*}
 for every fixed point \(\left(\fixed{x},\fixed{y}\right) \in E\).
 The tangent field can be thought of as the vector field that points in \(E\) flow along when the parameter \(\epsilon\) of transformation \(\Gamma_\epsilon\) is increased.
-% TODO: Write about relation to parameterized transformation
 
 %-----------------------------------------------------------------------------
 \subsection{The linearized symmetry condition}
@@ -348,19 +348,19 @@ To simplify the notation a differential operator
   X = \xi(x,y) \partial_x + \eta(x,y) \partial_y
 \end{equation*}
 called an infinitesimal generator of the symmetry group with tangent field \(\left(\xi, \eta\right)\), can be introduced.
-The infinitesimal generator acts on transformations \(\Gamma: E \to E\) and returns the action of the tangent field \(\left(\xi, \eta\right)\) of a Lie point symmetry with elements \(\Gamma_\epsilon\) on the transformation.
-The action gives a measure of the change in \(\Gamma\) when continuously transforming the plane which it acts on, since
+The infinitesimal generator acts on functions \(\phi: E \to S\) where \(S\) is a vector space, and returns the action of the tangent field \(\left(\xi, \eta\right)\) of a Lie point symmetry with elements \(\Gamma_\epsilon\) on the function.
+The action gives a measure of the change in \(\phi\) when continuously transforming the plane which it acts on, since
 \begin{equation*}
-  \diff*{\Gamma \circ \Gamma_\epsilon}{\epsilon}[\epsilon = 0] = X \Gamma.
+  \diff*{\phi \circ \Gamma_\epsilon}{\epsilon}[\epsilon = 0] = X \phi.
 \end{equation*}
-Just as the tangent field characterizes the Lie point symmetry, so does the infinitesimal generator, as it is depends uniquely on the tangent field. % TODO: Maybe change what is acted upon here, since it is only really used on functions
+Just as the tangent field characterizes the Lie point symmetry, so does the infinitesimal generator, as it depends uniquely on the tangent field.
 
 The infinitesimal generator can be prolonged, still entirely defined by \(\xi\) and \(\eta\), to act on functions in any given jet space \(J_k\).
-Here the requirement of the prolongation \(\prolong{X}{k}\) is that for any transformation \(\Gamma: E \to E\)
+Here the requirement of the prolongation \(\prolong{X}{k}\) is that it should be the infinitesimal generator of the prolonged Lie point transformations \(\prolong{\Gamma_\epsilon}{k}\).
+Or in other words, for any function \(\psi: J_k \to S\),
 \begin{equation*}
-  \prolong{X}{k} \prolong{\Gamma}{k} = \prolong{\left(X \Gamma\right)}{k},
+  \diff*{\psi \circ \prolong{\Gamma_\epsilon}{k}}{\epsilon}[\epsilon = 0] = \prolong{X}{k} \psi.
 \end{equation*}
-or in other words the prolonged action on the prolonged transformations must be the same as the prolongation of the action resulting from the action on the transformation.
 For first order ODE:s the jet space is \(J_1\), and thus the first prolongation is needed, which takes the form
 \begin{equation*}
   \prolong{X}{1} =

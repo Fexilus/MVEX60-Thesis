@@ -59,7 +59,6 @@ and the time with
   n > 0
 \end{equation}
 which will be studied in this thesis.
-% TODO: Plot
 
 \section{The Gompertz model}
 
@@ -81,7 +80,7 @@ Gompertz formulated his model as the differential equation
 \begin{equation} \label[ode]{eq:original-gompertz-modern}
   \diff{L}{x} = -a q^x L(x)
 \end{equation}
-where \(L(x)\) is the number of people living at age \(x\). % TODO: What is a and q?
+where \(L(x)\) is the number of people living at age \(x\).
 It is worth noting that for small values of \(x\) and \(c = -a\), \cref{eq:original-gompertz-modern} behaves like \cref{eq:exponential}.
 In retrospect this similarity is not surprising as Gompertz modeled the decay of a population, which can be seen as \enquote{negative growth}.
 However, this connection was not made at first.
@@ -111,7 +110,7 @@ The function form of the model is not only sufficient as description when the go
 However, as will be seen in the next chapter, \cref{eq:original-gompertz-solution} is not a form where the type of symmetries used in this thesis can be employed.
 Additionally, the function is not parametrized consistently across literature, varying depending on field and taste.
 To analyze the model with Lie point symmetries it is therefore necessary to determine two things.
-Firstly it must be established what is meant by \enquote{The Gompertz Model} when viewing the model as an ODE through a life since lens.
+Firstly it must be established what is meant by \enquote{The Gompertz model} when viewing the model as an ODE through a life since lens.
 Secondly, a standardized and meaningful parametrization of the model in ODE form must be established in order to gain insight from the later symmetry treatment.
 
 Since the function form of the model is sufficient and necessary to match the model to data, the ODE form is only found in the literature as a means of providing a background to the model.
@@ -140,7 +139,7 @@ This system of ODE:s could also be argued to be the original Gompertz ODE, since
 }
 The intensity of mortality can be seen as \(\gamma(t)\) in \cref{eq:rough-gompertz-system-ode}, with \(\gamma(t) = aq^x\) serving as a solution to the lower equation in \cref{eq:rough-gompertz-system-ode} when \(\ln\left(q\right) = -b\).
 Solutions to this family of ODE:s can be seen in \cref{fig:gompertz-system-solutions-varw,fig:gompertz-system-solutions-varg}.
-Since \cref{eq:rough-gompertz-classical-ode} is a partial solution to \cref{eq:rough-gompertz-system-ode}, these two families of differential equations will henceforth be referred to collectively as \enquote{classical Gompertz ODE:s}, the latter formulation being specified as \enquote{classical Gompertz ODE:s on system form} or simply \enquote{system Gompertz ODE:s}.
+Since \cref{eq:rough-gompertz-classical-ode} is a partial solution to \cref{eq:rough-gompertz-system-ode}, the formulations that can be written on the form of the former equation will henceforth be referred to as \enquote{classical Gompertz ODE:s}, while the latter formulation will be referred to as \enquote{classical Gompertz ODE:s on system form} or simply \enquote{system Gompertz ODE:s}.
 The classical Gompertz ODE is the form used in the first paper on biological growth \cite{davidson1928growth}.
 \begin{figure}
   \centering
@@ -278,7 +277,7 @@ where \(N\) is the prey population size and \(P\) the predator population size \
 The parameter \(a\) the rate at which the prey population grows without interference, \(b\) and \(c\) how the predator and prey populations affect each other and \(d\) the rate at which predators die without prey to hunt.
 Solutions to \cref{eq:lotka-volterra} can be seen in \cref{fig:lotka-volterra-solutions-varn,fig:lotka-volterra-solutions-varp}.
 The Lotka--Volterra model is by no means the most modern or correct model to use in most situations, but the model is important from a historical perspective \cite{berryman1992orgins}.
-Variations of the model have been analyzed using symmetries \cite{almeida1995lie,cherniha2004diffusive}, but there is a lack of interpretations of the symmetries in such literature as well as studies of the original model. % FIXME: Missing 2d-case with time invariance equivalent symmetry
+Variations of the model have been analyzed using symmetries \cite{almeida1995lie,cherniha2004diffusive}, but there is a lack of interpretations of the symmetries in such literature as well as studies of the original model.
 \begin{figure}
   \centering
   \includegraphics[width=.96\textwidth]{images/lotka-volterra-solutions-varn}
